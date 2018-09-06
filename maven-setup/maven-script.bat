@@ -8,12 +8,12 @@ ECHO https://maven.apache.org/install.html
 ECHO https://www.mkyong.com/maven/how-to-install-maven-in-windows/
 ECHO ----------------------
 
-IF NOT EXIST %cd%\maven (
-
-ECHO maven folder %cd%\maven doesnt exist. Trying to download or extract maven zip
 SET mavenDownloadUrl=http://mirror.ox.ac.uk/sites/rsync.apache.org/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
 SET mavenZip=apache-maven-3.5.4-bin.zip
 
+IF NOT EXIST %cd%\maven (
+
+ECHO maven folder %cd%\maven doesnt exist. Trying to download or extract maven zip
 ECHO mavenDownloadUrl=%mavenDownloadUrl%
 ECHO mavenZip=%mavenZip%
 
