@@ -3,5 +3,4 @@
 /maven/
 /.classpath
 /.project
-./properties
-
+/.settings/
