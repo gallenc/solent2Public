@@ -5,6 +5,4 @@ public class Account {
     private String owner;
 
     private Double balence;
-
-    private Object untitledField1;
 }

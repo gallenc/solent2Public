@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="card-classdiagram">
+  <ClassDiagramComponents>
+    <Class name="Bank" package="solent.ac.uk.ood.examples.cardcheck.model" visibility="public" xPosition="707.0" yPosition="0.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="sortcode" type="String" visibility="private"/>
+        <Field name="bincode" type="String" visibility="private"/>
+        <Field name="accounts" type="List&lt;Account&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Account" package="solent.ac.uk.ood.examples.cardcheck.model" visibility="public" xPosition="820.0" yPosition="298.0">
+      <Fields>
+        <Field name="owner" type="String" visibility="private"/>
+        <Field name="balence" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Transaction" package="solent.ac.uk.ood.examples.cardcheck.model" visibility="public" xPosition="387.0" yPosition="179.0">
+      <Fields>
+        <Field name="time" type="String" visibility="private"/>
+        <Field name="transactionid" type="String" visibility="private"/>
+        <Field name="from" type="Account" visibility="private"/>
+        <Field name="to" type="Account" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Card" package="solent.ac.uk.ood.examples.cardcheck.model" visibility="public" xPosition="621.0" yPosition="403.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="enddate" type="String" visibility="private"/>
+        <Field name="cardno" type="String" visibility="private"/>
+        <Field name="cvv" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="to" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="bank" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Bank" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="card" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="from" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="accounts" source="solent.ac.uk.ood.examples.cardcheck.model.Bank" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="transactions" source="solent.ac.uk.ood.examples.cardcheck.model.Bank" target="solent.ac.uk.ood.examples.cardcheck.model.Transaction" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
