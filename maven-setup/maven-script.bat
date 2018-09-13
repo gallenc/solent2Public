@@ -21,7 +21,7 @@ IF EXIST %cd%\%mavenZip% (
 ECHO file %cd%\%mavenZip% exists
 ) ELSE (
 ECHO file %cd%\%mavenZip% does not exist trying to download
-bitsadmin.exe /transfer "downloadMaven" %mavenDownloadUrl% %cd%\%mavenZip%
+bitsadmin.exe /transfer "downloadMaven" /priority FOREGROUND %mavenDownloadUrl% %cd%\%mavenZip%
 )
 
 REM https://stackoverflow.com/questions/21704041/creating-batch-script-to-unzip-a-file-without-additional-zip-tools
@@ -30,6 +30,14 @@ echo unzipping   %cd%\maven\ from %cd%\%mavenZip%
 Call :UnZipFile "%cd%\maven\" "%cd%\%mavenZip%"
 
 )
+
+REM THIS IS VALUE SET BY SOLENT
+SET JAVA_HOME=C:\Program Files\Java\jdk1.8.0_162
+echo setting JAVA_HOME to %JAVA_HOME%  you may need to change this if wrong JDK referenced
+SET PATH=%JAVA_HOME%\bin;%PATH%;
+
+echo check that javac on classpath
+javac -version
 
 SET M2_HOME=%cd%\maven\apache-maven-3.5.4
 SET MAVEN_HOME=%M2_HOME%
