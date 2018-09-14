@@ -13,6 +13,7 @@
     <modules>
         <module>card-checker</module>
         <module>card-model</module>
+        <module>card-dao-jaxb</module>
         <module>card-reader-jfx</module>
     </modules>
     

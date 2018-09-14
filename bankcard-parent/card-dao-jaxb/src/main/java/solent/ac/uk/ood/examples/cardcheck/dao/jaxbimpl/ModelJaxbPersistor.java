@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.cardcheck.model.test;
+package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
 import java.io.File;
 import java.io.StringWriter;
@@ -13,23 +13,24 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO;
+import solent.ac.uk.ood.examples.cardcheck.dao.BankDAO;
+import solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO;
 import solent.ac.uk.ood.examples.cardcheck.model.Account;
 import solent.ac.uk.ood.examples.cardcheck.model.Bank;
 import solent.ac.uk.ood.examples.cardcheck.model.BankModelLists;
 import solent.ac.uk.ood.examples.cardcheck.model.Card;
-import solent.ac.uk.ood.examples.cardcheck.model.ResultCodes;
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
-import solent.ac.uk.ood.examples.cardcheck.model.TransactionResult;
 
 /**
- *
+ * for Generic dao https://www.baeldung.com/simplifying-the-data-access-layer-with-spring-and-java-generics
+ * for jdbc dao https://github.com/danielniko/SimpleJspServletDB
+ * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
  * @author gallenc
  */
-public class ModelJaxbTest {
+public class ModelJaxbPersistor {
 
-    @Test
+
     public void testJaxb() {
 
         try {
@@ -47,7 +48,6 @@ public class ModelJaxbTest {
 
             // output pretty printed
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
 
             // create lists of model which we can save and load to a file
             BankModelLists bankModelLists = new BankModelLists();
@@ -152,73 +152,121 @@ public class ModelJaxbTest {
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
             BankModelLists receivedBankModelLists = (BankModelLists) jaxbUnMarshaller.unmarshal(file);
 
-            //spot check both the same size of lists
-            assertEquals(bankModelLists.getAccountList().size(), receivedBankModelLists.getAccountList().size());
-            assertEquals(bankModelLists.getBankList().size(), receivedBankModelLists.getBankList().size());
-            assertEquals(bankModelLists.getTransactionList().size(), receivedBankModelLists.getTransactionList().size());
-
+ 
             // convert received marshalled file to string and check the same as original
             StringWriter sw2 = new StringWriter();
             jaxbMarshaller.marshal(receivedBankModelLists, sw2);
-            
-            // if both strings the same we have received the same file as we wrote
-            assertEquals(sw1.toString(), sw2.toString());
 
+ 
         } catch (JAXBException e) {
-            throw new RuntimeException("problem testing jaxb marshalling",e);
+            throw new RuntimeException("problem testing jaxb marshalling", e);
         }
 
     }
+
+    // account dao tasks
     
-    @Test
-    public void testTransactionResult() {
-        
-                try {
-         JAXBContext jaxbContext = JAXBContext.newInstance("solent.ac.uk.ood.examples.cardcheck.model");
+    public Account getAccountById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            // output pretty printed
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                       
-                        // add account with card
-            Account account2 = new Account();
-            account2.setAccountNo("910111213");
-            account2.setBalance(100.5);
-            account2.setId(1);
-            String owner2 = "C R Gallen";
-            account2.setOwner(owner2);
+    
+    public List<Account> getAllAccounts() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-            Card card2 = new Card();
-            card2.setCardno("5500005555555559"); // mastercard
-            card2.setCvv("123");
-            card2.setEnddate("1118");
-            card2.setName(owner2);
-            account2.setCard(card2);
-            
-            Transaction transaction1 = new Transaction();
-            transaction1.setAmount(30.5);
-            transaction1.setFrom(account2);
-            transaction1.setTo(account2);
-            transaction1.setTransactionId(2);
-            Date timestamp1 = new Date();
-            transaction1.setTimestamp(timestamp1);
-            transaction1.setId(2);
-            transaction1.setCardFrom(card2);
-            transaction1.setCardTo(card2);
-            
-                      TransactionResult tr = new TransactionResult();
-            
-            tr.setResultCode(ResultCodes.DECLINED);
-            
-            tr.setTransaction(transaction1);
-            tr.setDebugInformation("no debug info");
-            
-            jaxbMarshaller.marshal(tr, System.out);
-            
-            
-            
-        } catch (JAXBException e) {
-            throw new RuntimeException("problem testing jaxb marshalling",e);
-        }
+    
+    public Account addAccount(Account account) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    public void deleteAccount(Account account) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    public void deleteAccountById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+    public Account updateAccount(Account account) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    public Account createAccount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Bank getBankById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public List<Bank> getAllBanks() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Bank addBank(Bank bank) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public void deleteBank(Bank bank) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public void deleteBankById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Bank updateBank(Bank bank) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Bank createBank() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Transaction getTransactionById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public List<Transaction> getAllTransactions() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Transaction addTransaction(Transaction transaction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public void deleteTransaction(Transaction transaction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public void deleteTransactionById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Transaction updateTransaction(Transaction transaction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public Transaction createTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

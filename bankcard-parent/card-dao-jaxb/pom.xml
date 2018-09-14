@@ -8,11 +8,16 @@
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>card-model</artifactId>
+    <artifactId>card-dao-jaxb</artifactId>
+    <name>card-dao-jaxb</name>
     <packaging>jar</packaging>
-    <name>card-model</name>
     
     <dependencies>
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>card-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
