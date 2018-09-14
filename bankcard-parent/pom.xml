@@ -5,17 +5,15 @@
     <artifactId>bankcard-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
     <modules>
-<module>card-checker</module>
-<module>card-model</module>
-
-<module>card-reader-jfx</module>
-</modules>
-    
-    
+        <module>card-checker</module>
+        <module>card-model</module>
+        <module>card-reader-jfx</module>
+    </modules>
     
 </project>
