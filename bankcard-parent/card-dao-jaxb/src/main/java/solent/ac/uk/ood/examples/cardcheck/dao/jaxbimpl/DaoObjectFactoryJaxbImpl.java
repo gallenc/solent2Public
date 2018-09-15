@@ -7,20 +7,39 @@ import solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO;
 
 public class DaoObjectFactoryJaxbImpl implements DaoObjectFactory {
 
+    private final ModelJaxbPersistor modelJaxbPersistor;
+    
+    private final BankDAO bankDAO;
+    
+    private final TransactionDAO transactionDAO;
+    
+    private final AccountDAO accountDAO;
+
+    public DaoObjectFactoryJaxbImpl(ModelJaxbPersistor modelJaxbPersistor) {
+        super();
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("modelJaxbPersistor cannot be null");
+        }
+        this.modelJaxbPersistor = modelJaxbPersistor;
+        
+        bankDAO = new BankDAOJaxbImpl(modelJaxbPersistor);
+        transactionDAO = new TransactionDAOJaxbImpl(modelJaxbPersistor);
+        accountDAO = new AccountDAOJaxbImpl(modelJaxbPersistor);
+    }
+
     @Override
     public BankDAO getBankDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankDAO;
     }
 
     @Override
     public AccountDAO getAccountDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return accountDAO;
     }
 
     @Override
     public TransactionDAO getTransactionDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return transactionDAO;
     }
 
- 
 }

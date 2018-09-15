@@ -1,5 +1,6 @@
 package solent.ac.uk.ood.examples.cardcheck.model;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -85,5 +86,4 @@ public class Account {
         this.accountNo = accountNo;
     }
 
-   
 }

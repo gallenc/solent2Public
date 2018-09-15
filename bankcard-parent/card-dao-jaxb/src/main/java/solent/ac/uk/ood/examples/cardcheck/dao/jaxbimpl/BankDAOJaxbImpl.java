@@ -6,6 +6,7 @@
 package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
 import java.util.List;
+import javax.xml.bind.JAXBContext;
 import solent.ac.uk.ood.examples.cardcheck.dao.BankDAO;
 import solent.ac.uk.ood.examples.cardcheck.model.Bank;
 
@@ -14,6 +15,16 @@ import solent.ac.uk.ood.examples.cardcheck.model.Bank;
  * @author gallenc
  */
 public class BankDAOJaxbImpl implements BankDAO {
+    
+    private final ModelJaxbPersistor modelJaxbPersistor;
+
+    public BankDAOJaxbImpl(ModelJaxbPersistor modelJaxbPersistor) {
+        super();
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("modelJaxbPersistor cannot be null");
+        }
+        this.modelJaxbPersistor = modelJaxbPersistor;
+    }
 
     @Override
     public Bank getById(Integer id) {

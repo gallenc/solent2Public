@@ -38,6 +38,8 @@ public class ModelJaxbPersistorTest {
     private Integer m_maxModificationThreads = 10;
 
     private ExecutorService executorService = null;
+    
+
 
     @Test
     public void testPersistorLoadsAndSavesFile() {
@@ -65,6 +67,20 @@ public class ModelJaxbPersistorTest {
             assertEquals(1, modelJaxbPersistor2.getBankList().size());
             assertEquals(1, modelJaxbPersistor2.getTransactionList().size());
         }
+        
+        
+        // check copy functions
+        Bank bank = new Bank();
+        Bank copyBank = modelJaxbPersistor.copy(bank);
+        assertNotNull(copyBank);
+        
+        Account account = new  Account();
+        Account copyAccount = modelJaxbPersistor.copy(account);
+        assertNotNull(copyAccount);
+        
+        Transaction transaction = new Transaction();
+        Transaction copyTransaction = modelJaxbPersistor.copy(transaction);
+        assertNotNull(copyTransaction);
 
     }
 

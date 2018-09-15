@@ -6,6 +6,7 @@
 package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
 import java.io.File;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.List;
 import javax.xml.bind.JAXBContext;
@@ -29,25 +30,27 @@ import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
  * @author gallenc
  */
 public class ModelJaxbPersistor {
-    
+
     private static final Logger LOG = LoggerFactory.getLogger(ModelJaxbPersistor.class);
-    
+
     private final String dataFileLocation;
-    
+
     private final File jaxbFile;
-    
+
     // you must obtain lock before accessing objects and / or saving file
     public final Object Lock = new Object();
-    
+
     private final JAXBContext jaxbContext;
-    
+
     private final BankModelLists bankModelLists;
-    
+
     public ModelJaxbPersistor(String dataFileLocation) {
-        
-       super();
-        if (dataFileLocation == null) throw new IllegalArgumentException("dataFile cannot be null");
-        
+
+        super();
+        if (dataFileLocation == null) {
+            throw new IllegalArgumentException("dataFile cannot be null");
+        }
+
         try {
 
             // jaxb context needs jaxb.index jaxbFile to be in same classpath
@@ -58,7 +61,7 @@ public class ModelJaxbPersistor {
             this.dataFileLocation = dataFileLocation;
             jaxbFile = new File(dataFileLocation);
             LOG.debug("using dataFile:" + jaxbFile.getAbsolutePath());
-            
+
             if (jaxbFile.exists()) {
                 // load jaxbFile
                 Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
@@ -68,11 +71,11 @@ public class ModelJaxbPersistor {
                 bankModelLists = new BankModelLists();
                 save();
             }
-            
+
         } catch (JAXBException ex) {
             throw new RuntimeException("problem creating persistor", ex);
         }
-        
+
     }
 
     /**
@@ -90,7 +93,7 @@ public class ModelJaxbPersistor {
                 jaxbMarshaller.marshal(bankModelLists, sw1);
                 LOG.debug("saving xml to file:" + sw1.toString());
             }
-             
+
         } catch (JAXBException ex) {
             throw new RuntimeException("problem creating persistor", ex);
         }
@@ -119,5 +122,50 @@ public class ModelJaxbPersistor {
         List<Transaction> transactionList = bankModelLists.getTransactionList();
         return transactionList;
     }
-    
+
+    public Account copy(Account account) {
+        try {
+            StringWriter sw1 = new StringWriter();
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.marshal(account, sw1);
+
+            StringReader sr1 = new StringReader(sw1.toString());
+            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            Account newAccount = (Account) jaxbUnMarshaller.unmarshal(sr1);
+            return newAccount;
+        } catch (JAXBException ex) {
+            throw new RuntimeException("problem copying jaxb object", ex);
+        }
+    }
+
+    public Bank copy(Bank bank) {
+        try {
+            StringWriter sw1 = new StringWriter();
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.marshal(bank, sw1);
+
+            StringReader sr1 = new StringReader(sw1.toString());
+            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            Bank newBank = (Bank) jaxbUnMarshaller.unmarshal(sr1);
+            return newBank;
+        } catch (JAXBException ex) {
+            throw new RuntimeException("problem copying jaxb object", ex);
+        }
+    }
+
+    public Transaction copy(Transaction transaction) {
+        try {
+            StringWriter sw1 = new StringWriter();
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.marshal(transaction, sw1);
+
+            StringReader sr1 = new StringReader(sw1.toString());
+            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            Transaction newTransaction = (Transaction) jaxbUnMarshaller.unmarshal(sr1);
+            return newTransaction;
+        } catch (JAXBException ex) {
+            throw new RuntimeException("problem copying jaxb object", ex);
+        }
+    }
+
 }
