@@ -5,15 +5,19 @@
  */
 package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
-import java.util.List;
 import solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO;
 import solent.ac.uk.ood.examples.cardcheck.model.Account;
+
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author gallenc
  */
 public class AccountDAOJaxbImpl implements AccountDAO {
+     private static final Logger LOG = LoggerFactory.getLogger(AccountDAOJaxbImpl.class);
 
     @Override
     public Account getById(Integer id) {

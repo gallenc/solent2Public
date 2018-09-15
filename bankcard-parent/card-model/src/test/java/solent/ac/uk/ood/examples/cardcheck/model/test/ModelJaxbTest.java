@@ -29,6 +29,7 @@ import solent.ac.uk.ood.examples.cardcheck.model.TransactionResult;
  */
 public class ModelJaxbTest {
 
+
     @Test
     public void testJaxb() {
 
