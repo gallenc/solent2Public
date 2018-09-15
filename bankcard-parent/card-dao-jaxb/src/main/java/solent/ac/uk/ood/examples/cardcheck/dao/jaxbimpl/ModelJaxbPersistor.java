@@ -6,9 +6,7 @@
 package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Date;
 import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,13 +14,10 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO;
-import solent.ac.uk.ood.examples.cardcheck.dao.BankDAO;
-import solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO;
+
 import solent.ac.uk.ood.examples.cardcheck.model.Account;
 import solent.ac.uk.ood.examples.cardcheck.model.Bank;
 import solent.ac.uk.ood.examples.cardcheck.model.BankModelLists;
-import solent.ac.uk.ood.examples.cardcheck.model.Card;
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
 
 /**
@@ -52,7 +47,6 @@ public class ModelJaxbPersistor {
         
        super();
         if (dataFileLocation == null) throw new IllegalArgumentException("dataFile cannot be null");
-        
         
         try {
 
@@ -101,9 +95,6 @@ public class ModelJaxbPersistor {
             throw new RuntimeException("problem creating persistor", ex);
         }
     }
-   
-
-
 
     /**
      * @return the accountList
