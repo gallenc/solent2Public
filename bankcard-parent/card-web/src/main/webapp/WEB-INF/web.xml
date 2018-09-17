@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
 	<servlet>
-		<servlet-name>Calculator</servlet-name>
+		<servlet-name>RestApp</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
@@ -12,7 +12,7 @@
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Calculator</servlet-name>
+		<servlet-name>RestApp</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 </web-app>

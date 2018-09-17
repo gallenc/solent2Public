@@ -1,7 +1,6 @@
 package solent.ac.uk.ood.examples.cardcheck.service.rest;
 
 import javax.ws.rs.Consumes;
-import org.anvard.jaxrs.server.*;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

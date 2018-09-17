@@ -1,6 +1,5 @@
 package solent.ac.uk.ood.examples.cardcheck.service.rest;
 
-import org.anvard.jaxrs.server.*;
 import java.net.URI;
 import java.net.URL;
 import java.security.ProtectionDomain;
