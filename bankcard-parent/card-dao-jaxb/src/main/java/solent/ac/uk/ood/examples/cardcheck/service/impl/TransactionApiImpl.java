@@ -14,26 +14,43 @@
  * limitations under the License.
  *
  ****************************************************************************/
-
 package solent.ac.uk.ood.examples.cardcheck.service.impl;
 
+import solent.ac.uk.ood.examples.cardcheck.dao.DaoObjectFactory;
+import solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl.ModelJaxbPersistor;
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
+import solent.ac.uk.ood.examples.cardcheck.model.TransactionResult;
 import solent.ac.uk.ood.examples.cardcheck.service.TransactionApi;
 
 /**
  *
  * @author cgallen
  */
-public class TransactionApiImpl implements TransactionApi{
+public class TransactionApiImpl implements TransactionApi {
+
+    private DaoObjectFactory daoObjectFactory;
+    private ModelJaxbPersistor modelJaxbPersistor;
+
+    public TransactionApiImpl(ModelJaxbPersistor modelJaxbPersistor, DaoObjectFactory daoObjectFactory) {
+        super();
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("modelJaxbPersistor cannot be null");
+        }
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("daoObjectFactory cannot be null");
+        }
+        this.daoObjectFactory = daoObjectFactory;
+        this.modelJaxbPersistor = modelJaxbPersistor;
+    }
 
     @Override
-    public Transaction requestPreAuthorisation(Transaction requestTransaction) {
+    public TransactionResult requestPreAuthorisation(Transaction requestTransaction) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Transaction requestTransaction(Transaction transactionRequest) {
+    public TransactionResult requestTransaction(Transaction transactionRequest) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

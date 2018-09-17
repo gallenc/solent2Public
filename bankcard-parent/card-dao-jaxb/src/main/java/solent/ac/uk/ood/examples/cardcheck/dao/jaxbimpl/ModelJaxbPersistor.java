@@ -38,6 +38,9 @@ import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
  * https://www.baeldung.com/simplifying-the-data-access-layer-with-spring-and-java-generics
  * for jdbc dao https://github.com/danielniko/SimpleJspServletDB
  * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
+ * 
+ * https://dzone.com/articles/standalone-java-application-with-jersey-and-jetty
+ * 
  *
  * @author gallenc
  */

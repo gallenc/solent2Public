@@ -14,10 +14,11 @@
  * limitations under the License.
  *
  ****************************************************************************/
-
 package solent.ac.uk.ood.examples.cardcheck.service.impl;
 
 import java.util.List;
+import solent.ac.uk.ood.examples.cardcheck.dao.DaoObjectFactory;
+import solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl.ModelJaxbPersistor;
 import solent.ac.uk.ood.examples.cardcheck.model.Account;
 import solent.ac.uk.ood.examples.cardcheck.model.Bank;
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
@@ -28,6 +29,21 @@ import solent.ac.uk.ood.examples.cardcheck.service.BankApi;
  * @author cgallen
  */
 public class BankApiImpl implements BankApi {
+
+    private DaoObjectFactory daoObjectFactory;
+    private ModelJaxbPersistor modelJaxbPersistor;
+
+    public BankApiImpl(ModelJaxbPersistor modelJaxbPersistor, DaoObjectFactory daoObjectFactory) {
+        super();
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("modelJaxbPersistor cannot be null");
+        }
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("daoObjectFactory cannot be null");
+        }
+        this.daoObjectFactory = daoObjectFactory;
+        this.modelJaxbPersistor = modelJaxbPersistor;
+    }
 
     @Override
     public Transaction getTransaction(Integer transactionId) {
@@ -58,5 +74,5 @@ public class BankApiImpl implements BankApi {
     public Account createAccount(Account accountDetails) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

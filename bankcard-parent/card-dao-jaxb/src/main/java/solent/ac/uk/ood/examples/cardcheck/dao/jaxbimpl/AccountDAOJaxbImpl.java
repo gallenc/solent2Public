@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  ****************************************************************************/
-
 package solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl;
 
 import java.util.ArrayList;
@@ -77,19 +76,20 @@ public class AccountDAOJaxbImpl implements AccountDAO {
     public Account add(Account account) {
         synchronized (modelJaxbPersistor.Lock) {
             //TODO generate random id for account
-            boolean duplicateId=true;
-            int randomNum=0;
-            while(duplicateId){
-                randomNum = ThreadLocalRandom.current().nextInt(1,Integer.MAX_VALUE - 1);
-                 if (getById(randomNum)==null) duplicateId=false;
+            boolean duplicateId = true;
+            int randomNum = 0;
+            while (duplicateId) {
+                randomNum = ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE - 1);
+                if (getById(randomNum) == null) {
+                    duplicateId = false;
+                }
             }
             account.setId(randomNum);
             modelJaxbPersistor.getAccountList().add(account);
             modelJaxbPersistor.save();
             return account;
         }
-     }
-
+    }
 
     @Override
     public void delete(Account account) {
@@ -97,7 +97,7 @@ public class AccountDAOJaxbImpl implements AccountDAO {
             deleteById(account.getId());
             modelJaxbPersistor.save();
         }
-     }
+    }
 
     @Override
     public void deleteById(Integer id) {

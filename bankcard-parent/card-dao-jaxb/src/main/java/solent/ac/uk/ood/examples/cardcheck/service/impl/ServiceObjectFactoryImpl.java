@@ -14,9 +14,10 @@
  * limitations under the License.
  *
  ****************************************************************************/
-
 package solent.ac.uk.ood.examples.cardcheck.service.impl;
 
+import solent.ac.uk.ood.examples.cardcheck.dao.DaoObjectFactory;
+import solent.ac.uk.ood.examples.cardcheck.dao.jaxbimpl.ModelJaxbPersistor;
 import solent.ac.uk.ood.examples.cardcheck.service.BankApi;
 import solent.ac.uk.ood.examples.cardcheck.service.ServiceObjectFactory;
 import solent.ac.uk.ood.examples.cardcheck.service.TransactionApi;
@@ -27,14 +28,30 @@ import solent.ac.uk.ood.examples.cardcheck.service.TransactionApi;
  */
 public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
 
+    private ModelJaxbPersistor modelJaxbPersistor; // used for transaction synchronisation
+    private DaoObjectFactory daoObjectFactory;
+
+    public ServiceObjectFactoryImpl(ModelJaxbPersistor modelJaxbPersistor, DaoObjectFactory daoObjectFactory) {
+        super();
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("modelJaxbPersistor cannot be null");
+        }
+        if (modelJaxbPersistor == null) {
+            throw new IllegalArgumentException("daoObjectFactory cannot be null");
+        }
+        this.daoObjectFactory = daoObjectFactory;
+        this.modelJaxbPersistor = modelJaxbPersistor;
+
+    }
+
     @Override
     public BankApi getBankApi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new BankApiImpl(modelJaxbPersistor, daoObjectFactory);
     }
 
     @Override
     public TransactionApi getTransactonApi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new TransactionApiImpl(modelJaxbPersistor, daoObjectFactory);
     }
-    
+
 }

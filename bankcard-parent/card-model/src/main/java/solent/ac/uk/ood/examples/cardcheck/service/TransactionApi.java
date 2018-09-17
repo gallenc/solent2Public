@@ -18,10 +18,11 @@
 package solent.ac.uk.ood.examples.cardcheck.service;
 
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
+import solent.ac.uk.ood.examples.cardcheck.model.TransactionResult;
 
 public interface TransactionApi {
 
-    public Transaction requestPreAuthorisation(Transaction requestTransaction);
+    public TransactionResult requestPreAuthorisation(Transaction requestTransaction);
 
-    public Transaction requestTransaction(Transaction transactionRequest);
+    public TransactionResult requestTransaction(Transaction transactionRequest);
 }

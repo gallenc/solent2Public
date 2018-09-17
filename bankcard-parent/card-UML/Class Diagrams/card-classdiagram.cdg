@@ -68,10 +68,10 @@
     </Class>
     <Interface name="TransactionApi" package="solent.ac.uk.ood.examples.cardcheck.service" visibility="public" xPosition="37.0" yPosition="434.0">
       <Methods>
-        <Method name="requestPreAuthorisation" returnType="Transaction" visibility="public">
+        <Method name="requestPreAuthorisation" returnType="TransactionResult" visibility="public">
           <Argument type="Transaction" name="requestTransaction"/>
         </Method>
-        <Method name="requestTransaction" returnType="Transaction" visibility="public">
+        <Method name="requestTransaction" returnType="TransactionResult" visibility="public">
           <Argument type="Transaction" name="transactionRequest"/>
         </Method>
       </Methods>
@@ -163,6 +163,13 @@
         <Method name="create" returnType="Bank" visibility="public"/>
       </Methods>
     </Interface>
+    <Interface name="DaoObjectFactory" package="solent.ac.uk.ood.examples.cardcheck.dao" visibility="public" xPosition="526.0" yPosition="11.0">
+      <Methods>
+        <Method name="getBankDAO" returnType="BankDAO" visibility="public"/>
+        <Method name="getAccountDAO" returnType="AccountDAO" visibility="public"/>
+        <Method name="getTransactionDAO" returnType="TransactionDAO" visibility="public"/>
+      </Methods>
+    </Interface>
     <Enum name="ResultCodes" package="solent.ac.uk.ood.examples.cardcheck.model" visibility="public" xPosition="296.0" yPosition="643.0">
       <Literals>
         <Literal name="APPROVED"/>
@@ -171,30 +178,23 @@
         <Literal name="UNKNOWN_ACCOUNT"/>
       </Literals>
     </Enum>
-    <Interface name="DaoObjectFactory" package="solent.ac.uk.ood.examples.cardcheck.dao" visibility="public" xPosition="526.0" yPosition="11.0">
-      <Methods>
-        <Method name="getBankDAO" returnType="BankDAO" visibility="public"/>
-        <Method name="getAccountDAO" returnType="AccountDAO" visibility="public"/>
-        <Method name="getTransactionDAO" returnType="TransactionDAO" visibility="public"/>
-      </Methods>
-    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="card" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="usesBank" source="solent.ac.uk.ood.examples.cardcheck.dao.BankDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Bank" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="useTransactionDAO" source="solent.ac.uk.ood.examples.cardcheck.service.TransactionApi" target="solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <HasRelation name="transactions" source="solent.ac.uk.ood.examples.cardcheck.model.Bank" target="solent.ac.uk.ood.examples.cardcheck.model.Transaction" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
-    <HasRelation name="cardTo" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="bank" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Bank" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="useTransactions" source="solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Transaction" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="usesTransactionResult" source="solent.ac.uk.ood.examples.cardcheck.service.TransactionApi" target="solent.ac.uk.ood.examples.cardcheck.model.TransactionResult" sourceCardinality="1..*" targetCardinality="1..*"/>
     <HasRelation name="from" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="to" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="useAccountDAO" source="solent.ac.uk.ood.examples.cardcheck.service.BankApi" target="solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <UseRelation name="usesAccounts" source="solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Account" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="useBankDAO" source="solent.ac.uk.ood.examples.cardcheck.service.BankApi" target="solent.ac.uk.ood.examples.cardcheck.dao.BankDAO" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <UseRelation name="useResultCodes" source="solent.ac.uk.ood.examples.cardcheck.model.TransactionResult" target="solent.ac.uk.ood.examples.cardcheck.model.ResultCodes" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <HasRelation name="to" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="cardTo" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="usesBank" source="solent.ac.uk.ood.examples.cardcheck.dao.BankDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Bank" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useTransactions" source="solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Transaction" sourceCardinality="1..1" targetCardinality="0..*"/>
     <HasRelation name="accounts" source="solent.ac.uk.ood.examples.cardcheck.model.Bank" target="solent.ac.uk.ood.examples.cardcheck.model.Account" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <UseRelation name="useBankDAO" source="solent.ac.uk.ood.examples.cardcheck.service.BankApi" target="solent.ac.uk.ood.examples.cardcheck.dao.BankDAO" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <HasRelation name="card" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="usesAccounts" source="solent.ac.uk.ood.examples.cardcheck.dao.AccountDAO" target="solent.ac.uk.ood.examples.cardcheck.model.Account" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useTransactionDAO" source="solent.ac.uk.ood.examples.cardcheck.service.TransactionApi" target="solent.ac.uk.ood.examples.cardcheck.dao.TransactionDAO" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="usesTransactionResult" source="solent.ac.uk.ood.examples.cardcheck.service.TransactionApi" target="solent.ac.uk.ood.examples.cardcheck.model.TransactionResult" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <UseRelation name="useResultCodes" source="solent.ac.uk.ood.examples.cardcheck.model.TransactionResult" target="solent.ac.uk.ood.examples.cardcheck.model.ResultCodes" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <HasRelation name="transactions" source="solent.ac.uk.ood.examples.cardcheck.model.Bank" target="solent.ac.uk.ood.examples.cardcheck.model.Transaction" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="bank" source="solent.ac.uk.ood.examples.cardcheck.model.Account" target="solent.ac.uk.ood.examples.cardcheck.model.Bank" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="cardFrom" source="solent.ac.uk.ood.examples.cardcheck.model.Transaction" target="solent.ac.uk.ood.examples.cardcheck.model.Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

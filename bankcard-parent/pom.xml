@@ -19,8 +19,8 @@
         <module>card-checker</module>
         <module>card-model</module>
         <module>card-dao-jaxb</module>
-        <module>card-services</module>
         <module>card-reader-jfx</module>
+        <module>card-web</module>
     </modules>
     
     <dependencyManagement>
