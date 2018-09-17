@@ -13,20 +13,32 @@ import solent.ac.uk.ood.examples.cardcheck.service.ServiceObjectFactory;
  */
 public class AppObjectFactory {
     
-   private  ServiceObjectFactory serviceObjectFactory = null;
+   private static ServiceObjectFactory m_serviceObjectFactory = null;
+   
 
     /**
      * @return the serviceObjectFactory
      */
-    public ServiceObjectFactory getServiceObjectFactory() {
-        return serviceObjectFactory;
+    public static ServiceObjectFactory getServiceObjectFactory() {
+        if (m_serviceObjectFactory==null) synchronized(ServiceObjectFactory.class) {
+            // creates a new factory if doesnt exist and not injected
+            // could use spring here
+            if (m_serviceObjectFactory==null){
+                m_serviceObjectFactory= new MockServiceObjectFactoryImpl();
+            }
+            
+            
+            
+            
+        }
+        return m_serviceObjectFactory;
     }
 
     /**
      * @param serviceObjectFactory the serviceObjectFactory to set
      */
-    public void setServiceObjectFactory(ServiceObjectFactory serviceObjectFactory) {
-        this.serviceObjectFactory = serviceObjectFactory;
+    public static void setServiceObjectFactory(ServiceObjectFactory serviceObjectFactory) {
+        m_serviceObjectFactory = serviceObjectFactory;
     }
             
 }

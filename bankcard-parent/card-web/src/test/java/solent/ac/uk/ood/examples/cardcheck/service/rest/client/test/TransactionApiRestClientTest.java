@@ -16,7 +16,7 @@ import solent.ac.uk.ood.examples.cardcheck.model.Card;
 import solent.ac.uk.ood.examples.cardcheck.model.Transaction;
 import solent.ac.uk.ood.examples.cardcheck.model.TransactionResult;
 import solent.ac.uk.ood.examples.cardcheck.service.TransactionApi;
-import solent.ac.uk.ood.examples.cardcheck.service.rest.client.TransactionApiRestClientImpl;
+import solent.ac.uk.ood.examples.cardcheck.service.rest.client.manual.TransactionApiRestClientImpl;
 
 /**
  *

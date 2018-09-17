@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.cardcheck.service.rest.client;
+package solent.ac.uk.ood.examples.cardcheck.service.rest.client.manual;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
