@@ -6,3 +6,6 @@
 /.settings/
 /nbproject/
 /bankcard-parent/card-web/nb-configuration.xml
+/week1/doc/
+*.class
+*.jar
