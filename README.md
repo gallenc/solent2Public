@@ -50,7 +50,7 @@ To create a fork of this repository
 2. navigate to this repository https://github.com/gallenc/solent2Public/
 3. click the FORK icon
 
-![alt text](https://github.com/gallenc/solent2Public/raw/master/docs/images/ForkingARepo.png "Figure NForkingARepo.png")
+![alt text](../master/docs/images/ForkingARepo.png "Figure ForkingARepo.png")
 
 you can understand the process by reading these documentation examples.
 https://help.github.com/articles/fork-a-repo/
