@@ -2,7 +2,7 @@
 Git Repository of java examples for Solent Students for COM504 Object orientated design and development.
 
 ## Contents
-The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. 
+The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. Please read and follow the Getting Started instructions before doing anything else.
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
@@ -10,7 +10,11 @@ The repository contains a number of example projects, weekly exercises and an ar
 
 [week1](../master/week1/) Initial exercises for the course.
 
-## How to use
+## Getting Started
+Before doing anything else you will need to follow these getting started instructions.
+This will teach you a little bit about git and how to fork a copy of this repository into your own github account.
+You will then be able to clone your fork locally and then follow the instructions in the [maven-setup](../master/week1/maven-setup) project to get javac and maven working. 
+After this you can then proceed to doing the exercises in [week1](../master/week1/).
 
 ### Introduction to GIT
 To be a professional developer, you will need to become proficient at using version control systems.
