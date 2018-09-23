@@ -7,7 +7,7 @@ This means that
 Maven allows you to create projects which are completely independent of the IDE you choose to use.
 Nearly all modern open source java projects use Maven (or Gradel which uses maven artefacts) as their build system. 
 
-# choosing and using a maven archetype
+# Choosing and using a maven archetype
 Maven has a vast number of contributed architype projects which provide templates to help you get started using a variety of java technologies. We will use an archetype to create our first maven project. 
 (You can find more information about this process here
 https://maven.apache.org/archetype/maven-archetype-plugin/usage.html)
@@ -23,7 +23,7 @@ mvn archetype:generate
 You will be presented with a very large list of possible archetypes.
 Choose the default (1245) 1245: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
-when asked, enter the following values REPLACING gallenc with YOUR github username
+When asked, enter the following values REPLACING gallenc with YOUR github username
 ```
 Choose a number: 7:
 Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc)
@@ -40,7 +40,7 @@ package: org.gallenc.com504.ood
 
 You should now have an example1 project generated in your myPracticeCourseWork folder.
 
-4. build your new project
+4. Build your new project
 ```
 cd example1
 mvn clean install
@@ -48,7 +48,7 @@ mvn clean install
 there should be lots of output followed by 'BUILD SUCCESSFULL'
 congratulations, you have built your first maven project
 
-## open the project in your netbeans IDE
+## Open the project in your netbeans IDE
 Open Netbeans 8.2 in windows
 
 1. right click in Projects panel and slelect 'import project'
