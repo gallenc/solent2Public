@@ -55,12 +55,12 @@ Open Netbeans 8.2 in windows
 
 2. navigate to your myPracticeCourseWork folder and select example1
 
-![alt text](../master/week1/maven-test-exercise/images/NetbeansMaven1.png "Figure NetbeansMaven1.png")
+![alt text](../maven-test-exercise/images/NetbeansMaven1.png "Figure NetbeansMaven1.png")
 
 
 3. examine the project in netbeans
 
-![alt text](../master/week1/maven-test-exercise/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
+![alt text](../maven-test-exercise/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
 
 a) Look under the Files Tab
 
