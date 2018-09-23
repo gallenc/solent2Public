@@ -68,7 +68,7 @@ gitrepos/solent2Public
 
 you can see how to open projects in this repo using gthe Netbeans IDE in the exercises under
 
-[maven-test-exercise](../blob/master/week1/maven-test-exercise)
+[maven-test-exercise](../master/week1/maven-test-exercise)
 
 ### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
