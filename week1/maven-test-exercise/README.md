@@ -83,7 +83,7 @@ open the example1 pom.xml file and notice the junit dependencies
 
 maven stores all the dependencies it downloads in a file called .m2
 
-look in your C:\Users\<username>\.m2\repository folder and see if you can find the junit dependency
+look in your C:\Users\ <your username>\ .m2 \repository folder and see if you can find the junit dependency
 
 this has been downloaded automatically by maven from the central maven repository
 
