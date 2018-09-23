@@ -56,7 +56,7 @@ Having forked the repository, go to your own github account and clone the reposi
 Rather than just clone the repository into a workspace on your IDE, it is good practice to create a seperate folder on your local machine where you will clone your remote repositories. 
 You can import seperate projects from this clone into your IDE worspace as you need to work on them.
 
-Create a git repo folder on your local drive and clone tour fork of solent2Public into in
+Create a git repo folder on your local drive and clone your fork of solent2Public into it.
 ```
 mkdir gitrepos
 cd gitrepos
