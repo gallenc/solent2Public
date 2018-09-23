@@ -1,6 +1,6 @@
 # Setting Up Maven and java class path
 
-## your own pc
+## Working on your own pc
 If you are following this class on your own pc or laptop then you should install the java 8 jdk and maven using the procedures outlined here
 
 download java 8 jdk here 
@@ -16,8 +16,13 @@ https://maven.apache.org/install.html
 
 https://www.mkyong.com/maven/how-to-install-maven-in-windows/
 
+You will also need to install Netbeans 8.2 (not 9.0) (Ideally you should install the Jave EE version)
+https://netbeans.org/
 
-## class pc's
+
+## Working on class pc's
+
+The class PC's should have Netbeans 8.2 already installed.
 
 The class PC's have JDK 8 instaled but do not have the java JDK class path correctly set up so you cannot call javac from the command line. Unfortunately by default the class PC's also do not have apache maven installed. 
 
