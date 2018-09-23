@@ -6,7 +6,7 @@ The repository contains a number of example projects, weekly exercises and an ar
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
-[maven-setup](../master/week1/maven-setup) This contains scripts to help you set the java class path and install maven.
+[maven-setup](../master/maven-setup) This contains scripts to help you set the java class path and install maven.
 
 [week1](../master/week1/) Initial exercises for the course.
 
