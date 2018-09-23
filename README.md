@@ -4,6 +4,12 @@ Git Repository of java examples for Solent Students for COM504 Object orientated
 ## Contents
 The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. 
 
+[myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
+
+[maven-setup](../master/week1/maven-setup) This contains scripts to help you set the java class path and install maven.
+
+[week1](../master/week1/) Initial exercises for the course.
+
 ## How to use
 
 ### Introduction to GIT
@@ -30,7 +36,6 @@ git add --all (a command to stage all of the current changes ready for a commit)
 git commit -m 'my commit message' (a command to commit changes to your local repository)
 git push (a command to push your latest commits up to the remote repository)
 ```
-
 ### Forking the solent2Public repo
 You could just clone the master solent2Public repo and work on the clone locally. 
 However you do not have write permissions to this repo and so you couldn't save (or push) any changes or work you have added.
@@ -69,6 +74,21 @@ gitrepos/solent2Public
 you can see how to open projects in this repo using gthe Netbeans IDE in the exercises under
 
 [maven-test-exercise](../master/week1/maven-test-exercise)
+
+### .git and .gitignore
+You should set the view on your windows file explorer to show hidden files and file extensions. 
+This will allow you to see git and IDE specific files which are otherwise hidden.
+
+In particular, you will see that the top level folder solent2Public contains a .git folder.
+This is where git stores all of the branches versions and changes to your repository. 
+The rest of the files under solent2Public are the currently checked out versions of your code.
+
+You will also notice that many of the projects in this repo have a .gitignore file.
+This tells git to ignore certain directories or files when committing changes.
+
+It is VERY important to ensure that, in particular 'target', directories are NOT checked into git as this would fill your repository up with unneccessary class and jar files.
+
+You should also ensure that in most cases IDE specific sub folders and files are not checked in to git as this will cause confusion if you change or upgrade your IDE. Your ide will read the maven pom.xml file and recreate these folders locally if neccessary.
 
 ### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
