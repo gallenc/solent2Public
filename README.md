@@ -1,5 +1,5 @@
 # solent2Public
-Git Repository of java examples for Solent Students for COM504 Object orientated design and development.
+Git Repository of java examples for Solent Students for COM504 Object oriented design and development.
 
 ## Contents
 The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. Please read and follow the Getting Started instructions before doing anything else.
@@ -18,14 +18,14 @@ After this you can then proceed to doing the exercises in [week1](../master/week
 
 ### Introduction to GIT
 To be a professional developer, you will need to become proficient at using version control systems.
-Many version control systems (each with their own benifits and drawbacks e.g CVS, Subversion, git) have been popular over the years. 
-Presently one of the most popular, git, was developed by Linus Torvalds to help with the collaborative developement of the Linux Kernel.
+Many version control systems (each with their own benefits and drawbacks e.g CVS, Subversion, git) have been popular over the years. 
+Presently one of the most popular, git, was developed by Linus Torvalds to help with the collaborative development of the Linux Kernel.
 
 In recent years many open source projects have migrated their code base to github (https://github.com) which supports a collaborative workflow for team development and sharing of source code using git. 
 
-The principle advantage of git over other version control systems is that it is completely distributed. When you use git you clone a complete local copy of the repository you are cloning (usually referred to as the origin). You can develope code and save your changes in your local repository completely off line. At a later stage you may wish to push your changes to the on line repository or pull changes others have made into your local copy. 
+The principle advantage of git over other version control systems is that it is completely distributed. When you use git you clone a complete local copy of the repository you are cloning (usually referred to as the origin). You can develop code and save your changes in your local repository completely off line. At a later stage you may wish to push your changes to the on line repository or pull changes others have made into your local copy. 
 
-There are many on line tutorials on using git and it will be worth while spending some time on these to get profficient. e.g.
+There are many on line tutorials on using git and it will be worth while spending some time on these to get proficient. e.g.
  https://try.github.io/ Resources to learn Git
  https://guides.github.com/introduction/git-handbook/ Git Handbook 
  
@@ -62,8 +62,8 @@ https://help.github.com/articles/fork-a-repo/
 ### checking out your own fork
 
 Having forked the repository, go to your own github account and clone the repository into your own workspace on your machine. 
-Rather than just clone the repository into a workspace on your IDE, it is good practice to create a seperate folder on your local machine where you will clone your remote repositories. 
-You can import seperate projects from this clone into your IDE worspace as you need to work on them.
+Rather than just clone the repository into a workspace on your IDE, it is good practice to create a separate folder on your local machine where you will clone your remote repositories. 
+You can import separate projects from this clone into your IDE workspace as you need to work on them.
 
 Create a git repo folder on your local drive and clone your fork of solent2Public into it.
 ```
@@ -90,9 +90,9 @@ The rest of the files under solent2Public are the currently checked out versions
 You will also notice that many of the projects in this repo have a .gitignore file.
 This tells git to ignore certain directories or files when committing changes.
 
-It is VERY important to ensure that, in particular 'target', directories are NOT checked into git as this would fill your repository up with unneccessary class and jar files.
+It is VERY important to ensure that, in particular 'target', directories are NOT checked into git as this would fill your repository up with unnecessary class and jar files.
 
-You should also ensure that in most cases IDE specific sub folders and files are not checked in to git as this will cause confusion if you change or upgrade your IDE. Your ide will read the maven pom.xml file and recreate these folders locally if neccessary.
+You should also ensure that in most cases IDE specific sub folders and files are not checked in to git as this will cause confusion if you change or upgrade your IDE. Your ide will read the maven pom.xml file and recreate these folders locally if necessary.
 
 ### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
