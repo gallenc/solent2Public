@@ -71,7 +71,7 @@ git clone https://github.com/ {your github id }/solent2Public.git
 You should now have a clone of your fork in your gitrepos directory
 gitrepos/solent2Public
 
-you can see how to open projects in this repo using gthe Netbeans IDE in the exercises under
+You can see how to open projects in this repo using gthe Netbeans IDE in the exercises under
 
 [maven-test-exercise](../master/week1/maven-test-exercise)
 
