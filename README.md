@@ -43,9 +43,9 @@ git push (a command to push your latest commits up to the remote repository)
 ### Forking the solent2Public repo
 You could just clone the master solent2Public repo and work on the clone locally. 
 However you do not have write permissions to this repo and so you couldn't save (or push) any changes or work you have added.
-Therefore, to be able to use the examples and save your own work, it will be better to create a copy of this repository in your own github account where you will be able to push you changes on line.
+Therefore, to be able to use the examples and save your own work, it will be better to create a copy (called a fork) of this repository in your own github account where you will be able to push and save your changes on line.
 
-You should open your own github account and FORK this repository into your own account. 
+You should open your own personal github account and FORK this repository into your own account. 
 This will give you your own copy to work with and a backup of your work on github.
 PLEASE NOTE, while github is very reliable, you should also keep a backup copy of your repo in case anything goes wrong.
 
