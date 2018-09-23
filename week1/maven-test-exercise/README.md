@@ -58,7 +58,8 @@ Open Netbeans 8.2 in windows
 see Figure NetbeansMaven1.png
 
 3. examine the project in netbeans
-(see Figure NetbeansMaven2.png)
+
+![alt text](https://github.com/gallenc/markdown-here/raw/master/src/common/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
 
 Look under the Files Tab
 
