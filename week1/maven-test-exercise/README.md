@@ -59,7 +59,7 @@ see Figure NetbeansMaven1.png
 
 3. examine the project in netbeans
 
-![alt text](https://github.com/gallenc/markdown-here/raw/master/src/common/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
+![alt text](https://github.com/gallenc/solent2Public/raw/master/week1/maven-test-exercise/images/NetbeansMaven1.png "Figure NetbeansMaven2.png")
 
 Look under the Files Tab
 
