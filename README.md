@@ -2,18 +2,24 @@
 Git Repository of java examples for Solent Students for COM504 Object orientated design and development.
 
 ## Contents
-The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course myPracticeCourseWork. 
+The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. 
 
 ## How to use
+
+### Introduction to GIT
 To be a professional developer, you will need to become proficient at using version control systems.
 Many version control systems (each with their own benifits and drawbacks e.g CVS, Subversion, git) have been popular over the years. 
 Presently one of the most popular, git, was developed by Linus Torvalds to help with the collaborative developement of the Linux Kernel.
 
 In recent years many open source projects have migrated their code base to github (https://github.com) which supports a collaborative workflow for team development and sharing of source code using git. 
 
+The principle advantage of git over other version control systems is that it is completely distributed. When you use git you clone a complete local copy of the repository you are cloning (usually referred to as the origin). You can develope code and save your changes in your local repository completely off line. At a later stage you may wish to push your changes to the on line repository or pull changes others have made into your local copy. 
+
 There are many on line tutorials on using git and it will be worth while spending some time on these to get profficient. e.g.
  https://try.github.io/ Resources to learn Git
  https://guides.github.com/introduction/git-handbook/ Git Handbook 
+ 
+Many IDE's including Netbeans support git natively, but it is very important to learn to use the git command line independently of the IDE so that you have more control over what is happening.
 
 Using git successfully with a team can be complex but fortunately you only need to master a few commands to work on your own project
 ```
@@ -25,10 +31,14 @@ git commit -m 'my commit message' (a command to commit changes to your local rep
 git push (a command to push your latest commits up to the remote repository)
 ```
 
+### Forking the solent2Public repo
+You could just clone the master solent2Public repo and work on the clone locally. 
+However you do not have write permissions to this repo and so you couldn't save (or push) any changes or work you have added.
+Therefore, to be able to use the examples and save your own work, it will be better to create a copy of this repository in your own github account where you will be able to push you changes on line.
+
 You should open your own github account and FORK this repository into your own account. 
 This will give you your own copy to work with and a backup of your work on github.
-
-### Forking the repo
+PLEASE NOTE, while github is very reliable, you should also keep a backup copy of your repo in case anything goes wrong.
 
 To create a fork of this repository
 1. sign in to your own github account
@@ -42,7 +52,11 @@ https://help.github.com/articles/fork-a-repo/
 
 ### checking out your own fork
 
-Having forked the repository, go to your own github account and clone the repository into your own workspace on your machine. create a git repo folder on your local drive and clone into in
+Having forked the repository, go to your own github account and clone the repository into your own workspace on your machine. 
+Rather than just clone the repository into a workspace on your IDE, it is good practice to create a seperate folder on your local machine where you will clone your remote repositories. 
+You can import seperate projects from this clone into your IDE worspace as you need to work on them.
+
+Create a git repo folder on your local drive and clone tour fork of solent2Public into in
 ```
 mkdir gitrepos
 cd gitrepos
@@ -52,7 +66,7 @@ git clone https://github.com/ {your github id }/solent2Public.git
 You should now have a clone of your fork in your gitrepos directory
 gitrepos/solent2Public
 
-### syncing with the upstream repo
+### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
 
 PLEASE DO NOT CHANGE ANYTHING IN YOUR LOCAL REPO EXCEPT IN myPracticeCourseWork.
