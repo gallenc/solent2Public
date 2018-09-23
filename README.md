@@ -1,15 +1,34 @@
 # solent2Public
 Git Repository of java examples for Solent Students for COM504 Object orientated design and development.
 
-## contents
+## Contents
 The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course myPracticeCourseWork. 
 
-## how to use
+## How to use
+To be a professional developer, you will need to become proficient at using version control systems.
+Many version control systems (each with their own benifits and drawbacks e.g CVS, Subversion, git) have been popular over the years. 
+Presently one of the most popular, git, was developed by Linus Torvalds to help with the collaborative developement of the Linux Kernel.
+
+In recent years many open source projects have migrated their code base to github (https://github.com) which supports a collaborative workflow for team development and sharing of source code using git. 
+
+There are many on line tutorials on using git and it will be worth while spending some time on these to get profficient. e.g.
+ https://try.github.io/ Resources to learn Git
+ https://guides.github.com/introduction/git-handbook/ Git Handbook 
+
+Using git successfully with a team can be complex but fortunately you only need to master a few commands to work on your own project
+```
+git clone  (a command to clone your local copy of the on line repository)
+git status (a command to tell you what is the state of your local repository e.g are their any changes to commit and push)
+git pull  (a command to pull the latest changes from the remote repository into your local copy)
+git add --all (a command to stage all of the current changes ready for a commit)
+git commit -m 'my commit message' (a command to commit changes to your local repository)
+git push (a command to push your latest commits up to the remote repository)
+```
 
 You should open your own github account and FORK this repository into your own account. 
 This will give you your own copy to work with and a backup of your work on github.
 
-### forking the repo
+### Forking the repo
 
 To create a fork of this repository
 1. sign in to your own github account
