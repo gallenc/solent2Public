@@ -55,13 +55,14 @@ Open Netbeans 8.2 in windows
 
 2. navigate to your myPracticeCourseWork folder and select example1
 
-![alt text](https://github.com/gallenc/solent2Public/raw/master/week1/maven-test-exercise/images/NetbeansMaven1.png "Figure NetbeansMaven1.png")
+![alt text](../master/week1/maven-test-exercise/images/NetbeansMaven1.png "Figure NetbeansMaven1.png")
+
 
 3. examine the project in netbeans
 
-![alt text](https://github.com/gallenc/solent2Public/raw/master/week1/maven-test-exercise/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
+![alt text](../master/week1/maven-test-exercise/images/NetbeansMaven2.png "Figure NetbeansMaven2.png")
 
-Look under the Files Tab
+a) Look under the Files Tab
 
 notice that it contains the following folders:
 ```
@@ -73,17 +74,17 @@ target contains the built artefacts and is deleted by mvn clean and re created b
 
 IMPORTANT you MUST ensure that /target/ is included in your .gitignore file so that it is NEVER checked into your git repository with the src files.
 
-Look under the Projects tab
+b) Look under the Projects tab
 
 Notice the generated packages
 
-Look at both App.java and AppTest.java
+c) Look at both App.java and AppTest.java
 
-Look at the test dependencies
+d) Look at the test dependencies
 
-Right click on AppTest.java, select Run Test file, what happens?
+e) Right click on AppTest.java, select Run Test file, what happens?
 
-Right click on App.java, select Run, what happens?
+f) Right click on App.java, select Run, what happens?
 
 # look at the pom.xml file
 
@@ -104,20 +105,4 @@ a) can you move MyTestClassLog4j.java into your example1 project replacing App.j
 b) can you change the pom so that the 2 required log4j2 files are now downloaded and included in the build?
 
 c) can you write a test class MyTestClassLog4jTest.java which runs the writeAboutMe() method?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
