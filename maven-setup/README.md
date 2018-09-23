@@ -24,7 +24,8 @@ https://netbeans.org/
 
 The class PC's should have Netbeans 8.2 already installed.
 
-The class PC's have JDK 8 instaled but do not have the java JDK class path correctly set up so you cannot call javac from the command line. Unfortunately by default the class PC's also do not have apache maven installed. 
+The class PC's have JDK 8 installed but do not have the java JDK class path correctly set up so you cannot call javac from the command line. 
+Unfortunately by default the class PC's also do not have apache maven installed. 
 
 We need access to the JDK and maven for this class, so I have provided a script to help.
 This script will download a copy of maven to the maven directory and include it with the java JDK on your class path.
@@ -46,4 +47,4 @@ also type
 javac -version
 ```
 For all of the class exercises you will need to open a command prompt and run this script first. 
-Then use this command window to run the exercises. 
+Then use this command window to run the exercises. (i.e. run the script in this folder and then cd to the folder where you are doing the exercise).
