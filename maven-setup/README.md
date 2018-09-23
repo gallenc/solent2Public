@@ -1,0 +1,44 @@
+# Setting Up Maven and java class path
+
+## your own pc
+If you are following this class on your own pc or laptop then you should install the java 8 jdk and maven using the procedures outlined here
+
+download java 8 jdk here 
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+set windows class path
+
+https://www.mkyong.com/java/how-to-set-java_home-on-windows-10/
+
+install maven
+
+https://maven.apache.org/install.html
+
+https://www.mkyong.com/maven/how-to-install-maven-in-windows/
+
+
+## class pc's
+
+The class PC's have JDK 8 instaled but do not have the java JDK class path correctly set up so you cannot call javac from the command line. Unfortunately by default the class PC's also do not have apache maven installed. 
+
+We need access to the JDK and maven for this class, so I have provided a script to help.
+This script will download a copy of maven to the maven directory and include it with the java JDK on your class path.
+
+Open a windows command prompt in the maven-setup directory and run the batch file.
+
+```
+cd maven-setup
+maven-script.bat
+```
+If maven is not already downloaded, this script will download and unpack it and include it in the class path.
+
+To check it has worked type 
+```
+mvn -version
+```
+also type 
+```
+javac -version
+```
+For all of the class exercises you will need to open a command prompt and run this script first. 
+Then use this command window to run the exercises. 

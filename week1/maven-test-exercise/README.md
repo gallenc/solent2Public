@@ -63,7 +63,15 @@ Open Netbeans 8.2 in windows
 
 Look under the Files Tab
 
-notice that it contains src/main and src/test folders and a target folder
+notice that it contains the following folders:
+```
+src/main 
+src/test 
+target
+```
+target contains the built artefacts and is deleted by mvn clean and re created by mvn install
+
+IMPORTANT you MUST ensure that /target/ is included in your .gitignore file so that it is NEVER checked into your git repository with the src files.
 
 Look under the Projects tab
 
@@ -83,7 +91,7 @@ open the example1 pom.xml file and notice the junit dependencies
 
 maven stores all the dependencies it downloads in a file called .m2
 
-look in your C:\Users\ <your username>\ .m2 \repository folder and see if you can find the junit dependency
+look in your C:\Users\ {your username} \ .m2 \repository folder and see if you can find the junit dependency
 
 this has been downloaded automatically by maven from the central maven repository
 
