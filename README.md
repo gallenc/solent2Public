@@ -34,12 +34,20 @@ You should now have a clone of your fork in your gitrepos directory
 gitrepos/solent2Public
 
 ### syncing with the upstream repo
+I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
 
+PLEASE DO NOT CHANGE ANYTHING IN YOUR LOCAL REPO EXCEPT IN myPracticeCourseWork.
+ this will allow merges to go smoothly.
+
+you can see which remote repositories are referenced in your local repo using
 ```
 $ git remote -v
 origin  https://github.com/{ your github id}/solent2Public.git (fetch)
 origin  https://github.com/{ your github id}/solent2Public.git (push)
+```
 
+To sync with the upstream repo you need to add another remote repository
+```
 $ git remote add upstream https://github.com/gallenc/solent2Public.git
 
 $ git remote -v
@@ -49,31 +57,90 @@ upstream        https://github.com/gallenc/solent2Public.git (fetch)
 upstream        https://github.com/gallenc/solent2Public.git (push)
 
 ```
-Now, you can keep your fork synced with the upstream repository with a few Git commands.
+Now, you can keep your own fork of solent2Public synced with the upstream repository with a few Git commands.
 
-Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, upstream/master.
+1. Fetch the branches and their respective commits from the upstream repository. 
+Commits to master will be stored in a local branch, upstream/master.
 ```
 git fetch upstream
 From https://github.com/gallenc/solent2Public
  * [new branch]      master     -> upstream/master
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 12 (delta 3), reused 12 (delta 3), pack-reused 0
+Unpacking objects: 100% (12/12), done.
+From https://github.com/gallenc/solent2Public
+   ddd9643..bd85c0d  master     -> upstream/master
 ```
 
-Check out your fork's local master branch.
+2. Check out your fork's local master branch.
 ```
 git checkout master
 Switched to branch 'master'
 ```
-Merge the changes from upstream/master into your local master branch. This brings your fork's master branch into sync with the upstream repository, without losing your local changes.
+3. Merge the changes from upstream/master into your local master branch. This brings your fork's master branch into sync with the upstream repository, without losing your local changes.
 ```
 git merge upstream/master
+Updating ddd9643..bd85c0d
+Fast-forward
+ README.md                           |  89 +++++++++++++++++++++++++++++++++++-
+ docs/images/ForkingARepo.png        | Bin 0 -> 44529 bytes
+ maven-setup/README.md               |  44 ++++++++++++++++++
+ week1/README.md                     |   7 +++
+ week1/maven-test-exercise/README.md |  12 ++++-
+ 5 files changed, 149 insertions(+), 3 deletions(-)
+ create mode 100644 docs/images/ForkingARepo.png
+ create mode 100644 maven-setup/README.md
+ create mode 100644 week1/README.md
 ```
-Your local master branch should now contain all the changed from the upstream repository.
-You should check in your changes to your own repository
+Your local master branch should now contain all the changes from the upstream repository.
+
+4. You should check in these changes to your own repository
+
 ```
-git add --all
-git commit -m 'merged upstream changes'
+git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+
 git push
+Counting objects: 12, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (12/12), 44.69 KiB | 0 bytes/s, done.
+Total 12 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/gallenc-test/solent2Public.git
+   ddd9643..bd85c0d  master -> master
+
+git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+
 ```
+
+## Summary
+to synchronise your repository with the upstream use the following commands
+
+if you have not set up the upstream repo
+```
+git remote add upstream https://github.com/gallenc/solent2Public.git
+```
+Once the upstream is set use
+
+```
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push
+
+```
+
+
+## further reading
 
 you should get familiar with the process for syncing a fork which means pulling down changes or updates from my master repository into your own fork.
 
@@ -81,10 +148,6 @@ https://help.github.com/articles/syncing-a-fork/
 
 https://help.github.com/articles/configuring-a-remote-for-a-fork/
 
-I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described.
-
-PLEASE DO NOT CHANGE ANYTHING IN YOUR LOCAL REPO EXCEPT IN myPracticeCourseWork.
- this will allow merges to go smoothly.
 
 
 
