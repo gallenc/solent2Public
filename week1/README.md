@@ -1,4 +1,4 @@
-# week 1 exercises
+# Week 1 Exercises
 
 These exercises will help you appreciate what maven does to help your build.
 
