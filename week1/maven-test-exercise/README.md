@@ -106,3 +106,24 @@ b) can you change the pom so that the 2 required log4j2 files are now downloaded
 
 c) can you write a test class MyTestClassLog4jTest.java which runs the writeAboutMe() method?
 
+# Finally
+You have created a new project in  
+```
+myPracticeCourseWork/example1
+```
+You should check this in to your local git repository and push to your github account.
+
+IMPORTANT NOTE - make sure that the generated target directory is ignored by git (.gitignore). 
+(You can also do this in Netbeans by right clicking the file/folder you wish to ignore and selecting git/ignore)
+
+```
+git status ( should show 'unstaged' commits)
+git add --all (to 'stage' all the changes or new files you are going to commit'
+git status (just to check what you are checking in)
+git commit -m 'checking in my first example1' ( add a meaningful message so that people can see the history of your work)
+git status ( whould show your repository is ahead of origin by one commit)
+git push
+```
+
+
+
