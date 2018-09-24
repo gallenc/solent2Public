@@ -48,3 +48,20 @@ javac -version
 ```
 For all of the class exercises you will need to open a command prompt and run this script first. 
 Then use this command window to run the exercises. (i.e. run the script in this folder and then cd to the folder where you are doing the exercise).
+
+# Using Powershell
+if you are usign powershell instead of cmd.exe, the maven-script.bat doesn't change the environment after it completes.
+
+In this case use the following command which will leave the environment variables changed
+```
+ .\Invoke-CmdScript maven-script.bat
+
+```
+Again to check it has worked type 
+```
+mvn -version
+```
+also type 
+```
+javac -version
+```
