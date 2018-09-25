@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="factoryandfacadeClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="AnimalObjectFactory" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="150.0" yPosition="42.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createCat" returnType="Animal" visibility="public" isStatic="true"/>
+        <Method name="createDog" returnType="Animal" visibility="public" isStatic="true"/>
+        <Method name="createCow" returnType="Animal" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="Animal" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="462.0" yPosition="194.0">
+      <Methods>
+        <Method name="getSound" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="Cat" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="462.0" yPosition="367.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Dog" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="279.0" yPosition="367.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cow" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="650.0" yPosition="367.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Dog" target="org.solent.com504.factoryandfacade.Animal"/>
+    <UseRelation name="createsObjects" source="org.solent.com504.factoryandfacade.AnimalObjectFactory" target="org.solent.com504.factoryandfacade.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Cow" target="org.solent.com504.factoryandfacade.Animal"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Cat" target="org.solent.com504.factoryandfacade.Animal"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

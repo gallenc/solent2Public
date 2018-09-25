@@ -26,4 +26,7 @@
   <build>
     
   </build>
+    <modules>
+        <module>week1/factoryandfacade/factoryandfacade</module>
+    </modules>
 </project>
