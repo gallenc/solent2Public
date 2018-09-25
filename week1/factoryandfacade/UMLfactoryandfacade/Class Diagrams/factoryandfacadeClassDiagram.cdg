@@ -2,40 +2,50 @@
 
 <ClassDiagram name="factoryandfacadeClassDiagram">
   <ClassDiagramComponents>
-    <Class name="AnimalObjectFactory" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="150.0" yPosition="42.0">
+    <Class name="AnimalObjectFactory" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="448.0" yPosition="46.0">
       <Fields/>
       <Constructors/>
       <Methods>
         <Method name="createCat" returnType="Animal" visibility="public" isStatic="true"/>
         <Method name="createDog" returnType="Animal" visibility="public" isStatic="true"/>
         <Method name="createCow" returnType="Animal" visibility="public" isStatic="true"/>
+        <Method name="createFarmFacade" returnType="FarmFacade" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Interface name="Animal" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="462.0" yPosition="194.0">
+    <Interface name="Animal" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="606.0" yPosition="249.0">
       <Methods>
         <Method name="getSound" returnType="String" visibility="public"/>
       </Methods>
     </Interface>
-    <Class name="Cat" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="462.0" yPosition="367.0">
+    <Class name="Cat" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="648.0" yPosition="430.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Dog" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="279.0" yPosition="367.0">
+    <Class name="Dog" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="462.0" yPosition="430.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Cow" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="650.0" yPosition="367.0">
+    <Class name="Cow" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="834.0" yPosition="430.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
+    <Interface name="FarmFacade" package="org.solent.com504.factoryandfacade" visibility="public" xPosition="204.0" yPosition="220.0">
+      <Methods>
+        <Method name="getAllAnimals" returnType="List&lt;Animal&gt;" visibility="public"/>
+        <Method name="addDog" returnType="void" visibility="public"/>
+        <Method name="addCat" returnType="void" visibility="public"/>
+        <Method name="addCow" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Dog" target="org.solent.com504.factoryandfacade.Animal"/>
     <UseRelation name="createsObjects" source="org.solent.com504.factoryandfacade.AnimalObjectFactory" target="org.solent.com504.factoryandfacade.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Cow" target="org.solent.com504.factoryandfacade.Animal"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.Cat" target="org.solent.com504.factoryandfacade.Animal"/>
+    <UseRelation name="usesAnimal" source="org.solent.com504.factoryandfacade.FarmFacade" target="org.solent.com504.factoryandfacade.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

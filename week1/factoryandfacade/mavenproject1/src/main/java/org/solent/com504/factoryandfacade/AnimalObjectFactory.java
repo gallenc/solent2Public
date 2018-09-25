@@ -3,15 +3,15 @@ package org.solent.com504.factoryandfacade;
 public class AnimalObjectFactory {
 
     public static Animal createCat() {
-        return new Cat();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public static Animal createDog() {
-        return new Dog();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public static Animal createCow() {
-        return new Cow();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public static FarmFacade createFarmFacade() {
