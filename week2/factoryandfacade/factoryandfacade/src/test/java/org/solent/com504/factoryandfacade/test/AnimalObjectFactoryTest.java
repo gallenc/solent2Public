@@ -5,7 +5,6 @@
  */
 package org.solent.com504.factoryandfacade.test;
 
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.solent.com504.factoryandfacade.model.Animal;

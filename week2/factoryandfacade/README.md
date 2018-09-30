@@ -1,14 +1,21 @@
 
 # Exercise 1 factoryAndFacade
 
-In these exercises you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface
+In this exercise you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface. 
+You will then look at how to generate skeleton code from UML class diagrams in Netbeans.
 
 ### 1. Setup
    Import the [factoryandfacade](../factoryandfacade/factoryandfacade) maven project into your workspace.
 
-### 2.Look at the ExampleCollectionsTest.java file.
+### 2. Look at the ExampleCollectionsTest.java file.
 
-This file gives a very brief introduction to java Generics and Java collections. There are many tutorials on Collections and Generics on line. 
+This ExampleCollectionsTest.java file contains a very brief introduction to java Generics and Java collections. 
+
+Run the class in the IDE by right clicking on the class and selecting 'Test File'.
+
+Read the comments in the class and look at the output to understand how the example works
+
+There are many tutorials on Collections and Generics on line. 
 
 For example to learn about Collections see
  https://docs.oracle.com/javase/tutorial/collections/ 
@@ -18,26 +25,28 @@ https://docs.oracle.com/javase/tutorial/java/generics/index.html
 
 You would be well advised to study these in your own time.
 
-The example class illustrates how the ArrayList is an implementation of the List interface which uses a java Array as the persistence mechanism. 
-(The LinkedList is another implementation which uses linked lists of objects instead of an array).
+The example class illustrates how the ArrayList is an implementation of the List interface which uses a java Array as the back end persistence mechanism. 
+(The LinkedList is an alternative implementation which instead uses linked lists of objects instead of an array).
 
-You can use Lists to store any java object. 
-Generics can be added to a declaration (e.g. List<Animal>) to tell the compiler that you will only ever put Animal classes in the list. 
+You can use raw Lists to store any java object.
+ 
+Generics can be added to a list declaration (e.g. List<Animal>) to tell the compiler that you will only ever put Animal classes into the list. 
 The compiler checks all usages of the list and casts the retrieved objects automatically. 
 
 Note that Generics are implemented using 'Type Erasure' which means that only the compiler knows about and checks the generic values. 
 The compiled byte code looses all of this information and simply has the list of objects as if you hadn't specified generics at all. 
 This preserves backwards compatibility to java versions before 1.5 when generics were introduced.
 
-### 3. now look at the rest of the example code
+### 3. Now look at the rest of the example code in the factoryandfacade project
 If you do a maven build of the project you will see that the tests in FarmFacadeTest.java fail.
-This is because you haven't implemented the FarmFacade interface
+This is because you haven't implemented the FarmFacade interface.
+You now need to complete the missing code to complete the project.
 
-a) You will need to create a class called FarmFacadeImpl which implements FarmFacade.
+a) You will need to create a class called FarmFacadeImpl.java which implements FarmFacade.
 
-b) you will need to modify AnimalObjectFactory so that it can create a FarmFacadeImpl.
+b) you will need to modify AnimalObjectFactory.java so that it can create a FarmFacadeImpl class.
 
-c) You will need to implement the methods of FarmFacade in FarmFacadeImpl.java You should use an ArrayList to store all of the farm animals in your implementation.
+c) You will need to implement the methods of FarmFacade in an implementation class called FarmFacadeImpl.java. You should use an ArrayList to store all of the farm animals in your implementation.
 
 d) You will need to add additional tests to FarmFacadeTest.java so that you are testing that you can add animals with names and can retrieve a list of the added animals.
 
@@ -69,7 +78,7 @@ You can export this diagram as a png image for your documentation.
 
 ### 3.Generate code from the diagram
 
-One of gthe key benifits of UML is its ability to support the generation of code in any language from the diagram. 
+One of the key benefits of UML is its ability to support the generation of code in any language from the diagram. 
 How each UML CASE tool generates code is different for each tool. 
 Some tools are better or more flexible than others.
 The easyUML tool in Netbeans provides a degree of java code generation although it is not perfect. 
@@ -112,7 +121,29 @@ See how you can now copy the differences from this modified model into your exis
 
 (Note you will need to clean up any errors caused by un-imported types before you can do this).
 
-Modify your implementation classes and add tests to check that Duck is used properly.
+Modify your implementation classes and add tests to check that Duck can 'Quack' and is used properly in your implementation.
+
+# Exercise 3 factoryAndFacade Spring Dependency Injection
+
+The Factory implementation we have created uses the java 'new' statement to instantiate its classes.
+This means that the factory is closely tied to the implementation classes you have chosen to instantiate.
+Often when you are creating factories, you would rather not change the factory code every time you need to change which implementation class you are using.
+Instead if we could use an external recipe to define which classes are created by the factory, this would make it easier to use alternative classes without changing the actual factory code.
+
+Dependency Injection is a mechanism often used to make factory code much more flexible and testable. 
+Use cases for Dependency Injection include; 
+* to inject 'mock' classes into classes under test 
+* to easily change the implementation library used for an interface
+
+The Spring Framework is one of the most widely used dependency injection frameworks and we will be using Spring in our examples. 
+
+Spring documentation is available here 
+https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/
+
+Spring is very powerful and can become very bound into your project if you use all of it's features. 
+We will be limiting our use to basic dependency injection simply to help us construct our tests.
+
+
 
 
 
