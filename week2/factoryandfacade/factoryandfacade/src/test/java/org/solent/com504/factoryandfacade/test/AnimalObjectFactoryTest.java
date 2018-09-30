@@ -5,14 +5,11 @@
  */
 package org.solent.com504.factoryandfacade.test;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.solent.com504.factoryandfacade.Animal;
-import org.solent.com504.factoryandfacade.AnimalObjectFactory;
+import org.solent.com504.factoryandfacade.model.Animal;
+import org.solent.com504.factoryandfacade.model.AnimalObjectFactory;
 
 /**
  *

@@ -1,6 +1,6 @@
-package org.solent.com504.factoryandfacade;
+package org.solent.com504.factoryandfacade.model;
 
-public class AnimalObjectFactory {
+public class AnimalObjectFactory{
 
     public static Animal createCat() {
         return new Cat();
