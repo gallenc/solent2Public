@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="cardClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="CreditCard" package="" visibility="public" xPosition="606.0" yPosition="416.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="endDate" type="String" visibility="private"/>
+        <Field name="cardnumber" type="String" visibility="private"/>
+        <Field name="cvv" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getIndividualAccountIdentifier" returnType="String" visibility="public"/>
+        <Method name="getIssuerIdentificationNumber" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="CreditCardFactoryAndValidator" package="" visibility="public" xPosition="71.0" yPosition="26.0">
+      <Methods>
+        <Method name="createCreditCard" returnType="String" visibility="public">
+          <Argument type="String" name="individualAccountIdentifier"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="duration"/>
+        </Method>
+        <Method name="setCvvAlgorythim" returnType="CvvAlgorythim" visibility="public">
+          <Argument type="CvvAlgorythim" name="cvvAlgorythim"/>
+        </Method>
+        <Method name="cvvIsValid" returnType="boolean" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="getCardCompany" returnType="CardCompany" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="cardNumberLunnIsValid" returnType="boolean" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="setIssuerIdentifiictionNumber" returnType="void" visibility="public">
+          <Argument type="String" name="iin"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="CardCompany" package="" visibility="public" xPosition="393.0" yPosition="416.0">
+      <Literals>
+        <Literal name="VISA"/>
+        <Literal name="MASTERCARD"/>
+        <Literal name="AMEX"/>
+        <Literal name="DINERS"/>
+        <Literal name="DISCOVER"/>
+        <Literal name="JCB"/>
+      </Literals>
+    </Enum>
+    <Interface name="CvvAlgorythim" package="" visibility="public" xPosition="71.0" yPosition="306.0">
+      <Methods>
+        <Method name="addCvv" returnType="CreditCard" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="checkCvv" returnType="CreditCard" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
