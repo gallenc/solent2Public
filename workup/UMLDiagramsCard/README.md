@@ -22,3 +22,6 @@ Images can be saved and loaded as xml files within your project and exported as 
 # Card Class Diagram
 
 ![alt text](../master/images/cardClassDiagram.png "Figure cardClassDiagram.png")
+
+
+http://wiki.netbeans.org/MavenBestPractices
