@@ -13,12 +13,12 @@ Images can be saved and loaded as xml files within your project and exported as 
 
 # card creation and validation use case diagram
 
-![alt text](../drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
+![alt text](../UMLDiagramsCard/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
 
 # Card Validation Robustness Diagram 
 
-![alt text](../drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
+![alt text](../UMLDiagramsCard/drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
 
 # Card Class Diagram
 
-![alt text](../images/cardClassDiagram.png "Figure cardClassDiagram.png")
+![alt text](../UMLDiagramsCard/images/cardClassDiagram.png "Figure cardClassDiagram.png")
