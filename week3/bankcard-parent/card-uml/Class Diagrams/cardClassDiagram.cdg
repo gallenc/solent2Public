@@ -2,7 +2,7 @@
 
 <ClassDiagram name="cardClassDiagram">
   <ClassDiagramComponents>
-    <Class name="CreditCard" package="" visibility="public" xPosition="606.0" yPosition="416.0">
+    <Class name="CreditCard" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="606.0" yPosition="416.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="endDate" type="String" visibility="private"/>
@@ -16,7 +16,7 @@
         <Method name="getIssuerIdentificationNumber" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Interface name="CreditCardFactoryAndValidator" package="" visibility="public" xPosition="71.0" yPosition="26.0">
+    <Interface name="CreditCardFactoryAndValidator" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="71.0" yPosition="26.0">
       <Methods>
         <Method name="createCreditCard" returnType="CreditCard" visibility="public">
           <Argument type="String" name="individualAccountIdentifier"/>
@@ -41,7 +41,7 @@
         </Method>
       </Methods>
     </Interface>
-    <Interface name="CvvAlgorythimStrategy" package="" visibility="public" xPosition="71.0" yPosition="306.0">
+    <Interface name="CvvAlgorythimStrategy" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="71.0" yPosition="306.0">
       <Methods>
         <Method name="addCvv" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
@@ -51,7 +51,7 @@
         </Method>
       </Methods>
     </Interface>
-    <Enum name="CardOrganisation" package="" visibility="public" xPosition="393.0" yPosition="416.0">
+    <Enum name="CardOrganisation" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="393.0" yPosition="416.0">
       <Literals>
         <Literal name="VISA"/>
         <Literal name="MASTERCARD"/>
@@ -63,8 +63,8 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="useCvvAlgorythmStrategy" source="CreditCardFactoryAndValidator" target="CvvAlgorythimStrategy" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useCardOrganisation" source="CreditCardFactoryAndValidator" target="CardOrganisation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useCreditCard" source="CreditCardFactoryAndValidator" target="CreditCard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useCardOrganisation" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CardOrganisation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useCreditCard" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useCvvAlgorythmStrategy" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CvvAlgorythimStrategy" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
