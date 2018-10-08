@@ -6,4 +6,8 @@ The bankcard-parent project will build from week to week into a fully fledged ap
 
 Before looking at the overall project, we will begin by looking at the use cases in card-uml
 
-[factoryandfacade](../week3/bankcard-parent/card-uml)
+[week3/bankcard-parent/card-uml](../week3/bankcard-parent/card-uml)
+
+once you have understood the use cases you can proceed to do he exercises in card-main
+
+[week3/bankcard-parent/card-main](../week3/bankcard-parent/card-main)
