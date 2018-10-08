@@ -31,7 +31,7 @@ The CVV is sent with a transaction request but is NEVER STORED in any logs or ta
 Similarly, logs and receipts of credit card transactions should only contain the last 4 digits of the PAN
 
 ## Task
-You need to write a set of requirements which describe all of the operations which a façade needs to perform in order to issue and verify a credit card. Banks need to be able to supply a cvv algorithm to the mechanism. You need to also describe  a set of tests to prove the library
+You need to write a set of requirements which describe all of the operations which a faÃ§ade needs to perform in order to issue and verify a credit card. Banks need to be able to supply a cvv algorithm to the mechanism. You need to also describe  a set of tests to prove the library
 
 
 # Credit Card payments
@@ -50,14 +50,14 @@ Draw IO (https://www.draw.io/) is a simple on line javascript based drawing libr
 Images can be saved and loaded as xml files within your project and exported as images which can be included in your documentation.
 
 
-# card creation and validation use case diagram
+# card Creation and validation use case diagram
 
-![alt text](../UMLDiagramsCard/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
+![alt text](../card-uml/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
 
-# Card Validation Robustness Diagram 
+# Card Creation and validation Robustness Diagram 
 
-![alt text](../UMLDiagramsCard/drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
+![alt text](../card-uml/drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
 
-# Card Class Diagram
+# Card Creation and validation Class Diagram
 
-![alt text](../UMLDiagramsCard/images/cardClassDiagram.png "Figure cardClassDiagram.png")
+![alt text](../card-uml/images/cardClassDiagram.png "Figure cardClassDiagram.png")
