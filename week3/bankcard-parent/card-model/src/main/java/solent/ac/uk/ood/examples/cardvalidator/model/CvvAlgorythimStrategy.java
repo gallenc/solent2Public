@@ -4,5 +4,5 @@ public interface CvvAlgorythimStrategy {
 
     public CreditCard addCvv(CreditCard card);
 
-    public CreditCard checkCvv(CreditCard card);
+    public boolean checkCvv(CreditCard card);
 }
