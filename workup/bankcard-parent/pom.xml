@@ -15,7 +15,11 @@
         <junit.version>4.12</junit.version>
     </properties>
     
-    <modules></modules>
+    <modules>
+        <module>card-checker</module>
+        <module>card-model</module>
+        <module>card-validator</module>
+    </modules>
     
     <dependencyManagement>
    

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="cardClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="CreditCard" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="611.0" yPosition="446.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="endDate" type="String" visibility="private"/>
+        <Field name="cardnumber" type="String" visibility="private"/>
+        <Field name="cvv" type="String" visibility="private"/>
+        <Field name="issueNumber" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getIndividualAccountIdentifier" returnType="String" visibility="public"/>
+        <Method name="getIssuerIdentificationNumber" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="CreditCardFactoryAndValidator" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="211.0" yPosition="191.0">
+      <Methods>
+        <Method name="createCreditCard" returnType="CreditCard" visibility="public">
+          <Argument type="String" name="individualAccountIdentifier"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="endDate"/>
+          <Argument type="String" name="issueNo"/>
+        </Method>
+        <Method name="setCvvAlgorythim" returnType="void" visibility="public">
+          <Argument type="CvvAlgorythimStrategy" name="cvvAlgorythimStrategy"/>
+        </Method>
+        <Method name="cvvIsValid" returnType="boolean" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="getCardOrganisation" returnType="CardOrganisation" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="cardNumberLunnIsValid" returnType="boolean" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="setIssuerIdentificationNumber" returnType="void" visibility="public">
+          <Argument type="String" name="iin"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="CvvAlgorythimStrategy" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="95.0" yPosition="446.0">
+      <Methods>
+        <Method name="addCvv" returnType="CreditCard" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+        <Method name="checkCvv" returnType="boolean" visibility="public">
+          <Argument type="CreditCard" name="card"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="CardFactoryDAO" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="229.0" yPosition="1.0">
+      <Methods>
+        <Method name="getCreditCardFactoryAndValidator" returnType="CreditCardFactoryAndValidator" visibility="public">
+          <Argument type="String" name="issuerIdentifierNumber"/>
+        </Method>
+        <Method name="getSupportedIssuerNames" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="getIssuerIdentifierNumberForName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="CardOrganisation" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="400.0" yPosition="446.0">
+      <Literals>
+        <Literal name="VISA"/>
+        <Literal name="MASTERCARD"/>
+        <Literal name="AMEX"/>
+        <Literal name="DINERS"/>
+        <Literal name="DISCOVER"/>
+        <Literal name="JCB"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="useCardOrganisation" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CardOrganisation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useCreditCard" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="finds" source="solent.ac.uk.ood.examples.cardvalidator.model.CardFactoryDAO" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useCvvAlgorythmStrategy" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CvvAlgorythimStrategy" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
