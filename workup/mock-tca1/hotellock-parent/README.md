@@ -80,11 +80,11 @@ Do as much as you can of all the tasks to maximise your overall score. So don't 
 
 # Project Structure
 
-The following notes provide additional help in undsrstanding the project structure within which you are to work.
+The following notes provide additional help with understanding the project structure within which you are to work.
 
 This (hotellock-parent)folder contains a partially completed project which you will copy to your own work folder and complete as part of this exercise.
 
-in the hotellock-parent project, run maven with 
+In the hotellock-parent project, run maven with 
 ```
 mvn clean install
 ```

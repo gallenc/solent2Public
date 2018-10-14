@@ -2,7 +2,13 @@
 
 ## INSTRUCTIONS
 
-You will have 2 hours to complete this exercise
+This exercise tests your ability to design within the constraints of an existing project and set of design patterns. 
+
+You should read ALL of the instructions before you begin.
+
+You will have 2 hours to complete this exercise. 
+
+It is unlikely that you will get all of the tasks done so prioritise your work to maximise your marks.
 
 ### setup
 
