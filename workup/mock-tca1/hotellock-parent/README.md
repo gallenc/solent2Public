@@ -1,20 +1,25 @@
 # hotel Lock TCA project version 0.1
 
 ## Scenario
-Most Hotels now have card lock systems whereby guest are issued with a card which allows access to their room for the duration of their stay. 
+Most Hotels now have card lock systems whereby guest are issued with a card which allows access to their room for the duration of their stay.
+
 Hotel Receptionists use a card writer to issue key cards to guests. 
 They must enter the room number and stay dates to format a guest card.
+
 The card writer can also issue wild card keys to staff which can open any room.
 Staff keys are also only valid for a set duration.
-The card writer adds an issue number and encodes the card with a secret key known only to the hotel.
+
+The card writer adds an issue number and encodes all cards card with a secret key known only to the card lock system at the hotel.
 
 The card writer records in a local file that the card has been issued including an issue number so that a security trace can be done for unauthorised card use.
 
-Each lock is supplied with its given room number when it is installed.
+Each room lock is supplied with its given room number when it is installed.
+
 Each room lock has a secret key algorithm which allows it to decode a given key card and then check that the card dates and room number are valid. 
+
 Staff key cards can open any room but only if the dates are valid.
 
-Each card use is logged locally in a file by the lock whether or not the lock is activated. 
+Each time a card is used an entry is logged in a local file by the lock whether or not the lock is activated. 
 This allows auditing of unauthorised used of cards.
 
 ## Tasks
@@ -46,8 +51,28 @@ Read the Project Structure section below for more information on what is provide
 We will allocate 50% of marks to design and documentation and 50% to implementation. 
 Do as much as you can of all the tasks to maximise your overall score. So dont spend too much time on any one task. 
 
+## design and documentation (50%)
 
+| No | Task | Mark |
+| --- | --- | --- |
+| 1 | complete usecase diagram | 10% |
+| 2 | complete robustness diagram | 25% |
+| 3 | add meaningful comments to javadoc for your code and tests | 10% |
+| 4 | ensure markdown reflects your diagrams and describes usage of your code | 5% |
+|  | | |
+|  | | |
+|  | | |
 
+## Implementation (50%
+
+| No | Task | Mark |
+| --- | --- | --- |
+|  | implement hotel reception service | 10% |
+|  | implement hotel reception service tests | 10% |
+|  | implement hotel reception service Main method with command line UI | 5% |
+|  | implement hotel lock service | 10% |
+|  | implement hotel lock service tests | 10% |
+|  | implement hotel lock service Main method with command line UI | 5% |
 
 # Project Structure
 
