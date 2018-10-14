@@ -2,17 +2,7 @@
 
 <ClassDiagram name="lockClassDiagram">
   <ClassDiagramComponents>
-    <Interface name="SecretKeyProvider" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="808.0" yPosition="47.0">
-      <Methods>
-        <Method name="encodeCard" returnType="String" visibility="public">
-          <Argument type="CardKey" name="cardKey"/>
-        </Method>
-        <Method name="decodeCard" returnType="CardKey" visibility="public">
-          <Argument type="String" name="cardString"/>
-        </Method>
-      </Methods>
-    </Interface>
-    <Class name="CardKey" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="821.0" yPosition="352.0">
+    <Class name="CardKey" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="668.0" yPosition="223.0">
       <Fields>
         <Field name="startDate" type="Date" visibility="private"/>
         <Field name="endDate" type="Date" visibility="private"/>
@@ -22,7 +12,17 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Interface name="HotelReceptionService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="291.0" yPosition="190.0">
+    <Interface name="SecretKeyProvider" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="622.0" yPosition="28.0">
+      <Methods>
+        <Method name="encodeCard" returnType="String" visibility="public">
+          <Argument type="CardKey" name="cardKey"/>
+        </Method>
+        <Method name="decodeCard" returnType="CardKey" visibility="public">
+          <Argument type="String" name="cardString"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="HotelReceptionService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="82.0" yPosition="28.0">
       <Methods>
         <Method name="createCardCode" returnType="String" visibility="public">
           <Argument type="String" name="roomNumber"/>
@@ -37,7 +37,7 @@
         </Method>
       </Methods>
     </Interface>
-    <Interface name="HotelRoomLockService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="37.0" yPosition="367.0">
+    <Interface name="HotelRoomLockService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="92.0" yPosition="200.0">
       <Methods>
         <Method name="unlockDoor" returnType="String" visibility="public">
           <Argument type="String" name="cardCode"/>
