@@ -1,4 +1,4 @@
-# hotel Lock TCA project version 0.1
+# Hotel Lock TCA project version 0.1
 
 ## Scenario
 Most Hotels now have card lock systems whereby guest are issued with a card which allows access to their room for the duration of their stay.
@@ -66,7 +66,7 @@ Do as much as you can of all the tasks to maximise your overall score. So don't 
 | 4 | ensure markdown reflects your diagrams and describes usage of your code | 5% |
 
 
-### Implementation (50%
+### Implementation (50%)
 
 | No | Task | Mark |
 | --- | --- | --- |
