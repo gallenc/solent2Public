@@ -44,14 +44,19 @@ Your documentation should reflect your actual implementation and you may modify 
 ### Implementation
 
 You should then proceed to implement the various methods required for the use cases and also tests to prove that your implementation is working correctly.
+
 Read the Project Structure section below for more information on what is provided and how to complete your code.
 
-### Marking Scheme
+Skeleton code is provided for you and you may also reuse any examples from previous classes.
+
+If you choose to use any other external examples, code or libraries you MUST ATTRIBUTE THE WORK and ENCORPORATE THE RELAVENT LICENCE both in licence comments at the top of the relevant class where the work is used and in the README for the code.
+
+## Marking Scheme
  
 We will allocate 50% of marks to design and documentation and 50% to implementation. 
-Do as much as you can of all the tasks to maximise your overall score. So dont spend too much time on any one task. 
+Do as much as you can of all the tasks to maximise your overall score. So don't spend too much time on any one task. 
 
-## design and documentation (50%)
+### design and documentation (50%)
 
 | No | Task | Mark |
 | --- | --- | --- |
@@ -59,11 +64,9 @@ Do as much as you can of all the tasks to maximise your overall score. So dont s
 | 2 | complete robustness diagram | 25% |
 | 3 | add meaningful comments to javadoc for your code and tests | 10% |
 | 4 | ensure markdown reflects your diagrams and describes usage of your code | 5% |
-|  | | |
-|  | | |
-|  | | |
 
-## Implementation (50%
+
+### Implementation (50%
 
 | No | Task | Mark |
 | --- | --- | --- |
@@ -74,7 +77,10 @@ Do as much as you can of all the tasks to maximise your overall score. So dont s
 |  | implement hotel lock service tests | 10% |
 |  | implement hotel lock service Main method with command line UI | 5% |
 
+
 # Project Structure
+
+The following notes provide additional help in undsrstanding the project structure within which you are to work.
 
 This (hotellock-parent)folder contains a partially completed project which you will copy to your own work folder and complete as part of this exercise.
 
