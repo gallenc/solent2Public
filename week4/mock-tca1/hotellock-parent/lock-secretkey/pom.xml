@@ -25,13 +25,14 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <!-- note that this is a test dependency - you only  need reception code to test the lock -->
+        <!--REMOVE ME note that this is a test dependency - you only  need reception code to test the lock 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>lock-reception</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
+-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
