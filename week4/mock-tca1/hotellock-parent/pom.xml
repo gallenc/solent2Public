@@ -14,7 +14,12 @@
         <junit.version>4.12</junit.version>
     </properties>
     
-    <modules></modules>
+    <modules>
+        <module>lock-model</module>
+        <module>lock-secretkey</module>
+        <module>lock-reception</module>
+        <module>lock-roomlock</module>
+    </modules>
     
     <dependencyManagement>
    
