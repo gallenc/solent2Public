@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="lockClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="CardKey" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="668.0" yPosition="223.0">
+      <Fields>
+        <Field name="startDate" type="Date" visibility="private"/>
+        <Field name="endDate" type="Date" visibility="private"/>
+        <Field name="roomNumber" type="String" visibility="private"/>
+        <Field name="issueNumber" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="SecretKeyProvider" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="622.0" yPosition="28.0">
+      <Methods>
+        <Method name="encodeCard" returnType="String" visibility="public">
+          <Argument type="CardKey" name="cardKey"/>
+        </Method>
+        <Method name="decodeCard" returnType="CardKey" visibility="public">
+          <Argument type="String" name="cardString"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="HotelReceptionService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="82.0" yPosition="28.0">
+      <Methods>
+        <Method name="createCardCode" returnType="String" visibility="public">
+          <Argument type="String" name="roomNumber"/>
+          <Argument type="Date" name="startDate"/>
+          <Argument type="Date" name="endDate"/>
+        </Method>
+        <Method name="readCard" returnType="CardKey" visibility="public">
+          <Argument type="String" name="cardCode"/>
+        </Method>
+        <Method name="setSecretKeyProvider" returnType="void" visibility="public">
+          <Argument type="SecretKeyProvider" name="secretKeyProvider"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="HotelRoomLockService" package="solent.ac.uk.ood.examples.hotellock.model" visibility="public" xPosition="92.0" yPosition="200.0">
+      <Methods>
+        <Method name="unlockDoor" returnType="boolean" visibility="public">
+          <Argument type="String" name="cardCode"/>
+        </Method>
+        <Method name="setSecretKeyProvider" returnType="void" visibility="public">
+          <Argument type="SecretKeyProvider" name="secretKeyProvider"/>
+        </Method>
+        <Method name="setRoomNumber" returnType="void" visibility="public">
+          <Argument type="String" name="roomNumber"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="usesCardkey" source="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider" target="solent.ac.uk.ood.examples.hotellock.model.CardKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
