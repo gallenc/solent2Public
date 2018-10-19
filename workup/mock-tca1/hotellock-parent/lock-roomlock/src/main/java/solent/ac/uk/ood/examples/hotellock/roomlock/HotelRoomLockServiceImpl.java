@@ -24,6 +24,9 @@ public class HotelRoomLockServiceImpl implements HotelRoomLockService {
     SecretKeyProvider secretKeyProvider = null;
     String roomNumber = null;
 
+    // USED TO ALLOW IN STAFF
+    public static String WILDCARD_ROOM_NUMBER = "*";
+
     @Override
     public boolean unlockDoor(String cardCode) {
 
@@ -40,24 +43,28 @@ public class HotelRoomLockServiceImpl implements HotelRoomLockService {
             return false;
         }
 
-        if ((decodedCardKey.getRoomNumber() == null) || (!decodedCardKey.getRoomNumber().equals(roomNumber))) {
-            TRANSACTIONLOG.warn("room number '" + roomNumber + "' illegal card access attempted with card details: " + decodedCardKey);
-            return false;
-        }
-
         Date startDate = decodedCardKey.getStartDate();
         Date endDate = decodedCardKey.getEndDate();
 
         Date now = new Date();
-        if (startDate != null && now.getTime() < startDate.getTime()) {
+        if ( now.getTime() < startDate.getTime()) {
+            LOG.debug("now "+now.getTime() + " startDate "+ endDate.getTime());
             TRANSACTIONLOG.warn("room number '" + roomNumber
-                    + "' illegal card access attempted before card start time card details: " + decodedCardKey);
+                    + "' illegal card access attempted at "+now
+                            + " before card start time  card details: " + decodedCardKey);
             return false;
         }
 
-        if (endDate != null && now.getTime() > endDate.getTime()) {
-            TRANSACTIONLOG.warn("room number '" + roomNumber
-                    + "' illegal card access attempted after card end time card details: " + decodedCardKey);
+        if ( now.getTime() > endDate.getTime()) {
+            LOG.debug("now "+now.getTime() + " endDate "+ endDate.getTime());
+            TRANSACTIONLOG.warn("room number '"
+                    + roomNumber + "' illegal card access attempted at "+now+" after card end time card details: " + decodedCardKey);
+            return false;
+        }
+
+        if (!WILDCARD_ROOM_NUMBER.equals(decodedCardKey.getRoomNumber())
+                && !roomNumber.equals(decodedCardKey.getRoomNumber())) {
+            TRANSACTIONLOG.warn("room number '" + roomNumber + "' illegal card access attempted with card details: " + decodedCardKey);
             return false;
         }
 

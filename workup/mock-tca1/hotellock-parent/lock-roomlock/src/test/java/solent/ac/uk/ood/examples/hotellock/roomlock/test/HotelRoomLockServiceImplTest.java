@@ -32,8 +32,7 @@ public class HotelRoomLockServiceImplTest {
         String roomNumber1 = "100a";
         String roomNumber2 = "200b";
 
-        // set up room lock service to validate cards
-        
+        // set up room lock 100a service to validate cards
         HotelRoomLockService hotelRoomLockService_room100a = new HotelRoomLockServiceImpl();
         SecretKeyProvider lockSecretKeyProvider = new SecretKeyProviderImpl();
         hotelRoomLockService_room100a.setSecretKeyProvider(lockSecretKeyProvider);
@@ -45,7 +44,7 @@ public class HotelRoomLockServiceImplTest {
         SecretKeyProvider secretKeyProvider = new SecretKeyProviderImpl();
         hotelReceptionService.setSecretKeyProvider(secretKeyProvider);
 
-        // check check hotel reception service rejects invlaid key code
+        // check check hotel lock service rejects invlaid key code
         String rubbishCardCode = "sdggffdf";
         assertFalse(hotelRoomLockService_room100a.unlockDoor(rubbishCardCode));
 
@@ -70,7 +69,7 @@ public class HotelRoomLockServiceImplTest {
         startDate = new Date(todaysDate.getTime() + 1000 * 60 * 60 * 24); // start date is tomorrow
         endDate = new Date(startDate.getTime() + 1000 * 60 * 60 * 24);   // 1 day later
         String cardCode3 = hotelReceptionService.createCardCode(roomNumber1, startDate, endDate);
-        
+
         // check cardCode3 does not open the door
         assertFalse(hotelRoomLockService_room100a.unlockDoor(cardCode3));
 
