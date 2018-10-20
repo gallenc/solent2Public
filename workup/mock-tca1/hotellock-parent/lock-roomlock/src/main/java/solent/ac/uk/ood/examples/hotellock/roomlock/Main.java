@@ -51,12 +51,12 @@ public class Main {
             Date endDate = null;
 
             System.out.println("\nHotel Room " + roomNumber + " Lock Service Command Line");
-            System.out.println("------------------------------------");
+            System.out.println("----------------------------------------------");
 
             boolean correctInput = false;
             String cardCode = null;
             while (!correctInput) {
-                System.out.println("enter card key code: ");
+                System.out.print("enter card key code: ");
                 cardCode = scan.nextLine().trim();
                 if (!cardCode.isEmpty()) {
                     correctInput = true;
@@ -75,12 +75,12 @@ public class Main {
             } else {
                 System.out.println("SORRY ROOM STILL LOCKED !!!");
             }
-            System.out.println("\nrun again ? y/n [n]");
+            System.out.println("\nrun again ? y/n [y]");
             String lineStr = scan.nextLine().trim();
 
             repeat = false;
             // ask if do again
-            if (lineStr.toLowerCase().equals("y")) {
+            if (lineStr.isEmpty() || lineStr.toLowerCase().equals("y")) {
                 repeat = true;
             }
         }

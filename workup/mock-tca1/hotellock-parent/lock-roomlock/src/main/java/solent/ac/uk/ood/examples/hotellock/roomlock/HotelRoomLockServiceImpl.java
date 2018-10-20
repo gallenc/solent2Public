@@ -45,26 +45,28 @@ public class HotelRoomLockServiceImpl implements HotelRoomLockService {
 
         Date startDate = decodedCardKey.getStartDate();
         Date endDate = decodedCardKey.getEndDate();
-
         Date now = new Date();
-        if ( now.getTime() < startDate.getTime()) {
-            LOG.debug("now "+now.getTime() + " startDate "+ endDate.getTime());
+
+        LOG.debug("now " + now.getTime() + " startDate " + startDate.getTime() + " endDate " + endDate.getTime());
+
+        if (now.getTime() < startDate.getTime()) {
             TRANSACTIONLOG.warn("room number '" + roomNumber
-                    + "' illegal card access attempted at "+now
-                            + " before card start time  card details: " + decodedCardKey);
+                    + "' illegal card access attempted at " + now
+                    + " before card start time card details: " + decodedCardKey);
             return false;
         }
 
-        if ( now.getTime() > endDate.getTime()) {
-            LOG.debug("now "+now.getTime() + " endDate "+ endDate.getTime());
+        if (now.getTime() > endDate.getTime()) {
             TRANSACTIONLOG.warn("room number '"
-                    + roomNumber + "' illegal card access attempted at "+now+" after card end time card details: " + decodedCardKey);
+                    + roomNumber + "' illegal card access attempted at "
+                    + now + " after card end time card details: " + decodedCardKey);
             return false;
         }
 
         if (!WILDCARD_ROOM_NUMBER.equals(decodedCardKey.getRoomNumber())
                 && !roomNumber.equals(decodedCardKey.getRoomNumber())) {
-            TRANSACTIONLOG.warn("room number '" + roomNumber + "' illegal card access attempted with card details: " + decodedCardKey);
+            TRANSACTIONLOG.warn("room number '" + roomNumber 
+                    + "' illegal card access attempted with card details: " + decodedCardKey);
             return false;
         }
 

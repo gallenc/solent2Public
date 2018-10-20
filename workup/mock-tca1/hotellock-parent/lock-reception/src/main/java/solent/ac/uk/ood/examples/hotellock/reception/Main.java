@@ -28,13 +28,14 @@ public class Main {
         hotelReceptionService.setSecretKeyProvider(secretKeyProvider);
 
         // used to parse dates
-        DateFormat df = new SimpleDateFormat("dd/mm/yy HH:mm");
+        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm");
 
         // used to read lines from keyboard
         Scanner scan = new Scanner(System.in);
 
         boolean repeat = true;
         while (repeat == true) {
+            
             Date now = new Date();
 
             // constants used to generate default values
@@ -93,7 +94,7 @@ public class Main {
                     System.out.print("enter room number: [101a]");
                     roomNumber = scan.nextLine().trim();
                     if (roomNumber.isEmpty()) {
-                       roomNumber= "101a";
+                        roomNumber = "101a";
                     }
                     correctInput = true;
                 }
@@ -142,12 +143,12 @@ public class Main {
                 String cardCode = hotelReceptionService.createCardCode(roomNumber, startDate, endDate);
                 System.out.println("generated card code: " + cardCode);
 
-                System.out.println("run again ? y/n [n]");
+                System.out.println("run again ? y/n [y]");
                 lineStr = scan.nextLine().trim();
 
                 repeat = false;
                 // ask if do again
-                if (lineStr.toLowerCase().equals("y")) {
+                if (lineStr.isEmpty() || lineStr.toLowerCase().equals("y")) {
                     repeat = true;
                 }
             }
