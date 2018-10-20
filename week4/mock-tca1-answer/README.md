@@ -1,5 +1,7 @@
 # MOCK TIME CONSTRAINED ASSESSMENT 
 
+This folder contains an answer to the Mock TCA1
+
 ## INSTRUCTIONS
 
 This exercise tests your ability to design within the constraints of an existing project and set of design patterns. 
