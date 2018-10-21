@@ -37,7 +37,7 @@ public class HotelReceptionServiceImpl implements HotelReceptionService {
     
     // OPTION 2 USE AN AtomicInteger 
     // thread safe issue number
-    AtomicInteger m_atomicIssueNumber = new AtomicInteger(0);
+    private AtomicInteger m_atomicIssueNumber = new AtomicInteger(0);
 
     private int getNewIssueNumber() {
         int issueNumber = m_atomicIssueNumber.incrementAndGet();
