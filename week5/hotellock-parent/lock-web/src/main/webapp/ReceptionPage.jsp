@@ -3,14 +3,14 @@
     Created on : Oct 20, 2018, 6:36:52 PM
     Author     : cgallen
 
-For some explaination see
+For some explanation see
 https://stackoverflow.com/questions/31714044/accessing-request-attributes-in-jsp
 
 https://docs.oracle.com/javaee/1.3/tutorial/doc/JSPIntro11.html
 
 
 --%>
-
+<!-- Imports perform the same role as in a normal java class -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="java.util.Date"%>
@@ -117,7 +117,7 @@ https://docs.oracle.com/javaee/1.3/tutorial/doc/JSPIntro11.html
         <h1>Welcome to the Hotel Reception</h1>
 
         <p>Use the following form to generate a new key</p>
-        <form action="/ReceptionPage.jsp">
+        <form action="./ReceptionPage.jsp">
             Enter Room Number:<br>
             <input type="text" name="roomNumber" value="<%=roomNumber%>"> 
             <% if (roomNumber.isEmpty()) { %>
@@ -144,7 +144,7 @@ https://docs.oracle.com/javaee/1.3/tutorial/doc/JSPIntro11.html
         <% }%>
 
         <p>Use the following form to read a key card</p>
-        <form action="/ReceptionPage.jsp">
+        <form action="./ReceptionPage.jsp">
             Enter Card Code:<br>
             <input type="text" name="cardCode" size="100" value="">
             <br>

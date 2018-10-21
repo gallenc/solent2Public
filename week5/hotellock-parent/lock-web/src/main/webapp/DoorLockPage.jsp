@@ -14,7 +14,7 @@
     <body>
         <h1>Door Lock</h1>
 
-        <form action="/DoorLockPage.jsp">
+        <form action="./DoorLockPage.jsp">
             Enter Room Number:<br>
             <input type="text" name="roomNumber" value="">
             <br>
