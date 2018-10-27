@@ -67,6 +67,8 @@
                     <httpConnector>
                         <port>8680</port>
                     </httpConnector>
+                    <!-- used to set up transaction logging -->
+                    <!--   <jettyXml>src/main/etc/jetty.xml</jettyXml>-->
                 </configuration>
                 <!-- logging dependencies for jetty -->
                 <dependencies>

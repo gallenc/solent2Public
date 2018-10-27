@@ -53,7 +53,7 @@ public class HotelReceptionRestImpl {
                 requestStartDateStr = df.format(now);
                 requestEndDateStr = df.format(tomorrow.getTime());
             } else if (requestStartDateStr == null || requestEndDateStr == null){
-                throw new IllegalArgumentException("either both startDate and endDate request parameter must be set or if none set, defaults of now and now+24hrs will be used");
+                throw new IllegalArgumentException("Either both startDate and endDate request parameter must be set or if none set, defaults of now and now+24hrs will be used");
             }
 
             // get hotelReceptionService from service factory
