@@ -132,6 +132,13 @@
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>lock-roomlock</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        
+                <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>lock-reception</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>

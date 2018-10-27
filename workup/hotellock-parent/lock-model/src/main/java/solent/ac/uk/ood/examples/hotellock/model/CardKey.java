@@ -1,7 +1,9 @@
 package solent.ac.uk.ood.examples.hotellock.model;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class CardKey {
 
     private Date startDate;
