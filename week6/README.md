@@ -225,7 +225,7 @@ The servelet-mapping matches any request to the server with the pattern /rest/* 
 
 This means that our web service url will always begin http://localhost:8680/rest/
 
-RestApp simply searches for JAX-RS annotated classes in the given paskages class path
+RestApp simply searches for JAX-RS annotated classes in the given packages class path
 ```
 public class RestApp extends ResourceConfig {
 
