@@ -175,7 +175,7 @@ JAXB can also be used to persist data to XML files for later reading and can thu
 
 You should make sure you understand how we annotated the objects in our model so that they could be used with JAXB.
 
-Exercise 2 Run the ReST interface
+## Exercise 2 Run the ReST interface
 
 First build the parent hotellock-parent parent project then cd to lock-web and run
 ```
@@ -204,5 +204,116 @@ RESTer allows you to change the request headers to change between an XML respons
 
 ![alt text](../week6/images/RESTerXML.png "Figure RESTerXML.png")
 
+## Exercise 3 Understand the provided reception Jersey implementation
+The first thing to understand are the additions to web.xml
+```
+        <!-- Rest Servlet -->
+	<servlet>
+		<servlet-name>RestApp</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>solent.ac.uk.ood.examples.hotellock.service.rest.RestApp</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RestApp</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+```
+The servelet-mapping matches any request to the server with the pattern /rest/*  and passes this to the RestApp class
 
+This means that our web service url will always begin http://localhost:8680/rest/
+
+RestApp simply searches for JAX-RS annotated classes in the given paskages class path
+```
+public class RestApp extends ResourceConfig {
+
+    public RestApp() {
+        packages("solent.ac.uk.ood.examples.hotellock.service.rest");
+    }
+}
+```
+There are 2 JAX-RS classes in this class path, HotelReceptionRestImpl.java which is complete and working and  HotelLockRestImpl.java which is not complete.
+Look at the structure of HotelLockRestImpl.java
+
+```
+@Path("/reception")
+public class HotelReceptionRestImpl {
+
+    // example: http://localhost:8680/rest/reception/createCardCode?roomNumber=123&startDate=27%2F10%2F18+15%3A46&endDate=28%2F10%2F18+14%3A46
+    // or http://localhost:8680/rest/reception/createCardCode?roomNumber=123
+    @GET
+    @Path("/createCardCode")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response createCardCode(@QueryParam("roomNumber") String roomNumber,
+            @QueryParam("startDate") String requestStartDateStr,
+            @QueryParam("endDate") String requestEndDateStr) {
+
+```
+@Path("/reception") selects the second segment of the path. 
+
+This class will be called to process any URL path  beginning http://localhost:8680/rest/reception/
+
+Now look at the createCardCode method. 
+@Path("/createCardCode") selects the third segment of the path.
+
+This method will be called to process any URL path beginning http://localhost:8680/rest/reception/createCardCode
+
+You will see that the method signature is populated with elements tagged with annotations. 
+These select which parts of the request are passed to the method.
+
+e.g. @QueryParam("roomNumber")  will populate the roomNumber parameter in the method from the roomnumber parameter in http://localhost:8680/rest/reception/createCardCode?roomNumber=123
+
+The rest of the method should be fairly self explanatory. 
+
+However please note the call to the ServiceFactory to get access to the HotelReceptionService
+```
+            // get hotelReceptionService from service factory
+            ServiceFactory serviceFactory = new ServiceFactoryImpl();
+            HotelReceptionService hotelReceptionService = serviceFactory.getHotelReceptionService();
+```
+Look at the ServiceFactoryImpl.java class.
+You will see how synchronized calls are made to ensure that only ever one HotelReceptionService singleton is created across the system.
+
+## Exercise 5 Understand the provided HotelReceptionRestClient classes
+
+HotelReceptionRestClientImpl.java and HotelReceptionRestClientImplTest.java
+
+Note that that the HotelReceptionRestClientImplTest.java is in a package which ends with 'manual'
+```
+solent.ac.uk.ood.examples.hotellock.service.rest.client.test.manual
+```
+If you look at the surefire test runner definition in the pom.xml you will see that all 'manual' classes are not run automatically because the web server is not running to serve the client in an automated test.
+```
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <!-- prevent tests running in this package. These are manual one off development tests -->
+                        <exclude>**/manual/*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+```
+
+## Exercise 5 Create a RoomLock Rest Service and Client and test them
+
+Using the example code from the reception implementation, now write a room lock web service
+
+a) Write a hotel lock service
+
+Replace the UnsupportedOperationException with working code in the HotelLockRestImpl.java class.
+
+Test this class as a web service using RESTer or just a web browser.
+
+
+b) Write a hotel lock client class and a test to prove it works
+
+Using the HotelReceptionRestClientImpl as an example, write a HotelLockRestClientImpl class. 
+
+Test this class with a corresponding HotelLockRestClientImplTest test class.
 
