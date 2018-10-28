@@ -5,7 +5,7 @@ This week we will extend our web application to enable it to support a ReST api 
 
 ## Web Services 
 
-Web services are API's implemented using HTTP which are intended for machine to machine communications. 
+Web Services are API's implemented using HTTP which are intended for machine to machine communications. 
 
 Representational State Transfer [ReST](https://en.wikipedia.org/wiki/Representational_state_transfer)  is a style of web service interface which uses HTTP Get, Post and Update operations to implement an API which transfers messages about resource objects using either XML or Json payloads.
 
@@ -39,7 +39,7 @@ In addition to JAXB, if we include the Jackson library on our class path it allo
 
 # Exercises
 
-## getting started
+## Getting Started
 As always, first merge my upstream repository with your working repo.
 
 This weeks work builds off the work we did last week on the hotellock project and you will have to merge my new changes with the work you did last week.
@@ -121,7 +121,7 @@ Notice that the RestMessage also contains an errorMessage string which will be p
 Let's now consider how JAXB converts annotated objects into XML
 
 look at the ModelJaxbTest.java test class under Test Packages.
-This test populates a RestMessage, converts it into an XML file and then read the xml file back into a RestMessage object.
+This test populates a RestMessage, converts it into an XML file and then reads the xml file back into a RestMessage object.
 The key lines are;
 ```
      JAXBContext jaxbContext = JAXBContext.newInstance("solent.ac.uk.ood.examples.hotellock.model");
@@ -171,6 +171,38 @@ Run the test and you will see it populates and reads a simple xml file in target
 
 JAXB is used by JAXRS in the Jersey library to create XML messages to send across HTTP.
 
-JAXB can also be used to persist data to XML files for later reading and can thus be used as the basis for a simple 'Data Access Object' without a database.
+JAXB can also be used to persist data to XML files for later reading and can thus be used as the basis for a simple 'Data Access Object' without needing a database.
 
 You should make sure you understand how we annotated the objects in our model so that they could be used with JAXB.
+
+Exercise 2 Run the ReST interface
+
+First build the parent hotellock-parent parent project then cd to lock-web and run
+```
+mvn jetty:run
+```
+
+Access the reception Rest Interface using the following calls
+
+To create a card
+
+http://localhost:8680/rest/reception/createCardCode?roomNumber=101&requestStartDateStr=27/10/18+16:00&requestEndDateStr=28/10/18+15:00
+
+To read a card
+
+http://localhost:8680/rest/reception/readCard?cardCode=3130312C31363662366339353565302C31363662626566623165302C323A6239353539396632
+
+In both cases you will see an XML response message which is based upon a partly populated RestMessage object.
+
+If you are able, you can do more experiments by installing the Firefox RESTer plugin
+https://addons.mozilla.org/en-US/firefox/addon/rester/
+
+RESTer allows you to change the request headers to change between an XML response or JSON reponse;
+
+![alt text](../week6/images/RESTerJSON.png "Figure RESTerJSON.png")
+
+
+![alt text](../week6/images/RESTerXML.png "Figure RESTerXML.png")
+
+
+

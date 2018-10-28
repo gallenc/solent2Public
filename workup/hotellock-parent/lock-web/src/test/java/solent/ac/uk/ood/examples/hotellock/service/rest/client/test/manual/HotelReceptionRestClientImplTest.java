@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.hotellock.service.rest.client.test;
+package solent.ac.uk.ood.examples.hotellock.service.rest.client.test.manual;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
