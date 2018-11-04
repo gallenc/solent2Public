@@ -2,7 +2,7 @@
 
 <ClassDiagram name="cardClassDiagram">
   <ClassDiagramComponents>
-    <Class name="CreditCard" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="611.0" yPosition="446.0">
+    <Class name="CreditCard" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="935.0" yPosition="738.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="endDate" type="String" visibility="private"/>
@@ -16,53 +16,153 @@
         <Method name="getIssuerIdentificationNumber" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Interface name="CreditCardFactoryAndValidator" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="211.0" yPosition="191.0">
+    <Class name="Account" package="List&lt;Account&gt; getAccountList()" visibility="public" xPosition="778.0" yPosition="515.0">
+      <Fields>
+        <Field name="issuerIdentificationNumber" type="String" visibility="private"/>
+        <Field name="individualAccountIdentifier" type="String" visibility="private"/>
+        <Field name="balance" type="Double" visibility="private"/>
+        <Field name="currentCardIssueNumber" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Transaction" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="454.0" yPosition="639.0">
+      <Fields>
+        <Field name="transactionId" type="Integer" visibility="private"/>
+        <Field name="date" type="Date" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+        <Field name="fromCard" type="CreditCard" visibility="private"/>
+        <Field name="toCard" type="CreditCard" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TransactionResult" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="62.0" yPosition="484.0">
+      <Fields>
+        <Field name="resultCode" type="ResultCode" visibility="private"/>
+        <Field name="transactionRequest" type="Transaction" visibility="private"/>
+        <Field name="debugInfo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AccountModelLists" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="518.0" yPosition="515.0">
+      <Fields>
+        <Field name="accountList" type="List&lt;Account&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="CreditCardFactoryAndValidator" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="1048.0" yPosition="438.0">
       <Methods>
-        <Method name="createCreditCard" returnType="CreditCard" visibility="public">
+        <Method name="createCreditCard" returnType="String" visibility="public">
           <Argument type="String" name="individualAccountIdentifier"/>
           <Argument type="String" name="name"/>
           <Argument type="String" name="endDate"/>
           <Argument type="String" name="issueNo"/>
         </Method>
-        <Method name="setCvvAlgorythim" returnType="void" visibility="public">
+        <Method name="setCvvAlgorythim" returnType="CvvAlgorythimStrategy" visibility="public">
           <Argument type="CvvAlgorythimStrategy" name="cvvAlgorythimStrategy"/>
         </Method>
-        <Method name="cvvIsValid" returnType="boolean" visibility="public">
+        <Method name="cvvIsValid" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
         </Method>
-        <Method name="getCardOrganisation" returnType="CardOrganisation" visibility="public">
+        <Method name="getCardOrganisation" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
         </Method>
-        <Method name="cardNumberLunnIsValid" returnType="boolean" visibility="public">
+        <Method name="cardNumberLunnIsValid" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
         </Method>
-        <Method name="setIssuerIdentificationNumber" returnType="void" visibility="public">
+        <Method name="setIssuerIdentificationNumber" returnType="String" visibility="public">
           <Argument type="String" name="iin"/>
         </Method>
       </Methods>
     </Interface>
-    <Interface name="CvvAlgorythimStrategy" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="95.0" yPosition="446.0">
+    <Interface name="CvvAlgorythimStrategy" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="1225.0" yPosition="738.0">
       <Methods>
         <Method name="addCvv" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
         </Method>
-        <Method name="checkCvv" returnType="boolean" visibility="public">
+        <Method name="checkCvv" returnType="CreditCard" visibility="public">
           <Argument type="CreditCard" name="card"/>
         </Method>
       </Methods>
     </Interface>
-    <Interface name="CardFactoryDAO" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="229.0" yPosition="1.0">
+    <Interface name="CardFactoryDAO" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="1178.0" yPosition="35.0">
       <Methods>
-        <Method name="getCreditCardFactoryAndValidator" returnType="CreditCardFactoryAndValidator" visibility="public">
-          <Argument type="String" name="issuerIdentifierNumber"/>
+        <Method name="getCreditCardFactoryAndValidator" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
         </Method>
         <Method name="getSupportedIssuerNames" returnType="List&lt;String&gt;" visibility="public"/>
         <Method name="getIssuerIdentifierNumberForName" returnType="String" visibility="public">
           <Argument type="String" name="name"/>
         </Method>
+        <Method name="getNameForIssuerIdentificationNumber" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
       </Methods>
     </Interface>
-    <Enum name="CardOrganisation" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="400.0" yPosition="446.0">
+    <Interface name="AccountDAO" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="663.0" yPosition="201.0">
+      <Methods>
+        <Method name="createAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
+        <Method name="deleteAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
+        </Method>
+        <Method name="retreiveAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
+        </Method>
+        <Method name="updateAccount" returnType="Account" visibility="public">
+          <Argument type="Account" name="account"/>
+        </Method>
+        <Method name="getAccountsForIssuer" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
+        <Method name="getAllAccounts" returnType="List&lt;Account&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="TransactionApi" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="8.0" yPosition="322.0">
+      <Methods>
+        <Method name="requestTransaction" returnType="Transaction" visibility="public">
+          <Argument type="Transaction" name="requestTransaction"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="BankApi" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="8.0" yPosition="4.0">
+      <Methods>
+        <Method name="createAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
+        <Method name="deleteAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
+        </Method>
+        <Method name="retreiveAccount" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
+        </Method>
+        <Method name="updateAccount" returnType="Account" visibility="public">
+          <Argument type="Account" name="account"/>
+        </Method>
+        <Method name="getAccountsForIssuer" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
+        <Method name="getSupportedIssuerNames" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="getIssuerIdentifierNumberForName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getNameForIssuerIdentificationNumber" returnType="String" visibility="public">
+          <Argument type="String" name="issuerIdentificationNumber"/>
+        </Method>
+        <Method name="createNewCreditCard" returnType="Account" visibility="public">
+          <Argument type="Account" name="account"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="CardOrganisation" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="1499.0" yPosition="738.0">
       <Literals>
         <Literal name="VISA"/>
         <Literal name="MASTERCARD"/>
@@ -72,11 +172,26 @@
         <Literal name="JCB"/>
       </Literals>
     </Enum>
+    <Enum name="ResultCode" package="solent.ac.uk.ood.examples.cardvalidator.model" visibility="public" xPosition="62.0" yPosition="719.0">
+      <Literals>
+        <Literal name="APPROVED"/>
+        <Literal name="DECLINED"/>
+        <Literal name="INVALID_CARD"/>
+      </Literals>
+    </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <UseRelation name="useTransaction" source="solent.ac.uk.ood.examples.cardvalidator.model.TransactionResult" target="solent.ac.uk.ood.examples.cardvalidator.model.Transaction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useCreditCardFactoryDAO" source="solent.ac.uk.ood.examples.cardvalidator.model.BankApi" target="solent.ac.uk.ood.examples.cardvalidator.model.CardFactoryDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usetransaction" source="solent.ac.uk.ood.examples.cardvalidator.model.TransactionApi" target="solent.ac.uk.ood.examples.cardvalidator.model.Transaction" sourceCardinality="1..1" targetCardinality="0..*"/>
     <UseRelation name="useCardOrganisation" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CardOrganisation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useCreditCard" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCard" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="finds" source="solent.ac.uk.ood.examples.cardvalidator.model.CardFactoryDAO" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="JAXB_DAO_uses" source="solent.ac.uk.ood.examples.cardvalidator.model.AccountDAO" target="solent.ac.uk.ood.examples.cardvalidator.model.AccountModelLists" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hasResultCode" source="solent.ac.uk.ood.examples.cardvalidator.model.TransactionResult" target="solent.ac.uk.ood.examples.cardvalidator.model.ResultCode" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="useCvvAlgorythmStrategy" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CvvAlgorythimStrategy" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="finds" source="solent.ac.uk.ood.examples.cardvalidator.model.CardFactoryDAO" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useAccountDao" source="solent.ac.uk.ood.examples.cardvalidator.model.BankApi" target="solent.ac.uk.ood.examples.cardvalidator.model.AccountDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useTransactionResult" source="solent.ac.uk.ood.examples.cardvalidator.model.TransactionApi" target="solent.ac.uk.ood.examples.cardvalidator.model.TransactionResult" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useCreditCard" source="solent.ac.uk.ood.examples.cardvalidator.model.CreditCardFactoryAndValidator" target="solent.ac.uk.ood.examples.cardvalidator.model.CreditCard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="accountDAOUsesAccount" source="solent.ac.uk.ood.examples.cardvalidator.model.AccountDAO" target="List&lt;Account&gt; getAccountList().Account" sourceCardinality="1..1" targetCardinality="0..*"/>
   </ClassDiagramRelations>
 </ClassDiagram>

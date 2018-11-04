@@ -18,7 +18,8 @@
     <modules>
         <module>card-checker</module>
         <module>card-model</module>
-        <module>card-validator</module>
+        <module>card-validator-dao</module>
+        <module>card-account-dao-jaxb</module>
     </modules>
     
     <dependencyManagement>

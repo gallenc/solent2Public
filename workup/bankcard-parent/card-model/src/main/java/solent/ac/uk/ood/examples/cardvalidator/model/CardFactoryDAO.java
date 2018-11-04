@@ -10,4 +10,6 @@ public interface CardFactoryDAO {
     
     String getIssuerIdentifierNumberForName(String name);
     
+    public String getNameForIssuerIdentificationNumber(String issuerIdentificationNumber);
+    
 }

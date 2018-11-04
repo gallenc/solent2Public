@@ -1,15 +1,22 @@
 package solent.ac.uk.ood.examples.cardvalidator.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * CreditCard contains key fields of a credit card a six-digit[2] Issuer Identification Number (IIN), [a] the first digit of which is the major industry
  * identifier (MII) a variable length (up to 12 digits) individual account identifier a single check digit calculated using the Luhn algorithm[4]
  */
+@XmlRootElement
 public class CreditCard {
 
     // used to check only numbers 
+    // note @XmlTransient prevents this field being serialised by jaxb
+    @XmlTransient 
     private String checkNumericRegex = "[0-9]+";
 
     // used to select IIN
+    @XmlTransient 
     private static final int IIN_SELECTOR = 6;
 
     private String name;
