@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>solent.ac.uk.ood.examples</groupId>
     <artifactId>bankcard-parent</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -11,8 +11,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <slf4j.version>1.7.12</slf4j.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j.version>2.11.1</log4j.version>
         <junit.version>4.12</junit.version>
+        <hamcrest-core.version>1.3</hamcrest-core.version>
     </properties>
     
     <modules>
@@ -20,6 +21,8 @@
         <module>card-model</module>
         <module>card-validator-dao</module>
         <module>card-account-dao-jaxb</module>
+        <module>card-service</module>
+        <!-- <module>card-web</module> -->
     </modules>
     
     <dependencyManagement>
@@ -27,23 +30,44 @@
         <dependencies>
 
             <!-- Logging -->
-
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
+                <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
-        
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+         
             <!-- test -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

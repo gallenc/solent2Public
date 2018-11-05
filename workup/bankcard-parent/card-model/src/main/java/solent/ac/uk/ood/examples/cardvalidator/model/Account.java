@@ -8,6 +8,8 @@ public class Account {
     private String issuerIdentificationNumber;
 
     private String individualAccountIdentifier;
+    
+    private String name;
 
     private Double balance;
 
@@ -28,6 +30,14 @@ public class Account {
     public void setIndividualAccountIdentifier(String individualAccountIdentifier) {
         this.individualAccountIdentifier = individualAccountIdentifier;
     }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Double getBalance() {
         return balance;
@@ -44,5 +54,16 @@ public class Account {
     public void setCurrentCardIssueNumber(Integer currentCardIssueNumber) {
         this.currentCardIssueNumber = currentCardIssueNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "issuerIdentificationNumber=" + issuerIdentificationNumber 
+                + ", individualAccountIdentifier=" + individualAccountIdentifier 
+                + ", name=" + name 
+                + ", balance=" + balance 
+                + ", currentCardIssueNumber=" + currentCardIssueNumber + '}';
+    }
+    
+    
     
 }

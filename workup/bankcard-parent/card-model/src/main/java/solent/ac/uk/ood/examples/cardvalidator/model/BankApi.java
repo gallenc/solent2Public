@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface BankApi {
 
-    public Account createAccount(String issuerIdentificationNumber);
+    public Account createAccount(String issuerIdentificationNumber, String name);
 
     public boolean deleteAccount(String issuerIdentificationNumber, String individualAccountIdentifier);
 
-    public Account retreiveAccount(String issuerIdentificationNumber, String individualAccountIdentifier);
+    public Account retrieveAccount(String issuerIdentificationNumber, String individualAccountIdentifier);
 
     public Account updateAccount(Account account);
 

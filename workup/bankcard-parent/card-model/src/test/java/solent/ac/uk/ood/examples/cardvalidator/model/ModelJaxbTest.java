@@ -39,7 +39,7 @@ public class ModelJaxbTest {
         try {
 
             // test file we will write and read. 
-            // Note in target so that will be delted on each run and will not be saved to git
+            // Note in target so that will be deleted on each run and will not be saved to git
             File file = new File("target/testTransactionData.xml");
             System.out.println("writing test file to " + file.getAbsolutePath());
 
@@ -134,6 +134,7 @@ public class ModelJaxbTest {
             AccountModelLists accountModelLists = new AccountModelLists();
 
             Account account1 = new Account();
+            account1.setName("account1");
             account1.setBalance(101.1);
             account1.setCurrentCardIssueNumber(1);
             String individualAccountIdentifier1 = "123456789";
@@ -143,6 +144,7 @@ public class ModelJaxbTest {
             accountModelLists.getAccountList().add(account1);
 
             Account account2 = new Account();
+            account2.setName("account2");
             account2.setBalance(202.2);
             account2.setCurrentCardIssueNumber(1);
             String individualAccountIdentifier2 = "123456780"; // differnt acct no

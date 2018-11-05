@@ -105,7 +105,7 @@ public class CreditCard {
                 + ", cvv=" + cvv 
                 + ", issueNumber=" + issueNumber 
                 + ", issuerIdentificationNumber=" + getIssuerIdentificationNumber() 
-                + ", individualAccountIdentifier()=" + getIndividualAccountIdentifier() 
+                + ", individualAccountIdentifier=" + getIndividualAccountIdentifier() 
                 + '}';
     }
 

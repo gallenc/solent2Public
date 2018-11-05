@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AccountModelLists {
+    
+    private Integer latestAccountId=0;
 
     @XmlElementWrapper(name = "accountList")
     @XmlElement(name = "account")
@@ -32,5 +34,14 @@ public class AccountModelLists {
     public void setAccountList(List<Account> accountList) {
         this.accountList = accountList;
     }
+
+    public Integer getLatestAccountId() {
+        return latestAccountId;
+    }
+
+    public void setLatestAccountId(Integer latestAccountId) {
+        this.latestAccountId = latestAccountId;
+    }
+
 
 }
