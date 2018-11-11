@@ -12,7 +12,10 @@ The New Week8 folder has changes to the bankcard-parent pom.xml and the card-web
 
 Copy YOUR work from last week into myPracticeCourseWork/Week8
 
-Copy then changes in MY bankcard-parent pom.xml and card-web projects into your bankcard-parent project
+Copy then changes in MY bankcard-parent pom.xml and card-web projects into your bankcard-parent project.
+
+Some additional methods have also been completed in the BankApiImpl.java class to allow the JSP's to work. 
+Look at this class and copy the changes into your own class.
 
 Compile the whole project and test the web browser using 
 ```
@@ -32,7 +35,7 @@ Try adding and deleting a few accounts
 # Exercise 2 Review the code in the provided JSP's and complete your robustness diagrams
 
 Some additional methods have been completed in the BankApiImpl.java class to allow the JSP's to work.
-Look at this class and copy the changes into your own class.
+Look at this class and copy the changes into your own class of you have not already done so.
 
 Understand how accountList.jsp and createOrModifyAccount.jsp work
 
