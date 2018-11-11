@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Create Credit Card</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body>
+        <h1>Create or Modify Account</h1>
+        <form action="createOrModifyAccount.html">
+            <table>
+                <tr>
+                    <td>Bank </td><td></td>               
+                </tr>
+                <tr>
+                    <td>Issuer Identification Number</td><td></td>               
+                </tr>
+                <tr>
+                    <td>Individual Account Identifier</td><td></td>
+                </tr>
+                <tr>
+                    <td>Name</td><td><input type="text" value="name"></td>
+                </tr>
+                <tr>
+                    <td>Card Issue Number</td><td></td>
+                </tr>
+                <tr>
+                    <td>Balance</td><td><input type="text" value="balance"></td>
+                </tr>
+            </table>
+            <BR>
+            <input type="submit" value="Update or Create Account">
+            <BR>
+            <div id="result">Account Updated</div>
+        </form>
+        <BR>
+        <button onclick="window.location.href = 'accountList.html'">Return to Account List</button>
+
+    </body>
+</html>
