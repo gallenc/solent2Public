@@ -38,3 +38,4 @@ nb-configuration.xml
 *.ear
 *.zip
 
+/week8/bankcard-parent/card-web/accounts-data.xml
