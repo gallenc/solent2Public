@@ -1,9 +1,15 @@
+<%-- 
+    Document   : accountList.jsp
+    Created on : Nov 11, 2018, 3:25:57 PM
+    Author     : cgallen
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="solent.ac.uk.ood.examples.cardvalidator.model.BankApi"%>
+<%@page import="solent.ac.uk.ood.examples.cardvalidator.model.CardFactoryDAO"%>
+<%@page import="solent.ac.uk.ood.examples.cardvalidator.model.ServiceObjectFactory"%>
+<%@page import="solent.ac.uk.ood.examples.cardvalidator.model.TransactionApi"%>
+<%@page import="solent.ac.uk.ood.examples.cardvalidator.cardservice.ServiceObjectFactoryImpl"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Bank Accounts</title>
