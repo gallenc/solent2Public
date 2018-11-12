@@ -109,7 +109,10 @@
             <BR>
         </form>
         <BR>
-        <button onclick="window.location.href = 'accountList.jsp'">Return to Account List</button>
-
+        
+        <form action="accountList.jsp">
+            <input type="hidden" name="bankProvider" value="<%=bankProvider%>">
+            <input type="submit" value="Return to Account List">
+        </form>
     </body>
 </html>
