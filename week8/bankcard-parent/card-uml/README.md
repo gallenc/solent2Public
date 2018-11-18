@@ -51,7 +51,7 @@ Images can be saved and loaded as xml files within your project and exported as 
 
 # Diagrams
 
-## card Creation and validation use case diagram - draft
+## Card Creation and validation use case diagram
 
 ![alt text](../card-uml/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
 
