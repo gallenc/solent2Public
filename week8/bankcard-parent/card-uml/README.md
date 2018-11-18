@@ -49,27 +49,31 @@ We will be constructing our use cases using Draw IO
 Draw IO (https://www.draw.io/) is a simple on line javascript based drawing library which can construct UML diagrams in your browser. 
 Images can be saved and loaded as xml files within your project and exported as images which can be included in your documentation.
 
+# Diagrams
 
-# card Creation and validation use case diagram - draft
+## card Creation and validation use case diagram - draft
 
 ![alt text](../card-uml/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
 
-# Card Creation and validation Robustness Diagram draft
+## Card Creation and validation Robustness Diagram
+This shows how a card is created and validated
 
 ![alt text](../card-uml/drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
 
-# Card Creation and validation Class Diagram - complete
+## Card Creation and validation Class Diagram - complete
+This shows all of the objects in the completed design
 
 ![alt text](../card-uml/images/cardClassDiagram.png "Figure cardClassDiagram.png")
 
-## Answers
+# Answers
 Note that it is possible to outline the main points of use case using the use case diagram provided you don't go into too much detail
 
-# card Creation and validation use case diagram complete
+## Bank and Shop Card Machine Use Case Diagram complete
 
-![alt text](../card-uml/drawio/cardUseCase_draw_io-2.png "Figure cardUseCase_draw_io-2.png")
+![alt text](../card-uml/drawio/cardUseCase_draw_io2.png "Figure cardUseCase_draw_io2.png")
 
-# Card Creation and validation Robustness Diagram complete
+## Bank and Shop Card Machine Robustness Diagram complete
+Note that this diagram omits the detail of the card creation and validation api's which are described in the Card Creation and validation Robustness Diagram above.
 
 It is difficult to show all aspects of the design on the robustness diagram but this version at least shows how the main processes interact with the Data Access objects and interfaces. Further documentation would be required to completely explain all of the interactions unambiguously.
 
