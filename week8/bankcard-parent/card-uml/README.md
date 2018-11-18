@@ -50,14 +50,27 @@ Draw IO (https://www.draw.io/) is a simple on line javascript based drawing libr
 Images can be saved and loaded as xml files within your project and exported as images which can be included in your documentation.
 
 
-# card Creation and validation use case diagram
+# card Creation and validation use case diagram - draft
 
 ![alt text](../card-uml/drawio/cardUseCase_draw_io.png "Figure cardUseCase_draw_io.png")
 
-# Card Creation and validation Robustness Diagram 
+# Card Creation and validation Robustness Diagram draft
 
 ![alt text](../card-uml/drawio/card-robustness-drawio.png "Figure card-robustness-drawio.png")
 
-# Card Creation and validation Class Diagram
+# Card Creation and validation Class Diagram - complete
 
 ![alt text](../card-uml/images/cardClassDiagram.png "Figure cardClassDiagram.png")
+
+## Answers
+Note that it is possible to outline the main points of use case using the use case diagram provided you don't go into too much detail
+
+# card Creation and validation use case diagram complete
+
+![alt text](../card-uml/drawio/cardUseCase_draw_io-2.png "Figure cardUseCase_draw_io-2.png")
+
+# Card Creation and validation Robustness Diagram complete
+
+It is difficult to show all aspects of the design on the robustness diagram but this version at least shows how the main processes interact with the Data Access objects and interfaces. Further documentation would be required to completely explain all of the interactions unambiguously.
+
+![alt text](../card-uml/drawio/card-robustness-drawio-2.png "Figure card-robustness-drawio-2.png")
