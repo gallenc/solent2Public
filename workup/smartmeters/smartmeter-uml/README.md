@@ -3,7 +3,7 @@
 
 Every home in the UK will be fitted with a smart meter which can measure electricity usage in Kilowatt Hours. 
 
-## smart meters
+## Smart Meters
 
 Smart meters will each have a unique smart meterID, address, latitude and longitude.
 
@@ -33,7 +33,7 @@ Because the smart meters will communicate from behind a firewall, they cannot be
 The smart meters must always initiate communication to the cloud service from behind the firewall.
 Thus any control messages sent by the cloud service to the smart meter (setting message duration or measurement interval) must be sent as a reply to a message received by the smart meter service.
 
-## smart meter cloud service
+## Smart Meter Cloud Service
 
 Operators of the smart meter cloud service can create, retrieve, update or delete smart meters using a web interface (JSP)
 
@@ -57,9 +57,14 @@ The smart meter cloud service saves all measurements received from each known sm
 
 ## Answers
 
-[Answers are available here](..../smartmeter-uml/ANSWER.md)
+[Answers are available here](../smartmeter-uml/ANSWER.md)
 
 PLEASE DO NOT CHEAT YOURSELF by looking too soon at the answers
+
+## Class Diagram
+
+![alt text](../smartmeter-uml/images/smartmetersystem.png "Figure smartmetersystem.png")
+
 
 ## Use Case Template
 
@@ -68,8 +73,3 @@ PLEASE DO NOT CHEAT YOURSELF by looking too soon at the answers
 ## Robustness Diagram Template
 
 ![alt text](../smartmeter-uml/drawio/smartmeter-robustness-drawio.png "Figure smartmeter-robustness-drawio.png")
-
-## class diagram Template
-
-![alt text](../smartmeter-uml/images/smartmetersystem.png "Figure smartmetersystem.png")
-
