@@ -2,7 +2,7 @@
 
 <ClassDiagram name="smartmetersystem">
   <ClassDiagramComponents>
-    <Class name="ElectricityMeasurement" package="" visibility="public" xPosition="1568.0" yPosition="231.0">
+    <Class name="ElectricityMeasurement" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="939.0" yPosition="470.0">
       <Fields>
         <Field name="time" type="Date" visibility="private"/>
         <Field name="duration" type="long" visibility="private"/>
@@ -11,25 +11,19 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Meter" package="" visibility="public" xPosition="1568.0" yPosition="39.0">
+    <Class name="Meter" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="1061.0" yPosition="55.0">
       <Fields>
         <Field name="address" type="String" visibility="private"/>
         <Field name="latitude" type="Double" visibility="private"/>
         <Field name="longitude" type="Double" visibility="private"/>
         <Field name="meterId" type="String" visibility="private"/>
-        <Field name="MeasurementFrequency" type="Long" visibility="private"/>
+        <Field name="MeasurementDuration" type="Long" visibility="private"/>
+        <Field name="MessageFrequency" type="Long" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Interface name="SmartMeterService" package="" visibility="public" xPosition="125.0" yPosition="55.0">
-      <Methods>
-        <Method name="sendMeasurements" returnType="ReplyMessage" visibility="public">
-          <Argument type="MeasurementMessage" name="measurementMessage"/>
-        </Method>
-      </Methods>
-    </Interface>
-    <Class name="MeasurementMessage" package="" visibility="public" xPosition="353.0" yPosition="220.0">
+    <Class name="MeasurementMessage" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="353.0" yPosition="220.0">
       <Fields>
         <Field name="meter" type="Meter" visibility="private"/>
         <Field name="measurements" type="List&lt;ElectricityMeasurement&gt;" visibility="private"/>
@@ -38,14 +32,14 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="ReplyMessage" package="" visibility="public" xPosition="118.0" yPosition="220.0">
+    <Class name="ReplyMessage" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="118.0" yPosition="220.0">
       <Fields>
         <Field name="meterControl" type="MeterControl" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="MeterControl" package="" visibility="public" xPosition="104.0" yPosition="406.0">
+    <Class name="MeterControl" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="104.0" yPosition="406.0">
       <Fields>
         <Field name="MeasurementFrequency" type="Long" visibility="private"/>
         <Field name="sendMessagesSinceDate" type="Date" visibility="private"/>
@@ -53,7 +47,14 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Interface name="MeterDAO" package="" visibility="public" xPosition="1072.0" yPosition="39.0">
+    <Interface name="SmartMeterService" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="125.0" yPosition="55.0">
+      <Methods>
+        <Method name="sendMeasurements" returnType="ReplyMessage" visibility="public">
+          <Argument type="MeasurementMessage" name="measurementMessage"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="MeterDAO" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="679.0" yPosition="55.0">
       <Methods>
         <Method name="createMeter" returnType="Meter" visibility="public">
           <Argument type="Meter" name="meter"/>
@@ -70,7 +71,7 @@
         <Method name="retreiveAllMeters" returnType="List&lt;Meter&gt;" visibility="public"/>
       </Methods>
     </Interface>
-    <Interface name="MeasurementsDAO" package="" visibility="public" xPosition="1089.0" yPosition="231.0">
+    <Interface name="MeasurementsDAO" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="701.0" yPosition="265.0">
       <Methods>
         <Method name="createOrUpdateMeasurements" returnType="List&lt;ElectricityMeasurements&gt;" visibility="public">
           <Argument type="String" name="meterId"/>
@@ -90,10 +91,10 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="useMeterControl" source="ReplyMessage" target="MeterControl" sourceCardinality="1..1" targetCardinality="0..1"/>
-    <UseRelation name="useReplyMessage" source="SmartMeterService" target="ReplyMessage" sourceCardinality="1..1" targetCardinality="1..*"/>
-    <UseRelation name="usesMeter" source="MeterDAO" target="Meter" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="usesMeasurement" source="MeasurementsDAO" target="ElectricityMeasurement" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useMeasurementMessage" source="SmartMeterService" target="MeasurementMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesMeasurement" source="solent.ac.uk.ood.examples.smartmeter.model.MeasurementsDAO" target="solent.ac.uk.ood.examples.smartmeter.model.ElectricityMeasurement" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useMeasurementMessage" source="solent.ac.uk.ood.examples.smartmeter.model.SmartMeterService" target="solent.ac.uk.ood.examples.smartmeter.model.MeasurementMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useMeterControl" source="solent.ac.uk.ood.examples.smartmeter.model.ReplyMessage" target="solent.ac.uk.ood.examples.smartmeter.model.MeterControl" sourceCardinality="1..1" targetCardinality="0..1"/>
+    <UseRelation name="usesMeter" source="solent.ac.uk.ood.examples.smartmeter.model.MeterDAO" target="solent.ac.uk.ood.examples.smartmeter.model.Meter" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useReplyMessage" source="solent.ac.uk.ood.examples.smartmeter.model.SmartMeterService" target="solent.ac.uk.ood.examples.smartmeter.model.ReplyMessage" sourceCardinality="1..1" targetCardinality="1..*"/>
   </ClassDiagramRelations>
 </ClassDiagram>
