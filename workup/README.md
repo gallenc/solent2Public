@@ -1,1 +1,0 @@
-## ignore work in this folder - it is simply work in progress for the class
