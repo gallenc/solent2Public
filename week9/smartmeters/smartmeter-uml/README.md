@@ -18,9 +18,9 @@ The measurementDuration can be varied for each meter by the smart meter service.
 Usually this is set to every 15 minutes.
 
 The Kilowatt Hours usage for each interval is calculated using the following formula 
-
+```
 Kwh = (Average Kilowatt consumption in duration) * duration (in ms) / 60000 ms
-
+```
 The smart meters will send measurements messages using a ReST interfaces to a cloud based smart meter service.
 These messages will contain a list of measurements collected since the last message was sent.
 
