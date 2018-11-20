@@ -7,15 +7,23 @@ package solent.ac.uk.ood.examples.cardvalidator.cardservice.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import solent.ac.uk.ood.examples.cardvalidator.cardservice.BankApiImpl;
 
 /**
  *
  * @author cgallen
  */
 public class BankApiImplTest {
-    
+
+    private static final Logger LOG = LoggerFactory.getLogger(BankApiImpl.class);
+
+    private static final Logger TRANSACTIONLOG = LoggerFactory.getLogger("transaction-log");
+
     @Test
     public void testBankApi() {
-    //TODO
+        //TODO
+        LOG.debug("start of BankApiImplTest");
     }
 }
