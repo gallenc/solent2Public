@@ -19,6 +19,7 @@
     </properties>
     
     <build>
+	<plugins>
         <plugin>
 
             <!-- current version -->
@@ -59,6 +60,7 @@
             </executions>
     
         </plugin>
+		</plugins>
     </build>
     
     <dependencies>
