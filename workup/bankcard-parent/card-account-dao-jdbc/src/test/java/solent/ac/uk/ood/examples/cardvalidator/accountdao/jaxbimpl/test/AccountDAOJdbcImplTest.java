@@ -9,7 +9,8 @@ import java.util.List;
 import org.junit.Test;
 import solent.ac.uk.ood.examples.cardvalidator.model.AccountDAO;
 import solent.ac.uk.ood.examples.cardvalidator.accountdao.jaxbimpl.AccountDAOJdbcImpl;
-import solent.ac.uk.ood.examples.cardvalidator.impl.SupportedCardIssuerIdentificationNumbers;
+import solent.ac.uk.ood.examples.cardvalidator.accountdao.jaxbimpl.test.SupportedCardIssuerIdentificationNumbers;
+
 import static org.junit.Assert.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

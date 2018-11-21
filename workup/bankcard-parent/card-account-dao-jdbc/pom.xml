@@ -64,13 +64,15 @@
     </build>
     
     <dependencies>
+	<!--
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>card-checker</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
+	-->
+		<dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>card-model</artifactId>
             <version>${project.version}</version>
@@ -78,12 +80,14 @@
         </dependency>
         
         <!-- used to get valid card providers -->
+		<!--
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>card-validator-dao</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
+		-->
         
         
         <!-- SLF4J used to provide logging in classes -->
