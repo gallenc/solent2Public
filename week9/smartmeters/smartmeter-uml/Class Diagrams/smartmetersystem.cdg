@@ -77,12 +77,12 @@
         <Method name="createOrUpdateMeasurements" returnType="List&lt;ElectricityMeasurements&gt;" visibility="public">
           <Argument type="List&lt;ElectricityMeasurements&gt;" name="measurements"/>
         </Method>
-        <Method name="retreiveMeasurements" returnType="String" visibility="public">
+        <Method name="retreiveMeasurements" returnType="List&lt;ElectricityMeasurements&gt;" visibility="public">
           <Argument type="Date" name="start"/>
           <Argument type="Date" name="end"/>
           <Argument type="String" name="meterId"/>
         </Method>
-        <Method name="deleteMeasurements" returnType="String" visibility="public">
+        <Method name="deleteMeasurements" returnType="boolean" visibility="public">
           <Argument type="Date" name="start"/>
           <Argument type="Date" name="end"/>
           <Argument type="String" name="meterId"/>
