@@ -18,5 +18,5 @@ Images can be saved and loaded as xml files within your project and exported as 
 
 ## Template Class Diagram
 
-![alt text](../exampleproject-uml/images/exampleprojectClassDiagram "Figure exampleprojectClassDiagram")
+![alt text](../exampleproject-uml/images/exampleprojectClassDiagram.png "Figure exampleprojectClassDiagram.png")
 
