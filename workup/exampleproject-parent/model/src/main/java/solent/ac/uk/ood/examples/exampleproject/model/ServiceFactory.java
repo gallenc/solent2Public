@@ -9,7 +9,7 @@ package solent.ac.uk.ood.examples.exampleproject.model;
  *
  * @author cgallen
  */
-public interface ServiceObjectFactory {
+public interface ServiceFactory {
     
     public ServiceFacade getServiceFacade();
     

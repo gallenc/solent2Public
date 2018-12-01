@@ -26,7 +26,6 @@ import javax.xml.bind.Unmarshaller;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import solent.ac.uk.ood.examples.exampleproject.model.Entity;
-import solent.ac.uk.ood.examples.exampleproject.model.Property;
 import solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage;
 
 /**
@@ -34,10 +33,10 @@ import solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage;
  * @author gallenc
  */
 public class ModelJaxbTest {
-    
+
     @Test
     public void testJaxb() {
-        
+
         try {
 
             // test file we will write and read. 
@@ -48,32 +47,27 @@ public class ModelJaxbTest {
             // jaxb context needs jaxb.index file to be in same classpath
             // this contains a list of Jaxb annotated classes for the context to parse
             JAXBContext jaxbContext = JAXBContext.newInstance("solent.ac.uk.ood.examples.exampleproject.model");
-            
+
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             // output pretty printed
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            
+
             // create some mock objects to test marshalling and unmarshalling
             ReplyMessage replyMessage1 = new ReplyMessage();
             replyMessage1.setCode(200);
             replyMessage1.setDebugMessage("debug message 1");
-            
+
             List<Entity> entities = replyMessage1.getEntityList().getEntities();
 
-            for(int intityId=0; intityId<3; intityId++){
+            for (int intityId = 0; intityId < 3; intityId++) {
                 Entity entity = new Entity();
                 entity.setId(intityId);
-                List<Property> properties = entity.getProperties();
-                for(int propertyId=0; propertyId<3; propertyId++){
-                    Property property = new Property();
-                    property.setName("name_"+propertyId);
-                    property.setValue("value_"+propertyId);
-                    properties.add(property);
-                }
+                entity.setField_A("field_A_" + intityId);
+                entity.setField_B("field_B_" + intityId);;
+                entity.setField_C("field_C_" + intityId);;
                 entities.add(entity);
             }
-
 
             // marshal the object lists to system out, a file and a stringWriter
             jaxbMarshaller.marshal(replyMessage1, System.out);
@@ -86,16 +80,16 @@ public class ModelJaxbTest {
             // having written the file we now read in the file for test
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
             ReplyMessage receivedMessage = (ReplyMessage) jaxbUnMarshaller.unmarshal(file);
-            
+
             StringWriter sw2 = new StringWriter();
             jaxbMarshaller.marshal(receivedMessage, sw2);
 
             // check transmitted and recieved message are the same
             assertEquals(sw1.toString(), sw2.toString());
-            
+
         } catch (JAXBException e) {
             throw new RuntimeException("problem testing jaxb marshalling", e);
         }
     }
-    
+
 }

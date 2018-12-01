@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 import solent.ac.uk.ood.examples.exampleproject.model.Entity;
 import solent.ac.uk.ood.examples.exampleproject.model.EntityDAO;
 import solent.ac.uk.ood.examples.exampleproject.model.EntityList;
-import solent.ac.uk.ood.examples.exampleproject.model.Property;
 
 /**
  *
@@ -62,10 +61,11 @@ public class EntityDAOJaxbImpl implements EntityDAO {
         synchronized (Lock) {
             Integer id = entityList.getLastEntityId() + 1;
             entityList.setLastEntityId(id);
-            entity.setId(id);
-            entityList.getEntities().add(entity);
+            Entity ecopy = copy(entity);
+            ecopy.setId(id);
+            entityList.getEntities().add(ecopy);
             save();
-            return entity;
+            return ecopy;
         }
     }
 
@@ -89,6 +89,13 @@ public class EntityDAOJaxbImpl implements EntityDAO {
     }
 
     @Override
+    public void deleteAllEntities() {
+        synchronized (Lock) {
+            entityList.getEntities().clear();
+        }
+    }
+
+    @Override
     public Entity retrieveEntity(Integer id) {
         if (id == null) {
             throw new IllegalArgumentException("id cannot be null");
@@ -107,44 +114,84 @@ public class EntityDAOJaxbImpl implements EntityDAO {
     public List<Entity> retrieveAllEntities() {
         synchronized (Lock) {
             List<Entity> returnList = new ArrayList<Entity>();
-            for (Entity account : entityList.getEntities()) {
-                returnList.add(copy(account));
+            for (Entity entity : entityList.getEntities()) {
+                returnList.add(copy(entity));
             };
             return returnList;
         }
     }
 
+    /**
+     * Returns a list of all Entities which match all of the set (i.e. not null) fields of entityTemplate
+     *
+     * @param entityTemplate
+     * @return
+     */
     @Override
-    public Entity retrieveMatchingEntites(Entity entityTemplate) {
+    public List<Entity> retrieveMatchingEntities(Entity entityTemplate) {
         if (entityTemplate == null) {
             throw new IllegalArgumentException("entityTemplate cannot be null");
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Entity> returnList = new ArrayList<Entity>();
+        for (Entity entity : entityList.getEntities()) {
+            boolean match = true;
+            if (entityTemplate.getId() != null) {
+                if (!entityTemplate.getId().equals(entity.getId())) {
+                    match = false;
+                }
+            };
+            if (entityTemplate.getField_A() != null) {
+                if (!entityTemplate.getField_A().equals(entity.getField_A())) {
+                    match = false;
+                }
+            };
+            if (entityTemplate.getField_B() != null) {
+                if (!entityTemplate.getField_B().equals(entity.getField_B())) {
+                    match = false;
+                }
+            };
+            if (entityTemplate.getField_C() != null) {
+                if (!entityTemplate.getField_C().equals(entity.getField_C())) {
+                    match = false;
+                }
+            };
+            if (match) {
+                returnList.add(copy(entity));
+            }
+        };
+        return returnList;
     }
 
     @Override
-    public Entity updateEntity(Entity entity) {
-        if (entity == null) {
+    public Entity updateEntity(Entity entityTemplate) {
+        if (entityTemplate == null) {
             throw new IllegalArgumentException("entity cannot be null");
         }
         synchronized (Lock) {
             for (Entity en : entityList.getEntities()) {
-                if (entity.getId().equals(en.getId())) {
-                    
-                    // update properties
-                    // this copies properties to avoid indirect object modification
-                    if (entity.getProperties()!=null){
-                        en.getProperties().clear();
-                        for(Property p:entity.getProperties()){
-                            Property newP = new Property();
-                            newP.setName(p.getName());
-                            newP.setValue(p.getValue());
-                            en.getProperties().add(newP);
-                        }
+                if (entityTemplate.getId().equals(en.getId())) {
+                    boolean changedfield = false;
+
+                    // update properties fields if only if entityTemplate field is set
+                    if (entityTemplate.getField_A() != null) {
+                        en.setField_A(entityTemplate.getField_A());
+                        changedfield = true;
+                    }
+                    if (entityTemplate.getField_B() != null) {
+                        en.setField_B(entityTemplate.getField_B());
+                        changedfield = true;
+                    }
+                    if (entityTemplate.getField_C() != null) {
+                        en.setField_C(entityTemplate.getField_C());
+                        changedfield = true;
+                    }
+                    // save if anything changed
+                    if (changedfield) {
                         save();
                     }
                     return copy(en);
                 }
+
             }
         }
         return null; //entity not found
@@ -153,14 +200,14 @@ public class EntityDAOJaxbImpl implements EntityDAO {
     /**
      * copies new Entity data transfer objects to create detached object and so avoid problems with indirect object modification
      *
-     * @param account
+     * @param entity
      * @return independent copy of Entity
      */
-    private Entity copy(Entity account) {
+    private Entity copy(Entity entity) {
         try {
             StringWriter sw1 = new StringWriter();
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.marshal(account, sw1);
+            jaxbMarshaller.marshal(entity, sw1);
 
             StringReader sr1 = new StringReader(sw1.toString());
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();

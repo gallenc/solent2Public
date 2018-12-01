@@ -6,9 +6,7 @@
 package solent.ac.uk.ood.examples.exampleproject.dao.jaxbimpl.test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.slf4j.Logger;
@@ -16,15 +14,10 @@ import org.slf4j.LoggerFactory;
 import solent.ac.uk.ood.examples.exampleproject.dao.jaxbimpl.EntityDAOJaxbImpl;
 import solent.ac.uk.ood.examples.exampleproject.model.Entity;
 import solent.ac.uk.ood.examples.exampleproject.model.EntityDAO;
-import solent.ac.uk.ood.examples.exampleproject.model.Property;
 
 /**
- * tests for entityDao.createEntity(entity) 
- * entityDao.deleteEntity(Id) 
- * entityDao.retrieveAllEntities() 
- * entityDao.retrieveEntity(Id)
- * entityDao.retrieveMatchingEntites(entityTempate)
- * entityDao.updateEntity(entity)
+ * tests for entityDao.createEntity(entity) entityDao.deleteEntity(Id) entityDao.retrieveAllEntities() entityDao.retrieveEntity(Id)
+ * entityDao.retrieveMatchingEntites(entityTempate) entityDao.updateEntity(entity)
  *
  * @author cgallen
  */
@@ -52,20 +45,16 @@ public class EntityDAOJaxbImplTest {
         assertTrue(entityDao.retrieveAllEntities().isEmpty());
 
         // add a 3 entities
-        int ENTITY_NUMBER = 3;
+        int ENTITY_NUMBER = 4;
         for (int intityId = 0; intityId < ENTITY_NUMBER; intityId++) {
             Entity entity = new Entity();
-            entity.setId(intityId);
-            // add 3 newProperties for entity
-            List<Property> properties = entity.getProperties();
-            for (int propertyId = 0; propertyId < 3; propertyId++) {
-                Property property = new Property();
-                property.setName("name_" + propertyId);
-                property.setValue("value_" + propertyId);
-                properties.add(property);
-            }
+            entity.setField_A("field_A_" + intityId);
+            entity.setField_B("field_B_" + intityId);;
+            entity.setField_C("field_C_" + intityId);;
+
             LOG.debug("adding entity:" + entity);
-            entityDao.createEntity(entity);
+            Entity e = entityDao.createEntity(entity);
+            assertNotNull(e);
         }
 
         // check 3 entities added
@@ -94,23 +83,36 @@ public class EntityDAOJaxbImplTest {
         LOG.debug("updating entity: " + entityToUpdate);
 
         // add 3 newProperties for entity
-        List<Property> newProperties = new ArrayList<Property>();
-        for (int propertyId = 0; propertyId < 3; propertyId++) {
-            Property property = new Property();
-            property.setName("NEWname_" + propertyId);
-            property.setValue("NEWvalue_" + propertyId);
-            newProperties.add(property);
-        }
-        entityToUpdate.setProperties(newProperties);
-        entityDao.updateEntity(entityToUpdate);
+        entityToUpdate.setField_A("field_A_Update");
+        entityToUpdate.setField_B("field_B_Update");
+        entityToUpdate.setField_C(null); // do not update field C
+        LOG.debug("update template: " + entityToUpdate);
+
+        Entity updatedEntity = entityDao.updateEntity(entityToUpdate);
+        LOG.debug("updated entity: " + updatedEntity);
+        assertNotNull(updatedEntity);
 
         // check entity updated
-        Entity retrievedEntity = entityDao.retrieveEntity(entityToUpdate.getId());
-        assertEquals(entityToUpdate.getProperties().get(0).getName(), retrievedEntity.getProperties().get(0).getName());
-        assertEquals(entityToUpdate.getProperties().get(0).getValue(), retrievedEntity.getProperties().get(0).getValue());
-        
-        // test retreive matching entities
-        
+        Entity retrievedEntity = entityDao.retrieveEntity(updatedEntity.getId());
+        LOG.debug("retreived entity: " + retrievedEntity);
+        assertEquals(entityToUpdate.getField_A(), retrievedEntity.getField_A());
+        assertEquals(entityToUpdate.getField_A(), retrievedEntity.getField_A());
+        assertNotEquals(entityToUpdate.getField_C(), retrievedEntity.getField_C());
+
+        // test retrieve matching entities
+        List<Entity> entityList = entityDao.retrieveAllEntities();
+        Entity searchfor = entityList.get(2);
+        LOG.debug("searching for: " + searchfor);
+
+        Entity template = new Entity();
+        template.setField_B(searchfor.getField_B());
+        LOG.debug("using template : " + template);
+
+        List<Entity> retrievedList = entityDao.retrieveMatchingEntities(template);
+        assertEquals(1, retrievedList.size());
+
+        LOG.debug("found : " + retrievedList.get(0));
+        assertEquals(searchfor, retrievedList.get(0));
 
     }
 

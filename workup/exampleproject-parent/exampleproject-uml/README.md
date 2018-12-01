@@ -10,13 +10,13 @@ Images can be saved and loaded as xml files within your project and exported as 
 
 ## Template use case diagram
 
-![alt text](../uml/drawio/ticketkiosk-usecase-drawio.png "Figure ticketkiosk-usecase-drawio.png")
+![alt text](../uml/drawio/exampleproject-usecase-drawio.png "Figure exampleproject-usecase-drawio.png")
 
 ## Template Robustness Diagram 
 
-![alt text](../uml/drawio/ticketkiosk-robustness-diagram-drawio.png "Figure ticketkiosk-robustness-diagram-drawio.png")
+![alt text](../uml/drawio/exampleproject-robustness-diagram-drawio.png "Figure exampleproject-robustness-diagram-drawio.png")
 
-## Template Kiosk Class Diagram
+## Template Class Diagram
 
-![alt text](../uml/images/ticketkioskClassDiagram.png "Figure ticketkioskClassDiagram.png")
+![alt text](../uml/images/exampleprojectClassDiagram "Figure exampleprojectClassDiagram")
 

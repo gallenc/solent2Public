@@ -8,11 +8,13 @@ public interface EntityDAO {
 
     public boolean deleteEntity(Integer id);
 
+    public void deleteAllEntities();
+
     public Entity retrieveEntity(Integer id);
 
     public List<Entity> retrieveAllEntities();
 
-    public Entity retrieveMatchingEntites(Entity entityTempate);
+    public List<Entity> retrieveMatchingEntities(Entity entityTempate);
 
     public Entity updateEntity(Entity entity);
 }

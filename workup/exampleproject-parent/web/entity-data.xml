@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityList>
+    <lastEntityId>8</lastEntityId>
+    <entities>
+        <entity>
+            <id>8</id>
+            <field_A>null</field_A>
+            <field_B>null</field_B>
+            <field_C>null</field_C>
+        </entity>
+    </entities>
+</entityList>
