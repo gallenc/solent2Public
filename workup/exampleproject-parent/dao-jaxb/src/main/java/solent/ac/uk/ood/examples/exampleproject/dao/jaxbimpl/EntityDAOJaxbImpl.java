@@ -59,7 +59,9 @@ public class EntityDAOJaxbImpl implements EntityDAO {
             throw new IllegalArgumentException("entity cannot be null");
         }
         synchronized (Lock) {
-            Integer id = entityList.getLastEntityId() + 1;
+            // set initial id if not set or increment by 1
+            Integer id = (entityList.getLastEntityId()==null) ? 1 : entityList.getLastEntityId() + 1;
+
             entityList.setLastEntityId(id);
             Entity ecopy = copy(entity);
             ecopy.setId(id);

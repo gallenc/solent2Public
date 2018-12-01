@@ -4,18 +4,18 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
         <!-- Rest Servlet -->
-<!--	<servlet>
+	<servlet>
 		<servlet-name>RestApp</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>solent.ac.uk.ood.examples.ticketkiosk.service.rest.RestApp</param-value>
+			<param-value>solent.ac.uk.ood.examples.exampleproject.web.rest.RestApp</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RestApp</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>-->
+	</servlet-mapping>
         
         <!-- jsp servlet -->
         <servlet id="jsp">

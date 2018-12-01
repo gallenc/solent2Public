@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EntityList {
 
     // only used by persistance layer
-    private Integer lastEntityId = 0;
+    private Integer lastEntityId = null;
 
     @XmlElementWrapper(name = "entities")
     @XmlElement(name = "entity")

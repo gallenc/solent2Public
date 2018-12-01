@@ -14,8 +14,9 @@ import solent.ac.uk.ood.examples.exampleproject.service.ServiceFactoryImpl;
  */
 public class WebObjectFactory {
 
-    public static ServiceFactory serviceFactory = null;
-    public static String DATA_FILE_LOCATION = "./entity-data.xml";
+    private static final String DATA_FILE_LOCATION = "./app-data.xml";
+
+    private static ServiceFactory serviceFactory = null;
 
     public static ServiceFactory getServiceFactory() {
 
