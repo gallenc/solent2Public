@@ -56,6 +56,9 @@
         <Method name="retrieveMatchingEntites" returnType="ReplyMessage" visibility="public">
           <Argument type="Entity" name="entityTempate"/>
         </Method>
+        <Method name="retrieveEntity" returnType="ReplyMessage" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
       </Methods>
     </Interface>
     <Interface name="ServiceFactory" package="solent.ac.uk.ood.examples.exampleproject.model" visibility="public" xPosition="579.0" yPosition="173.0">
@@ -68,15 +71,15 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="usesServiceFacade" source="solent.ac.uk.ood.examples.exampleproject.model.RestInterface" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" target="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO"/>
     <UseRelation name="usesServiceFacade" source="solent.ac.uk.ood.examples.exampleproject.model.WebUiJsp_do_not_generate" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesEntityDao" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" target="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesEntities" source="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO" target="solent.ac.uk.ood.examples.exampleproject.model.Entity" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="createsAndAccesses" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFactory" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useReplyMessage" source="solent.ac.uk.ood.examples.exampleproject.model.RestInterface" target="solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="usesObjectFactoryToGetService" source="solent.ac.uk.ood.examples.exampleproject.model.WebUiJsp_do_not_generate" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="hasEntityList" source="solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage" target="solent.ac.uk.ood.examples.exampleproject.model.EntityList" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="usesObjectFactoryToGetService" source="solent.ac.uk.ood.examples.exampleproject.model.RestInterface" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useReplyMessage" source="solent.ac.uk.ood.examples.exampleproject.model.RestInterface" target="solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <IsRelation name="is" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" target="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO"/>
+    <UseRelation name="usesServiceFacade" source="solent.ac.uk.ood.examples.exampleproject.model.RestInterface" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesObjectFactoryToGetService" source="solent.ac.uk.ood.examples.exampleproject.model.WebUiJsp_do_not_generate" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsAndAccesses" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFactory" target="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hasEntityList" source="solent.ac.uk.ood.examples.exampleproject.model.ReplyMessage" target="solent.ac.uk.ood.examples.exampleproject.model.EntityList" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="usesEntities" source="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO" target="solent.ac.uk.ood.examples.exampleproject.model.Entity" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesEntityDao" source="solent.ac.uk.ood.examples.exampleproject.model.ServiceFacade" target="solent.ac.uk.ood.examples.exampleproject.model.EntityDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

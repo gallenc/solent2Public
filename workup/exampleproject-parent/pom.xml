@@ -24,6 +24,7 @@
         <module>dao-jaxb</module>
         <module>service</module>
         <module>web</module>
+        <module>rest-client</module>
     </modules>
     
     <dependencyManagement>
