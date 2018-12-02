@@ -1,0 +1,21 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityList>
+    <lastEntityId>2</lastEntityId>
+    <entities>
+        <entity>
+            <id>1</id>
+            <field_A>abcd</field_A>
+            <field_B>1234</field_B>
+            <field_C>5555</field_C>
+        </entity>
+        <entity>
+            <id>2</id>
+            <field_A>abcd</field_A>
+            <field_B>abcd</field_B>
+            <field_C>8888</field_C>
+        </entity>
+    </entities>
+</entityList>
