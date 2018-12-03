@@ -5,37 +5,38 @@
   
   <fileSets>
     <fileSet filtered="true" encoding="UTF-8">
-      <directory>__rootArtifactId__-uml/drawio</directory>
+      <directory>uml/drawio</directory>
       <includes>
         <include>**/*.xml</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
-      <directory>__rootArtifactId__-uml/images</directory>
-      <includes>
-        <include>**/*.png</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>__rootArtifactId__-uml/Class Diagrams</directory>
-      <includes>
-        <include>**/*.cdg</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>__rootArtifactId__-uml</directory>
-      <includes>
-        <include>**/*.</include>
-        <include>**/*.md</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>__rootArtifactId__-uml/drawio</directory>
+      <directory>uml/images</directory>
       <includes>
         <include>**/*.png</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
+      <directory>uml/Class Diagrams</directory>
+      <includes>
+        <include>**/*.cdg</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>uml</directory>
+      <includes>
+        <include>**/*.</include>
+        <include>**/umlproject</include>
+        <include>**/*.md</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>uml/drawio</directory>
+      <includes>
+        <include>**/*.png</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
       <directory></directory>
       <includes>
         <include>NOTICE.txt</include>
@@ -71,12 +72,6 @@
             <include>**/*.java</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-          <directory>nbproject</directory>
-          <includes>
-            <include>**/*.properties</include>
-          </includes>
-        </fileSet>
         <fileSet encoding="UTF-8">
           <directory></directory>
           <includes>
@@ -106,12 +101,6 @@
             <include>**/*.xml</include>
           </includes>
         </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-          <directory>nbproject</directory>
-          <includes>
-            <include>**/*.properties</include>
-          </includes>
-        </fileSet>
         <fileSet encoding="UTF-8">
           <directory></directory>
           <includes>
@@ -139,12 +128,6 @@
           <directory>src/test/resources</directory>
           <includes>
             <include>**/*.xml</include>
-          </includes>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-          <directory>nbproject</directory>
-          <includes>
-            <include>**/*.properties</include>
           </includes>
         </fileSet>
         <fileSet encoding="UTF-8">
@@ -232,12 +215,6 @@
           <directory>src/test/jetty</directory>
           <includes>
             <include>**/*.xml</include>
-          </includes>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-          <directory>nbproject</directory>
-          <includes>
-            <include>**/*.properties</include>
           </includes>
         </fileSet>
         <fileSet encoding="UTF-8">

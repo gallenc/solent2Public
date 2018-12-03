@@ -73,8 +73,8 @@
         <!-- project module dependencies -->
 
         <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>exampleproject-model</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-model</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>

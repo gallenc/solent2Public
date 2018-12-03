@@ -108,21 +108,21 @@
         <!-- project module dependencies -->
 
         <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>exampleproject-model</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-model</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>exampleproject-dao-jaxb</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-dao-jaxb</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>exampleproject-service</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-service</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
