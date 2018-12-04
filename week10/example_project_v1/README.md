@@ -4,7 +4,10 @@ This folder contains an example project which provides a simple example of all o
 
 It also contains a maven archetype which will recreate the example project with a new groupId, artifactId, and version
 The archetype will also allow you to redefinine the package of all java classes. 
-Using this archetype will enable you to quickly build and test the working skeleton of a new project before you create your own design
+Using this archetype will enable you to quickly build and test the working skeleton of a new project before you create your own design.
+
+To edit the model in the archetype you will neet to use the easyUML plugin in netbeans. 
+This was covered in week2 but instructions are also provide at the bottom of this page.
 
 ## Using the Archetype
 The archetype is not included in maven central so to use the archetype, you must first build and install it locally
@@ -68,4 +71,16 @@ Once built the erdhetype can be invoked in an empty folder using
 mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:generate "-DarchetypeCatalog=local" "-DarchetypeArtifactId=example-project-archetype" "-DarchetypeGroupId=solent.ac.uk.ood.examples" "-DarchetypeVersion=1.0-SNAPSHOT"
 ```
 
+### Import the easyUML plugin into netbeans
+To create UML diagrams in Netbeans we need to install the [easyUML Plugin](http://plugins.netbeans.org/plugin/55435/easyuml).
+(There is more documentation if you google on line and a also a youtube tutorial [EasyUML video](https://www.youtube.com/watch?v=QME_S7gPnVI) 
 
+Select Tools>Plugins> and select Available Plugins tab.
+
+Search for easyUML and select and press the install button. You will need to restart the IDE.
+
+![alt text](../factoryandfacade/images/easyUMLPlugin.png "Figure easyUMLPlugin.png")
+
+While you are there, you might also want to install the following plugins; 
+* Markdown support - makes it easier to edit github markdown
+* Java EE base - we will use this later in the course

@@ -54,7 +54,9 @@ d) You will need to add additional tests to FarmFacadeTest.java so that you are 
 This exercise will show you how to create a UML class diagram in Netbeans and generate skeleton code from it which you can import into your model.
 
 ### 1. Import the easyUML plugin into netbeans
-To create UML diagrams in Netbeans we need to install the easyUML Plugin.
+
+To create UML diagrams in Netbeans we need to install the [easyUML Plugin](http://plugins.netbeans.org/plugin/55435/easyuml).
+(There is more documentation if you google on line and a also a youtube tutorial [EasyUML video](https://www.youtube.com/watch?v=QME_S7gPnVI) 
 
 Select Tools>Plugins> and select Available Plugins tab.
 
