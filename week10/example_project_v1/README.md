@@ -79,7 +79,7 @@ Select Tools>Plugins> and select Available Plugins tab.
 
 Search for easyUML and select and press the install button. You will need to restart the IDE.
 
-![alt text](../factoryandfacade/images/easyUMLPlugin.png "Figure easyUMLPlugin.png")
+![alt text](../example_project_v1/images/easyUMLPlugin.png "Figure easyUMLPlugin.png")
 
 While you are there, you might also want to install the following plugins; 
 * Markdown support - makes it easier to edit github markdown
