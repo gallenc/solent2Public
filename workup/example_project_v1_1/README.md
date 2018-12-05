@@ -22,7 +22,7 @@ Note that for the archetype to work properly you need to invoke the maven-archet
 Open a new folder where you want to create your new project and run the following command.
 
 ```
-mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:generate "-DarchetypeCatalog=local" "-DarchetypeArtifactId=example-project-archetype" "-DarchetypeGroupId=solent.ac.uk.ood.examples" "-DarchetypeVersion=1.0-SNAPSHOT"
+mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:generate "-DarchetypeCatalog=local" "-DarchetypeArtifactId=example-project-archetype" "-DarchetypeGroupId=solent.ac.uk.ood.examples" "-DarchetypeVersion=1.1-SNAPSHOT"
 ```
 You will then be asked for a new groupId, archetypeId, version and package
 ```
@@ -54,11 +54,11 @@ browse to http:\\localhost:8680
 ## Archetype Design
 If you are intersted in how the archetype as designed see [Create an archetype from a multi-module project](https://maven.apache.org/archetype/maven-archetype-plugin/examples/create-multi-module-project.html) 
 
-exampleproject-parent contains a multi module project which is the prototype used to create the archetype.
+exampleproject contains a multi module project which is the prototype used to create the archetype.
 
 example-project-archetype is the project to build the archetype
 
-This archetype was originally created from the exampleproject-parent using the create-from-project goal with the archetype.properties file.  
+This archetype was originally created from the exampleproject using the create-from-project goal with the archetype.properties file.  
 ```
 mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:create-from-project "-Darchetype.properties=../archetype.properties" 
 ```
