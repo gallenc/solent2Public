@@ -1,0 +1,8 @@
+/target/
+/apache-maven-3.5.4-bin.zip
+/maven/
+/.classpath
+/.project
+/.settings/
+/nbproject/
+/app-data.xml

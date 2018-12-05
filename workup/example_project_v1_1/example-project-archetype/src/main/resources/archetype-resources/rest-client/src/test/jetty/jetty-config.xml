@@ -1,0 +1,12 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- this is included so that when running mvn jetty:run, you can edit static files -->
+<!-- see explaination at https://stackoverflow.com/questions/184312/how-to-make-jetty-dynamically-load-static-pages -->
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+  <Call name="setInitParameter">
+    <Arg>org.eclipse.jetty.servlet.Default.useFileMappedBuffer</Arg>
+    <Arg>false</Arg>
+  </Call>
+</Configure>
