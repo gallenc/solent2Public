@@ -1,5 +1,6 @@
 package solent.ac.uk.ood.examples.swingcient;
 
+import solent.ac.uk.ood.examples.swingcient.gui.AppMainJFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,11 @@ public class MainApp {
 		System.out.println("MainApp started");
 		LOG.info("MainApp started");
 		TRANSACTIONLOG.info("MainApp started");
+                
+               // AppMainJFrame mainJFrame = new AppMainJFrame();
+              //  mainJFrame.pack();
+              //  mainJFrame.setVisible(true);
+ 
 		
 	}
 
