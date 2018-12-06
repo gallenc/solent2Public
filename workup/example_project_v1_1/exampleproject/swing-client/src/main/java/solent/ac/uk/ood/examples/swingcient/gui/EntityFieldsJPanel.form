@@ -25,28 +25,27 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabelfield_A" pref="74" max="32767" attributes="0"/>
                           <Component id="jLabelfield_B" max="32767" attributes="0"/>
                           <Component id="jLabelfield_C" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField_C" min="-2" pref="303" max="-2" attributes="0"/>
-                          <Component id="jTextField_B" min="-2" pref="303" max="-2" attributes="0"/>
-                          <Component id="jTextField_A" min="-2" pref="303" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jTextField_B" alignment="0" pref="112" max="32767" attributes="0"/>
+                          <Component id="jTextField_A" max="32767" attributes="0"/>
+                          <Component id="jTextField_C" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelfield_id" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jTextField_id" min="-2" pref="303" max="-2" attributes="0"/>
+                      <Component id="jTextField_id" min="-2" pref="112" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -9,13 +9,16 @@ package solent.ac.uk.ood.examples.swingcient.gui;
  *
  * @author cgallen
  */
-public class EntityListJPanel extends javax.swing.JPanel {
+public class EntityListScrollJpanel extends javax.swing.JPanel {
+    
+    private EntityListTableModel entityListTableModel = TableModelController.getTableModel();
 
     /**
-     * Creates new form EntityListJPanel
+     * Creates new form ScrollPanel1
      */
-    public EntityListJPanel() {
+    public EntityListScrollJpanel() {
         initComponents();
+        
     }
 
     /**
@@ -26,19 +29,22 @@ public class EntityListJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setDoubleBuffered(true);
+
+        jTable1.setModel(entityListTableModel);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
