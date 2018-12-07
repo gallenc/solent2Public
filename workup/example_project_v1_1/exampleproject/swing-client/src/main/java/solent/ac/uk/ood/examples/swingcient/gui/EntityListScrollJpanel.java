@@ -5,20 +5,56 @@
  */
 package solent.ac.uk.ood.examples.swingcient.gui;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author cgallen
  */
 public class EntityListScrollJpanel extends javax.swing.JPanel {
-    
-    private EntityListTableModel entityListTableModel = TableModelController.getTableModel();
+
+    private EntityListTableModel entityListTableModel = null;
+
+    /**
+     * Model controller allows data to be injected into the component
+     */
+    private ModelController m_modelController = null;
+
+    /**
+     * constructor which gives model controller to component
+     *
+     * @param modelController
+     */
+    public EntityListScrollJpanel(ModelController modelController) {
+        m_modelController = modelController;
+        entityListTableModel = modelController.getEntityListTableModel();
+        initComponents();
+
+        jTable1.setModel(entityListTableModel);
+
+        // list selected action
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                // do some actions here, for example
+                
+                //Ignore extra events sent for selections
+                if (event.getValueIsAdjusting()) {
+                    return;
+                }
+
+                String entityIdstr = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                m_modelController.tableItemSelected(entityIdstr);
+            }
+        });
+
+    }
 
     /**
      * Creates new form ScrollPanel1
      */
     public EntityListScrollJpanel() {
         initComponents();
-        
     }
 
     /**
@@ -35,7 +71,6 @@ public class EntityListScrollJpanel extends javax.swing.JPanel {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setDoubleBuffered(true);
 
-        jTable1.setModel(entityListTableModel);
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jTable1);
 

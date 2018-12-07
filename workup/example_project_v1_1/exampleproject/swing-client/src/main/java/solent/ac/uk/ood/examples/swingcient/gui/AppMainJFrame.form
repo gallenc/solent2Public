@@ -28,11 +28,19 @@
   </Layout>
   <SubComponents>
     <Component class="solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel" name="controlsJPanel1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel(modelController)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="// CUSTOM CODE injects modelController into panel"/>
+      </AuxValues>
     </Component>
     <Component class="solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel" name="entityListScrollJpanel1">
       <Properties>
         <Property name="autoscrolls" type="boolean" value="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel( modelController)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="// CUSTOM CODE injects modelController into panel"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

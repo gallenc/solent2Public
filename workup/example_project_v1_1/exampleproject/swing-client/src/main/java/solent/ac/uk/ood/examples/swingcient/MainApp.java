@@ -3,6 +3,7 @@ package solent.ac.uk.ood.examples.swingcient;
 import solent.ac.uk.ood.examples.swingcient.gui.AppMainJFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import solent.ac.uk.ood.examples.swingcient.gui.ModelController;
 
 public class MainApp {
 
@@ -17,10 +18,14 @@ public class MainApp {
         System.out.println("MainApp started");
         LOG.info("MainApp started");
         TRANSACTIONLOG.info("MainApp started");
+        
+        ModelController controller = new ModelController();
 
-        AppMainJFrame mainJFrame = new AppMainJFrame();
+        AppMainJFrame mainJFrame = new AppMainJFrame(controller);
         mainJFrame.pack();
         mainJFrame.setVisible(true);
+        
+        
         
         
 //        /* Create and display the form */

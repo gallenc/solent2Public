@@ -10,12 +10,28 @@ package solent.ac.uk.ood.examples.swingcient.gui;
  * @author cgallen
  */
 public class AppMainJFrame extends javax.swing.JFrame {
-
+    
     /**
+     * Model controller allows data to be injected into the component
+     */
+    private ModelController modelController =null;
+
+    
+        /**
      * Creates new form AppMainJFrame
      */
     public AppMainJFrame() {
-        initComponents();
+        // giving dummy data to display
+        this.modelController = new ModelController();
+        initComponents();        
+    }
+    
+    /**
+     * Creates new form AppMainJFrame
+     */
+    public AppMainJFrame(ModelController modelController) {
+        this.modelController = modelController;
+        initComponents();        
     }
 
     public static void main(String[] args) {
@@ -36,8 +52,10 @@ public class AppMainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        controlsJPanel1 = new solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel();
-        entityListScrollJpanel1 = new solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel();
+        // CUSTOM CODE injects modelController into panel
+        controlsJPanel1 = new solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel(modelController);
+        // CUSTOM CODE injects modelController into panel
+        entityListScrollJpanel1 = new solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel( modelController);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);

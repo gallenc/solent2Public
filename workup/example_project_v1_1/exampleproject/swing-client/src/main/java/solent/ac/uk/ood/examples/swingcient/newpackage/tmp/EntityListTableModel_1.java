@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.swingcient.gui;
+package solent.ac.uk.ood.examples.swingcient.newpackage.tmp;
 
 import javax.swing.table.AbstractTableModel;
 

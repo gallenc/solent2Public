@@ -47,18 +47,24 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Component class="java.awt.Button" name="button1">
+        <Component class="java.awt.Button" name="findMatchingButton">
           <Properties>
             <Property name="actionCommand" type="java.lang.String" value="findMatching"/>
             <Property name="label" type="java.lang.String" value="Find Matching"/>
             <Property name="name" type="java.lang.String" value="find" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findMatchingButtonActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="java.awt.Button" name="button2">
+        <Component class="java.awt.Button" name="clearSearchButton">
           <Properties>
             <Property name="actionCommand" type="java.lang.String" value="clearSearchButton"/>
             <Property name="label" type="java.lang.String" value="Clear Search"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearSearchButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -10,6 +10,22 @@ package solent.ac.uk.ood.examples.swingcient.gui;
  * @author cgallen
  */
 public class ControlsJPanel extends javax.swing.JPanel {
+    
+    /**
+     * Model controller allows data to be injected into the component
+     */
+    private ModelController modelController = null;
+
+    /**
+     * constructor which gives model controller to component
+     *
+     * @param modelController
+     */
+    public ControlsJPanel(ModelController modelController) {
+        this.modelController = modelController;
+        initComponents();
+
+    }
 
     /**
      * Creates new form EntityListJPanel
@@ -29,8 +45,8 @@ public class ControlsJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         entityFieldsJPanel1 = new solent.ac.uk.ood.examples.swingcient.gui.EntityFieldsJPanel();
         panel1 = new java.awt.Panel();
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
+        findMatchingButton = new java.awt.Button();
+        clearSearchButton = new java.awt.Button();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
@@ -41,25 +57,45 @@ public class ControlsJPanel extends javax.swing.JPanel {
         add(jPanel1);
 
         panel1.setMaximumSize(new java.awt.Dimension(102, 34));
-        panel1.setLayout(new java.awt.GridLayout());
+        panel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        button1.setActionCommand("findMatching");
-        button1.setLabel("Find Matching");
-        button1.setName("find"); // NOI18N
-        panel1.add(button1);
+        findMatchingButton.setActionCommand("findMatching");
+        findMatchingButton.setLabel("Find Matching");
+        findMatchingButton.setName("find"); // NOI18N
+        findMatchingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findMatchingButtonActionPerformed(evt);
+            }
+        });
+        panel1.add(findMatchingButton);
 
-        button2.setActionCommand("clearSearchButton");
-        button2.setLabel("Clear Search");
-        panel1.add(button2);
+        clearSearchButton.setActionCommand("clearSearchButton");
+        clearSearchButton.setLabel("Clear Search");
+        clearSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearSearchButtonActionPerformed(evt);
+            }
+        });
+        panel1.add(clearSearchButton);
 
         add(panel1);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clearSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearSearchButtonActionPerformed
+        // TODO add your handling code here:
+        modelController.clearSearch();
+    }//GEN-LAST:event_clearSearchButtonActionPerformed
+
+    private void findMatchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findMatchingButtonActionPerformed
+        // TODO add your handling code here:
+        modelController.findMatchingSearch();
+    }//GEN-LAST:event_findMatchingButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
+    private java.awt.Button clearSearchButton;
     private solent.ac.uk.ood.examples.swingcient.gui.EntityFieldsJPanel entityFieldsJPanel1;
+    private java.awt.Button findMatchingButton;
     private javax.swing.JPanel jPanel1;
     private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables

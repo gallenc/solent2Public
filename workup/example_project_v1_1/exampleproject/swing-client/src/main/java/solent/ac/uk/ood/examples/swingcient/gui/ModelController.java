@@ -7,20 +7,23 @@ package solent.ac.uk.ood.examples.swingcient.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import solent.ac.uk.ood.examples.model.Entity;
 
 /**
  *
  * @author cgallen
  */
-public class TableModelController {
+public class ModelController {
 
-    private static EntityListTableModel entityListTableModel = null;
+    private static final Logger LOG = LoggerFactory.getLogger(ModelController.class);
 
-    private static void initialiseTableModel() {
+    private EntityListTableModel entityListTableModel = null;
+
+    private void initialiseTableModel() {
 
         entityListTableModel = new EntityListTableModel();
-        // add a 3 entities
         List<Entity> elist = new ArrayList<Entity>();
 
         int ENTITY_NUMBER = 40;
@@ -35,9 +38,9 @@ public class TableModelController {
         entityListTableModel.setEntities(elist);
     }
 
-    public static EntityListTableModel getTableModel() {
+    public EntityListTableModel getEntityListTableModel() {
         if (entityListTableModel == null) {
-            synchronized (TableModelController.class) {
+            synchronized (ModelController.class) {
                 if (entityListTableModel == null) {
                     initialiseTableModel();
                 }
@@ -45,6 +48,20 @@ public class TableModelController {
         }
         return entityListTableModel;
 
+    }
+    
+
+
+    public void clearSearch() {
+        LOG.debug("clear search button pressed");
+    }
+
+    public void findMatchingSearch() {
+        LOG.debug("find matching button pressed");
+    }
+
+    public void tableItemSelected(String entityIdstr) {
+        LOG.debug("table entity id selected: " + entityIdstr);
     }
 
 }
