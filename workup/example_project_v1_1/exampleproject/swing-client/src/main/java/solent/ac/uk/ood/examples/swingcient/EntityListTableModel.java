@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.swingcient.gui;
+package solent.ac.uk.ood.examples.swingcient;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +17,11 @@ import solent.ac.uk.ood.examples.model.Entity;
  */
 public class EntityListTableModel extends AbstractTableModel {
 
-    List<Entity> entities = Collections.synchronizedList(new ArrayList<Entity>());
+    private List<Entity> entities = Collections.synchronizedList(new ArrayList<Entity>());
 
-    Entity e = new Entity();
+    private Entity e = new Entity();
 
-    boolean DEBUG = true;
+    private boolean DEBUG = true;
 
     private String[] columnNames = {"id", "Field_A", "Field_B", "Field_C"};
 
@@ -38,7 +38,8 @@ public class EntityListTableModel extends AbstractTableModel {
             this.entities.clear();
             this.entities.addAll(entities);
         }
-        fireTableStructureChanged();
+        //fireTableStructureChanged();
+        fireTableDataChanged();
     }
 
     @Override
@@ -58,7 +59,7 @@ public class EntityListTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-        if (row >= entities.size()) {
+        if ( row >= entities.size()) {
             return null;
         }
         Entity entity = entities.get(row);

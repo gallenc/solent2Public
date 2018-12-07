@@ -3,7 +3,8 @@ package solent.ac.uk.ood.examples.swingcient;
 import solent.ac.uk.ood.examples.swingcient.gui.AppMainJFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import solent.ac.uk.ood.examples.swingcient.gui.ModelController;
+import solent.ac.uk.ood.examples.dao.jaxbimpl.EntityDAOJaxbImpl;
+import solent.ac.uk.ood.examples.model.EntityDAO;
 
 public class MainApp {
 
@@ -19,22 +20,24 @@ public class MainApp {
         LOG.info("MainApp started");
         TRANSACTIONLOG.info("MainApp started");
         
-        ModelController controller = new ModelController();
+        String dataFileLocation = "./localDataFile.xml";
+        
+        EntityDAO entityDAO = new EntityDAOJaxbImpl(dataFileLocation) ;
+        
+        ModelController controller = new ModelControllerImpl(entityDAO);
 
-        AppMainJFrame mainJFrame = new AppMainJFrame(controller);
-        mainJFrame.pack();
-        mainJFrame.setVisible(true);
+//        AppMainJFrame mainJFrame = new AppMainJFrame(controller);
+//        mainJFrame.pack();
+//        mainJFrame.setVisible(true);
         
-        
-        
-        
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new AppMainJFrame().setVisible(true);
-//            }
-//        });
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AppMainJFrame(controller).setVisible(true);
+            }
+        });
 
     }
+
 
 }

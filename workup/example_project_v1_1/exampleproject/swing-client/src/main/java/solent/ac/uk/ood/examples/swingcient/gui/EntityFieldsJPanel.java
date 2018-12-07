@@ -8,6 +8,8 @@ package solent.ac.uk.ood.examples.swingcient.gui;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import solent.ac.uk.ood.examples.model.Entity;
 
 /**
@@ -16,13 +18,42 @@ import solent.ac.uk.ood.examples.model.Entity;
  */
 public class EntityFieldsJPanel extends javax.swing.JPanel {
 
-    Entity modelEntity = new Entity();
+    private static final Logger LOG = LoggerFactory.getLogger(EntityFieldsJPanel.class);
+
+    private Entity modelEntity = new Entity();
 
     public Entity getModelEntity() {
+
+        if ("".equals(jTextField_A.getText())) {
+            this.modelEntity.setField_A(null);
+        } else {
+            this.modelEntity.setField_A(jTextField_A.getText());
+        }
+
+        if ("".equals(jTextField_B.getText())) {
+            this.modelEntity.setField_B(null);
+        } else {
+            this.modelEntity.setField_B(jTextField_B.getText());
+        }
+
+        if ("".equals(jTextField_C.getText())) {
+            this.modelEntity.setField_C(null);
+        } else {
+            this.modelEntity.setField_C(jTextField_C.getText());
+        }
+
+        String intText = jTextField_id.getText();
+        try {
+            Integer id = Integer.parseInt(intText);
+            this.modelEntity.setId(id);
+        } catch (NumberFormatException e) {
+            // should not happen because checked 
+        }
         return modelEntity;
     }
 
     public void setModelEntity(Entity modelEntity) {
+        LOG.debug("setting model entity to " + modelEntity);
         this.modelEntity = modelEntity;
         jTextField_A.setText(this.modelEntity.getField_A());
         jTextField_B.setText(this.modelEntity.getField_B());
@@ -162,7 +193,7 @@ public class EntityFieldsJPanel extends javax.swing.JPanel {
 
     private void jTextField_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BActionPerformed
         // TODO add your handling code here:
-        this.modelEntity.setField_C(jTextField_B.getText());
+        this.modelEntity.setField_B(jTextField_B.getText());
     }//GEN-LAST:event_jTextField_BActionPerformed
 
     private void jTextField_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CActionPerformed
@@ -177,7 +208,7 @@ public class EntityFieldsJPanel extends javax.swing.JPanel {
             Integer id = Integer.parseInt(intText);
             this.modelEntity.setId(id);
         } catch (NumberFormatException e) {
-            // should not happen because checked 
+            this.modelEntity.setId(null); // should not happen because checked 
         }
         // cannot change id
     }//GEN-LAST:event_jTextField_idActionPerformed

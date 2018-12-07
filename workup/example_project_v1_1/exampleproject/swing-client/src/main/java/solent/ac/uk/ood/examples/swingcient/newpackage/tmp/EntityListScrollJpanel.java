@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.swingcient.gui;
+package solent.ac.uk.ood.examples.swingcient.newpackage.tmp;
 
+import solent.ac.uk.ood.examples.swingcient.ModelControllerDummyImpl;
+import solent.ac.uk.ood.examples.swingcient.EntityListTableModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -19,14 +21,14 @@ public class EntityListScrollJpanel extends javax.swing.JPanel {
     /**
      * Model controller allows data to be injected into the component
      */
-    private ModelController m_modelController = null;
+    private ModelControllerDummyImpl m_modelController = null;
 
     /**
      * constructor which gives model controller to component
      *
      * @param modelController
      */
-    public EntityListScrollJpanel(ModelController modelController) {
+    public EntityListScrollJpanel(ModelControllerDummyImpl modelController) {
         m_modelController = modelController;
         entityListTableModel = modelController.getEntityListTableModel();
         initComponents();
@@ -44,7 +46,7 @@ public class EntityListScrollJpanel extends javax.swing.JPanel {
                 }
 
                 String entityIdstr = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-                m_modelController.tableItemSelected(entityIdstr);
+                //m_modelController.findMatchingSearch(templateEntity);
             }
         });
 

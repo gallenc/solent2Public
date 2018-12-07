@@ -5,6 +5,9 @@
  */
 package solent.ac.uk.ood.examples.swingcient.gui;
 
+import solent.ac.uk.ood.examples.swingcient.ModelController;
+import solent.ac.uk.ood.examples.swingcient.ModelControllerDummyImpl;
+
 /**
  *
  * @author cgallen
@@ -22,7 +25,7 @@ public class AppMainJFrame extends javax.swing.JFrame {
      */
     public AppMainJFrame() {
         // giving dummy data to display
-        this.modelController = new ModelController();
+        this.modelController = new ModelControllerDummyImpl();
         initComponents();        
     }
     
@@ -34,15 +37,6 @@ public class AppMainJFrame extends javax.swing.JFrame {
         initComponents();        
     }
 
-    public static void main(String[] args) {
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AppMainJFrame().setVisible(true);
-            }
-        });
-    }
 
     /**
      * This method is called from within the constructor to initialize the form. WARNING: Do NOT modify this code. The content of this method is always
@@ -54,16 +48,11 @@ public class AppMainJFrame extends javax.swing.JFrame {
 
         // CUSTOM CODE injects modelController into panel
         controlsJPanel1 = new solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel(modelController);
-        // CUSTOM CODE injects modelController into panel
-        entityListScrollJpanel1 = new solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel( modelController);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(controlsJPanel1);
-
-        entityListScrollJpanel1.setAutoscrolls(true);
-        getContentPane().add(entityListScrollJpanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -71,6 +60,5 @@ public class AppMainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private solent.ac.uk.ood.examples.swingcient.gui.ControlsJPanel controlsJPanel1;
-    private solent.ac.uk.ood.examples.swingcient.gui.EntityListScrollJpanel entityListScrollJpanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,7 +45,7 @@
                     </execution>
                 </executions>
             </plugin>
-                        <!-- alternative onejar plugin -->
+            <!-- alternative onejar plugin -->
             <plugin>
                 <groupId>com.jolira</groupId>
                 <artifactId>onejar-maven-plugin</artifactId>
@@ -110,6 +110,12 @@
             <artifactId>exampleproject-rest-client</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>exampleproject-dao-jaxb</artifactId>
+            <version>${project.version}</version>
         </dependency>
         
         <!-- Jetty dependencies -->

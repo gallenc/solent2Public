@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.swingcient.gui;
+package solent.ac.uk.ood.examples.swingcient;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,9 @@ import solent.ac.uk.ood.examples.model.Entity;
  *
  * @author cgallen
  */
-public class ModelController {
+public class ModelControllerDummyImpl implements ModelController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ModelController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ModelControllerDummyImpl.class);
 
     private EntityListTableModel entityListTableModel = null;
 
@@ -38,9 +39,10 @@ public class ModelController {
         entityListTableModel.setEntities(elist);
     }
 
+    @Override
     public EntityListTableModel getEntityListTableModel() {
         if (entityListTableModel == null) {
-            synchronized (ModelController.class) {
+            synchronized (ModelControllerDummyImpl.class) {
                 if (entityListTableModel == null) {
                     initialiseTableModel();
                 }
@@ -52,16 +54,16 @@ public class ModelController {
     
 
 
+    @Override
     public void clearSearch() {
-        LOG.debug("clear search button pressed");
+        LOG.debug("clear search selected");
     }
 
-    public void findMatchingSearch() {
-        LOG.debug("find matching button pressed");
+    @Override
+    public void findMatchingSearch(Entity templateEntity) {
+        LOG.debug("find matching with templateEntity="+templateEntity);
     }
 
-    public void tableItemSelected(String entityIdstr) {
-        LOG.debug("table entity id selected: " + entityIdstr);
-    }
+
 
 }
