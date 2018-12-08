@@ -1,5 +1,5 @@
 # Week 10 Starting your project using an archetype
-This week we will look at ow you can go about creating your project.
+This week we will look at how you can go about creating your project.
 
 To help we have created an example project which illustrates all of the essential features which we have covered in class.
 
