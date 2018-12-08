@@ -1,4 +1,4 @@
-# Example Project Archetype 
+# Example Project Archetype version 1.1-SNAPSHOT
 
 This folder contains an example project which provides a simple example of all of the object orientated design done in class.
 
@@ -8,6 +8,8 @@ Using this archetype will enable you to quickly build and test the working skele
 
 To edit the model in the archetype you will neet to use the easyUML plugin in netbeans. 
 This was covered in week2 but instructions are also provide at the bottom of this page.
+
+(note to run this archetype use 1.1-SNAPSHOT)
 
 ## Using the Archetype
 The archetype is not included in maven central so to use the archetype, you must first build and install it locally
@@ -68,7 +70,7 @@ However subsequent to generating the initial archetype, it has been modified to 
 
 Once built the erdhetype can be invoked in an empty folder using
 ```
-mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:generate "-DarchetypeCatalog=local" "-DarchetypeArtifactId=example-project-archetype" "-DarchetypeGroupId=solent.ac.uk.ood.examples" "-DarchetypeVersion=1.0-SNAPSHOT"
+mvn org.apache.maven.plugins:maven-archetype-plugin:3.0.1:generate "-DarchetypeCatalog=local" "-DarchetypeArtifactId=example-project-archetype" "-DarchetypeGroupId=solent.ac.uk.ood.examples" "-DarchetypeVersion=1.1-SNAPSHOT"
 ```
 
 ### Import the easyUML plugin into netbeans
