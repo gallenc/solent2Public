@@ -173,6 +173,7 @@ public class ControlsJPanel extends javax.swing.JPanel {
 
     private void findMatchingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findMatchingButtonActionPerformed
         // TODO add your handling code here:
+        // see https://docs.oracle.com/javase/6/docs/api/javax/swing/SwingWorker.html
         LOG.debug("findMatchingButton selected ");
         Entity templateEntity = entityFieldsJPanel1.getModelEntity();
         jTable1.clearSelection();

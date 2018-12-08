@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <entityList>
-    <lastEntityId>2</lastEntityId>
-    <entities/>
+    <lastEntityId>4</lastEntityId>
+    <entities>
+        <entity>
+            <id>3</id>
+            <field_A>null</field_A>
+            <field_B>null</field_B>
+            <field_C>null</field_C>
+        </entity>
+        <entity>
+            <id>4</id>
+            <field_A>null</field_A>
+            <field_B>null</field_B>
+            <field_C>null</field_C>
+        </entity>
+    </entities>
 </entityList>

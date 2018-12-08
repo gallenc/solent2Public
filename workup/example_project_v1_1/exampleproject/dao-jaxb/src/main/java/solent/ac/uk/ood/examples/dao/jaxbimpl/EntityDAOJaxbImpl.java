@@ -60,7 +60,7 @@ public class EntityDAOJaxbImpl implements EntityDAO {
         }
         synchronized (Lock) {
             // set initial id if not set or increment by 1
-            Integer id = (entityList.getLastEntityId()==null) ? 1 : entityList.getLastEntityId() + 1;
+            Integer id = (entityList.getLastEntityId() == null) ? 1 : entityList.getLastEntityId() + 1;
 
             entityList.setLastEntityId(id);
             Entity ecopy = copy(entity);
