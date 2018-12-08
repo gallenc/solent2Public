@@ -38,4 +38,4 @@ nb-configuration.xml
 *.ear
 *.zip
 
-localDataFile.xml
+app-data.xml
