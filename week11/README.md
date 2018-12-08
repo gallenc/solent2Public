@@ -1,4 +1,4 @@
-# Week 11 Starting your project using an archetype
+# Week 11 Swing Gui Archetype
 
 Following from last week, the example project and maven archetype have now been extended to also generate a swing client similar to what you will need in your project.
 
