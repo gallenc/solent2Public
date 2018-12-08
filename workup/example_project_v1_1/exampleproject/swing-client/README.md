@@ -1,6 +1,6 @@
 # Swing Client
 This project contains an example java Swing client which contacts the ReST service to get its data. 
-The UI is illustated below.
+The UI is illustrated below.
 
 ![alt text](../swing-client/images/SwingClient.png "Figure SwingClient.png")
 
@@ -8,7 +8,7 @@ The client can access the ReST service on a scheduled basis controlled by values
 
 The client can also be forced to reload the data immediately using the Reload Source Data button.
 
-The data retrieved from the ReST service is stored locally (using a similar DAO to that used in the ReST service) so that the client will always be able to show the last data it retreived. 
+The data retrieved from the ReST service is stored locally (using a similar DAO to that used in the ReST service) so that the client will always be able to show the last data it retrieved. 
 
 (Please note that the id on the display is the local id and not the same id as in the source ReST service)
 
