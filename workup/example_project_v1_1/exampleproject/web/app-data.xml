@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <entityList>
-    <lastEntityId>4</lastEntityId>
+    <lastEntityId>7</lastEntityId>
     <entities>
         <entity>
             <id>3</id>
-            <field_A>null</field_A>
-            <field_B>null</field_B>
-            <field_C>null</field_C>
+            <field_A>aaa</field_A>
+            <field_B>bbb</field_B>
+            <field_C>ccc</field_C>
         </entity>
         <entity>
             <id>4</id>
-            <field_A>null</field_A>
-            <field_B>null</field_B>
-            <field_C>null</field_C>
+            <field_A>d</field_A>
+            <field_B>e</field_B>
+            <field_C>f</field_C>
+        </entity>
+        <entity>
+            <id>5</id>
+            <field_A>g</field_A>
+            <field_B>h</field_B>
+            <field_C>i</field_C>
+        </entity>
+        <entity>
+            <id>6</id>
+            <field_A>zzz</field_A>
+            <field_B>z</field_B>
+            <field_C>z</field_C>
+        </entity>
+        <entity>
+            <id>7</id>
+            <field_A>aaa</field_A>
+            <field_B>bbb</field_B>
+            <field_C>ccc</field_C>
         </entity>
     </entities>
 </entityList>

@@ -94,19 +94,18 @@ public class ControlsJPanel extends javax.swing.JPanel {
         buttonPanel1 = new java.awt.Panel();
         findMatchingButton = new java.awt.Button();
         clearSearchButton = new java.awt.Button();
+        reloadDataButton = new java.awt.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
         jPanel1.add(entityFieldsJPanel1);
 
-        add(jPanel1);
-
         buttonPanel1.setMaximumSize(new java.awt.Dimension(102, 34));
-        buttonPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        buttonPanel1.setLayout(new javax.swing.BoxLayout(buttonPanel1, javax.swing.BoxLayout.Y_AXIS));
 
         findMatchingButton.setActionCommand("findMatching");
         findMatchingButton.setLabel("Find Matching");
@@ -127,7 +126,21 @@ public class ControlsJPanel extends javax.swing.JPanel {
         });
         buttonPanel1.add(clearSearchButton);
 
-        add(buttonPanel1);
+        reloadDataButton.setActionCommand("reloadData");
+        reloadDataButton.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        reloadDataButton.setLabel("Reload Source Data");
+        reloadDataButton.setName("reloadData"); // NOI18N
+        reloadDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadDataButtonActionPerformed(evt);
+            }
+        });
+        buttonPanel1.add(reloadDataButton);
+        reloadDataButton.getAccessibleContext().setAccessibleName("");
+
+        jPanel1.add(buttonPanel1);
+
+        add(jPanel1);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,7 +194,7 @@ public class ControlsJPanel extends javax.swing.JPanel {
         SwingWorker worker = new SwingWorker<String, Void>() {
             @Override
             public String doInBackground() {
-                // TODO do search for matching items
+                // now redisplay data
                 m_modelController.findMatchingSearch(templateEntity);
                 return null;
             }
@@ -195,6 +208,32 @@ public class ControlsJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_findMatchingButtonActionPerformed
 
+    private void reloadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadDataButtonActionPerformed
+        LOG.debug("reload data button selected ");
+        // empty entity so load all data
+        Entity templateEntity = new Entity();
+        jTable1.clearSelection();
+        // running query in seperate thread 
+        SwingWorker worker = new SwingWorker<String, Void>() {
+            @Override
+            public String doInBackground() {
+                // TODO reload source data
+                m_modelController.forceReloadData();
+
+                // now redisplay data
+                m_modelController.findMatchingSearch(templateEntity);
+                return null;
+            }
+
+            @Override
+            public void done() {
+            }
+        };
+        worker.execute();
+
+
+    }//GEN-LAST:event_reloadDataButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Panel buttonPanel1;
@@ -204,5 +243,6 @@ public class ControlsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private java.awt.Button reloadDataButton;
     // End of variables declaration//GEN-END:variables
 }

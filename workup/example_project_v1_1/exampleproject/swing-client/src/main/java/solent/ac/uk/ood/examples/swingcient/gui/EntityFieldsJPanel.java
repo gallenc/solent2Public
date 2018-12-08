@@ -65,13 +65,14 @@ public class EntityFieldsJPanel extends javax.swing.JPanel {
 
     }
 
-    // Tests that ID is an integer
+    // Tests that ID is an integer or empty
     public class IntegerInputVerifier extends InputVerifier {
 
         @Override
         public boolean verify(JComponent input) {
             String text = ((JTextField) input).getText();
             try {
+                if (text.isEmpty()) return true;
                 Integer value = Integer.parseInt(text);
                 return true;
             } catch (NumberFormatException e) {
@@ -210,7 +211,6 @@ public class EntityFieldsJPanel extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             this.modelEntity.setId(null); // should not happen because checked 
         }
-        // cannot change id
     }//GEN-LAST:event_jTextField_idActionPerformed
 
 

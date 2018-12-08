@@ -20,14 +20,16 @@ import solent.ac.uk.ood.examples.swingcient.EntityClientLoader;
  *
  * @author cgallen
  */
-public class EntityClientLoaderTest {
+public class EntitySingleClientLoaderTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EntityClientLoaderTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EntitySingleClientLoaderTest.class);
 
-    public final String TEST_DATA_FILE_LOCATION = "target/testDaofile.xml";
+    public static final String TEST_DATA_FILE_LOCATION = "target/testDaofile.xml";
+
+    public static final String TEST_BASE_URL = "http://localhost:8680/";
 
     @Test
-    public void testClientLoader() {
+    public void testSingleClientLoader() {
 
         // delete test file at start of test
         File file = new File(TEST_DATA_FILE_LOCATION);
@@ -37,20 +39,21 @@ public class EntityClientLoaderTest {
         // create dao
         EntityDAO entityDAO = new EntityDAOJaxbImpl(TEST_DATA_FILE_LOCATION);
         assertTrue(file.exists());
-        
+
         List<Entity> list = entityDAO.retrieveAllEntities();
         assertTrue(list.isEmpty());
-        
 
         String baseUrl = "http://localhost:8680/";
 
         EntityClientLoader entityClientLoader = new EntityClientLoader(entityDAO, baseUrl);
-        
+
         // try to load from service
-        entityClientLoader.restClientRetrieveAll();
-        
+        boolean success = entityClientLoader.restClientRetrieveAll();
+        assertTrue(success);
+
         list = entityDAO.retrieveAllEntities();
-        LOG.debug("retreived enties = "+ list.size());
+        LOG.debug("retrieved enties = " + list.size());
 
     }
+
 }

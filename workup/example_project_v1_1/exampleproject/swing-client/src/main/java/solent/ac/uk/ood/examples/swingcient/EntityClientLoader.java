@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,10 @@ public class EntityClientLoader {
 
     private static final Logger LOG = LoggerFactory.getLogger(EntityClientLoader.class);
 
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    private ScheduledFuture<?> schedulerHandle = null;
+
     private EntityDAO entityDAO = null;
 
     private String baseUrl = "http://localhost:8680/";
@@ -34,6 +39,17 @@ public class EntityClientLoader {
 
     private RestClientJerseyImpl restClient = null;
 
+    private AtomicInteger totalClientRetrieveSuccessful = new AtomicInteger();
+    private AtomicInteger totalClientRetrieveTries = new AtomicInteger();
+
+    public int getTotalClientRetrieveTries() {
+        return totalClientRetrieveTries.get();
+    }
+
+    public int getTotalClientRetrieveSuccessful() {
+        return totalClientRetrieveSuccessful.get();
+    }
+
     public EntityClientLoader(EntityDAO entityDAO, String baseUrl) {
         this.entityDAO = entityDAO;
         this.baseUrl = baseUrl;
@@ -41,7 +57,7 @@ public class EntityClientLoader {
     }
 
     // synchronized so that can only run one call at a time
-    public synchronized void restClientRetrieveAll() {
+    public synchronized boolean restClientRetrieveAll() {
 
         Entity entityTempate = new Entity();
         // you could add a filter value here but leaving values null retrieves all values
@@ -67,6 +83,8 @@ public class EntityClientLoader {
                 for (Entity newEntity : entityList) {
                     entityDAO.createEntity(newEntity);
                 }
+
+                return true;
             } else {
                 LOG.error("problem retrieving entities from " + baseUrl
                         + " " + replyMessage.toString());
@@ -75,20 +93,68 @@ public class EntityClientLoader {
         } catch (Exception e) {
             LOG.error("problem retrieving entities from " + baseUrl, e);
         }
+        // some problem retreiving data
+        return false;
+    }
+
+    public synchronized void scheduleLoadData(Integer scheduleIntervalSeconds, Integer retryAttempts, Integer retryIntervalSeconds) {
+        if (scheduleIntervalSeconds == null) {
+            throw new IllegalArgumentException("scheduleIntervalSeconds cannot be null");
+        }
+        if (retryAttempts == null) {
+            throw new IllegalArgumentException("retryAttempts cannot be null");
+        }
+        if (retryIntervalSeconds == null) {
+            throw new IllegalArgumentException("retryIntervalSeconds cannot be null");
+        }
+        LOG.info("load data starting scheduleIntervalSeconds=" + scheduleIntervalSeconds
+                + " retryAttempts=" + retryAttempts
+                + " retryIntervalSecond=" + retryIntervalSeconds);
+        if (schedulerHandle == null) {
+
+            final Runnable loadData = new Runnable() {
+                public void run() {
+                    boolean keepTrying = true;
+                    int gettries = 0;
+
+                    while (keepTrying && gettries < retryAttempts) {
+                        gettries++;
+                        LOG.debug("retrieving data from service attempt:" + gettries);
+
+                        totalClientRetrieveTries.incrementAndGet();
+                        try {
+                            // try to retrieve data                 
+                            keepTrying = !restClientRetrieveAll();
+                            if (!keepTrying) {
+                                totalClientRetrieveSuccessful.getAndIncrement();
+                                LOG.debug("retrieving data successful. Total retrieve success=" + totalClientRetrieveSuccessful.get());
+                            } else {
+                                LOG.debug("retrieving data unsuccessful (Current retry=" + gettries
+                                        + ") Total try attempts " + totalClientRetrieveTries.get());
+                            }
+                            Thread.sleep(retryIntervalSeconds * 1000);
+                        } catch (InterruptedException ex) {
+                            keepTrying = false;
+                            LOG.debug("retrieving data interrupted");
+                        }
+                    }
+                    LOG.debug("retrieving data thread finished (Current retry=" + gettries + ")");
+                }
+
+            };
+            // scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)
+            schedulerHandle = scheduler.scheduleAtFixedRate(loadData, 0, scheduleIntervalSeconds, TimeUnit.SECONDS);
+            LOG.debug("load data scheduled");
+        }
 
     }
 
-    // todo
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    public synchronized void cancelLoadDataSchedule() {
+        LOG.debug("cancelling scheduled load");
+        if (schedulerHandle != null) {
+            schedulerHandle.cancel(true);
+            schedulerHandle = null;
+        }
 
-    public void scheduleLoadData() {
-        System.out.println("load data starting");
-        final Runnable loadData = new Runnable() {
-            public void run() {
-                System.out.println("load data");
-            }
-        };
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(loadData, 10, 10, SECONDS);
-        System.out.println("load data finished");
     }
 }

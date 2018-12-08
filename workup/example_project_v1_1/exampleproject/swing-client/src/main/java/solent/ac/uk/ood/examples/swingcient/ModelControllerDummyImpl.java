@@ -64,6 +64,11 @@ public class ModelControllerDummyImpl implements ModelController {
         LOG.debug("find matching with templateEntity="+templateEntity);
     }
 
+    @Override
+    public boolean forceReloadData() {
+        return false;
+    }
+
 
 
 }

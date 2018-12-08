@@ -19,4 +19,6 @@ public interface ModelController {
 
     EntityListTableModel getEntityListTableModel();
     
+    boolean forceReloadData();
+    
 }
