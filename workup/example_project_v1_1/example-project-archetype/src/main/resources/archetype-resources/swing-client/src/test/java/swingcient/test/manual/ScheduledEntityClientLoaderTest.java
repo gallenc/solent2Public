@@ -1,9 +1,12 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package solent.ac.uk.ood.examples.web.rest.client.test.manual;
+package ${package}.swingcient.test.manual;
 
 import java.io.File;
 import java.util.List;
@@ -11,10 +14,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import solent.ac.uk.ood.examples.dao.jaxbimpl.EntityDAOJaxbImpl;
-import solent.ac.uk.ood.examples.model.Entity;
-import solent.ac.uk.ood.examples.model.EntityDAO;
-import solent.ac.uk.ood.examples.swingcient.EntityClientLoader;
+import ${package}.dao.jaxbimpl.EntityDAOJaxbImpl;
+import ${package}.model.Entity;
+import ${package}.model.EntityDAO;
+import ${package}.swingcient.EntityClientLoader;
 
 /**
  *
