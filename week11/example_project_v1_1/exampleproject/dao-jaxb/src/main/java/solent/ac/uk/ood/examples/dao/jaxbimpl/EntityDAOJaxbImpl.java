@@ -124,7 +124,8 @@ public class EntityDAOJaxbImpl implements EntityDAO {
     }
 
     /**
-     * Returns a list of all Entities which match all of the set (i.e. not null) fields of entityTemplate
+     * Returns a list of all Entities which match all of the set (i.e. not null)
+     * fields of entityTemplate
      *
      * @param entityTemplate
      * @return
@@ -135,33 +136,35 @@ public class EntityDAOJaxbImpl implements EntityDAO {
             throw new IllegalArgumentException("entityTemplate cannot be null");
         }
         List<Entity> returnList = new ArrayList<Entity>();
-        for (Entity entity : entityList.getEntities()) {
-            boolean match = true;
-            if (entityTemplate.getId() != null) {
-                if (!entityTemplate.getId().equals(entity.getId())) {
-                    match = false;
+        synchronized (Lock) {
+            for (Entity entity : entityList.getEntities()) {
+                boolean match = true;
+                if (entityTemplate.getId() != null) {
+                    if (!entityTemplate.getId().equals(entity.getId())) {
+                        match = false;
+                    }
+                };
+                if (entityTemplate.getField_A() != null) {
+                    if (!entityTemplate.getField_A().equals(entity.getField_A())) {
+                        match = false;
+                    }
+                };
+                if (entityTemplate.getField_B() != null) {
+                    if (!entityTemplate.getField_B().equals(entity.getField_B())) {
+                        match = false;
+                    }
+                };
+                if (entityTemplate.getField_C() != null) {
+                    if (!entityTemplate.getField_C().equals(entity.getField_C())) {
+                        match = false;
+                    }
+                };
+                if (match) {
+                    returnList.add(copy(entity));
                 }
-            };
-            if (entityTemplate.getField_A() != null) {
-                if (!entityTemplate.getField_A().equals(entity.getField_A())) {
-                    match = false;
-                }
-            };
-            if (entityTemplate.getField_B() != null) {
-                if (!entityTemplate.getField_B().equals(entity.getField_B())) {
-                    match = false;
-                }
-            };
-            if (entityTemplate.getField_C() != null) {
-                if (!entityTemplate.getField_C().equals(entity.getField_C())) {
-                    match = false;
-                }
-            };
-            if (match) {
-                returnList.add(copy(entity));
             }
-        };
-        return returnList;
+            return returnList;
+        }
     }
 
     @Override
@@ -200,7 +203,8 @@ public class EntityDAOJaxbImpl implements EntityDAO {
     }
 
     /**
-     * copies new Entity data transfer objects to create detached object and so avoid problems with indirect object modification
+     * copies new Entity data transfer objects to create detached object and so
+     * avoid problems with indirect object modification
      *
      * @param entity
      * @return independent copy of Entity
