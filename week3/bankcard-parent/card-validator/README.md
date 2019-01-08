@@ -1,4 +1,4 @@
-# card-main
+# card-validator
 
 In this exercise you will extend and complete the classes in card-main so that the whole project builds.
 
