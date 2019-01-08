@@ -11,4 +11,4 @@ Before looking at the overall project, we will begin by looking at the use cases
 
 once you have understood the use cases you can proceed to do the exercises in card-main
 
-[week3/bankcard-parent/card-main](../week3/bankcard-parent/card-main)
+[week3/bankcard-parent/card-validator](../week3/bankcard-parent/card-validator)
