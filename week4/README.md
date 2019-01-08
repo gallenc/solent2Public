@@ -26,7 +26,7 @@ If the cvv is valid, the gateway attemptsto transfer the money between the card 
 
 If the card owner does not have enough money in their account the transaction fails.
 
-A response is sent back to the card machien indicating transaction success or failuer and a reason code for failure if reqired.
+A response is sent back to the card machine indicating transaction success or failure and a reason code for failure if reqired.
 
 The transaction success or failure is logged in the local card machine.
 
