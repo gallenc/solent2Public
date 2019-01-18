@@ -19,31 +19,33 @@
         <maven.surefire.plugin.version>2.18</maven.surefire.plugin.version>
     </properties>
     
+    <build></build>
+     
     <dependencyManagement>
    
         <dependencies>
 
-        <!-- Jersey jetty dependencies -->
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-jetty-http</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
+            <!-- Jersey jetty dependencies -->
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-jetty-http</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet-core</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
 
 
             <!-- Logging -->
@@ -86,15 +88,15 @@
                 <artifactId>hamcrest-core</artifactId>
                 <version>${hamcrest-core.version}</version>
             </dependency>
-         </dependencies>
+        </dependencies>
     </dependencyManagement>
     
-  <modules>
-    <module>model</module>
-    <module>dao-jaxb</module>
-    <module>service</module>
-    <module>web</module>
-    <module>rest-client</module>
-    <module>swing-client</module>
-  </modules>
+    <modules>
+        <module>model</module>
+        <module>dao-jaxb</module>
+        <module>service</module>
+        <module>web</module>
+        <module>rest-client</module>
+        <module>swing-client</module>
+    </modules>
 </project>
