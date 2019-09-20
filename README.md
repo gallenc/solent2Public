@@ -6,13 +6,17 @@ The repository contains a number of example projects, weekly exercises and an ar
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
-[maven-setup](../master/maven-setup) This contains scripts to help you set the java class path and install maven.
+[maven-setup](../master/maven-setup) This contains scripts to help you set the java class path and install maven if necessary.
 
 [week1](../master/week1/) Initial exercises for the course.
 
-## Getting Started
+PLEASE NOTE that the class PC's should now have maven pre-installed so these steps in [maven-setup](../master/maven-setup) not necessary on all machines. 
+
+
+## Getting Started with GIT
 Before doing anything else you will need to follow these getting started instructions.
 This will teach you a little bit about git and how to fork a copy of this repository into your own github account.
+
 You will then be able to clone your fork locally and then follow the instructions in the [maven-setup](../master/week1/maven-setup) project to get javac and maven working. 
 After this you can then proceed to doing the exercises in [week1](../master/week1/).
 
@@ -79,7 +83,7 @@ You can see how to open projects in this repo using gthe Netbeans IDE in the exe
 
 [maven-test-exercise](../master/week1/maven-test-exercise)
 
-### .git and .gitignore
+### hidden files .git and .gitignore
 You should set the view on your windows file explorer to show hidden files and file extensions. 
 This will allow you to see git and IDE specific files which are otherwise hidden.
 
@@ -89,10 +93,15 @@ The rest of the files under solent2Public are the currently checked out versions
 
 You will also notice that many of the projects in this repo have a .gitignore file.
 This tells git to ignore certain directories or files when committing changes.
+.gitignore files inherit from .gitignore files further up the class path. This allows you to have a generic .gitignore and a more specific one in a nested folder to specify project specific files you don't want to check in in. 
 
 It is VERY important to ensure that, in particular 'target', directories are NOT checked into git as this would fill your repository up with unnecessary class and jar files.
 
 You should also ensure that in most cases IDE specific sub folders and files are not checked in to git as this will cause confusion if you change or upgrade your IDE. Your ide will read the maven pom.xml file and recreate these folders locally if necessary.
+
+The example [.gitignore](../master/.gitignore)  should be suitable for most purposes and should be copied into the top level of your git repository.
+
+
 
 ### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.

@@ -38,5 +38,3 @@ nb-configuration.xml
 *.ear
 *.zip
 
-/week8/bankcard-parent/card-web/accounts-data.xml
-/workup/example_project_v1_1/exampleproject/swing-client/localDataFile.xml

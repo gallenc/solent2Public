@@ -24,8 +24,16 @@ https://netbeans.org/
 
 The class PC's should have Netbeans 8.2 already installed.
 
+PLEASE NOTE that the class PC's should now have maven and JDK 8 pre-installed on the class path  so these steps are not necessary on all machines. 
+To check if it is set up this type open a command window (cmd.exe) and type
+```
+mvn clean install
+```
+
+If mvn is not found, you are working in a machine without maven but you can follow this procedure.
+
 The class PC's have JDK 8 installed but do not have the java JDK class path correctly set up so you cannot call javac from the command line. 
-Unfortunately by default the class PC's also do not have apache maven installed. 
+Unfortunately by default the class PC's also do not all have apache maven installed. 
 
 We need access to the JDK and maven for this class, so I have provided a script to help.
 This script will download a copy of maven to the maven directory and include it with the java JDK on your class path.
@@ -48,6 +56,8 @@ javac -version
 ```
 For all of the class exercises you will need to open a command prompt and run this script first. 
 Then use this command window to run the exercises. (i.e. run the script in this folder and then cd to the folder where you are doing the exercise).
+
+(Please note that if Solent IT update the JDK, the script may need to be changed to reference the correct JDK folder on the class path).
 
 # Using Powershell
 if you are usign powershell instead of cmd.exe, the maven-script.bat doesn't change the environment after it completes.
