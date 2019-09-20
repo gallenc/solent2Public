@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
-import org.solent.com504.factoryandfacade.springimpl.AnimalObjectFactorySpring;
+import org.solent.com504.factoryandfacade.springimpl.AnimalObjectFactorySpringImpl;
 
 public class AnimalObjectFactorySpringTest {
 
     @Test
     public void testCreateCat() {
-        Animal animal1 = AnimalObjectFactorySpring.createCat();
+        Animal animal1 = AnimalObjectFactorySpringImpl.createCat();
         assertNotNull(animal1);
 
         String sound = animal1.getSound();
@@ -21,7 +21,7 @@ public class AnimalObjectFactorySpringTest {
 
         animal1.setName("kitcat");
 
-        Animal animal2 = AnimalObjectFactorySpring.createDog();
+        Animal animal2 = AnimalObjectFactorySpringImpl.createDog();
         assertNotNull(animal2);
 
         animal2.setName("kiki");
@@ -35,7 +35,7 @@ public class AnimalObjectFactorySpringTest {
 
     @Test
     public void testCreateDog() {
-        Animal animal1 = AnimalObjectFactorySpring.createDog();
+        Animal animal1 = AnimalObjectFactorySpringImpl.createDog();
         assertNotNull(animal1);
 
         String sound = animal1.getSound();
@@ -46,7 +46,7 @@ public class AnimalObjectFactorySpringTest {
 
         animal1.setName("fido");
 
-        Animal animal2 = AnimalObjectFactorySpring.createDog();
+        Animal animal2 = AnimalObjectFactorySpringImpl.createDog();
         assertNotNull(animal2);
 
         animal2.setName("bonzo");
@@ -59,7 +59,7 @@ public class AnimalObjectFactorySpringTest {
 
     @Test
     public void testCreateCow() {
-        Animal animal1 = AnimalObjectFactorySpring.createCow();
+        Animal animal1 = AnimalObjectFactorySpringImpl.createCow();
         assertNotNull(animal1);
 
         String sound = animal1.getSound();
@@ -70,7 +70,7 @@ public class AnimalObjectFactorySpringTest {
 
         animal1.setName("ermantrude");
 
-        Animal animal2 = AnimalObjectFactorySpring.createDog();
+        Animal animal2 = AnimalObjectFactorySpringImpl.createDog();
         assertNotNull(animal2);
 
         animal2.setName("milkme");
@@ -84,10 +84,10 @@ public class AnimalObjectFactorySpringTest {
 
     @Test
     public void testCreateFarmFacade() {
-        FarmFacade farmFacade1 = AnimalObjectFactorySpring.getFarmFacade();
+        FarmFacade farmFacade1 = AnimalObjectFactorySpringImpl.getFarmFacade();
         assertNotNull(farmFacade1);
         
-        FarmFacade farmFacade2 = AnimalObjectFactorySpring.getFarmFacade();
+        FarmFacade farmFacade2 = AnimalObjectFactorySpringImpl.getFarmFacade();
         assertNotNull(farmFacade2);
         
         // both references should reference the same class as a singleton

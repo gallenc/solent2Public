@@ -9,7 +9,7 @@ import org.solent.com504.factoryandfacade.model.FarmFacade;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AnimalObjectFactorySpring {
+public class AnimalObjectFactorySpringImpl {
     // for more info on spring see https://www.mkyong.com/spring3/spring-3-hello-world-example/
 
     // loads at startup and is never changed
