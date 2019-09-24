@@ -1,11 +1,11 @@
-Week 10 - Polymorphism
+# This exercise is adapted from COM 405 Week 10 - Polymorphism
 
-This week the tasks are simple in structure
+Ratehr than build a GUI, we will simply create a model and tests which test the model
 
-You will need to look back at the past programs you have written during this unit and practice testing them using JUnit.
+To see the use case look at  [Week 10 PolymorphismGuidance.pdf](../revisionCOM405/Week_10_PolymorphismGuidance.pdf)
 
-Tasks that you may consider creating test classes for:
+THe model has already been created for you and you can see it here
 
-    Passengers on a bus (Aggregation and Arrays)
-    The toll bridge (Polymorphism)
-    Your first assignment - The Kennel Company (I would advise creating a duplicate version and practicing on that)
+To remind yourself about polymorphism see  [Week 10 PolymorphismGuidance.pdf](../revisionCOM405/Week_10_PolymorphismGuidance.pdf)
+
+To remind yourself about Junit testing see  [Week 10 PolymorphismGuidance.pdf](../revisionCOM405/Week_11_TestJunitGuidance.pdf)
