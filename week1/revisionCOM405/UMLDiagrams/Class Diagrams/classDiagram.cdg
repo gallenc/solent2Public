@@ -2,22 +2,22 @@
 
 <ClassDiagram name="classDiagram">
   <ClassDiagramComponents>
-    <Class name="Motorbike" package="solent.ac.uk.ood.examples.week11.model" visibility="public" xPosition="149.0" yPosition="257.0">
+    <Class name="Motorbike" package="solent.ac.uk.ood.examples.week10.model" visibility="public" xPosition="149.0" yPosition="257.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Car" package="solent.ac.uk.ood.examples.week11.model" visibility="public" xPosition="413.0" yPosition="257.0">
+    <Class name="Car" package="solent.ac.uk.ood.examples.week10.model" visibility="public" xPosition="413.0" yPosition="257.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Lorry" package="solent.ac.uk.ood.examples.week11.model" visibility="public" xPosition="656.0" yPosition="257.0">
+    <Class name="Lorry" package="solent.ac.uk.ood.examples.week10.model" visibility="public" xPosition="656.0" yPosition="257.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Vehicle" package="solent.ac.uk.ood.examples.week11.model" visibility="public" isAbstract="true" xPosition="413.0" yPosition="56.0">
+    <Class name="Vehicle" package="solent.ac.uk.ood.examples.week10.model" visibility="public" isAbstract="true" xPosition="413.0" yPosition="56.0">
       <Fields>
         <Field name="weight" type="Double" visibility="private"/>
         <Field name="registration" type="String" visibility="private"/>
@@ -27,7 +27,7 @@
         <Method name="calculateFee" returnType="Double" visibility="public" isAbstract="true"/>
       </Methods>
     </Class>
-    <Class name="Bridge" package="solent.ac.uk.ood.examples.week11.model" visibility="public" xPosition="27.0" yPosition="36.0">
+    <Class name="Bridge" package="solent.ac.uk.ood.examples.week10.model" visibility="public" xPosition="16.0" yPosition="21.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -39,12 +39,13 @@
           <Argument type="String" name="registration"/>
         </Method>
         <Method name="numberOfVehicles" returnType="int" visibility="public"/>
+        <Method name="calcTotalCost" returnType="Double" visibility="public"/>
       </Methods>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="solent.ac.uk.ood.examples.week11.model.Lorry" target="solent.ac.uk.ood.examples.week11.model.Vehicle"/>
-    <IsRelation name="is" source="solent.ac.uk.ood.examples.week11.model.Car" target="solent.ac.uk.ood.examples.week11.model.Vehicle"/>
-    <IsRelation name="is" source="solent.ac.uk.ood.examples.week11.model.Motorbike" target="solent.ac.uk.ood.examples.week11.model.Vehicle"/>
+    <IsRelation name="is" source="solent.ac.uk.ood.examples.week10.model.Motorbike" target="solent.ac.uk.ood.examples.week10.model.Vehicle"/>
+    <IsRelation name="is" source="solent.ac.uk.ood.examples.week10.model.Car" target="solent.ac.uk.ood.examples.week10.model.Vehicle"/>
+    <IsRelation name="is" source="solent.ac.uk.ood.examples.week10.model.Lorry" target="solent.ac.uk.ood.examples.week10.model.Vehicle"/>
   </ClassDiagramRelations>
 </ClassDiagram>

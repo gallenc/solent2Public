@@ -4,6 +4,8 @@ public class Motorbike extends Vehicle {
 
     @Override
     public Double calculateFee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Motorbikes pay a fixed fee of £3.00
+        return 3.00;
+
     }
 }
