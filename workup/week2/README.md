@@ -12,7 +12,7 @@ You will then look at how to generate skeleton code from UML class diagrams in N
 
 Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
 
-=======
-## Exercise - factoryAndFacade
+## Exercise - factoryAndFacade2
+A more advanced example is provided here where the factory completely isolates the client from choosing which underlying implementation classes to use. 
 
-Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
+Look at the  [factoryandfacade](../week2/factoryandfacade2) example.
