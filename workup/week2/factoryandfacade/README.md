@@ -145,7 +145,9 @@ https://docs.spring.io/spring/docs/5.1.9.RELEASE/spring-framework-reference/
 Spring is very powerful and can become very bound into your project if you use all of it's features. 
 We will be limiting our use to basic dependency injection simply to help us construct our tests.
 
+Exercise 4 A more advanced example factoryandfacade2
 
+Import the factoryandfacade2 maven project into your workspace and run the tests.
 
 
 
