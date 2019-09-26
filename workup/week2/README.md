@@ -9,10 +9,7 @@
 
 In this exercise you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface. 
 You will then look at how to generate skeleton code from UML class diagrams in Netbeans.
+Finally you will look at a more complex example which completely seperates the client from the implementation classes.
 
 Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
 
-## Exercise - factoryAndFacade2
-A more advanced example is provided here where the factory completely isolates the client from choosing which underlying implementation classes to use. 
-
-Look at the  [factoryandfacade2](../week2/factoryandfacade2) example.
