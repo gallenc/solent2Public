@@ -1,11 +1,7 @@
 package org.solent.com504.factoryandfacade.impl;
 
-import java.util.Arrays;
 import java.util.List;
 import org.solent.com504.factoryandfacade.model.Animal;
-import org.solent.com504.factoryandfacade.model.Cat;
-import org.solent.com504.factoryandfacade.model.Cow;
-import org.solent.com504.factoryandfacade.model.Dog;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
 import org.springframework.context.ApplicationContext;

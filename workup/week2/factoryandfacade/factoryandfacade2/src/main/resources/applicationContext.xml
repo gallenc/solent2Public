@@ -19,8 +19,6 @@
     <!-- This scope is the default value if no other scope is specified.  --> 
     
     <!-- list of supported animal types -->
-
-    
     <bean id="supportedAnimalTypes" class="java.util.ArrayList">
         <constructor-arg>
             <list>
