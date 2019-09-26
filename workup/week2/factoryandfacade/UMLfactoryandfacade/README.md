@@ -21,5 +21,5 @@ The following uml diagram extends the factory to include a facade.
 
 A more advanced example is provided below which is implemented in the factoryandfacade2 project
 
-![alt text](../UMLfactoryandfacade/facadediagram2.png "Figure facadediagram2.png")
+![alt text](../UMLfactoryandfacade/facadediagram2.png "Figure facadediagram2.png"  | width=200 )
 
