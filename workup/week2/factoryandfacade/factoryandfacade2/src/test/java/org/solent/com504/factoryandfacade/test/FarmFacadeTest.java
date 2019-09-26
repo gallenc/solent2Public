@@ -24,19 +24,26 @@ import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
 public class FarmFacadeTest {
 
     FarmObjectFactory farmObjectFactory = null;
+
     List<String> supportedAnimalTypes = null;
+
+    // used by spring tests
+    public void setFarmObjectFactory(FarmObjectFactory farmObjectFactory) {
+        this.farmObjectFactory = farmObjectFactory;
+    }
 
     @Before
     public void loadFactory() {
         farmObjectFactory = new FarmObjectFactoryImpl();
-        supportedAnimalTypes = farmObjectFactory.getSupportedAnimalTypes();
+
     }
 
     @Test
     public void testFactory() {
-
+        System.out.println("FarmFacadeTest testFactory");
         assertNotNull(farmObjectFactory);
 
+        supportedAnimalTypes = farmObjectFactory.getSupportedAnimalTypes();
         assertNotNull(supportedAnimalTypes);
         assertEquals(3, supportedAnimalTypes.size());
 
@@ -54,7 +61,10 @@ public class FarmFacadeTest {
 
     @Test
     public void testFarmFacade() {
+        System.out.println("FarmFacadeTest testFarmFacade");
         assertNotNull(farmObjectFactory);
+
+        supportedAnimalTypes = farmObjectFactory.getSupportedAnimalTypes();
         assertNotNull(supportedAnimalTypes);
         FarmFacade farmFacade = farmObjectFactory.createFarmFacade();
 
@@ -70,7 +80,7 @@ public class FarmFacadeTest {
         List<Animal> allAnimals = farmFacade.getAllAnimals();
         assertEquals(9, allAnimals.size());
         for (Animal animal : allAnimals) {
-            System.out.println("facade Animal:"+animal);
+            System.out.println("facade Animal:" + animal);
         }
 
         List<Animal> cats = farmFacade.getAnimalsOfType(Cat.ANIMAL_TYPE);
