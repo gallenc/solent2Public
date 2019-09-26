@@ -1,5 +1,5 @@
 
-# Exercise 1 factoryAndFacade
+# Exercise 1 Introduction to Factories And Facades
 
 In this exercise you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface. 
 You will then look at how to generate skeleton code from UML class diagrams in Netbeans.
@@ -140,7 +140,7 @@ Use cases for Dependency Injection include;
 The Spring Framework is one of the most widely used dependency injection frameworks and we will be using Spring in our examples. 
 
 Spring documentation is available here 
-https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/
+https://docs.spring.io/spring/docs/5.1.9.RELEASE/spring-framework-reference/
 
 Spring is very powerful and can become very bound into your project if you use all of it's features. 
 We will be limiting our use to basic dependency injection simply to help us construct our tests.
