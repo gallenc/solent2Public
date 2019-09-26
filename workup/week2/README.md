@@ -15,4 +15,4 @@ Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
 ## Exercise - factoryAndFacade2
 A more advanced example is provided here where the factory completely isolates the client from choosing which underlying implementation classes to use. 
 
-Look at the  [factoryandfacade](../week2/factoryandfacade2) example.
+Look at the  [factoryandfacade2](../week2/factoryandfacade2) example.
