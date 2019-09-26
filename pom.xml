@@ -30,5 +30,6 @@
         <module>week1/factoryandfacade/factoryandfacade</module>
         <module>week1/factoryandfacade/mavenproject1</module>
         <module>workup/hotellock</module>
+        <module>workup/week2/mavenproject1</module>
     </modules>
 </project>
