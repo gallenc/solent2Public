@@ -31,11 +31,14 @@ The draw.io xml files and their related .png images are in the drawio folder.
 
 These are also referenced below;
 
-Bridge use case
-![alt text](../UMLfactoryandfacade/drawio/factorydiagram.png "Figure factorydiagram.png")
+Farm use case
+![alt text](../UMLfactoryandfacade/drawio/farm-usecase-drawio.png "Figure farm-usecase-drawio.png")
 
-Bridge Robustness diagram
+Farm Robustness Diagram
+![alt text](../UMLfactoryandfacade/drawio/farm-robustness-drawio.png "Figure farm-robustness-drawio.png")
 
+Farm Sequence Diagram
+![alt text](../UMLfactoryandfacade/drawio/farm-sequence-drawio.png "Figure farm-sequence-drawio.png")
 
 
 
