@@ -30,7 +30,10 @@ The example class illustrates how the ArrayList is an implementation of the List
 
 You can use raw Lists to store any java object.
  
-Generics can be added to a list declaration (e.g. List<Animal>) to tell the compiler that you will only ever put Animal classes into the list. 
+Generics can be added to a list declaration e.g. 
+```List<Animal>
+```
+to tell the compiler that you will only ever put Animal classes into the list. 
 The compiler checks all usages of the list and casts the retrieved objects automatically. 
 
 Note that Generics are implemented using 'Type Erasure' which means that only the compiler knows about and checks the generic values. 
@@ -148,6 +151,10 @@ We will be limiting our use to basic dependency injection simply to help us cons
 Exercise 4 A more advanced example factoryandfacade2
 
 Import the factoryandfacade2 maven project into your workspace and run the tests.
+
+This has two factory implementations; one based on simple java new calls and one based on spring.
+
+For both of these factory implementations, Add an additional animal to the object factory and modify the tests in factoryandfacade2
 
 
 
