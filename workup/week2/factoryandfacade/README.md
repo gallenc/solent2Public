@@ -7,9 +7,9 @@ You will then look at how to generate skeleton code from UML class diagrams in N
 ### 1. Setup
    Import the [factoryandfacade](../factoryandfacade/factoryandfacade) maven project into your workspace.
 
-### 2. Look at the ExampleCollectionsTest.java file.
+### 2. Look Lists and Generics in ExampleCollectionsTest.java file.
 
-This ExampleCollectionsTest.java file contains a very brief introduction to java Generics and Java collections. 
+The [ExampleCollectionsTest.java](../factoryandfacade/src/test/java/org/solent/com504/factoryandfacade/test/ExampleCollectionsTest.java) file contains a very brief introduction to java Generics and Java collections. 
 
 Run the class in the IDE by right clicking on the class and selecting 'Test File'.
 
@@ -30,10 +30,9 @@ The example class illustrates how the ArrayList is an implementation of the List
 
 You can use raw Lists to store any java object.
  
-Generics can be added to a list declaration e.g. 
+Generics can be added to a List declaration e.g. 
 ```
-List<Animal>()
-
+List<Animal>
 ```
 to tell the compiler that you will only ever put Animal classes into the list. 
 The compiler checks all usages of the list and casts the retrieved objects automatically. 
