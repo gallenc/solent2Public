@@ -31,15 +31,15 @@ The draw.io xml files and their related .png images are in the drawio folder.
 
 These are also referenced below;
 
-###Farm use case
+### Farm use case
 
 ![alt text](../UMLfactoryandfacade/drawio/farmUseCase_draw_io.png "Figure farmUseCase_draw_io.png")
 
-###Farm Robustness Diagram
+### Farm Robustness Diagram
 
 ![alt text](../UMLfactoryandfacade/drawio/farm-robustness-drawio.png "Figure farm-robustness-drawio.png")
 
-###Farm Sequence Diagram
+### Farm Sequence Diagram
 
 ![alt text](../UMLfactoryandfacade/drawio/farm-sequence-drawio.png "Figure farm-sequence-drawio.png")
 
