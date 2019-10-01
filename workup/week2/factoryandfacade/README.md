@@ -31,7 +31,9 @@ The example class illustrates how the ArrayList is an implementation of the List
 You can use raw Lists to store any java object.
  
 Generics can be added to a list declaration e.g. 
-```List<Animal>
+```
+List<Animal>()
+
 ```
 to tell the compiler that you will only ever put Animal classes into the list. 
 The compiler checks all usages of the list and casts the retrieved objects automatically. 
@@ -148,7 +150,7 @@ https://docs.spring.io/spring/docs/5.1.9.RELEASE/spring-framework-reference/
 Spring is very powerful and can become very bound into your project if you use all of it's features. 
 We will be limiting our use to basic dependency injection simply to help us construct our tests.
 
-Exercise 4 A more advanced example factoryandfacade2
+# Exercise 4 A more advanced example factoryandfacade2
 
 Import the factoryandfacade2 maven project into your workspace and run the tests.
 
