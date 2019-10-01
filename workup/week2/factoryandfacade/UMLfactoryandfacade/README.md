@@ -1,9 +1,9 @@
-## Abstract Factory
+## Abstract Factory UML
 The abstract factory pattern is a design pattern that allows for the creation of groups of related objects without the requirement of specifying the exact concrete classes that will be used. One of a number of factory classes generates the object sets.
 
 The following is a diagram illustrating a simple factory
 
-![alt text](../UMLfactoryandfacade/factorydiagram.png "Figure factorydiagram.png")
+![alt text](../UMLfactoryandfacade/images/factorydiagram.png "Figure factorydiagram.png")
 
 ## Facade Pattern
 
@@ -15,11 +15,27 @@ Gamma, Erich.; Helm, Richard.; Johnson, Ralph.; Vlissides, John.
 
 The following uml diagram extends the factory to include a facade. 
 
-![alt text](../UMLfactoryandfacade/facadediagram.png "Figure facadediagram.png")
+![alt text](../UMLfactoryandfacade/images/facadediagram.png "Figure facadediagram.png")
 
 ## More advanced Facade Pattern
 
 A more advanced example is provided below which is implemented in the factoryandfacade2 project
 
-![alt text](../UMLfactoryandfacade/facadediagram2.png "Figure facadediagram2.png" )
+![alt text](../UMLfactoryandfacade/images/facadediagram2.png "Figure facadediagram2.png" )
+
+## Use Cases and Robustness Diagrams
+
+We can use draw.io https://www.draw.io/ to draw other UML diagrams such as Use Cases, Robustness diagrams and Sequence diagrams. 
+
+The draw.io xml files and their related .png images are in the drawio folder. 
+
+These are also referenced below;
+
+Bridge use case
+![alt text](../UMLfactoryandfacade/drawio/factorydiagram.png "Figure factorydiagram.png")
+
+Bridge Robustness diagram
+
+
+
 

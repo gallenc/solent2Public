@@ -5,11 +5,9 @@
  */
 package org.solent.com504.factoryandfacade.test;
 
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.factoryandfacade.impl.FarmObjectFactoryImpl;
 import org.solent.com504.factoryandfacade.impl.FarmObjectFactorySpringImpl;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
 
