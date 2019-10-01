@@ -7,7 +7,7 @@ You will then look at how to generate skeleton code from UML class diagrams in N
 ### 1. Setup
    Import the [factoryandfacade](../factoryandfacade/factoryandfacade) maven project into your workspace.
 
-### 2. Look Lists and Generics in ExampleCollectionsTest.java file.
+### 2. Look at Lists and Generics in ExampleCollectionsTest.java file.
 
 The [ExampleCollectionsTest.java](../factoryandfacade/factoryandfacade/src/test/java/org/solent/com504/factoryandfacade/test/ExampleCollectionsTest.java) file contains a very brief introduction to java Generics and Java collections. 
 
@@ -42,6 +42,11 @@ The compiled byte code looses all of this information and simply has the list of
 This preserves backwards compatibility to java versions before 1.5 when generics were introduced.
 
 ### 3. Now look at the rest of the example code in the factoryandfacade project
+
+The image of the class diagram for this project is in the project [factoryandfacadeUML](../factoryandfacade/factoryandfacadeUML/) 
+
+have a look at the class diagram before looking at the code.
+
 If you do a maven build of the project you will see that the tests in FarmFacadeTest.java fail.
 This is because you haven't implemented the FarmFacade interface.
 You now need to complete the missing code to complete the project.
