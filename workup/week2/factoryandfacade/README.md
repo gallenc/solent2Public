@@ -9,7 +9,7 @@ You will then look at how to generate skeleton code from UML class diagrams in N
 
 ### 2. Look Lists and Generics in ExampleCollectionsTest.java file.
 
-The [ExampleCollectionsTest.java](../factoryandfacade/src/test/java/org/solent/com504/factoryandfacade/test/ExampleCollectionsTest.java) file contains a very brief introduction to java Generics and Java collections. 
+The [ExampleCollectionsTest.java](../factoryandfacade/factoryandfacade/src/test/java/org/solent/com504/factoryandfacade/test/ExampleCollectionsTest.java) file contains a very brief introduction to java Generics and Java collections. 
 
 Run the class in the IDE by right clicking on the class and selecting 'Test File'.
 
