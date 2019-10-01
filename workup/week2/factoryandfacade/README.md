@@ -43,7 +43,7 @@ This preserves backwards compatibility to java versions before 1.5 when generics
 
 ### 3. Now look at the rest of the example code in the factoryandfacade project
 
-The image of the class diagram for this project is in the project [factoryandfacadeUML](../factoryandfacade/factoryandfacadeUML/) 
+The image of the class diagram for this project is in the project [UMLfactoryandfacade](../factoryandfacade/UMLfactoryandfacade/) 
 
 have a look at the class diagram before looking at the code.
 
