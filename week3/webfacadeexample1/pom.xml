@@ -13,7 +13,10 @@
         <spring.version>5.1.9.RELEASE</spring.version>
     </properties>
     
-    <modules></modules>
+    <modules>
+       <module>service</module>
+       <module>web</module>
+    </modules>
     
     <dependencyManagement>
         <dependencies>
