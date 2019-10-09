@@ -28,6 +28,10 @@
 
     List<String> supportedAnimalTypes = (List<String>) session.getAttribute("supportedAnimalTypes");
 
+    // access ing request parameters
+    String animalNameStr = request.getParameter("animalName");
+    String animalTypeStr = request.getParameter("animalType");
+
 %>
 
 <html>
@@ -35,6 +39,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page Farm</title>
     </head>
+
+    <!-- works with http://localhost:8084/basicfacadeweb/example2.jsp?animalType=emue&animalName=Fred -->
+    <%        if (animalNameStr != null || animalTypeStr != null) {
+
+    %>
+    <p>create animal type= <%=animalTypeStr %> name= <%=animalNameStr %></p>
+
+    <%}
+    %>
+
     <body>
         <p>Page for Farm</p>
         <p>Supported Animal Types</p>

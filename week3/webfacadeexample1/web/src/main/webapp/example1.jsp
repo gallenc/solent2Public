@@ -9,6 +9,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <!-- <h1>Hello World! new java.util.Date().toString()</h1> -->
+        <h1>Hello World! <%=new java.util.Date().toString() %></h1>
     </body>
 </html>
