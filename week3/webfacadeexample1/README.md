@@ -37,14 +37,14 @@ you will see the index page of the application.
 You can stop the browser using control c (ctrl-c).
 
 Please note that when you run the example this way you will need to rebuild the project and restart tomcat
-every time you make changes otherwisethe changes will not be packages in a war and run by tomcat.
+every time you make changes otherwise the changes will not be packaged in a war and run by tomcat.
 
 # to run the project using Netbeans
 
 If you right click on the webfacade-example1 project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
 
 If you are asked for username and password just use the default admin admin.
-
+ 
 (You must make sure you have stopped any maven started tomcat before you do this.)
 
 You will be able to see the application at http://localhost:8080/basicfacadeweb/
@@ -65,9 +65,20 @@ The following URL http://localhost:8084/basicfacadeweb/example2.jsp?animalType=e
 
 will add emue and fred to the page. You should be able to use this as a starting point for using the facade object to add animals to the farm.
 
+You can use a form to generate such an input. For axample:
+```
+<form action="/example2.jsp">
+  Animal Name: <br>
+  <input type="text" name="animalName">
+  <input type="hidden" name="animalType" value="<%=animalTypeStr %>">
+  <br><br>
+  <button type="submit" >create <%=animalTypeStr %></button>
+</form> 
+```
+
 # Task 3
 
-See if you can add another field for each animal to add it's address. Note you will need to change the animal model class and test this before adding to the JSP.
+See if you can add another field for each animal in order to to add it's address. Note you will need to change the animal model class and test this before adding to the JSP.
 
 
 
