@@ -41,7 +41,7 @@ The servelet is expected to return a response object which will contain the corr
 
 ![alt text](../week3/drawio/WebContainers.png "Figure WebContainers.png")
 
-## Web Application Servers and Jetty
+## Web Application Servers and Tomcat
 Many web application servers are available including Apache Tomcat http://tomcat.apache.org/ and Eclipse jetty https://www.eclipse.org/jetty/
 
 In theory war's should be interchangeable between application servers and work just as well. 
