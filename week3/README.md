@@ -5,11 +5,9 @@
 2. create a new 'week3' folder under your myPracticeCouseWork folder.
 3. copy the contents of week3 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
 
-## Exercise 1 factoryAndFacade
+## Exercise 1 webfacadeexample1
 
-In this exercise you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface. 
-You will then look at how to generate skeleton code from UML class diagrams in Netbeans.
-Finally you will look at a more complex example which completely seperates the client from the implementation classes.
+In this exercise you will look at how the facade and factory you created last week can be used as the back end of a web site. 
 
-Try the  [factoryandfacade](../week3/webfacadeexample) exercises.
+Try the  [webfacadeexample1](../week3/webfacadeexample1) exercises.
 
