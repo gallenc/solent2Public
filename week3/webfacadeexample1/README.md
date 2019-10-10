@@ -12,7 +12,7 @@ We are doing the build first so that netbeans has the dependencies already downl
 
 Now you will need to import the poject into Netbeans using 'open existing project'
 
-![alt text](../UMLfactoryandfacade/images/facadediagram2.png "Figure facadediagram2.png" )
+![alt text](../webfacadeexample1/images/NetbeansOpenProject.png "Figure NetbeansOpenProject.png" )
 
 Remember to click 'open required projects' so that the parent project and its subprojects are all imported.
 
