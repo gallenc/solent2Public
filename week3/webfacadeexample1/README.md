@@ -7,7 +7,7 @@ JSP's contain a mix of HTML and Java elements.
 Usually when you design a JSP, you start of with a raw HTML page, CSS and potentially javascript  which define the look and feel of the page. 
 You then add  JSP specific elements which implement the dynamic behaviour.
 
-# Task 1 Build compile and import the project
+## Task 1 Build compile and import the project
 In order to work with this project, you should first build it using maven
 ```
 cd webfacadeexample1
@@ -21,13 +21,13 @@ Now you will need to import the poject into Netbeans using 'open existing projec
 
 Remember to click 'open required projects' so that the parent project and its subprojects are all imported.
 
-#  Task 2 Running the project
+##  Task 2 Running the project
 
 You can run the project using maven or directly in the Netbeans IDE.
 Please note that you can't do both at the same time due to port clashes.
 If you do run into problems restart Netbeans.
 
-## To run the project using maven
+### To run the project using maven
 
 Maven used the cargo plugin to start an embedded tomcat container.
 You must run the following command after your build in the web directory
@@ -44,7 +44,7 @@ You can stop the browser using control c (ctrl-c).
 Please note that when you run the example this way you will need to rebuild the project and restart tomcat
 every time you make changes otherwise the changes will not be packaged in a war and run by tomcat.
 
-# To run the project using  in Netbeans embedded Jetty server
+### To run the project using  in Netbeans embedded Jetty server
 
 If you right click on the webfacade-example1 project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
 
@@ -63,7 +63,7 @@ JSPs are translated into java servelets before being compiled and run.
 If you have run the application in Netbeans you can view the raw servelet code by right clickng on th JSP and selecting 'vew servelet' You will see a lot of java code surrounding the HTML from the page which is printed out using out.print(" html code ... ") statements.
 Normally you dont need to worry about the contents of the servelet but this shows you what is happing to your JSP page under the hood. 
 
-# Task 3 Extend example2.jsp
+## Task 3 Extend example2.jsp
 
 See if you can add a form to the example2.jsp so that a user can input a name of an animal and add it to the list.
 
@@ -88,7 +88,7 @@ You can use a form to generate such an input. For axample:
 </form> 
 ```
 
-# Task 3 adding extra fields
+## Task 4 adding extra fields
 
 See if you can add another field for each animal in order to to add it's address. Note you will need to change the animal model class and test this before adding to the JSP.
 
