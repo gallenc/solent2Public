@@ -28,7 +28,7 @@
 
     List<String> supportedAnimalTypes = (List<String>) session.getAttribute("supportedAnimalTypes");
 
-    // access ing request parameters
+    // accessing request parameters
     String animalNameStr = request.getParameter("animalName");
     String animalTypeStr = request.getParameter("animalType");
 
@@ -40,7 +40,7 @@
         <title>JSP Page Farm</title>
     </head>
 
-    <!-- works with http://localhost:8084/basicfacadeweb/example2.jsp?animalType=emue&animalName=Fred -->
+    <!-- works with http://localhost:8080/basicfacadeweb/example2.jsp?animalType=emue&animalName=Fred -->
     <%        if (animalNameStr != null || animalTypeStr != null) {
 
     %>
