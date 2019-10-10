@@ -39,7 +39,7 @@ The request object contains the parameters of the HTTP request and is used by th
 
 The servelet is expected to return a response object which will contain the correctly coded HTML web page to be returned to the client browser.
 
-![alt text](../week5/drawio/WebContainers.png "Figure WebContainers.png")
+![alt text](../week3/drawio/WebContainers.png "Figure WebContainers.png")
 
 ## Web Application Servers and Jetty
 Many web application servers are available including Apache Tomcat http://tomcat.apache.org/ and Eclipse jetty https://www.eclipse.org/jetty/
