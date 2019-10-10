@@ -27,6 +27,11 @@
       <Constructors/>
       <Methods/>
     </Class>
+    <Class name="AbstractAnimal" package="org.solent.com504.factoryandfacade.impl" visibility="public" isAbstract="true" xPosition="1004.0" yPosition="410.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
     <Interface name="Animal" package="org.solent.com504.factoryandfacade.model" visibility="public" xPosition="497.0" yPosition="387.0">
       <Methods>
         <Method name="getSound" returnType="String" visibility="public"/>
@@ -41,7 +46,7 @@
       <Methods>
         <Method name="getAllAnimals" returnType="List&lt;Animal&gt;" visibility="public"/>
         <Method name="addAnimal" returnType="boolean" visibility="public">
-          <Argument type="Stringl" name="animalType"/>
+          <Argument type="String" name="animalType"/>
           <Argument type="String" name="name"/>
         </Method>
         <Method name="getAnimalsOfType" returnType="List&lt;Animal&gt;" visibility="public">
@@ -73,27 +78,22 @@
         <Method name="createFarmFacade" returnType="FarmFacade" visibility="public"/>
       </Methods>
     </Interface>
-    <Class name="AbstractAnimal" package="org.solent.com504.factoryandfacade.impl" visibility="public" isAbstract="true" xPosition="1004.0" yPosition="410.0">
-      <Fields/>
-      <Constructors/>
-      <Methods/>
-    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="org.solent.com504.factoryandfacade.model.Dog" target="org.solent.com504.factoryandfacade.model.Animal"/>
-    <IsRelation name="is" source="org.solent.com504.factoryandfacade.model.Cat" target="org.solent.com504.factoryandfacade.model.Animal"/>
-    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.CowImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
     <IsRelation name="is" source="org.solent.com504.factoryandfacade.model.Cow" target="org.solent.com504.factoryandfacade.model.Animal"/>
-    <UseRelation name="createsFarmFacade" source="org.solent.com504.factoryandfacade.model.FarmObjectFactory" target="org.solent.com504.factoryandfacade.model.FarmFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.FarmObjectFactoryImpl" target="org.solent.com504.factoryandfacade.model.FarmObjectFactory"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.CatImpl" target="org.solent.com504.factoryandfacade.model.Cat"/>
-    <UseRelation name="usesAnimal" source="org.solent.com504.factoryandfacade.model.FarmFacade" target="org.solent.com504.factoryandfacade.model.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="createsAnimals" source="org.solent.com504.factoryandfacade.model.FarmObjectFactory" target="org.solent.com504.factoryandfacade.model.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.DogImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.DogImpl" target="org.solent.com504.factoryandfacade.model.Dog"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.CowImpl" target="org.solent.com504.factoryandfacade.model.Cow"/>
+    <IsRelation name="is" source="org.solent.com504.factoryandfacade.model.Cat" target="org.solent.com504.factoryandfacade.model.Animal"/>
+    <IsRelation name="is" source="org.solent.com504.factoryandfacade.model.Dog" target="org.solent.com504.factoryandfacade.model.Animal"/>
+    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.CowImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
+    <UseRelation name="createsFarmFacade" source="org.solent.com504.factoryandfacade.model.FarmObjectFactory" target="org.solent.com504.factoryandfacade.model.FarmFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.CatImpl" target="org.solent.com504.factoryandfacade.model.Cat"/>
+    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.DogImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
+    <UseRelation name="usesAnimal" source="org.solent.com504.factoryandfacade.model.FarmFacade" target="org.solent.com504.factoryandfacade.model.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.FarmFacadeImpl" target="org.solent.com504.factoryandfacade.model.FarmFacade"/>
-    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.CatImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
+    <UseRelation name="createsAnimals" source="org.solent.com504.factoryandfacade.model.FarmObjectFactory" target="org.solent.com504.factoryandfacade.model.Animal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.FarmObjectFactoryImpl" target="org.solent.com504.factoryandfacade.model.FarmObjectFactory"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.DogImpl" target="org.solent.com504.factoryandfacade.model.Dog"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.AbstractAnimal" target="org.solent.com504.factoryandfacade.model.Animal"/>
+    <IsRelation name="is" source="org.solent.com504.factoryandfacade.impl.CatImpl" target="org.solent.com504.factoryandfacade.impl.AbstractAnimal"/>
   </ClassDiagramRelations>
 </ClassDiagram>
