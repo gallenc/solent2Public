@@ -32,5 +32,6 @@
         <module>workup/hotellock</module>
         <module>workup/week2/mavenproject1</module>
         <module>workup/webfacadeexample1</module>
+        <module>workup/mavenproject1</module>
     </modules>
 </project>
