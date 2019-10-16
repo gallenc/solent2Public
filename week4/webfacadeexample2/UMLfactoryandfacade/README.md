@@ -1,12 +1,15 @@
 
 ## More advanced Facade Pattern
 
-A more advanced example is provided below which is implemented in the factoryandfacade2 project
+A more advanced example is provided below which is implemented in the factoryandfacade3 project
 
-![alt text](../UMLfactoryandfacade/images/facadediagram2.png "Figure facadediagram2.png" )
+![alt text](../UMLfactoryandfacade/images/facadediagram3.png "Figure facadediagram3.png" )
+
+
 
 ## Use Cases and Robustness Diagrams
 
+THESE NEED UPDATED 
 We can use draw.io https://www.draw.io/ to draw other UML diagrams such as Use Cases, Robustness diagrams and Sequence diagrams. 
 
 The draw.io xml files and their related .png images are in the drawio folder. 
