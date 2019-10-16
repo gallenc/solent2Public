@@ -18,6 +18,12 @@
             <artifactId>webfacadeexample2-model</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>webfacadeexample2-dao-simple</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
