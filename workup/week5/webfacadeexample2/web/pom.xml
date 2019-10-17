@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>solent.ac.uk.ood.examples</groupId>
+        <artifactId>webfacadeexample2</artifactId>
+        <version>1.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>webfacadeexample2-web</artifactId>
+    <packaging>war</packaging>
+    <name>webfacadeexample2-web</name>
+    
+    <properties>
+        <!-- You can copy and paste the single properties, into the pom.xml file and the Netbeans will pick them up. -->
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.5</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>webfacadeexample2-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>webfacadeexample2-dao-jaxb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>webfacadeexample2-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+            
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+      
+            <plugin>
+          
+                <!-- run embedded tomcat with mvn org.codehaus.cargo:cargo-maven2-plugin:run -->
+                <!-- see https://stackoverflow.com/questions/41326911/maven-plugin-for-tomcat-9 -->
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.7.6</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
+                </configuration>
+            </plugin>
+      
+        </plugins>
+    </build>
+</project>
