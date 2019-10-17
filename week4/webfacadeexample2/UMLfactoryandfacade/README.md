@@ -9,7 +9,7 @@ A more advanced example is provided below which is implemented in the factoryand
 
 ## Use Cases and Robustness Diagrams
 
-THESE NEED UPDATED 
+
 We can use draw.io https://www.draw.io/ to draw other UML diagrams such as Use Cases, Robustness diagrams and Sequence diagrams. 
 
 The draw.io xml files and their related .png images are in the drawio folder. 
