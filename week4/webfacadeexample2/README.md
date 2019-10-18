@@ -14,10 +14,10 @@ If you examine the project you will see that it now has additional modules. Thes
 This week we will only look at using the simple DAO in the dao-simple module. 
 The dao-jaxb module is empty.
 
-The model has been refactored into three packages corresponding to the data transfer objects, the dao classes and the service/facade classes. 
+The model has been refactored into three packages corresponding to the data transfer objects, the dao interfaces and the service/facade interfaces. 
 
-The FarmFacade class implements much the same methods as in previous exercises and will be accessed by the JSP's. 
-However the implementation of the FarmFacade will now have to use the DAO classes to access the data from the underlying persistance layer.
+The FarmFacade interface implements much the same methods as in previous exercises and will be accessed by the JSP's. 
+However the implementation of the FarmFacade will now have to use the DAO implementation classes to access the data from the underlying persistance layer.
 ```
 org.solent.com504.factoryandfacade.model.dto
     Animal.java
@@ -30,9 +30,10 @@ org.solent.com504.factoryandfacade.model.dao
 
 org.solent.com504.factoryandfacade.model.service
     FarmFacade.java
-	ServiceObjectFactory.java
+    ServiceObjectFactory.java
 ```
-The details of these classes are described in the UML model.
+The details of these interfaces are described in the UML model.
+Each interface and dto also has some javadoc comments to describe their function.
 
 
 # Building the project and doing exercises
