@@ -5,11 +5,11 @@
  */
 package org.solent.com504.factoryandfacade.impl.dao.jaxb.tests;
 
+import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.factoryandfacade.impl.dao.jaxb.AnimalDaoJaxbImpl;
-import org.solent.com504.factoryandfacade.impl.dao.simple.AnimalDaoImpl;
 import org.solent.com504.factoryandfacade.impl.dao.simple.AnimalTypeDaoImpl;
 import org.solent.com504.factoryandfacade.impl.dao.simple.tests.AnimalDaoTest;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
@@ -24,10 +24,17 @@ public class AnimalDaoJaxbTest {
     AnimalDao animalDao = null;
     AnimalTypeDao animalTypeDao = null;
     AnimalDaoTest animalDaoTest = null;
+    String testFilePath = "./target/testDaoFile.xml";
 
     @Before
     public void init() {
-        String testFilePath = "./target/testDaoFile.txt";
+       
+        // remove test file if exists
+        File testFile = new File(testFilePath);
+        if (testFile.exists()){
+            testFile.delete();
+        }
+        
         animalDao = new AnimalDaoJaxbImpl(testFilePath);
         animalTypeDao = new AnimalTypeDaoImpl();
         animalDaoTest = new AnimalDaoTest();
@@ -40,6 +47,9 @@ public class AnimalDaoJaxbTest {
         System.out.println("start of testAnimalDaoJaxb");
 
         animalDaoTest.testDao();
+        
+        File testFile = new File(testFilePath);
+        assertTrue(testFile.exists());
         
 
         System.out.println("end of testAnimalDaoJaxb");

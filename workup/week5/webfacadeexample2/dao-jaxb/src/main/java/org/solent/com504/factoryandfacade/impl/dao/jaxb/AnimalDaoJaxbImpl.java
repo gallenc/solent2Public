@@ -6,7 +6,6 @@
 package org.solent.com504.factoryandfacade.impl.dao.jaxb;
 
 import java.io.File;
-import java.io.StringWriter;
 import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,47 +23,64 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
  */
 public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
 
+    private String filePath = null;
+    private File file;
+
+    private JAXBContext jaxbContext;
+    private Marshaller jaxbMarshaller;
+    private Unmarshaller jaxbUnMarshaller;
+
     public AnimalDaoJaxbImpl(String filePath) {
         super();
+
+        file = new File(filePath);
+        System.out.println("jaxb dao using file=" + file.getAbsolutePath());
+
+        // create JAXB contexts and marshallers
+        try {
+            // this contains a list of Jaxb annotated classes for the context to parse
+            // NOTE you must also have a jaxb.index or ObjectFactory in the same classpath
+            jaxbContext = JAXBContext.newInstance("org.solent.com504.factoryandfacade.model.dto");
+
+            jaxbMarshaller = jaxbContext.createMarshaller();
+            // output pretty printed
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+
+        } catch (JAXBException e) {
+            throw new RuntimeException("problem setting up jaxb marshalling", e);
+        }
+
+        this.filePath = filePath;
         load();
     }
-    
-//    {
-//        try{
-//                   File file = new File("target/testTransactionData.xml");
-//            System.out.println("writing test file to " + file.getAbsolutePath());
-//
-//            // this contains a list of Jaxb annotated classes for the context to parse
-//            // NOTE you must also have a jaxb.index or ObjectFactory in the same classpath
-//            JAXBContext jaxbContext = JAXBContext.newInstance("org.solent.com504.factoryandfacade.model.dto");
-//
-//            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-//
-//            // output pretty printed
-//            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-//
-//
-//            // create XML from the object
-//            // marshal the object lists to system out, a file and a stringWriter
-//            jaxbMarshaller.marshal(super.animalList, System.out);
-//            jaxbMarshaller.marshal(super.animalList, file);
-//
-//            // string writer is used to compare received object
-//            StringWriter sw1 = new StringWriter();
-//            jaxbMarshaller.marshal(super.animalList, sw1);
-//
-//            // having written the file we now read in the file for test
-//            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-//            AnimalList receivedTransactionResult = (AnimalList) jaxbUnMarshaller.unmarshal(file);
-//            } catch (JAXBException e) {
-//            throw new RuntimeException("problem testing jaxb marshalling", e);
-//        }
-//    }
 
     /**
      * loads xml into dao using jaxb
      */
     private void load() {
+
+        // create a new file if file doesn't exist
+        if (!file.exists()) {
+            System.out.println("file does not exist. New file created=" + file.getAbsolutePath());
+            save();
+            return;
+        }
+
+        // load file
+        try {
+            // create XML from the object
+            // marshal the object lists to system out, a file and a stringWriter
+            jaxbMarshaller.marshal(super.animalList, file);
+
+            // read in the file to animal list
+            Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
+            this.animalList = (AnimalList) jaxbUnMarshaller.unmarshal(file);
+            
+        } catch (JAXBException e) {
+            throw new RuntimeException("problem testing jaxb marshalling", e);
+        }
 
     }
 
@@ -72,6 +88,15 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
      * saves dao as xml using jaxb
      */
     private void save() {
+        // savefile
+        try {
+            // create XML from the object
+            // marshal the object lists to system out, a file and a stringWriter
+            jaxbMarshaller.marshal(super.animalList, file);
+
+        } catch (JAXBException e) {
+            throw new RuntimeException("problem testing jaxb marshalling", e);
+        }
 
     }
 
