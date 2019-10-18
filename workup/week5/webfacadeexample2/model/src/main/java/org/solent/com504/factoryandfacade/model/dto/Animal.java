@@ -4,6 +4,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Animal is a java bean which is used as a data transfer object (dto) and also
+ * for persisting Animals. This bean has been annotated with JAXB annotations
+ * so that it can be used in ReST calls and also in the jaxb-dao
+ * @author gallenc
+ */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Animal {

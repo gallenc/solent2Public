@@ -7,7 +7,8 @@ package org.solent.com504.factoryandfacade.model.service;
 public interface ServiceObjectFactory {
 
     /**
-     * Returns a singleton FarmFacade object. There is only ever one FarmFacade per ServiceObjectFactory
+     * Returns a singleton FarmFacade object. 
+     * There is only ever one FarmFacade per ServiceObjectFactory
      * @return farmFacade
      */
     public FarmFacade getFarmFacade();
