@@ -32,7 +32,7 @@ org.solent.com504.factoryandfacade.model.service
     FarmFacade.java
     ServiceObjectFactory.java
 ```
-The details of these interfaces are described in the UML model.
+The details of these interfaces are described in the [UML model](../UMLfactoryandfacade).
 Each interface and dto also has some javadoc comments to describe their function.
 
 
