@@ -11,20 +11,29 @@
 <%
     // used to place error message at top of page 
     String errorMessage = "";
+    String message = "";
+
+    // accessing service 
     FarmFacade farmFacade = (FarmFacade) WebObjectFactory.getServiceFacade();
     List<String> supportedAnimalTypes = farmFacade.getSupportedAnimalTypes();
 
     // accessing request parameters
+    String actionStr = request.getParameter("action");
     String animalNameStr = request.getParameter("animalName");
     String animalTypeStr = request.getParameter("animalType");
 
-    // basic error checking
-    if (animalNameStr != null && animalTypeStr != null) {
-        if (farmFacade.getAnimal(animalNameStr) != null) {
-            errorMessage = "ERROR: you cannot have dupicate animal names";
+    // basic error checking before making a call
+    if (actionStr == null || actionStr.isEmpty()) {
+        // do nothing
+    } else if ("deleteAnimal".equals(actionStr)) {
+        if (animalNameStr == null || animalNameStr.isEmpty()) {
+            errorMessage = "ERROR: animalName must be set when deleting animal.";
         } else {
-            farmFacade.addAnimal(animalTypeStr, animalNameStr);
+            message = "Deleting animal name=" + animalNameStr;
+            farmFacade.removeAnimal(animalNameStr);
         }
+    } else {
+        errorMessage = "ERROR: page called for unknown action";
     }
 
 %>
@@ -35,17 +44,11 @@
         <title>JSP Page Farm</title>
     </head>
     <body>
-        <!-- works with http://localhost:8080/basicfacadeweb/farm.jsp?animalType=Cat&animalName=Mimi -->
-        <H1>Simple Page for Farm</H1>
+        <!-- works with http://localhost:8080/basicfacadeweb/farm2.jsp?animalType=Cat&animalName=Mimi -->
+        <H1>More Complex Page for Farm</H1>
         <!-- print error message if there is one -->
         <div style="color:red;"><%=errorMessage%></div>
- 
-        <p>This is basically the same page we have been using in previous examples. </p>
-        <%  if (animalNameStr != null || animalTypeStr != null) {
-        %>
-        <p>Creating new animal type= <%=animalTypeStr%> name= <%=animalNameStr%></p>
-        <% }
-        %>
+        <div style="color:green;"><%=message%></div>
 
         <H2>Supported Animal Types</H2>
         <table>
@@ -53,9 +56,9 @@
             <tr>
                 <td><%=animalType%></td>
                 <td>
-                    <form action="./farm.jsp">
+                    <form action="./viewAnimal.jsp">
                         <input type="hidden" name="animalType" value="<%=animalType%>">
-                        Animal Name:  <input type="text" name="animalName">
+                        <input type="hidden" name="action" value="createAnimal">
                         <button type="submit" >Create <%=animalType%></button>
                     </form> 
                 </td>
@@ -67,16 +70,26 @@
 
         <H2>Animals on Farm</H2>
         <table border="1">
-           <tr>
+            <tr>
                 <th>Type</th>
                 <th>Name</th>
+                <th>Address</th>
                 <th>Sound</th>
+                <th></th>
             </tr>
             <% for (Animal animal : farmFacade.getAllAnimals()) {%>
             <tr>
                 <td><%=animal.getAnimalType().getType()%></td>
                 <td><%=animal.getName()%></td>
+                <td><%=animal.getAddress()%></td>
                 <td><%=animal.getAnimalType().getSound()%></td>
+                <td>
+                    <form action="./farm2.jsp">
+                        <input type="hidden" name="animalName" value="<%=animal.getName()%>">
+                        <input type="hidden" name="action" value="deleteAnimal">
+                        <button type="submit" >Delete</button>
+                    </form> 
+                </td>
             </tr>
             <%
                 }

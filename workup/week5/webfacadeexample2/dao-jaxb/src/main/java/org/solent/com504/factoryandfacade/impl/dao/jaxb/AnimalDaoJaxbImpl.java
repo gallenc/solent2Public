@@ -72,7 +72,6 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
         try {
             // create XML from the object
             // marshal the object lists to system out, a file and a stringWriter
-            jaxbMarshaller.marshal(super.animalList, file);
 
             // read in the file to animal list
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
@@ -92,7 +91,7 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
         try {
             // create XML from the object
             // marshal the object lists to system out, a file and a stringWriter
-            jaxbMarshaller.marshal(super.animalList, file);
+            jaxbMarshaller.marshal(this.animalList, file);
 
         } catch (JAXBException e) {
             throw new RuntimeException("problem testing jaxb marshalling", e);

@@ -29,11 +29,19 @@ public class FarmFacadeTest {
     public void loadFactory() {
         serviceObjectFactory = new ServiceObjectFactoryImpl();
         farmFacade = serviceObjectFactory.getFarmFacade();
+
+        // delete all previously added animals
+        List<Animal> allAnimals = farmFacade.getAllAnimals();
+        for (Animal animal : allAnimals) {
+            farmFacade.removeAnimal(animal.getName());
+        }
+        allAnimals = farmFacade.getAllAnimals();
+        assertTrue(allAnimals.isEmpty());
     }
 
     @Test
     public void testFactory() {
-        System.out.println("FarmFacadeTest testFactory");
+        System.out.println("start FarmFacadeTest testFactory");
         assertNotNull(farmFacade);
 
         supportedAnimalTypes = farmFacade.getSupportedAnimalTypes();
@@ -44,24 +52,42 @@ public class FarmFacadeTest {
         assertTrue(supportedAnimalTypes.contains("Dog"));
         assertTrue(supportedAnimalTypes.contains("Cow"));
 
-        System.out.println("testing supported animal types:");
-        for (String animalType : supportedAnimalTypes) {
-            String animalName = animalType+"_1";
-            Animal animal = farmFacade.addAnimal(animalType, animalName);
-            assertNotNull(animal);
-            System.out.println("created:" + animal);
+        System.out.println("end FarmFacadeTest testFactory");
+    }
+
+    @Test
+    public void testaddDuplicateAnimal() {
+        System.out.println("start FarmFacadeTest testaddDuplicateAnimal");
+
+        assertNotNull(farmFacade);
+
+        String type = farmFacade.getSupportedAnimalTypes().get(0);
+        String name = "duplicateTestName";
+        farmFacade.addAnimal(type, name);
+        assertEquals(1, farmFacade.getAllAnimals().size());
+
+        try {
+            // adding duplicate name - should throw exception
+            farmFacade.addAnimal(type, name);
+            fail("adding duplicate animal did not throw IllegalArgumentException ");
+        } catch (IllegalArgumentException e) {
         }
+
+        assertEquals(1, farmFacade.getAllAnimals().size());
+
+        System.out.println("end FarmFacadeTest testaddDuplicateAnimal");
     }
 
     @Test
     public void testFarmFacade() {
-        System.out.println("FarmFacadeTest testFarmFacade");
+        System.out.println("start FarmFacadeTest testFarmFacade");
+
         assertNotNull(farmFacade);
 
         supportedAnimalTypes = farmFacade.getSupportedAnimalTypes();
         assertNotNull(supportedAnimalTypes);
 
-        System.out.println("testing adding animals to facade:");
+        System.out.println("testing adding supported animals to facade:");
         // create 3 of every animal type
         for (int i = 0; i < 3; i++) {
             for (String animalType : supportedAnimalTypes) {
@@ -76,6 +102,7 @@ public class FarmFacadeTest {
             System.out.println("facade Animal:" + animal);
         }
 
+        // testwe can retreive only animals of certain kind (Cat)
         List<Animal> cats = farmFacade.getAnimalsOfType("Cat");
         assertEquals(3, cats.size());
 
@@ -84,17 +111,23 @@ public class FarmFacadeTest {
             String name = cat.getName();
             farmFacade.removeAnimal(name);
         }
+
+        // check all cats are removed
         assertEquals(0, farmFacade.getAnimalsOfType("Cat").size());
 
+        // check that 3 animals ( cats0 hae been removed
         allAnimals = farmFacade.getAllAnimals();
         assertEquals(6, allAnimals.size());
 
+        // pick 4th animal from list of all animals and check we can retrieve it by name
         Animal animal = allAnimals.get(4);
         System.out.println(animal);
 
         Animal animal2 = farmFacade.getAnimal(animal.getName());
         assertEquals(animal.getName(), animal2.getName());
         assertEquals(animal.getAnimalType(), animal2.getAnimalType());
+
+        System.out.println("end FarmFacadeTest testFarmFacade");
 
     }
 }

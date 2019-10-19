@@ -31,15 +31,29 @@ public class FarmFacadeImpl implements FarmFacade {
 
     @Override
     public Animal addAnimal(String animalTypeStr, String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("name cannot be null or empty ");
+        }
+        if (animalTypeStr == null) {
+            throw new IllegalArgumentException("animalTypeStr cannot be null");
+        }
+        // note this code prevents duplicate animal names
+        if (getAnimal(name) != null) {
+            throw new IllegalArgumentException("animal name is duplicated but must be unique. name=" + name);
+        }
+
         AnimalType animalType = animalTypeDao.getAnimalType(animalTypeStr);
         Animal animal = animalDao.create(animalType);
-        animalDao.updateOrSave(animal);
         animal.setName(name);
+        animalDao.updateOrSave(animal);
         return animal;
     }
 
     @Override
     public List<Animal> getAnimalsOfType(String animalTypeStr) {
+        if (animalTypeStr == null) {
+            throw new IllegalArgumentException("name cannot be null");
+        }
         AnimalType animalType = animalTypeDao.getAnimalType(animalTypeStr);
         Animal animalTemplate = new Animal();
         animalTemplate.setAnimalType(animalType);
@@ -49,6 +63,9 @@ public class FarmFacadeImpl implements FarmFacade {
 
     @Override
     public Animal getAnimal(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("name cannot be null");
+        }
         Animal animalTemplate = new Animal();
         animalTemplate.setName(name);
         List<Animal> animals = animalDao.retrieve(animalTemplate);
@@ -60,6 +77,9 @@ public class FarmFacadeImpl implements FarmFacade {
 
     @Override
     public boolean removeAnimal(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("name cannot be null");
+        }
         Animal animal = getAnimal(name);
         if (animal != null) {
             long id = animal.getId();

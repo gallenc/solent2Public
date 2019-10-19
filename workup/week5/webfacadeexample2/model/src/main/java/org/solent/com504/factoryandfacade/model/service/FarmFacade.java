@@ -19,6 +19,7 @@ public interface FarmFacade {
      * animal - does not have to be unique
      * @return an animal of a given type with the supplied name which has been stored. 
      * Animal will also have been given an id.
+     * @ throws IllegalArgumentException if animal name is duplicated. All animal names must be unique.
      */
     public Animal addAnimal(String animalType, String name);
 
