@@ -57,7 +57,7 @@
         <!-- print error message if there is one -->
         <div style="color:red;"><%=errorMessage%></div>
 
-        <form action="./viewAnimal.jsp">
+        <form action="./viewAnimal.jsp" method="post">
             <input type="hidden" name="animalType" value="<%=animalTypeStr%>">
             <input type="hidden" name="action" value="addAnimal">
             Enter new Animal Name:  <input type="text" name="animalName">

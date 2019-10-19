@@ -7,6 +7,9 @@ package org.solent.com504.factoryandfacade.test.dto.jaxb;
 
 import java.io.File;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -16,6 +19,7 @@ import static org.junit.Assert.*;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.AnimalList;
 import org.solent.com504.factoryandfacade.model.dto.AnimalType;
+import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
 
 /**
  *
@@ -24,7 +28,7 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
 public class ModelJaxbTest {
 
     @Test
-    public void testTransactionJaxb() {
+    public void testAnimalListJaxb() {
 
         try {
 
@@ -53,19 +57,27 @@ public class ModelJaxbTest {
                         // create an object to test
             AnimalList animalList = new AnimalList();
             animalList.getAnimals().add(animal);
+            
+            ReplyMessage replyMessage = new ReplyMessage();
+            replyMessage.setCode(200);
+            replyMessage.setDebugMessage("OK");
+            replyMessage.setAnimalList(animalList);
+            
+            List stringList = new ArrayList(Arrays.asList("hello","goodbye"));
+            replyMessage.setStringList(stringList);
 
             // create XML from the object
             // marshal the object lists to system out, a file and a stringWriter
-            jaxbMarshaller.marshal(animalList, System.out);
-            jaxbMarshaller.marshal(animalList, file);
+            jaxbMarshaller.marshal(replyMessage, System.out);
+            jaxbMarshaller.marshal(replyMessage, file);
 
             // string writer is used to compare received object
             StringWriter sw1 = new StringWriter();
-            jaxbMarshaller.marshal(animalList, sw1);
+            jaxbMarshaller.marshal(replyMessage, sw1);
 
             // having written the file we now read in the file for test
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
-            AnimalList receivedTransactionResult = (AnimalList) jaxbUnMarshaller.unmarshal(file);
+            ReplyMessage receivedTransactionResult = (ReplyMessage) jaxbUnMarshaller.unmarshal(file);
 
             StringWriter sw2 = new StringWriter();
             jaxbMarshaller.marshal(receivedTransactionResult, sw2);

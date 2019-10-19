@@ -62,7 +62,8 @@
             <tr>
                 <td><%=animalType%></td>
                 <td>
-                    <form action="./viewAnimal.jsp">
+                    <!-- post avoids url encoded parameters -->
+                    <form action="./viewAnimal.jsp" method="post">
                         <input type="hidden" name="animalType" value="<%=animalType%>">
                         <input type="hidden" name="action" value="createAnimal">
                         <button type="submit" >Create <%=animalType%></button>
@@ -90,7 +91,7 @@
                 <td><%=animal.getAddress()%></td>
                 <td><%=animal.getAnimalType().getSound()%></td>
                 <td>
-                    <form action="./farm2.jsp">
+                    <form action="./farm2.jsp" method="post">
                         <input type="hidden" name="animalName" value="<%=animal.getName()%>">
                         <input type="hidden" name="action" value="deleteAnimal">
                         <button type="submit" >Delete</button>
