@@ -30,8 +30,9 @@ In recent years many open source projects have migrated their code base to githu
 The principle advantage of git over other version control systems is that it is completely distributed. When you use git you clone a complete local copy of the repository you are cloning (usually referred to as the origin). You can develop code and save your changes in your local repository completely off line. At a later stage you may wish to push your changes to the on line repository or pull changes others have made into your local copy. 
 
 There are many on line tutorials on using git and it will be worth while spending some time on these to get proficient. e.g.
- https://try.github.io/ Resources to learn Git
- https://guides.github.com/introduction/git-handbook/ Git Handbook 
+* https://try.github.io/ Resources to learn Git
+* https://guides.github.com/introduction/git-handbook/ Git Handbook 
+* https://learngitbranching.js.org/ provides a very useful interactive tutorial.
  
 Many IDE's including Netbeans support git natively, but it is very important to learn to use the git command line independently of the IDE so that you have more control over what is happening.
 
