@@ -32,7 +32,7 @@ The principle advantage of git over other version control systems is that it is 
 There are many on line tutorials on using git and it will be worth while spending some time on these to get proficient. e.g.
 * https://try.github.io/ Resources to learn Git
 * https://guides.github.com/introduction/git-handbook/ Git Handbook 
-* https://learngitbranching.js.org/ provides a very useful interactive tutorial.
+* https://learngitbranching.js.org/ provides a very useful interactive tutorial on branching and merging.
  
 Many IDE's including Netbeans support git natively, but it is very important to learn to use the git command line independently of the IDE so that you have more control over what is happening.
 
