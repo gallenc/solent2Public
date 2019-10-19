@@ -33,6 +33,7 @@ public class FarmFacadeImpl implements FarmFacade {
     public Animal addAnimal(String animalTypeStr, String name) {
         AnimalType animalType = animalTypeDao.getAnimalType(animalTypeStr);
         Animal animal = animalDao.create(animalType);
+        animalDao.updateOrSave(animal);
         animal.setName(name);
         return animal;
     }
