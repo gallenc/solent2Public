@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AnimalList {
 
-    @XmlElementWrapper(name = "list")
+    @XmlElementWrapper(name = "alist")
     @XmlElement(name = "animal")
     private List<Animal> animals = new ArrayList<Animal>();
     
