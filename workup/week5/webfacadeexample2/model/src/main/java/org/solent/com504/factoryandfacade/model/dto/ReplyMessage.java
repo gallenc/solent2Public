@@ -11,9 +11,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-
 import javax.xml.bind.annotation.XmlRootElement;
-import org.solent.com504.factoryandfacade.model.dto.AnimalList;
+
 
 /**
  * used as a generic reply message for rest calls to interface
@@ -42,7 +41,7 @@ public class ReplyMessage {
     /**
      * used when response sends back a list of strings
      */
-    @XmlElementWrapper(name = "list")
+    @XmlElementWrapper(name = "stringlist")
     @XmlElement(name = "string")
     private List<String> stringList = new ArrayList<String>();
 
