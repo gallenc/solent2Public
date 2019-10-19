@@ -23,7 +23,7 @@ public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
         farmFacade = new FarmFacadeImpl();
         AnimalTypeDao animalTypeDao = new AnimalTypeDaoImpl();
 
-        // NOTE THIS IS SAYING WHERE THE FILE GOES
+        // NOTE THIS IS SAYING WHERE THE FILE GOES in TOMCAT
         AnimalDao animalDao = new AnimalDaoJaxbImpl(TMP_DIR+"/animallist.xml");
 
         // if you just want to use simple DAO do this

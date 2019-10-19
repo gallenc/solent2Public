@@ -4,6 +4,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@page import="java.util.List"%>
+<%@page import="java.util.Date"%>
 <%@page import="org.solent.com504.factoryandfacade.model.dto.Animal"%>
 <%@page import="org.solent.com504.factoryandfacade.model.service.FarmFacade"%>
 
@@ -12,6 +13,10 @@
     // used to place error message at top of page 
     String errorMessage = "";
     String message = "";
+
+    // used to set html header autoload time. This automatically refreshes the page
+    // Set refresh, autoload time every 20 seconds
+    response.setIntHeader("Refresh", 20);
 
     // accessing service 
     FarmFacade farmFacade = (FarmFacade) WebObjectFactory.getServiceFacade();
@@ -50,6 +55,7 @@
         <div style="color:red;"><%=errorMessage%></div>
         <div style="color:green;"><%=message%></div>
 
+        <p>The time is: <%= new Date().toString() %> (note page is auto refreshed every 20 seconds)</p>
         <H2>Supported Animal Types</H2>
         <table>
             <% for (String animalType : supportedAnimalTypes) {%>

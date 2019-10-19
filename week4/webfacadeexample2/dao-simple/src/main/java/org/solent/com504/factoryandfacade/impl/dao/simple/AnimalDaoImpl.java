@@ -10,7 +10,7 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
 
 public class AnimalDaoImpl implements AnimalDao {
 
-    private AnimalList animalList = new AnimalList();
+    protected AnimalList animalList = new AnimalList();
 
     @Override
     public synchronized Animal retrieve(long id) {
@@ -83,17 +83,25 @@ public class AnimalDaoImpl implements AnimalDao {
 
         for (Animal animal : animalList.getAnimals()) {
             boolean match = true;
+
             // search only using fields which are not null in animal
-            if (animalTemplate.getAddress() != null && !animal.getAddress().equals(animalTemplate.getAddress())) {
-                match = false;
+            if (animalTemplate.getAddress() != null) {
+                if (animal.getAddress() == null || !animal.getAddress().equals(animalTemplate.getAddress())) {
+                    match = false;
+                }
             }
-            if (animalTemplate.getName() != null && !animal.getName().equals(animalTemplate.getName())) {
-                match = false;
+            if (animalTemplate.getName() != null) {
+                if (animal.getName() == null || !animal.getName().equals(animalTemplate.getName())) {
+                    match = false;
+                }
             }
             // note we use an equals method created in object)
-            if (animalTemplate.getAnimalType() != null && !animal.getAnimalType().equals(animalTemplate.getAnimalType())) {
-                match = false;
+            if (animalTemplate.getAnimalType() != null) {
+                if (animal.getAnimalType() == null || !animal.getAnimalType().equals(animalTemplate.getAnimalType())) {
+                    match = false;
+                }
             }
+
             if (match) {
                 returnedAnimals.add(animal);
             }
