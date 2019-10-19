@@ -82,9 +82,9 @@ will add emue and fred to the page. You should be able to use this as a starting
 You can use a form to generate such an input. For axample:
 ```
 <form action="/example2.jsp">
-  <input type="hidden" name="animalType" value="<%=animalTypeStr %>">
+  <input type="hidden" name="animalType" value="<%=animalType %>">
   Animal Name:  <input type="text" name="animalName">
-  <button type="submit" >create <%=animalTypeStr %></button>
+  <button type="submit" >create <%=animalType %></button>
 </form> 
 ```
 
