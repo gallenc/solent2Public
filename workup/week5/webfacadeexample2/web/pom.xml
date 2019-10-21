@@ -13,8 +13,14 @@
     <name>webfacadeexample2-web</name>
     
     <properties>
+
+        <!--<slf4j.version>1.7.28</slf4j.version>-->
+        <!-- current log4j 2 release -->
+        <log4j.version>2.12.1</log4j.version> 
+
+        
         <!-- You can copy and paste the single properties, into the pom.xml file and the Netbeans will pick them up. -->
-        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.5</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.6-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
     </properties>
 
@@ -73,7 +79,43 @@
             <version>2.13</version>
         </dependency>
         
+        <!-- logging dependencies -->
+<!--         slf4j 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+         Binding for Log4J 
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>-->
+        <!-- Log4j API and Core implementation required for binding -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         
+        
+   
     </dependencies>
 
     <build>

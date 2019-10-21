@@ -18,16 +18,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.factoryandfacade.impl.web.WebObjectFactory;
+import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
 
+
 @Path("/farmService")
 public class RestService {
+    // SETS UP LOGGING
+    final static Logger LOG = LogManager.getLogger(WebObjectFactory.class);
+    
 
     // http://localhost:8084/basicfacadeweb/rest/farmService/
     @GET
     public String message() {
+        LOG.debug("farmService called");
         return "Hello, rest!";
     }
 
@@ -59,16 +67,21 @@ public class RestService {
     @POST
     @Path("/addAnimal")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response addAnimal(@QueryParam("animalType") String animalType, @QueryParam("name") String name) {
+    public Response addAnimal(@QueryParam("animalType") String animalType, @QueryParam("animalName") String animalName) {
         try {
+            
+            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
+            
             FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
             ReplyMessage replyMessage = new ReplyMessage();
 
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            Animal addedAnimal = serviceFacade.addAnimal(animalType, animalName);
+            replyMessage.getAnimalList().getAnimals().add(addedAnimal);
+            
+            replyMessage.setCode(Response.Status.OK.getStatusCode());
+           
+            return Response.status(Response.Status.OK).entity(replyMessage).build();
 
-            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
-            //replyMessage.setCode(Response.Status.OK.getStatusCode());
-            //return Response.status(Response.Status.OK).entity(replyMessage).build();
         } catch (Exception ex) {
             //LOG.error("error calling /retrievematching ", ex);
             ReplyMessage replyMessage = new ReplyMessage();
@@ -105,7 +118,7 @@ public class RestService {
     @GET
     @Path("/getAnimal")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response getAnimal(@QueryParam("animalName") String name) {
+    public Response getAnimal(@QueryParam("animalName") String animalName) {
         try {
             FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
             ReplyMessage replyMessage = new ReplyMessage();

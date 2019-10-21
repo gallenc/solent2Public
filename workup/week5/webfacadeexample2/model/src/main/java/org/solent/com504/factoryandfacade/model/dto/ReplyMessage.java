@@ -36,7 +36,7 @@ public class ReplyMessage {
     /**
      * used when response sends back an animal list
      */
-    private AnimalList animalList;
+    private AnimalList animalList = new AnimalList();
 
     /**
      * used when response sends back a list of strings

@@ -1,10 +1,7 @@
 package org.solent.com504.factoryandfacade.model.rest;
 
 import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
-import org.solent.com504.factoryandfacade.model.service.*;
-import java.util.List;
-import org.solent.com504.factoryandfacade.model.dto.Animal;
-import org.solent.com504.factoryandfacade.model.dto.AnimalList;
+
 
 /**
  * To make the ReST interface easier to program.

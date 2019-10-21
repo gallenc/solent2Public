@@ -14,11 +14,12 @@
     </properties>
     
     <modules>
-        <module>model</module>
-        <module>dao-jaxb</module>
-        <module>service</module>
-        <module>web</module>
-    </modules>
+<module>model</module>
+<module>dao-jaxb</module>
+<module>service</module>
+<module>web</module>
+
+</modules>
     
     <dependencyManagement>
         <dependencies>
