@@ -1,0 +1,45 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "COM405 Farm",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "animalType=Cat&animalName=KiKi"
+                        }
+                    },
+                    "id": "rester-1",
+                    "name": "addAnimal"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-2",
+                    "name": "getSupportedAnimalTypes"
+                }
+            ]
+        }
+    ]
+}
