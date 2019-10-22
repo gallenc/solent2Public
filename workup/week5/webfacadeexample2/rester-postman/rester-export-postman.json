@@ -9,25 +9,7 @@
             "item": [
                 {
                     "request": {
-                        "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal",
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/xml"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "animalType=Cat&animalName=KiKi"
-                        }
-                    },
-                    "id": "rester-1",
-                    "name": "addAnimal"
-                },
-                {
-                    "request": {
-                        "url": "http://localhost:8080/basicfacadeweb/rest/farmService/addAnimal",
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
                         "method": "POST",
                         "header": [
                             {
@@ -36,8 +18,92 @@
                             }
                         ]
                     },
+                    "id": "rester-5",
+                    "name": "addAnimal"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-7",
+                    "name": "farmService"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAllAnimals",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-6",
+                    "name": "getAllAnimals"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAnimalsOfType?animalType=Cat",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-8",
+                    "name": "getAnimalsOfType"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getSupportedAnimalTypes",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
                     "id": "rester-2",
-                    "name": "getSupportedAnimalTypes"
+                    "name": "getSupportedAnimalTypes_json"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-4",
+                    "name": "getSupportedAnimalTypes_xml"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-9",
+                    "name": "removeAnimal"
                 }
             ]
         }

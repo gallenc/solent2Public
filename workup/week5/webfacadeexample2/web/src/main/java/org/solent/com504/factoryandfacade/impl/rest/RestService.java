@@ -71,10 +71,14 @@ public class RestService {
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getAllAnimals called");
 
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-            //replyMessage.setCode(Response.Status.OK.getStatusCode());
-            //return Response.status(Response.Status.OK).entity(replyMessage).build();
+            List<Animal> animals = serviceFacade.getAllAnimals();
+            replyMessage.getAnimalList().setAnimals(animals);
+            replyMessage.getAnimalList().setCurrentMaxId(null);
+            
+            replyMessage.setCode(Response.Status.OK.getStatusCode());
+            
+            return Response.status(Response.Status.OK).entity(replyMessage).build();
+            
         } catch (Exception ex) {
             LOG.error("error calling /getAllAnimals ", ex);
             ReplyMessage replyMessage = new ReplyMessage();
@@ -112,6 +116,7 @@ public class RestService {
 
             Animal addedAnimal = serviceFacade.addAnimal(animalType, animalName);
             replyMessage.getAnimalList().getAnimals().add(addedAnimal);
+            replyMessage.getAnimalList().setCurrentMaxId(null);
 
             replyMessage.setCode(Response.Status.OK.getStatusCode());
 
@@ -147,7 +152,7 @@ public class RestService {
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
+
             //replyMessage.setCode(Response.Status.OK.getStatusCode());
             //return Response.status(Response.Status.OK).entity(replyMessage).build();
         } catch (Exception ex) {
@@ -179,7 +184,7 @@ public class RestService {
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
+
             //replyMessage.setCode(Response.Status.OK.getStatusCode());
             //return Response.status(Response.Status.OK).entity(replyMessage).build();
         } catch (Exception ex) {
@@ -213,7 +218,6 @@ public class RestService {
 
             throw new UnsupportedOperationException("Not supported yet.");
 
-            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
             //replyMessage.setCode(Response.Status.OK.getStatusCode());
             //return Response.status(Response.Status.OK).entity(replyMessage).build();
         } catch (Exception ex) {
@@ -246,7 +250,6 @@ public class RestService {
 
             replyMessage.setStringList(stringList);
 
-            //LOG.debug("/retrievematching entityTemplate: " + entityTemplate);
             replyMessage.setCode(Response.Status.OK.getStatusCode());
             return Response.status(Response.Status.OK).entity(replyMessage).build();
         } catch (Exception ex) {

@@ -77,4 +77,11 @@ public class ReplyMessage {
         this.stringList = stringList;
     }
 
+    @Override
+    public String toString() {
+        return "ReplyMessage{" + "code=" + code + ", debugMessage=" + debugMessage + ", animalList=" + animalList + ", stringList=" + stringList + '}';
+    }
+    
+    
+
 }

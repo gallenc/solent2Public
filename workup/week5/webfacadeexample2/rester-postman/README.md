@@ -1,6 +1,6 @@
 # Rester app
 
-Tis folder contains configuration files for Rester
+This folder contains configuration files for Rester
 
 ## chrome plugin
 https://chrome.google.com/webstore/detail/rester/eejfoncpjfgmeleakejdcanedmefagga?hl=en
@@ -8,6 +8,7 @@ https://chrome.google.com/webstore/detail/rester/eejfoncpjfgmeleakejdcanedmefagg
 ## firefox plugin
 https://addons.mozilla.org/en-US/firefox/addon/rester/
 
+![alt text](../week5/images/rester.png "Figure rester.png")
 
 ## Web Services 
 

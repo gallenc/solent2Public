@@ -27,7 +27,7 @@ public class WebObjectFactory {
         if (farmFacade == null) {
             synchronized (WebObjectFactory.class) {
                 if (farmFacade == null) {
-                    LOG.error("web application starting");
+                    LOG.debug("web application starting");
                     ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
                     farmFacade = serviceObjectFactory.getFarmFacade();
                 }

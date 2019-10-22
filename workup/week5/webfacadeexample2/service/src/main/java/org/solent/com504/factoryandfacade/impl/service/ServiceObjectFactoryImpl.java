@@ -16,15 +16,28 @@ public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
     // get a temporary directory to store our dao xml file
     public static final String TMP_DIR = System.getProperty("java.io.tmpdir");
 
-    FarmFacadeImpl farmFacade = null;
+    // dao xml file location
+    private static final String DAFAULT_JAXB_FILE = TMP_DIR + "/animallist.xml";
 
+    private FarmFacadeImpl farmFacade = null;
+
+    /**
+     * Initialises farmFacade objectFactory
+     */
     public ServiceObjectFactoryImpl() {
+        this(DAFAULT_JAXB_FILE);
+    }
+
+    /**
+     * Initialises farmFacade objectFactory with a given location for jaxb file
+     */
+    public ServiceObjectFactoryImpl(String jaxbFile) {
 
         farmFacade = new FarmFacadeImpl();
         AnimalTypeDao animalTypeDao = new AnimalTypeDaoImpl();
 
         // NOTE THIS IS SAYING WHERE THE FILE GOES in TOMCAT
-        AnimalDao animalDao = new AnimalDaoJaxbImpl(TMP_DIR+"/animallist.xml");
+        AnimalDao animalDao = new AnimalDaoJaxbImpl(jaxbFile);
 
         // if you just want to use simple DAO do this
         //AnimalDao animalDao = new AnimalDaoImpl();

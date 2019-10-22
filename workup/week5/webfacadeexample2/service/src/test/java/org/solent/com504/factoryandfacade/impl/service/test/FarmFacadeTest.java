@@ -19,6 +19,8 @@ import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
  * @author gallenc
  */
 public class FarmFacadeTest {
+    
+    private static final String TEST_FILE = "./target/testDaoFile.xml";
 
     ServiceObjectFactory serviceObjectFactory = null;
     FarmFacade farmFacade = null;
@@ -27,7 +29,9 @@ public class FarmFacadeTest {
 
     @Before
     public void loadFactory() {
-        serviceObjectFactory = new ServiceObjectFactoryImpl();
+
+        serviceObjectFactory = new ServiceObjectFactoryImpl(TEST_FILE);
+        
         farmFacade = serviceObjectFactory.getFarmFacade();
 
         // delete all previously added animals
