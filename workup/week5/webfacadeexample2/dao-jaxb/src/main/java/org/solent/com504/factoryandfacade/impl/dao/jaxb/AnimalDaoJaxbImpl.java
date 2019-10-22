@@ -11,6 +11,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.factoryandfacade.impl.dao.simple.AnimalDaoImpl;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
@@ -22,6 +24,9 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
  * @author gallenc
  */
 public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
+    // SETS UP LOGGING 
+
+    final static Logger LOG = LogManager.getLogger(AnimalDaoJaxbImpl.class);
 
     private String filePath = null;
     private File file;
@@ -31,10 +36,11 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
     private Unmarshaller jaxbUnMarshaller;
 
     public AnimalDaoJaxbImpl(String filePath) {
+
         super();
 
         file = new File(filePath);
-        System.out.println("jaxb dao using file=" + file.getAbsolutePath());
+        LOG.info("jaxb dao using file=" + file.getAbsolutePath());
 
         // create JAXB contexts and marshallers
         try {
@@ -63,7 +69,7 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
 
         // create a new file if file doesn't exist
         if (!file.exists()) {
-            System.out.println("file does not exist. New file created=" + file.getAbsolutePath());
+            LOG.info("file does not exist. New file created=" + file.getAbsolutePath());
             save();
             return;
         }
@@ -76,7 +82,7 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
             // read in the file to animal list
             Unmarshaller jaxbUnMarshaller = jaxbContext.createUnmarshaller();
             this.animalList = (AnimalList) jaxbUnMarshaller.unmarshal(file);
-            
+
         } catch (JAXBException e) {
             throw new RuntimeException("problem testing jaxb marshalling", e);
         }

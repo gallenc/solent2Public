@@ -32,6 +32,18 @@
             <scope>compile</scope>
         </dependency>
         
+        <!-- Log4j API and Core implementation  -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
         <!-- junit dependencies -->
         <dependency>
             <groupId>junit</groupId>

@@ -13,7 +13,7 @@ import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
 // and could be replaced by Spring
 public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
 
-    // get a temporary directory to store our dao file
+    // get a temporary directory to store our dao xml file
     public static final String TMP_DIR = System.getProperty("java.io.tmpdir");
 
     FarmFacadeImpl farmFacade = null;

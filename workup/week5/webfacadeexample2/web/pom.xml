@@ -9,16 +9,12 @@
     </parent>
 
     <artifactId>webfacadeexample2-web</artifactId>
-    <packaging>war</packaging>
     <name>webfacadeexample2-web</name>
+        
+    <packaging>war</packaging>
     
     <properties>
-
-        <!--<slf4j.version>1.7.28</slf4j.version>-->
-        <!-- current log4j 2 release -->
-        <log4j.version>2.12.1</log4j.version> 
-
-        
+       
         <!-- You can copy and paste the single properties, into the pom.xml file and the Netbeans will pick them up. -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.6-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
@@ -44,78 +40,53 @@
             <version>${project.version}</version>
         </dependency>
             
-        <!--        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>-->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
             <scope>provided</scope>
         </dependency>
-        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
-            <version>2.13</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>2.13</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.13</version>
+            <scope>compile</scope>
         </dependency>
         
-        <!-- logging dependencies -->
-<!--         slf4j 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-         Binding for Log4J 
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>-->
-        <!-- Log4j API and Core implementation required for binding -->
+        <!-- logging dependencies to be included in war so scope compile-->
+        <!-- Log4j API and Core implementation  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
+            <scope>compile</scope>
         </dependency>
+        <!-- Log4j web required to run in a servelet context  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-web</artifactId>
-            <version>${log4j.version}</version>
+            <scope>compile</scope>
         </dependency>
         
-        
-   
     </dependencies>
 
     <build>
