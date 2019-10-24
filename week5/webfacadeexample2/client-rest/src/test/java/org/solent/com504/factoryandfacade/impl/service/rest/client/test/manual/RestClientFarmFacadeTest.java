@@ -60,10 +60,20 @@ public class RestClientFarmFacadeTest {
         LOG.debug("end of testAddAnimal()");
     }
 
-    @Test
+@Test
     public void testGetAnimalsOfType() {
-        fail("test not written");
+        LOG.debug("testGetAnimalsOfType()");
+        String animalType = "Cat";
+        List<Animal> animals = farmFacade.getAnimalsOfType(animalType);
+        assertNotNull(animals);
+        String msg = "returned :" + animals;
+        for (Animal value : animals) {
+            msg = msg + value + ",\n";
+        }
+        LOG.debug(msg);
+        LOG.debug("end of GetAnimalsOfType()");
     }
+
 
     @Test
     public void testGetAnimal() {
