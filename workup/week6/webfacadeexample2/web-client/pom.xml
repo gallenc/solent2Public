@@ -27,19 +27,13 @@
             <artifactId>webfacadeexample2-model</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-dao-jaxb</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-service</artifactId>
+            <artifactId>webfacadeexample2-client-rest</artifactId>
             <version>${project.version}</version>
         </dependency>
-            
+
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>

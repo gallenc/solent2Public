@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.factoryandfacade.impl.web;
+package org.solent.com504.factoryandfacade.impl.webclient;
 
-
-import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryImpl;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
 import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solent.com504.factoryandfacade.impl.service.rest.client.ClientObjectFactoryImpl;
 
 /**
  *
@@ -27,9 +26,9 @@ public class WebObjectFactory {
         if (farmFacade == null) {
             synchronized (WebObjectFactory.class) {
                 if (farmFacade == null) {
-                    LOG.debug("web application starting");
-                    ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
-                    farmFacade = serviceObjectFactory.getFarmFacade();
+                    LOG.debug("client web application starting");
+                    ServiceObjectFactory clientObjectFactory = new ClientObjectFactoryImpl();
+                    farmFacade = clientObjectFactory.getFarmFacade();
                 }
             }
         }

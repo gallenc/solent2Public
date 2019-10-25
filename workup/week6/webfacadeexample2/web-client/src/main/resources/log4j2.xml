@@ -17,7 +17,7 @@
         </Console>
         
         <!-- a roling file appender limits the size of log files -->
-        <RollingFile name="appLog" fileName="${APP_LOG_ROOT}/app-perf.log"
+        <RollingFile name="clientAppLog" fileName="${APP_LOG_ROOT}/client-app-perf.log"
                      filePattern="${APP_LOG_ROOT}/app-perf-%d{yyyy-MM-dd}-%i.log" >
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
@@ -33,7 +33,7 @@
         <!-- i.e. in our config, classes in package names beginnign org.solent -->
         <Logger name="org.solent"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="appLog"/>
+            <AppenderRef ref="cnientAppLog"/>
         </Logger>
 
         <!-- this logs to  the Consol (System.out) -->
