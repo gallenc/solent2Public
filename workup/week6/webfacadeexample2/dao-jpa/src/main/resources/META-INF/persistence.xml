@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence">
+
+
+    <!-- Define persistence unit -->
+    <persistence-unit name="motorcyclePersistence" transaction-type="RESOURCE_LOCAL">
+
+        <!--         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
+        
+        <!-- options for finding JPA annotated classes -->
+        <!-- scans model classes in local jar -->
+        <!-- <exclude-unlisted-classes>false</exclude-unlisted-classes> -->
+
+        <!-- scan all jars in war for annotated @Entity classes -->
+        <!-- <jar-file></jar-file> -->
+
+        <!-- explicitly list classes from model -->
+        <class>org.solent.com600.example.journeyplanner.model.Address</class>
+        <class>org.solent.com600.example.journeyplanner.model.Insurance</class>
+        <class>org.solent.com600.example.journeyplanner.model.SysUser</class>
+        <class>org.solent.com600.example.journeyplanner.model.Role</class>
+        <class>org.solent.com600.example.journeyplanner.model.ItineraryItem</class>
+        <class>org.solent.com600.example.journeyplanner.model.Rideout</class>
+        <class>org.solent.com600.example.journeyplanner.model.RideoutDay</class>
+
+        <properties>
+
+            <!-- MySQL database -->
+            <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
+            <!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpadb" /> -->
+            <!-- <property name="javax.persistence.jdbc.user" value="xxx" /> -->
+            <!-- <property name="javax.persistence.jdbc.password" value="yyy" /> -->
+
+            <!-- Derby java database -->
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+            
+            <!-- target/tmp places database in target directory so gets removed on every run -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:target/tmp/motorcycledb;create=true" />
+            <property name="javax.persistence.jdbc.user" value="je" />
+            <property name="javax.persistence.jdbc.password" value="je" />
+
+            <!-- EclipseLink should create the database schema automatically -->
+            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> -->
+
+            <!-- <property name="eclipselink.ddl-generation.output-mode" value="database" /> -->
+            <property name="eclipselink.ddl-generation.output-mode" value="both" />
+
+            <property name="eclipselink.application-location" value="./target" />
+            <property name="eclipselink.logging.level" value="FINEST" />
+            <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger" />
+
+        </properties>
+
+    </persistence-unit>
+</persistence>

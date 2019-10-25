@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Tue Apr 02 10:09:21 BST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0169-dd4f-6464-000005c5b6c0 
+on database directory C:\devel\gitrepos\solent4Public\workup\misc\MotorCycleRidePlanner\dao-jpa\target\tmp\motorcycledb  with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/gallenc/.m2/repository/org/apache/derby/derby/10.9.1.0/derby-10.9.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_181-b13
+user.dir=C:\devel\gitrepos\solent4Public\workup\misc\MotorCycleRidePlanner\dao-jpa
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
