@@ -1,6 +1,7 @@
 package org.solent.com504.factoryandfacade.model.dto;
 
 import java.util.Objects;
+import javax.persistence.Embeddable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Embeddable
 public class AnimalType {
 
     private String sound;

@@ -71,6 +71,14 @@
         
             <!-- logging dependencies -->
             <!-- Log4j API and Core implementation  -->
+            
+            <!-- allows Java commons logging to work over log4j -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jcl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
@@ -87,6 +95,13 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-web</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+            
+            <!-- EclipseLink jpa dependencies -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>javax.persistence</artifactId>
+                <version>2.1.1</version>
             </dependency>
         
             <!-- Spring dependencies -->

@@ -13,6 +13,13 @@
     
     <dependencies>
         
+        <!-- used for jpa -->
+       <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- junit dependencies -->
         <dependency>
             <groupId>junit</groupId>
