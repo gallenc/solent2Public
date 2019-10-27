@@ -16,7 +16,7 @@
     <Loggers>
         
         <!-- The name org.solent specifies that log names beginning with this string are dealt with by the following appenders -->
-        <!-- i.e. in our config, classes in package names beginnign org.solent -->
+        <!-- i.e. in our config, classes in package names begining org.solent -->
         <Logger name="org.solent"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
         </Logger>

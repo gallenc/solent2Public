@@ -17,10 +17,10 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
  */
 public class AnimalDaoJpaImpl implements AnimalDao {
 
-    private EntityManager em;
+    private EntityManager entityManager;
 
     public AnimalDaoJpaImpl(EntityManager em) {
-        this.em = em;
+        this.entityManager = em;
     }
 
     @Override
@@ -30,7 +30,11 @@ public class AnimalDaoJpaImpl implements AnimalDao {
 
     @Override
     public Animal updateOrSave(Animal animal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        entityManager.persist(animal);  // nore merge(animal) differnt semantics
+        // entityManager.flush() could be used
+        entityManager.getTransaction().commit();
+        return animal;
     }
 
     @Override
@@ -48,9 +52,12 @@ public class AnimalDaoJpaImpl implements AnimalDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    // no need to synchronize - same as simple dao
     @Override
     public Animal create(AnimalType animalType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Animal animal = new Animal();
+        animal.setAnimalType(animalType);
+        return animal;
     }
 
 }

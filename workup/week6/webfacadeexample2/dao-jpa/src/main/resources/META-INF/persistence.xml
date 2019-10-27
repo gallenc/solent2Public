@@ -33,7 +33,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
             
             <!-- target/tmp places database in target directory so gets removed on every run -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby:target/tmp/motorcycledb;create=true" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:target/tmp/farmdb;create=true" />
             <property name="javax.persistence.jdbc.user" value="je" />
             <property name="javax.persistence.jdbc.password" value="je" />
 
@@ -46,9 +46,12 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
 
             <property name="eclipselink.application-location" value="./target" />
             <property name="eclipselink.logging.level" value="FINEST" />
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            
+            <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/>
 <!--            <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.CommonsLoggingSessionLog"/>-->
-<property name="eclipselink.logging.logger" value="JavaLogger"/>
-
+            <!--<property name="eclipselink.logging.logger" value="JavaLogger"/>-->
+            
         </properties>
 
     </persistence-unit>

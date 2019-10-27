@@ -27,6 +27,12 @@
         </RollingFile>
     </Appenders>
     <Loggers>
+        <!-- i.e. in our config, classes in package names beginnign org.solent -->
+        <Logger name="org.solent"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </Logger>
+
         <Logger name="org.solent.com600.example.journeyplanner.jpadao"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
@@ -39,10 +45,11 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
-        <Logger name="transaction-log"  additivity="false" level="DEBUG">
+        <Logger name="eclipselink.logging.sql"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="transactionLog"/>
+            <AppenderRef ref="appLog"/>
         </Logger>
+
         <Root level="INFO">
             <AppenderRef ref="Console"/>
         </Root>
