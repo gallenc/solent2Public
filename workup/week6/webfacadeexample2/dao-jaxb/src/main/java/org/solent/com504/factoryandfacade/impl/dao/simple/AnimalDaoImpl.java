@@ -115,6 +115,12 @@ public class AnimalDaoImpl implements AnimalDao {
     public synchronized List<Animal> retrieveAll() {
         return new ArrayList<Animal>(animalList.getAnimals());
     }
+    
+    
+    @Override
+    public synchronized void deleteAll() {
+       animalList.getAnimals().clear();
+    }
 
     // no need to synchronize
     @Override
@@ -123,5 +129,6 @@ public class AnimalDaoImpl implements AnimalDao {
         animal.setAnimalType(animalType);
         return animal;
     }
+
 
 }

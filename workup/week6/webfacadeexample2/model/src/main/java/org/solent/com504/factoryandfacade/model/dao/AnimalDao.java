@@ -59,5 +59,10 @@ public interface AnimalDao {
      * @return animal of animalType but with no id set
      */
     public Animal create(AnimalType animalType);
+    
+    /**
+     * Deletes all animals 
+     */
+    public void deleteAll();
 
 }

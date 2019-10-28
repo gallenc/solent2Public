@@ -137,6 +137,12 @@ public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
     }
 
     @Override
+    public synchronized void deleteAll() {
+        super.deleteAll();
+        save();
+    }
+
+    @Override
     public Animal create(AnimalType animalType) {
         return super.create(animalType);
     }

@@ -7,6 +7,8 @@ package org.solent.com504.factoryandfacade.impl.dao.jpa;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.AnimalType;
@@ -25,7 +27,8 @@ public class AnimalDaoJpaImpl implements AnimalDao {
 
     @Override
     public Animal retrieve(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Animal usr = entityManager.find(Animal.class, id);
+        return usr;
     }
 
     @Override
@@ -39,17 +42,32 @@ public class AnimalDaoJpaImpl implements AnimalDao {
 
     @Override
     public boolean delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        Query q = entityManager.createQuery("DELETE FROM Animal a WHERE a.id=:id");
+        q.setParameter("id", id);
+        q.executeUpdate();
+        entityManager.getTransaction().commit();
+
+        return true;
     }
 
     @Override
     public List<Animal> retrieve(Animal animalTemplate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose To
     }
 
     @Override
     public List<Animal> retrieveAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypedQuery<Animal> q = entityManager.createQuery("SELECT a FROM Animal ", Animal.class);
+        List<Animal> animalList = q.getResultList();
+        return animalList;
+    }
+
+    @Override
+    public void deleteAll() {
+        entityManager.getTransaction().begin();
+        entityManager.createQuery("DELETE FROM Animals").executeUpdate();
+        entityManager.getTransaction().commit();
     }
 
     // no need to synchronize - same as simple dao
