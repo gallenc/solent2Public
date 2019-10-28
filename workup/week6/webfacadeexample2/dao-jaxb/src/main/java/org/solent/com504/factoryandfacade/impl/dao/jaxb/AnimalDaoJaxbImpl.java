@@ -25,7 +25,6 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
  */
 public class AnimalDaoJaxbImpl extends AnimalDaoImpl implements AnimalDao {
     // SETS UP LOGGING 
-
     final static Logger LOG = LogManager.getLogger(AnimalDaoJaxbImpl.class);
 
     private String filePath = null;

@@ -39,8 +39,8 @@ public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
         // NOTE THIS IS SAYING WHERE THE FILE GOES in TOMCAT
         AnimalDao animalDao = new AnimalDaoJaxbImpl(jaxbFile);
 
-        // if you just want to use simple DAO do this
-        //AnimalDao animalDao = new AnimalDaoImpl();
+        // If you just want to use simple DAO do this
+        // AnimalDao animalDao = new AnimalDaoImpl();
         farmFacade.setAnimalDao(animalDao);
         farmFacade.setAnimalTypeDao(animalTypeDao);
     }
