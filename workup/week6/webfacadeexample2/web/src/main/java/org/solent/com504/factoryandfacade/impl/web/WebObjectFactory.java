@@ -12,6 +12,7 @@ import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryJpaImpl;
 
 /**
  *
@@ -28,7 +29,10 @@ public class WebObjectFactory {
             synchronized (WebObjectFactory.class) {
                 if (farmFacade == null) {
                     LOG.debug("web application starting");
-                    ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
+                    
+                    // note we can choose which we use
+                    // ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
+                    ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
                     farmFacade = serviceObjectFactory.getFarmFacade();
                 }
             }
