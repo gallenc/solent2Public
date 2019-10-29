@@ -39,4 +39,6 @@ She also needs need to be able to book modify and cancel appointments with parti
 
 Given the two Patient and Appointment DAO's you now have, what methods should a serviceFacade provide to enable the upper layers?
 
-
+3. The model classes have some JAXB annotations.
+Write a test class for the model to ensure objects can be marshalled and unmarshalled using JAXB 
+Remember you will need a jaxb.index file in each package.
