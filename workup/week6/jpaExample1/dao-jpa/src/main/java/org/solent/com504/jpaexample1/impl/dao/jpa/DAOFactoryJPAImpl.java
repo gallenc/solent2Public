@@ -1,40 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.solent.com504.jpaexample1.impl.dao.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import org.solent.com504.jpaexample1.model.dao.AnimalDao;
-import org.solent.com504.jpaexample1.model.dao.AnimalTypeDao;
+import org.solent.com504.jpaexample1.model.dao.AppointmentDAO;
 import org.solent.com504.jpaexample1.model.dao.DAOFactory;
+import org.solent.com504.jpaexample1.model.dao.PersonDAO;
 
-
+/**
+ *
+ * @author cgallen
+ */
 public class DAOFactoryJPAImpl implements DAOFactory {
-    
-    // TODO FACTORY MAY WANT TO CLOSE ENTITY MANAGER AT END OF SESSION
 
-    private static final String PERSISTENCE_UNIT_NAME = "farmPersistence";
+    // THIS HAS TO MATCH THE persistance.xml
+    private static final String PERSISTENCE_UNIT_NAME = "modelPersistence";
     private static EntityManagerFactory factory;
     private static EntityManager em;
-    private static AnimalDao animalDao;
-    private static AnimalTypeDao animalTypeDao;
-    
+    private static PersonDAO personDAO;
+    private static AppointmentDAO appointmentDAO;
+
     static {
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         em = factory.createEntityManager();
-        animalDao = new AnimalDaoJpaImpl(em);
-        animalTypeDao = new AnimalTypeDaoImpl();
+
+        // note it is important that all DAO's share same entity manafer
+        personDAO = new PersonDAOJpaImpl(em);
+        appointmentDAO = new AppointmentDAOJpaImpl(em);
     }
 
     @Override
-    public AnimalDao getAnimalDao() {
-        return animalDao;
+    public PersonDAO getPersonDAO() {
+        return personDAO;
     }
-    
+
     @Override
-    public AnimalTypeDao getAnimalTypeDao() {
-        return animalTypeDao;
+    public AppointmentDAO getAppointmentDAO() {
+        return appointmentDAO;
     }
-
-
 
 }

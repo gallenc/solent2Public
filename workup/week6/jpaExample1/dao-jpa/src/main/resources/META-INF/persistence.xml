@@ -6,7 +6,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
 
 
     <!-- Define persistence unit -->
-    <persistence-unit name="farmPersistence" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="modelPersistence" transaction-type="RESOURCE_LOCAL">
 
         <!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
         
@@ -18,9 +18,9 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
         <!-- <jar-file></jar-file> -->
 
         <!-- explicitly list classes from model -->
-        <class>org.solent.com504.jpaexample1.model.dto.Animal</class>
-        <class>org.solent.com504.jpaexample1.model.dto.AnimalType</class>
-
+        <class>org.solent.com504.jpaexample1.model.dto.Appointment</class>
+        <class>org.solent.com504.jpaexample1.model.dto.Person</class>
+        <class>org.solent.com504.jpaexample1.model.dto.Role</class>
         <properties>
 
             <!-- MySQL database -->
@@ -49,7 +49,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             
             <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/>
-<!--            <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.CommonsLoggingSessionLog"/>-->
+            <!--            <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.CommonsLoggingSessionLog"/>-->
             <!--<property name="eclipselink.logging.logger" value="JavaLogger"/>-->
             
         </properties>

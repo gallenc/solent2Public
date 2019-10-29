@@ -1,17 +1,17 @@
 
-## More advanced Facade Pattern
+## JPA DAO Model
 
-A more advanced example is provided below which is implemented in the factoryandfacade3 project
+THe JPA DAO model is derived from teh following diagram
 
-![alt text](../UMLfactoryandfacade/images/facadediagram3.png "Figure facadediagram3.png" )
+![alt text](../UMLmodel/images/jpaExampleClassDiagram.png "Figure jpaExampleClassDiagram.png" )
 
 DTO classes are at the bottom of the diagram. 
 These are simple java beans which are used to pass information between layers.
 
 DAO classes are in the middle of the diagram.
-These are used to create animal types and animals which are saved using the Animal dao
+These are used to Create Delete Update and Retrieve (CRUD) data from the database
 
-The FarmFacade provides a simpler interface which used both the DAO's in order to support ReST and JSP pages.
+
 
 
 ## Use Cases and Robustness Diagrams
@@ -24,10 +24,18 @@ The draw.io xml files and their related .png images are in the drawio folder.
 These are also referenced below;
 
 
-### Farm Robustness Diagram
+### Use Cases and Robustness Diagrams
 
-![alt text](../UMLfactoryandfacade/drawio/farm-dao-robustness-drawio.png "Figure farm-dao-robustness-drawio.png")
+### Class Diagrams
+![alt text](../UMLmodel/drawio/farm-dao-robustness-drawio.png "Figure farm-dao-robustness-drawio.png")
 
+## Template use case diagram
+
+![alt text](../UMLmodel/drawio/exampleproject-usecase-drawio.png "Figure exampleproject-usecase-drawio.png")
+
+## Template Robustness Diagram 
+
+![alt text](../UMLmodel/drawio/exampleproject-robustness-diagram-drawio.png "Figure exampleproject-robustness-diagram-drawio.png")
 
 
 
