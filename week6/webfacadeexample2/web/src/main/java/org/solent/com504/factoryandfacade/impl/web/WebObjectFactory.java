@@ -6,6 +6,7 @@
 package org.solent.com504.factoryandfacade.impl.web;
 
 
+import java.io.File;
 import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryImpl;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
 import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
@@ -22,6 +23,8 @@ public class WebObjectFactory {
     // SETS UP LOGGING
     final static Logger LOG = LogManager.getLogger(WebObjectFactory.class);
 
+    final static String  TMP_DIR = System.getProperty("java.io.tmpdir"); 
+    
     private static FarmFacade farmFacade = null;
 
     public static FarmFacade getServiceFacade() {
@@ -30,6 +33,11 @@ public class WebObjectFactory {
                 if (farmFacade == null) {
                     LOG.debug("web application starting");
                     
+                    // this is needed to allow Derby to work as in embedded server
+                    String derbyHome=TMP_DIR+File.separator+"derby";
+                    LOG.debug("setting derby.system.home="+derbyHome);
+                    
+                    System.setProperty("derby.system.home", derbyHome); 
                     // note we can choose which we use
                     // ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
                     ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
