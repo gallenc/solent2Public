@@ -70,6 +70,13 @@
         </dependency>
         
         <!-- logging dependencies to be included in war so scope compile-->
+        <!-- SLF4J over Log4j needed for jpa-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- Log4j API and Core implementation  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
