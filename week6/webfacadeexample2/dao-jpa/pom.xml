@@ -35,31 +35,6 @@
         </dependency>
 
         <!-- Eclipselink JPA implementation -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.persistence</groupId> -->
-        <!-- <artifactId>eclipselink</artifactId> -->
-        <!-- <version>2.7.4</version> -->
-        <!-- </dependency> -->
-
-        <!-- This allows slf4j logging and you need to set the following persistence property -->
-        <!-- <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/> -->
-        <!-- see https://marschall.github.io/2017/10/07/eclipselink-slfj4.html -->
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.extension</artifactId>
-            <version>2.7.0</version>
-        </dependency>
-
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.persistence</groupId> -->
-        <!-- <artifactId>eclipselink</artifactId> -->
-        <!-- <version>2.5.2</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse.persistence</groupId> -->
-        <!-- <artifactId>javax.persistence</artifactId> -->
-        <!-- <version>2.2.1</version> -->
-        <!-- </dependency> -->
 
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -81,6 +56,15 @@
             </exclusions>
             <scope>compile</scope>
         </dependency>
+        
+        <!-- This allows slf4j logging and you need to set the following persistence property -->
+        <!-- <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/> -->
+        <!-- see https://marschall.github.io/2017/10/07/eclipselink-slfj4.html -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.extension</artifactId>
+            <version>2.7.0</version>
+        </dependency>
 
         <!-- derby database -->
         <dependency>
@@ -96,28 +80,17 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- SLF4J used to provide logging in classes -->
-      
+        <!-- SLF4J // jcl used to provide logging for eclipselink JPA and derby  -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <scope>compile</scope>
-        </dependency>
-      
-
-        <!-- Eclipse link uses commons logging. This bridges to log4j -->
-        <!--        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-jcl</artifactId>
             <scope>test</scope>
-        </dependency>-->
-        
-        <!-- SLF4J over Log4j -->
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
@@ -134,13 +107,6 @@
             <artifactId>log4j-core</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
-                    <scope>test</scope>
-                </dependency>
-        -->
 
         <!-- Junit depencencies -->
         <dependency>
