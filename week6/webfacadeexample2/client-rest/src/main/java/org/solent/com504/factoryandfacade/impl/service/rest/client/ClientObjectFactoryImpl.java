@@ -35,5 +35,10 @@ public class ClientObjectFactoryImpl implements ServiceObjectFactory {
         
         return farmFacade;
     }
+
+    @Override
+    public void shutDown() {
+        // do nothing
+    }
     
 }

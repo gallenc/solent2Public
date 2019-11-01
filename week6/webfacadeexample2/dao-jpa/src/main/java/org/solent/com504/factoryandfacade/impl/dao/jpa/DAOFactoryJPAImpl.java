@@ -56,4 +56,22 @@ public class DAOFactoryJPAImpl implements DAOFactory {
         return animalTypeDao;
     }
 
+    // shutdown method which should be used to clean up entity manager when application closes
+    public void shutDown() {
+        LOG.debug("DAO FACTORY SHUTTING DOWN ");
+        if (em != null) {
+            synchronized (this) {
+                LOG.debug("closing entity manager ");
+                if (em != null) {
+                    em.close();
+                    em = null;
+                }
+                animalDao = null;
+                animalTypeDao = null;
+            }
+
+        }
+
+    }
+
 }

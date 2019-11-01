@@ -14,5 +14,10 @@ public interface DAOFactory {
     public AnimalTypeDao getAnimalTypeDao();
 
     public AnimalDao getAnimalDao();
+    
+    /**
+     * shuts down all daos and persistence
+     */
+    public void shutDown();
 
 }

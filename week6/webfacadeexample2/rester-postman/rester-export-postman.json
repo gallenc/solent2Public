@@ -32,7 +32,7 @@
                             }
                         ]
                     },
-                    "id": "rester-7",
+                    "id": "rester-6",
                     "name": "farmService"
                 },
                 {
@@ -46,7 +46,7 @@
                             }
                         ]
                     },
-                    "id": "rester-6",
+                    "id": "rester-7",
                     "name": "getAllAnimals"
                 },
                 {
@@ -74,13 +74,13 @@
                             }
                         ]
                     },
-                    "id": "rester-2",
+                    "id": "rester-9",
                     "name": "getSupportedAnimalTypes_json"
                 },
                 {
                     "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal",
-                        "method": "POST",
+                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getSupportedAnimalTypes",
+                        "method": "GET",
                         "header": [
                             {
                                 "key": "Accept",
@@ -88,7 +88,7 @@
                             }
                         ]
                     },
-                    "id": "rester-4",
+                    "id": "rester-10",
                     "name": "getSupportedAnimalTypes_xml"
                 },
                 {
@@ -102,7 +102,7 @@
                             }
                         ]
                     },
-                    "id": "rester-9",
+                    "id": "rester-11",
                     "name": "removeAnimal"
                 }
             ]

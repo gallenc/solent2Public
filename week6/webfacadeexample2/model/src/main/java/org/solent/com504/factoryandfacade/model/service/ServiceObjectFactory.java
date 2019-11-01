@@ -12,4 +12,9 @@ public interface ServiceObjectFactory {
      * @return farmFacade
      */
     public FarmFacade getFarmFacade();
+    
+    /** 
+     * shuts down all services created by factory gracefully
+     */
+    public void shutDown();
 }

@@ -48,4 +48,9 @@ public class ServiceObjectFactoryImpl implements ServiceObjectFactory {
     public FarmFacade getFarmFacade() {
         return farmFacade;
     }
+
+    @Override
+    public void shutDown() {
+        // do nothing
+    }
 }

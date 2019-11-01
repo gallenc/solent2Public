@@ -3,11 +3,15 @@ package org.solent.com504.factoryandfacade.impl.dao.jdbc;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
 import org.solent.com504.factoryandfacade.model.dao.AnimalTypeDao;
 import org.solent.com504.factoryandfacade.model.dao.DAOFactory;
 
 public class DAOFactoryJdbcImpl implements DAOFactory {
+
+    final static Logger LOG = LogManager.getLogger(DAOFactoryJdbcImpl.class);
 
     private static AnimalDao animalDao = null;
     private static AnimalTypeDao animalTypeDao = null;
@@ -27,5 +31,11 @@ public class DAOFactoryJdbcImpl implements DAOFactory {
     public AnimalTypeDao getAnimalTypeDao() {
         return animalTypeDao;
     }
+
+    @Override
+    public void shutDown() {
+    }
+
+ 
 
 }
