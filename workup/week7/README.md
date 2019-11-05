@@ -1,44 +1,42 @@
 # Week 6 - Using JPA or JDBC for model persistance
 
 
-# Exercises for week 6
+# Exercises for week 7
 
 ## Set up
 1. remember to merge your project with the upstream project
-2. create a new 'week6' folder under your myPracticeCouseWork folder.
-3. copy the contents of week6 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
+2. create a new 'week7' folder under your myPracticeCouseWork folder.
+3. copy the contents of week7 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
 
-## Exercise 1 webfacadeexample2
+## Exercise 1 MOCK TCA
 
-Review the code in this completed example
+This week we will be doing a mock Time Constrained Assessment.
+This will last 2 hours from when we start. 
+The TCA is here
 
-Try the  [webfacadeexample2](../week6/webfacadeexample2) example
+[mocktca](../week7/mocktca) 
 
-### End to end ReST API
-The code has been modified to show an end to end solution where a second web 
-application uses the ResT API to comunicate with the first web application.
-Run both web applications and make sure you understand the flow of information in the app.
+## Exercise 2 project
 
-### JDBC and JPA Data Access layers
-Both a JDBC based adn JPA based data access layer have been included.
-Only the JPA layer is wired into the app but the JDBC layer is provded to show you the differnce JPA makes
+Last week you worked on jpaExample1 which introduced you to modelling some objects which will be of use in your project.
 
-## Exercise 2 jpaExample1
 
-This simple project shows two JPA DAO's, one for a Person object and one for an Appointment object.
-
-1. complete the DAO implementations and tests.
-
-You should be able to see how to do this by looking at the [JPA dao code](../week6/webfacadeexample2/dao-jpa) in the [webfacadeexample2](../week6/webfacadeexample2) project.
-
-2. complete a use case and robustness diagram for the following scenario. 
+You were asked to complete a use case and robustness diagram for the following scenario. 
 
 A doctors surgery has a number of doctors and patients. 
 The receptionist needs to be able to add, delete and modify patients in the system
 She also needs need to be able to book modify and cancel appointments with particular doctors for particular patients.
 
-Given the two Patient and Appointment DAO's you now have, what methods should a serviceFacade provide to enable the upper layers?
+You were also asked that given the two Patient and Appointment DAO's you now have, what methods should a serviceFacade provide to enable the upper layers?
 
-3. The model classes have some JAXB annotations.
-Write a test class for the model to ensure objects can be marshalled and unmarshalled using JAXB 
+you were also asked to write a test class for the model to ensure objects can be marshalled and unmarshalled using JAXB 
 Remember you will need a jaxb.index file in each package.
+
+This week I have refactored the jpaExample1 code into a larger project which you can choose to uses to start your implementation of your assessment.
+
+This template is here: [project](../week7/project)
+It provides the basic structure and working example classes for you to begin to get your application working.
+
+I will provide you with other options for implementation later in the course but for now, this JPA based project will be a good start.
+
+You need now to compare your jpaExample1 model with the model in [project](../week7/project) and begin to think how thsi project can be used as a starting point for your implementation.
