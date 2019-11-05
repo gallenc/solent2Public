@@ -7,10 +7,10 @@ You will be given access to a private git repository on Github which contains th
 
 DO NOT FORK THIS REPOSITORY ON GITHUB
 
-You will have 1 hour 45 minutes to complete this assessment
+You will have 2 hours to complete this assessment
 .
 You may, if you find it useful, access your previous work through git or use any other on line resources which help you complete this exercise.
-You are required to use the class PC's and you should set up your machine to use maven as described previously in class. (For your convenience a maven-setup project is also provided in this COM504TCA-2018-01 tca folder).
+You are required to use the class PC's and you should set up your machine to use maven as described previously in class. (For your convenience a maven-setup project is also provided in this tca folder).
 
 You will be given read access to a private github repository containing all of the code you need for this exercise.
 
@@ -73,10 +73,7 @@ So don't spend too much time on any one task.
 
 ### Implementation (50%)
 
-
-
 5	Complete JSP for searching for a book	 (50%)
-
 
 #Project Brief : Library Project version 0.1
 
@@ -140,19 +137,9 @@ The ServiceFacadeImpl.java mostly proxies methods from the BookDAO which have al
 So there is no need to repeat tests of the proxied methods.
 
 ### library-web
-The web application is assembled in the ibrary-web project. To run this application build the main project and then run the jetty server
+The web application is assembled in the ibrary-web project. To run this application build the main project and then run the tomcat server in netbeans
 
-```
-cd library-parent
-
-mvn clean install
-
-cd web
-
-mvn jetty:run
-```
-
-The application should be available at http://localhost:8680
+The application should be available at http://localhost:8084
 
 Most of the web application has been implemented and it's behaviour can be used to help you complete the use case and robustness diagrams.
 
