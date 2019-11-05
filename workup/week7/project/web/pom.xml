@@ -10,7 +10,6 @@
 
     <artifactId>project-web</artifactId>
     <name>project-web</name>
-        
     <packaging>war</packaging>
     
     <properties>
@@ -22,6 +21,7 @@
 
     <dependencies>
 
+        <!-- project dependencies -->
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>project-model</artifactId>
@@ -40,6 +40,7 @@
             <version>${project.version}</version>
         </dependency>
             
+        <!-- tomcat / jsp depencencies -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>

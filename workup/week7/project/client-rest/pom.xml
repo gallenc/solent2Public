@@ -9,6 +9,7 @@
     </parent>
 
     <artifactId>project-client-rest</artifactId>
+    <name>project-client-rest</name>
     <packaging>jar</packaging>
     
     <build>

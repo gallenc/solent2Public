@@ -10,7 +10,6 @@
 
     <artifactId>project-web-client</artifactId>
     <name>project-web-client</name>
-        
     <packaging>war</packaging>
     
     <properties>

@@ -5,25 +5,11 @@
     },
     "item": [
         {
-            "name": "COM405 Farm",
+            "name": "appointment",
             "item": [
                 {
                     "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/addAnimal?animalName=randomName&animalType=Cat",
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/xml"
-                            }
-                        ]
-                    },
-                    "id": "rester-5",
-                    "name": "addAnimal"
-                },
-                {
-                    "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/",
+                        "url": "http://localhost:8084/projectfacadeweb/rest/appointmentService/getHeartbeat",
                         "method": "GET",
                         "header": [
                             {
@@ -32,54 +18,17 @@
                             }
                         ]
                     },
-                    "id": "rester-6",
-                    "name": "farmService"
-                },
+                    "id": "rester-12",
+                    "name": "heartbeat"
+                }
+            ]
+        },
+        {
+            "name": "Store",
+            "item": [
                 {
                     "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAllAnimals",
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/xml"
-                            }
-                        ]
-                    },
-                    "id": "rester-7",
-                    "name": "getAllAnimals"
-                },
-                {
-                    "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getAnimalsOfType?animalType=Cat",
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/xml"
-                            }
-                        ]
-                    },
-                    "id": "rester-8",
-                    "name": "getAnimalsOfType"
-                },
-                {
-                    "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getSupportedAnimalTypes",
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            }
-                        ]
-                    },
-                    "id": "rester-9",
-                    "name": "getSupportedAnimalTypes_json"
-                },
-                {
-                    "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/getSupportedAnimalTypes",
+                        "url": "http://localhost:8084/rest/example/retrieve?id=1",
                         "method": "GET",
                         "header": [
                             {
@@ -89,21 +38,29 @@
                         ]
                     },
                     "id": "rester-10",
-                    "name": "getSupportedAnimalTypes_xml"
+                    "name": "Retrieve"
                 },
                 {
                     "request": {
-                        "url": "http://localhost:8084/basicfacadeweb/rest/farmService/removeAnimal?animalName=randomName",
+                        "url": "http://localhost:8084/rest/example/retrievematching",
                         "method": "POST",
                         "header": [
                             {
                                 "key": "Accept",
                                 "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
                             }
-                        ]
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<item>\n <sku>abcd</sku>\n</item>"
+                        }
                     },
                     "id": "rester-11",
-                    "name": "removeAnimal"
+                    "name": "RetrieveMatchine"
                 }
             ]
         }

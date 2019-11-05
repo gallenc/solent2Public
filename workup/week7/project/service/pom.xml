@@ -9,6 +9,7 @@
     </parent>
 
     <artifactId>project-service</artifactId>
+    <name>project-service</name>
     <packaging>jar</packaging>
     
     <dependencies>
