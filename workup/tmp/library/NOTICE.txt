@@ -1,0 +1,15 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+Credit Card Number Validator
+Copyright 2017-2018 Craig Gallen, Solent University
+
+**********************
+THIRD PARTY COMPONENTS
+**********************
+
+This product includes software developed by 
+Ian Chan icchan 
+Github gist https://gist.github.com/icchan/47d83bacc5113db59fbc
+
+The licenses for these third party components are included in LICENSE.txt
