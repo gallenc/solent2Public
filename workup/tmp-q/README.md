@@ -1,6 +1,4 @@
-# COM504TCA-2018-resit-answer
-DO NOT SHARE WITH STUDENTS
-Answer for Resit TCA for COM504TCA-2018
+# COM504  MOCK TCA
 
 # Assessment Task 
 

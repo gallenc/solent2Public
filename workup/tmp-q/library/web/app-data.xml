@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookList>
+    <lastBookId>9</lastBookId>
+    <books>
+        <book>
+            <id>8</id>
+            <title>fafasf</title>
+            <author>aaasf</author>
+            <isbn>aasfasf</isbn>
+        </book>
+        <book>
+            <id>9</id>
+            <title>aasfasf</title>
+            <author>asfasf</author>
+            <isbn>asfasf</isbn>
+        </book>
+    </books>
+</bookList>

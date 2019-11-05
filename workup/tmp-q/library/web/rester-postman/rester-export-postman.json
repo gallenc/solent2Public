@@ -1,0 +1,53 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "example",
+            "item": [
+                {
+                    "request": {
+                        "url": "localhost:8680/rest/example/retrieve?id=1",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-2",
+                    "name": "retreive"
+                },
+                {
+                    "request": {
+                        "url": "localhost:8680/rest/example/retrievematching",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<entity>\n     \n     <field_A>abcd</field_A>\n\n</entity>"
+                        }
+                    },
+                    "id": "rester-1",
+                    "name": "retreivematching"
+                }
+            ]
+        }
+    ]
+}
