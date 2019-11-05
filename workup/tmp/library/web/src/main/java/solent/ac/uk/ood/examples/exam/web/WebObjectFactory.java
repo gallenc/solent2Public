@@ -14,7 +14,9 @@ import solent.ac.uk.ood.examples.exam.service.ServiceFactoryImpl;
  */
 public class WebObjectFactory {
 
-    private static final String DATA_FILE_LOCATION = "./app-data.xml";
+    final static String TMP_DIR = System.getProperty("java.io.tmpdir");
+    
+    private static final String DATA_FILE_LOCATION = TMP_DIR+"/library/app-data.xml";
 
     private static ServiceFactory serviceFactory = null;
 
