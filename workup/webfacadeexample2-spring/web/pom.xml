@@ -60,6 +60,12 @@
             <artifactId>spring-webmvc</artifactId>
             <scope>compile</scope>
         </dependency>
+        
+        <!-- to allow jersey to work with spring as a component -->
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-spring5</artifactId>
+        </dependency>
             
             
         <!-- servelet dependencies provided by tomcat -->
