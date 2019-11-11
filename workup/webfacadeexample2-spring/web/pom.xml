@@ -54,17 +54,19 @@
             <scope>compile</scope>
         </dependency> 
             
-        <!-- Spring MVC framework -->
+        <!--Spring MVC framework--> 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <scope>compile</scope>
         </dependency>
-        
+
         <!-- to allow jersey to work with spring as a component -->
+        <!-- note if not present need to have jersey-hk2 on classpath -->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring5</artifactId>
+            <scope>compile</scope>
         </dependency>
             
             

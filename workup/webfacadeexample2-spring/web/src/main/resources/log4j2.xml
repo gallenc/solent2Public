@@ -40,6 +40,11 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
+        
+        <Logger name="org.springframework"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </Logger>
 
         <!-- this logs to  the Consol (System.out) -->
         <Root level="DEBUG">

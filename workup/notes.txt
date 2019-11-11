@@ -46,3 +46,10 @@ https://siddharthnawani.blogspot.com/2019/10/contextloaderlistener-vs.html Conte
 https://medium.com/@shask9/developing-restful-web-services-using-jax-rs-jersey-and-spring-b4e1eb8e2467 using jersey-spring4 and spring 4
 
 https://stackoverflow.com/questions/45625925/what-exactly-is-the-resourceconfig-class-in-jersey-2
+
+
+interesting - jersey has a dependency on injection factor which is nowq providec by spring
+https://stackoverflow.com/questions/44088493/jersey-stopped-working-with-injectionmanagerfactory-not-found
+
+
+https://howtodoinjava.com/spring-mvc/spring-mvc-difference-between-contextannotation-config-vs-contextcomponent-scan/
