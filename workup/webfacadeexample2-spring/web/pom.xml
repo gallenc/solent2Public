@@ -67,7 +67,23 @@
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring5</artifactId>
             <scope>compile</scope>
+            <exclusions>
+                <!-- even when excluded and down version this is a problem - need later version of tomcat -->
+                <!--excluding jakarta.ws.rs-api 2.1.6 as doenst work with tomcat--> 
+                <!--                <exclusion>   
+                    <groupId>jakarta.ws.rs</groupId>
+                    <artifactId>jakarta.ws.rs-api</artifactId>
+                </exclusion>-->
+            </exclusions> 
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+        <!--        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>2.1.5</version>
+        </dependency>-->
+
             
             
         <!-- servelet dependencies provided by tomcat -->
