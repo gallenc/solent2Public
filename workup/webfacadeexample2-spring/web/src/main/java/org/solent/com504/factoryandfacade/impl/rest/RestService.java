@@ -10,6 +10,7 @@ package org.solent.com504.factoryandfacade.impl.rest;
  * @author gallenc
  */
 import java.util.List;
+import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -24,6 +25,8 @@ import org.solent.com504.factoryandfacade.impl.web.WebObjectFactory;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * To make the ReST interface easier to program. All of the replies are
@@ -33,6 +36,7 @@ import org.solent.com504.factoryandfacade.model.service.FarmFacade;
  * replyMessage.getAnimalList() int replyMessage.getCode()
  * replyMessage.getDebugMessage(); * @author cgallen
  */
+@Component // component allows resource to be picked up
 @Path("/farmService")
 public class RestService {
 
@@ -40,6 +44,11 @@ public class RestService {
     // note that log name will be org.solent.com504.factoryandfacade.impl.rest.RestService
     final static Logger LOG = LogManager.getLogger(RestService.class);
 
+    // This serviceFacade object is injected by Spring
+    @Resource(name="serviceFacade")
+    FarmFacade serviceFacade = null;   
+    
+    
     /**
      * this is a very simple rest test message which only returns a string
      *
@@ -67,7 +76,9 @@ public class RestService {
     public Response getAllAnimals() {
         try {
 
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getAllAnimals called");
 
@@ -111,7 +122,9 @@ public class RestService {
         try {
             LOG.debug("/addAnimal called animalType=" + animalType + "animalName=" + animalName);
 
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
             ReplyMessage replyMessage = new ReplyMessage();
 
             Animal addedAnimal = serviceFacade.addAnimal(animalType, animalName);
@@ -147,7 +160,9 @@ public class RestService {
         try {
             LOG.debug("/getAnimalsOfType called animalType=" + animalType);
 
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -179,7 +194,12 @@ public class RestService {
     public Response getAnimal(@QueryParam("animalName") String animalName) {
         try {
             LOG.debug("/getAnimal called animalName=" + animalName);
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+
+                        // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
+            
+            
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -213,7 +233,10 @@ public class RestService {
 
             LOG.debug("/removeAnimal called animalName=" + animalName);
 
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
+            
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet.");
@@ -243,7 +266,9 @@ public class RestService {
         try {
             LOG.debug("/getSupportedAnimalTypes called");
 
-            FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            // replaced by @Autowired annotation
+            //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
             ReplyMessage replyMessage = new ReplyMessage();
 
             List<String> stringList = serviceFacade.getSupportedAnimalTypes();

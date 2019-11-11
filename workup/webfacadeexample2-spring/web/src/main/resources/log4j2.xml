@@ -41,10 +41,18 @@
             <AppenderRef ref="appLog"/>
         </Logger>
         
+        <!-- log spring -->
         <Logger name="org.springframework"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
+        
+        <!-- log tomcat -->
+        <Logger name="org.apache.catalina.core"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </Logger>
+        
 
         <!-- this logs to  the Consol (System.out) -->
         <Root level="DEBUG">

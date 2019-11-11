@@ -41,6 +41,7 @@ public class WebObjectFactory implements ServletContextListener {
     private static ServiceObjectFactory serviceObjectFactory = null;
 
     public static FarmFacade getServiceFacade() {
+        LOG.debug("WebObjectFactory getServiceFacade called");
         if (farmFacade == null) {
             synchronized (WebObjectFactory.class) {
                 if (farmFacade == null) {
