@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="smartmetersystem">
+  <ClassDiagramComponents>
+    <Class name="ElectricityMeasurement" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="938.0" yPosition="516.0">
+      <Fields>
+        <Field name="time" type="Date" visibility="private"/>
+        <Field name="duration" type="long" visibility="private"/>
+        <Field name="kilowatts" type="double" visibility="private"/>
+        <Field name="meterId" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Meter" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="1061.0" yPosition="55.0">
+      <Fields>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="latitude" type="Double" visibility="private"/>
+        <Field name="longitude" type="Double" visibility="private"/>
+        <Field name="meterId" type="String" visibility="private"/>
+        <Field name="MeasurementDuration" type="Long" visibility="private"/>
+        <Field name="MessageFrequency" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="MeasurementMessage" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="366.0" yPosition="566.0">
+      <Fields>
+        <Field name="meter" type="Meter" visibility="private"/>
+        <Field name="measurements" type="List&lt;ElectricityMeasurement&gt;" visibility="private"/>
+        <Field name="TimeReceived" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ReplyMessage" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="131.0" yPosition="350.0">
+      <Fields>
+        <Field name="meterControl" type="MeterControl" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="MeterControl" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="104.0" yPosition="566.0">
+      <Fields>
+        <Field name="MeasurementFrequency" type="Long" visibility="private"/>
+        <Field name="sendMessagesSinceDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="SmartMeterService" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="76.0" yPosition="174.0">
+      <Methods>
+        <Method name="sendMeasurements" returnType="ReplyMessage" visibility="public">
+          <Argument type="MeasurementMessage" name="measurementMessage"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="MeterDAO" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="688.0" yPosition="23.0">
+      <Methods>
+        <Method name="createMeter" returnType="Meter" visibility="public">
+          <Argument type="Meter" name="meter"/>
+        </Method>
+        <Method name="updateMeter" returnType="Meter" visibility="public">
+          <Argument type="Meter" name="meter"/>
+        </Method>
+        <Method name="deleteMeter" returnType="boolean" visibility="public">
+          <Argument type="String" name="meterId"/>
+        </Method>
+        <Method name="retreiveMeter" returnType="Meter" visibility="public">
+          <Argument type="String" name="meterId"/>
+        </Method>
+        <Method name="retreiveAllMeters" returnType="List&lt;Meter&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="MeasurementsDAO" package="solent.ac.uk.ood.examples.smartmeter.model" visibility="public" xPosition="589.0" yPosition="284.0">
+      <Methods>
+        <Method name="createOrUpdateMeasurements" returnType="List&lt;ElectricityMeasurements&gt;" visibility="public">
+          <Argument type="List&lt;ElectricityMeasurements&gt;" name="measurements"/>
+        </Method>
+        <Method name="retreiveMeasurements" returnType="List&lt;ElectricityMeasurements&gt;" visibility="public">
+          <Argument type="Date" name="start"/>
+          <Argument type="Date" name="end"/>
+          <Argument type="String" name="meterId"/>
+        </Method>
+        <Method name="deleteMeasurements" returnType="boolean" visibility="public">
+          <Argument type="Date" name="start"/>
+          <Argument type="Date" name="end"/>
+          <Argument type="String" name="meterId"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="useMeasurementMessage" source="solent.ac.uk.ood.examples.smartmeter.model.SmartMeterService" target="solent.ac.uk.ood.examples.smartmeter.model.MeasurementMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesMeter" source="solent.ac.uk.ood.examples.smartmeter.model.MeterDAO" target="solent.ac.uk.ood.examples.smartmeter.model.Meter" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesMeasurement" source="solent.ac.uk.ood.examples.smartmeter.model.MeasurementsDAO" target="solent.ac.uk.ood.examples.smartmeter.model.ElectricityMeasurement" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useReplyMessage" source="solent.ac.uk.ood.examples.smartmeter.model.SmartMeterService" target="solent.ac.uk.ood.examples.smartmeter.model.ReplyMessage" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <IsRelation name="is (the service proxys the methods of the DAO)" source="solent.ac.uk.ood.examples.smartmeter.model.SmartMeterService" target="solent.ac.uk.ood.examples.smartmeter.model.MeterDAO"/>
+    <UseRelation name="useMeterControl" source="solent.ac.uk.ood.examples.smartmeter.model.ReplyMessage" target="solent.ac.uk.ood.examples.smartmeter.model.MeterControl" sourceCardinality="1..1" targetCardinality="0..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
