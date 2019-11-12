@@ -1,4 +1,3 @@
-<%@page import="org.solent.com504.factoryandfacade.impl.web.WebObjectFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +6,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="org.solent.com504.factoryandfacade.model.dto.Animal"%>
 <%@page import="org.solent.com504.factoryandfacade.model.service.FarmFacade"%>
-
+<%@page import="org.solent.com504.factoryandfacade.impl.web.WebObjectFactory"%>
 
 <%
     // used to place error message at top of page 

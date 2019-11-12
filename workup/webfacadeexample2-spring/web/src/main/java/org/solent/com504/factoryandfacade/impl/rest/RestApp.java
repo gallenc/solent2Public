@@ -12,15 +12,18 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import org.glassfish.jersey.server.ResourceConfig;
-
+import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
+import org.glassfish.jersey.server.ServerProperties;
 
 @ApplicationPath("/rest")
 public class RestApp extends ResourceConfig {
+
     public RestApp() {
         packages("org.solent.com504.factoryandfacade.impl.rest");
+        //register(RequestContextFilter.class);
+        // property(ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
     }
 }
-
 
 // alternatve if using jaxrs directly
 //public class RestApp extends Application {
