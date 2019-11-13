@@ -33,8 +33,8 @@ public class XmlWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext container) throws ServletException {
         // this stops jersey from loading applicationContext
-        // container.setInitParameter("contextConfigLocation", "noop");
-        container.setInitParameter("contextConfigLocation", "classpath:servlet-context.xml");
+         container.setInitParameter("contextConfigLocation", "noop");
+       // container.setInitParameter("contextConfigLocation", "classpath:servlet-context.xml");
 
         XmlWebApplicationContext rootContext = new XmlWebApplicationContext();
         rootContext.setConfigLocation("classpath:servlet-context.xml");
