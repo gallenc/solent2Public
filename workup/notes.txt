@@ -57,3 +57,7 @@ https://howtodoinjava.com/spring-mvc/spring-mvc-difference-between-contextannota
 https://www.viralpatel.net/spring-4-mvc-tutorial-maven-example/
 
 https://www.websparrow.org/spring/how-to-iterate-list-on-jsp-in-spring-mvc How to iterate list on JSP in Spring MVC
+
+
+good https://howtodoinjava.com/spring5/webmvc/spring-dispatcherservlet-tutorial/
+https://www.codesenior.com/en/tutorial/Spring-ContextLoaderListener-And-DispatcherServlet-Concepts

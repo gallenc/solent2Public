@@ -17,13 +17,19 @@ import org.apache.logging.log4j.Logger;
 public class HelloWorld {
 
     final static Logger LOG = LogManager.getLogger(HelloWorld.class);
+    
+    private String message="";
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public void init() {
-        LOG.debug("init() Application context started HelloWorld");
+        LOG.debug("init() Application context started HelloWorld "+message);
     }
 
     public void destroy() {
-        LOG.debug("destroy() Application context stopped HelloWorld");
+        LOG.debug("destroy() Application context stopped HelloWorld "+message);
 
     }
 
