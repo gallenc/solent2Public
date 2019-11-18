@@ -45,8 +45,13 @@
             <scope>provided</scope>
         </dependency>
         
-        
+        <!-- or use spring -->
         <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
             <scope>compile</scope>
@@ -96,7 +101,7 @@
                 <version>1.7.6</version>
                 <configuration>
                     <container>
-                        <containerId>tomcat9x</containerId>
+                        <containerId>tomcat8x</containerId>
                         <type>embedded</type>
                     </container>
                 </configuration>
