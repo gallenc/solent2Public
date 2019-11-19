@@ -93,7 +93,7 @@ When the application shuts down ( i.e. tomcat stops or the war is undeployed), S
 
 Obviously, we would use these create and destroy methods for more useful purposes.
 
-## using Spring with existing code
+## Using Spring with existing code
 Please note that often when we are introducing Spring to an existing application, we do not change everything at once.
 It is useful to be able to initially use existing object factories which are known to work and replace them later.
 In the example this week, this is the approach we have taken. 
@@ -101,10 +101,54 @@ We have 'refactored' code to allow us to use Spring but we have made the Spring 
 
 # Model View Controllers using SpringMVC
 
+A very commonly used design pattern for user interfaces is the Model View Controller. 
+The rationale for this pattern is that our web designers are typically artist or designers and not software developers.
+Therefore we would like to make it possible for them to work with CSS and HTML etc without having to understand very much about the programming of the application.
+This enables the 'seperation of concerns' between differnt contributing skills.
+
+In addition, we have seen that it is benificial to create our application as a set of interfces (facades) on top of the business logic. 
+This allows us to create a 'service' representing core business logic which can be consistently used by any UI or machine to machine (i.e. ReST interface) layer above the service.
+
+To a certain extent we have been able to seperate the design and business logic by using JSP technology which imbeds java within HTML.
+However in our examples, the JSP's still contain a lot of java code and dont really exhibit 'seperation of concerns'.
+
+The ideal world is illustrated below where we have a Model-View-View Model design. 
+
+![alt text](../week9/images/330px-MVVMPattern.png "Figure 330px-MVVMPattern.png" )
+
+The main Model is maintained and controlled by the underlying service layer. 
+
+However having a view model which is specifically for the presentation layer could be very useful. 
+In this design, the 'View' becomes very simple JSP's which display a View Model that is maintained by a controller.
+Because the JSP's are simple, they are easy to maintain by a non-developer.
+The developers develop the controller which is concerned with the 'page flow' and the data presented to each page in the form of a model
+
+This sounds complex but infact Spring makes it quite simple.
 ![alt text](../week9/images/SpringMVC_Architecture.png "Figure SpringMVC_Architecture.png" )
 
+Within spring we define a view controller which is very like the JAX-RS ReST interface we worked on earlier. 
+However instead of returning XML, each method in the view controller returns a view (jsp) populated with a model containing the data.
 
+In Spring our web application has a Dispatcher servelet which decides which method in a controller to call based upon the URL of the request. 
+The Controller chooses which JSP view to use as a view and returns a model containing data to use with that page.
 
+This effectively takes all of the code out of the JSP.
+
+An additional step is to use the [JSP Standard Tag Library (JSTL)](https://www.javatpoint.com/jstl "thymeleaf-in-spring-mvc")
+
+It also has the advantage that we can use view technologies other than JSP's such as [thymleaf](https://www.baeldung.com/thymeleaf-in-spring-mvc "thymeleaf-in-spring-mvc") which are popular in Spring boot.
+
+This completes our introduction to SpringMVC.
+
+There are many on line tutorials to help you understand the updated code
+
+In the final session we will be looking at SpringDATA can be used to enhance the JPA based DAO's
+
+# Exercise
+
+The example project [webfacadeexample2-spring](../week9/webfacadeexample2-spring/ ) has been updated to use SpringMVC.
+
+Go through this project to see if you can understand the changes which have been made.
 
 
 
