@@ -94,7 +94,9 @@ Because we are still using the legacy WebObjectFactory in the old jsp code, we h
 
 Please compare [RestApp.java](../../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java ) exercises.
  
- https://github.com/gallenc/solent2Public/blob/solent2Public/week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java
+
+ 
+ https://github.com/gallenc/solent2Public/blob/master/week6/webfacadeexample2/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java
 
 
 ## Spring MVC
