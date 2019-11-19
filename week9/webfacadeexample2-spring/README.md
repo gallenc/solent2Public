@@ -21,7 +21,16 @@ ClassFormatException: Invalid byte tag in constant pool: 19
 ```
 Ignore these exceptions as they are caused by the old version of Tomcat embedded in Netbeans 8.2
 
-The webfacadeexample2-web-client project is substantially unchanged but a number of changes have been made to the webfacadeexample2-web project as described below
+The webfacadeexample2-web-client project is substantially unchanged but a number of changes have been made to the webfacadeexample2-web project as described below.
+
+Browse to http://localhost:8084/basicfacadeweb/ 
+
+You will see new lines in the index page
+```
+More Complex Farm Example using Spring MVC
+click on farmhome to open application using Spring MVC 
+```
+The springMVC version of the application is accessed from http://localhost:8084/basicfacadeweb/mvc/farmhome
 
 ## Changes in this code
 
@@ -184,7 +193,9 @@ If you compare the old
 [farm2.jsp](../../week9/webfacadeexample2-spring/web/src/main/webapp/farm2.jsp ) 
 with the new replacement
 [farmlist.jsp](../../week9/webfacadeexample2-spring/web/src/main/webapp/WEB-INF/views/farmlist.jsp ) 
-you will see that much of the code for controling the jsp has been moved into the above farmhome method.
+you will see that much of the code for controling the jsp has been moved into the above farmhome() method.
+
+(There is also some extra css and example code at the bottom of the page to illustrate how the jsp view works but this is not central to the simplification of the page.)
 
 In the controller, each request method populates a Model object which contains attributes to be passed into the JSP based view.
 The model attributes are passed to the JSP view as request attributes and each request attribute has a name which can be referenced within the page. 
