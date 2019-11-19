@@ -92,9 +92,11 @@ public class RestService {
 The definition for the serviceFacade bean is in the applicationContext.xml file.
 Because we are still using the legacy WebObjectFactory in the old jsp code, we have a bean definition in the applicationContext.xml which uses the same WebObjectFactory. You will see that this calls the getServiceFacade() method in the WebObjectFactory to return a reference to a singleton serviceFacade object.
 
-Please compare [RestApp.java](../../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java ) exercises.
+Please compare [RestApp.java](../../../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java ) exercises.
  
+https://github.com/gallenc/solent2Public/blob/week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java
 
+https://github.com/gallenc/solent2Public/blob/master/week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestApp.java
  
  https://github.com/gallenc/solent2Public/blob/master/week6/webfacadeexample2/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java
 
