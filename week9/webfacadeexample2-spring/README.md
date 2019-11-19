@@ -9,6 +9,20 @@ In this example, we have kept the original JSP's and Object Factorys but have in
 This means that you can compare the old and new code to see how the new functionality implements the same features as the old.
 The old JSP's continue to work along side the new.
 
+## running the application
+As usual, build the whole project using 
+```
+mvn clean install
+```
+Then open the project and all its subprojects in Netbeans and run both the webfacadeexample2-web and webfacadeexample2-web-client projects in the embedded tomcat server.
+Please note that there will be a number of errors with the words
+```
+ClassFormatException: Invalid byte tag in constant pool: 19
+```
+Ignore these exceptions as they are caused by the old version of Tomcat embedded in Netbeans 8.2
+
+The webfacadeexample2-web-client project is substantially unchanged but a number of changes have been made to the webfacadeexample2-web project as described below
+
 ## Changes in this code
 
 The majority of the changes in this example are in the web module as shown below 
