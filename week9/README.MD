@@ -16,14 +16,15 @@ Spring provides many tools but we will concentrate on
 There are many tutorials on line and comprehensive documentation at https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/
 
 Please note that many introductory Spring tutorials use [Spring Boot](https://spring.io/projects/spring-boot "spring-boot documentation") which is a fantastic rapid development framework for microservices. 
-However I have deliberately avoided using Spring Boot in my examples because it hides a lot of underlying the complexity of Spring - which I think it is important for you to be aware of.
+However I have deliberately avoided using Spring Boot in my examples because it hides a lot of the complexity of what Spring is actually doing for you which I think it is important for you to be aware of.
 
 ## Application Contexts and Object Factories
-We introduced Object Factories early in the course, and you will have seen that they are widely used in libraries as a technique to create configured graphs of objects which conform to a standardised interface. For instance, the logging frameworks tend to use static object fctories to create logs. 
+We introduced Object Factories early in the course, and you will have seen that they are widely used in libraries as a technique to create pre-configured graphs of objects which conform to a standardised interfaces. 
+For instance, the logging frameworks tend to use static object factories to create logs. 
 ```
 final static Logger LOG = LogManager.getLogger(HelloWorld.class);
 ```
-In our application we have used object factories to allow us to chose between different implmentations of each layer as they have successively been developed each week. For instance, we created data access objects using flat files (xml with JAXB), Databases (using JDBC and also JPA DAO's).
+In our application we have used object factories to allow us to chose between different implementations of each layer as they have successively been developed each week. For instance, we created data access objects using flat files (xml with JAXB), Databases (using JDBC and also JPA DAO's).
 The upper layers could use any one of these implmentations depending on the configuration of the object factory for that layer. 
 
 However too many object factories can become cumbersome and it can be difficult to trace through to see where objects are actually being created and configured in each layer.
@@ -32,12 +33,14 @@ Further more in a large application we would rather not have to modify and compi
 Spring uses a technique called Inversion Of Control to allow us to avoid having multiple object factories.
 The spring application context is a single object factory which creates, configures and 'wires' all of the classes in our application according to a single recipe which is often defined in an applicationContext.xml file. 
 
-Spring Boot has popularised an alternative application context configuration using java application congiruration classes with annotations instead of an external xml configuration. 
-This has its attractions but my preference is still to use an external XML configuration because it avoids re-compiling the application and it keeps all of the configuration in one place and not scattered through out the code.
+(Spring Boot has popularised an alternative application context configuration using java application configuration classes having annotations instead of an external xml configuration. 
+This has its attractions but my preference is still to use an external XML configuration because it avoids re-compiling the application and it keeps all of the configuration in one place and not scattered through out the code).
 
 In a spring application, there may be several application contexts.
 In our example we have a main applicationContext which sets up the primary services.
-We also have a web application context which configures the model view controller. This application context inherits all of the objects in the main application context as shown below.
+We also have a web application context which configures the model view controller. 
+This web application context inherits all of the objects in the main application context as shown below.
+
 ![alt text](../week9/images/mvc-context-hierarchy.png "Figure mvc-context-hierarchy.png" )
 
 ## Inversion of Control Example
@@ -46,7 +49,7 @@ Instead the controller (application context) sets up all of the relationships on
 The controller may also cleanly shut down all of the classes when the application is shut down.
 
 As an example, look at the simple 
-[HelloWorld.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/web/HelloWorld.java )
+[HelloWorld.java](../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/web/HelloWorld.java )
 class which is part of the example web applicaton.
 ```
 public class HelloWorld {
@@ -71,11 +74,9 @@ public class HelloWorld {
 }
 ```
 
-
 Look also at the 
-[applicationContext.xml](../../week9/webfacadeexample2-spring/web/src/main/resources/applicationContext.xml ) 
+[applicationContext.xml](../week9/webfacadeexample2-spring/web/src/main/resources/applicationContext.xml ) 
 file which describes how the HelloWorld class is initialised
- 
 ```
    <bean id="helloWorld" class="org.solent.com504.factoryandfacade.impl.web.HelloWorld" init-method="init" destroy-method="destroy">
         <property name="message" value="main applicationContext" />
