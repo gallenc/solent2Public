@@ -155,13 +155,19 @@ In the final session we will be looking at SpringDATA can be used to enhance the
 
 # Exercise
 
+1. review the example project
 The example project [webfacadeexample2-spring](../week9/webfacadeexample2-spring/ ) has been updated to use SpringMVC.
 
 Go through this project to see if you can understand the changes which have been made.
 
+2. add spring mvc to the client-web module
+This will be challenging but see if you can modify the client-web module to also use Spring MVC. 
 
-
-
+You will need to;
+* add a Controller class, 
+* add new views/*.jsp files
+* add mvc-dispatcher-servlet.xml applicationContext and dispatcher configurations in web.xml
+* make sure you have the right dependencies in the pom.xml file.
 
 
 
