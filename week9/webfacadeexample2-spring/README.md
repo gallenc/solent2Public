@@ -21,7 +21,7 @@ web
                 RestApp.java
                 RestService.java      // NEW ANNOTATIONS FOR BEANS
             org.solent.com504.factoryandfacade.impl.web
-                HelloWorld.java       // NEW - SIMPLE CLASS TO HELP EXPLAIN/DEBUG APPLCATIONCONTEXTS
+                HelloWorld.java       // NEW - SIMPLE CLASS TO HELP EXPLAIN/DEBUG APPLCATIONCONTEXTS- this just logs a message when created.
                 ViewController.java   // NEW - SPRING MVC CONTROLLER
                 WebObjectFactory.java
       resources
@@ -49,6 +49,49 @@ The project's pom.xml files have also been updated to include some new depencenc
 
 The first major change is the introduction of a spring application context which is intended to replace all references to ObjectFactories in the new code. 
 When we remove the old code, we will remove all of the object factories but in the interim, the spring code uses the object factories to access the underlying lbraries.
+
+```
+applicationContext.xml
+...
+
+    <!-- this allows annotations to be picked up by configuration -->
+    <context:annotation-config/>
+    <context:component-scan base-package="org.solent.com504.factoryandfacade.impl.rest" />
+     
+    <!-- this allows a factory to generate a singleton bean -->
+    <bean id="serviceFacade" class="org.solent.com504.factoryandfacade.impl.web.WebObjectFactory" factory-method="getServiceFacade"></bean> 
+     
+    <!-- this just activates and destroys a bean as an example -->
+    <bean id="helloWorld" class="org.solent.com504.factoryandfacade.impl.web.HelloWorld" init-method="init" destroy-method="destroy">
+        <property name="message" value="main applicationContext" />
+    </bean>
+```
+The first lines in the file cause spring to scan all of the java files in the ```org.solent.com504.factoryandfacade.impl.rest``` package.
+
+The scanner looks for spring annotations such as @Component and @Resource(name="serviceFacade")
+
+In the RestService.java @Component causes Spring to initialise and register an instance of the RestService.
+
+The @Resource(name="serviceFacade") causes Spring to antomatically 'inject' the serviceFacade bean. This means that the RestService class no longer needs to reference the WebObjectFactory.
+
+```
+@Component // component allows resource to be picked up
+@Path("/farmService")
+public class RestService {
+
+    // SETS UP LOGGING 
+    // note that log name will be org.solent.com504.factoryandfacade.impl.rest.RestService
+    final static Logger LOG = LogManager.getLogger(RestService.class);
+
+    // This serviceFacade object is automacally injected by Spring
+    @Resource(name="serviceFacade")
+    FarmFacade serviceFacade = null;   
+    
+```
+
+The definition for the serviceFacade bean is in the applicationContext.xml file.
+Because we are still using the legacy WebObjectFactory in the old jsp code, we have a bean definition in the applicationContext.xml which uses the same WebObjectFactory. You will see that this calls the getServiceFacade() method in the WebObjectFactory to return a reference to a singleton serviceFacade object.
+
 
 ## Spring MVC
 A new class, 
