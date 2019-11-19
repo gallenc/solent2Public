@@ -75,9 +75,13 @@ When a @Component annotated class is identified, the @Resource(name="serviceFaca
 ### Jersey
 The version of jersey has been updated to allow it to work along side Spring MVC. 
 The pom.xml depencency jars for the later version of Jersey have been changed but the code is substantially the same.
-In the RestService.java @Component causes Spring to initialise and register an instance of the RestService.
 
-The @Resource(name="serviceFacade") causes Spring to antomatically 'inject' the serviceFacade bean. This means that the RestService class no longer needs to reference the WebObjectFactory.
+The [RestService.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java ) 
+class has been updated to use spring to inject the serviceFacade service.
+
+In the RestService.java @Component causes Spring to initialise and register an instance of the RestService s a spring bean.
+
+The @Resource(name="serviceFacade") causes Spring to antomatically 'inject' the serviceFacade bean into the rest service. This means that the RestService class no longer needs to reference the WebObjectFactory directly.
 
 ```
 @Component // component allows resource to be picked up
@@ -105,9 +109,15 @@ with
 You will see that with the WebObjectFatory removed, the code is simplified in the RestService and the WebObjectFactory is no longer needed.
 
 ## Spring MVC
+A key problem with the way we have implemented the JSP files so far is that we have a strong linkage between the view and controller functions. 
+Ideally we want to take all of the java code out of the header of the JSP's and put it in a seperate controller.
+
 A new class, [ViewController.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/web/ViewController.java ) has been introduced which acts as the Controller in the Model View Controller implementation.
 
-An excerpt of this class is shown below. 
+This controller replaces the controlling java in the jsp's and simply uses the JSP's as view technology with limited control functionality.
+
+An excerpt of this controller class is shown below. In many ways it is very simlilar to hte JAX-RS jersey service we looked at earlier.
+
 The @Controller annotation identifies this class as a controller in the MVC.
 
 @RequestMapping("/mvc") means that the controller will process URL's with /mvc in the classpath.
@@ -115,7 +125,7 @@ This is very similar to the @Path annotation in JAX-RS
 
 The @Resource(name = "serviceFacade") annotation injects the farmFacade service bean created by the application context (as discussed above).
 
-The @RequestMapping("/farmhome") annotation maps the call to the farmhome method. Again this is very like JAX-RS.
+The @RequestMapping("/farmhome") annotation maps the call to the farmhome method in the controller. Again this is very like JAX-RS.
 
 ```
 @Controller
@@ -154,10 +164,22 @@ public class ViewController {
         return "farmlist";
     }
 ```
+If you compare the old 
+[farm2.jsp](../../week9/webfacadeexample2-spring/web/src/main/webapp/farm2.jsp ) 
+with the new replacement
+[farmlist.jsp](../../week9/webfacadeexample2-spring/web/src/main/webapp/WEB-INF/views/farmlist.jsp ) 
+you will see that much of the code for controling the jsp has been moved into the above farmhome method.
 
+In the controller, each request method populates a Model object which contains attributes to be passed into the JSP based view.
+In the JSP, the model attributes are passed as request attributes and each attribute has a name which can be referenced within the page.
 
+We could use
 
+request.getAttribute(s)
 
+            <c:forEach var="animalType" items="${supportedAnimalTypes}">
+                <tr>
+                    <td>${animalType}</td>
 
 
 
