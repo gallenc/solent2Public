@@ -46,6 +46,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page Farm</title>
     </head>
+    <!-- this style definition controlls the dropdown at the bottom of the page. It could be in a separate css file -->
     <style>
 
         main {
