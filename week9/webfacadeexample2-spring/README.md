@@ -68,8 +68,13 @@ applicationContext.xml
 ```
 The first lines in the file cause spring to scan all of the java files in the ```org.solent.com504.factoryandfacade.impl.rest``` package.
 
-The scanner looks for spring annotations such as @Component and @Resource(name="serviceFacade")
+The scanner looks for spring annotations such as @Component and @Resource(name="serviceFacade").
 
+When a @Component annotated class is identified, the @Resource(name="serviceFacade") causes Spring to antomatically 'inject' the serviceFacade bean.
+
+### Jersey
+The version of jersey has been updated to allow it to work along side Spring MVC. 
+The pom.xml depencency jars for the later version of Jersey have been changed but the code is substantially the same.
 In the RestService.java @Component causes Spring to initialise and register an instance of the RestService.
 
 The @Resource(name="serviceFacade") causes Spring to antomatically 'inject' the serviceFacade bean. This means that the RestService class no longer needs to reference the WebObjectFactory.
@@ -93,19 +98,64 @@ The definition for the serviceFacade bean is in the applicationContext.xml file.
 Because we are still using the legacy WebObjectFactory in the old jsp code, we have a bean definition in the applicationContext.xml which uses the same WebObjectFactory. You will see that this calls the getServiceFacade() method in the WebObjectFactory to return a reference to a singleton serviceFacade object.
 
 Please compare 
-[week9 RestService.java.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java ) 
+[week9 RestService.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java ) 
 with 
-[week6 RestService.java.java](../../week6/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java ) 
+[week6 RestService.java](../../week6/webfacadeexample2/web/src/main/java/org/solent/com504/factoryandfacade/impl/rest/RestService.java ) 
 
 You will see that with the WebObjectFatory removed, the code is simplified in the RestService and the WebObjectFactory is no longer needed.
 
-
 ## Spring MVC
-A new class, 
+A new class, [ViewController.java](../../week9/webfacadeexample2-spring/web/src/main/java/org/solent/com504/factoryandfacade/impl/web/ViewController.java ) has been introduced which acts as the Controller in the Model View Controller implementation.
 
-### Jersey
-The version of jersey has been updated to allow it to work along side Spring MVC. 
-The pom.xml depencency jars for the later version of Jersey have been changed but the code is substantially the same.
+An excerpt of this class is shown below. 
+The @Controller annotation identifies this class as a controller in the MVC.
+
+@RequestMapping("/mvc") means that the controller will process URL's with /mvc in the classpath.
+This is very similar to the @Path annotation in JAX-RS
+
+The @Resource(name = "serviceFacade") annotation injects the farmFacade service bean created by the application context (as discussed above).
+
+The @RequestMapping("/farmhome") annotation maps the call to the farmhome method. Again this is very like JAX-RS.
+
+```
+@Controller
+@RequestMapping("/mvc")
+public class ViewController {
+
+    final static Logger LOG = LogManager.getLogger(ViewController.class);
+
+    {
+        LOG.debug("ViewController created");
+    }
+
+    // This serviceFacade object is injected by Spring
+    @Resource(name = "serviceFacade")
+    FarmFacade serviceFacade = null;
+
+    @RequestMapping("/farmhome")
+    public String farmhome(Model m,
+            @RequestParam(value = "animalName", required = false) String animalName,
+            @RequestParam(value = "animalType", required = false) String animalType) {
+
+        LOG.debug("farmhome called animalType=" + animalType + " animalName=" + animalName);
+
+        List<Animal> animalsList = serviceFacade.getAllAnimals();
+        List<String> supportedAnimalTypes = serviceFacade.getSupportedAnimalTypes();
+        m.addAttribute("animalsList", animalsList);
+        m.addAttribute("supportedAnimalTypes", supportedAnimalTypes);
+
+        // add error / response messages to page
+        String errorMessage = "";
+        String message = "";
+        m.addAttribute("errorMessage", errorMessage);
+        m.addAttribute("message", message);
+
+        // render view with jsp
+        return "farmlist";
+    }
+```
+
+
 
 
 
