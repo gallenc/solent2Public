@@ -47,8 +47,10 @@ The project's pom.xml files have also been updated to include some new depencenc
 
 ## Spring application context
 
-The first major change is the introduction of a spring application context which is intended to replace all references to ObjectFactories in the new code. 
+The first major change is the introduction of a spring application context [applicationContext.xml](../../week9/webfacadeexample2-spring/web/src/main/resources/applicationContext.xml )
+which is intended to replace all references to ObjectFactories in the new code. 
 When we remove the old code, we will remove all of the object factories but in the interim, the spring code uses the object factories to access the underlying lbraries.
+
 
 ```
 applicationContext.xml
@@ -171,15 +173,59 @@ with the new replacement
 you will see that much of the code for controling the jsp has been moved into the above farmhome method.
 
 In the controller, each request method populates a Model object which contains attributes to be passed into the JSP based view.
-In the JSP, the model attributes are passed as request attributes and each attribute has a name which can be referenced within the page.
+The model attributes are passed to the JSP view as request attributes and each request attribute has a name which can be referenced within the page. 
 
-We could use
+The choice of JSP to return as a view is determined by the return line in each controller method. For example
+```
+  return "farmlist";
+```
+The controller must be told which JSP's to use, and this is set up in the web application context [mvc-dispatcher-servlet.xml](../../week9/webfacadeexample2-spring/web/src/main/resources/mvc-dispatcher-servlet.xml ) 
 
-request.getAttribute(s)
+### JSP and JSTL
+If you run the web application in Tomcat and browse to http://localhost:8084/basicfacadeweb/mvc/farmhome you will see the first page of the application. 
+At the bottom of the page you can toggle 'Click to show detail of request variables' which will show you all of the variables in the request object which includes the Model objects the controller has injected.
 
+The page illustrates two ways in which you could reference these model objects in your view.
+
+We could use java directly in the page to access the injected variables. For example;
+```
+<%
+  List<String> supportedAnimalTypes = (List<String>) request.getAttribute("supportedAnimalTypes");
+%>
+```
+Is a declaration which could be used in the page much as before.
+
+However, an alternative which avoids writing any java in the page definition would be to use a markup language called JSP - Standard Tag Library (JSTL). 
+
+I have included some basic tags in the page to illustrate the point
+```
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+....
             <c:forEach var="animalType" items="${supportedAnimalTypes}">
                 <tr>
                     <td>${animalType}</td>
+                    <td>
+                        <!-- post avoids url encoded parameters -->
+                        <form action="./createAnimal" method="post">
+                            <input type="hidden" name="animalType" value="${animalType}">
+                            <button type="submit" >Create ${animalType}</button>
+                        </form> 
+                    </td>
+                </tr>
+            </c:forEach>
+        </table> 
+```
+Note that the JSTL jar must also be defined in the pom.xml
+```
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+```
+You can find out more about JSTL here https://www.tutorialspoint.com/jsp/jsp_standard_tag_library.htm 
+
+
 
 
 
