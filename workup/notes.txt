@@ -61,3 +61,5 @@ https://www.websparrow.org/spring/how-to-iterate-list-on-jsp-in-spring-mvc How t
 
 good https://howtodoinjava.com/spring5/webmvc/spring-dispatcherservlet-tutorial/
 https://www.codesenior.com/en/tutorial/Spring-ContextLoaderListener-And-DispatcherServlet-Concepts
+
+http://cleancodejava.com/simple-spring-data-jpa-example/
