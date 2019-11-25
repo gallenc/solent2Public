@@ -5,25 +5,17 @@
  */
 package org.solent.com504.project.model.dao.springdata.test;
 
-import java.util.Arrays;
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.solent.com504.project.model.dao.PersonDAO;
-import org.solent.com504.project.model.dto.Appointment;
 import org.solent.com504.project.model.dto.Person;
-import org.solent.com504.project.model.dto.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
 import org.solent.com504.project.model.dao.springdata.PersonDAOSpringData;
 
 /**

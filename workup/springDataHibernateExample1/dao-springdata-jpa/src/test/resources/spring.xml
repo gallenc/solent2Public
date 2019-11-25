@@ -36,8 +36,7 @@
     <!-- EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:packagesToScan="org.solent.com504.project.model"
-          p:dataSource-ref="dataSource"
-    >
+          p:dataSource-ref="dataSource" >
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="database" value="HSQL"/>
