@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="jpaExampleClassDiagram">
+  <ClassDiagramComponents>
+    <Interface name="PersonDAO" package="org.solent.com504.jpaexample1.model.dao" visibility="public" xPosition="116.0" yPosition="36.0">
+      <Methods>
+        <Method name="findById" returnType="Person" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="save" returnType="Person" visibility="public">
+          <Argument type="Person" name="person"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;Person&gt;" visibility="public"/>
+        <Method name="deleteById" returnType="void" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="delete" returnType="Person" visibility="public">
+          <Argument type="Person" name="person"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="findByRole" returnType="List&lt;Person&gt;" visibility="public">
+          <Argument type="Role" name="role"/>
+        </Method>
+        <Method name="findByName" returnType="List&lt;Person&gt;" visibility="public">
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="secondName"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="Person" package="org.solent.com504.jpaexample1.model.dto" visibility="public" xPosition="446.0" yPosition="402.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="secondName" type="String" visibility="private"/>
+        <Field name="role" type="Role" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Appointment" package="org.solent.com504.jpaexample1.model.dto" visibility="public" xPosition="837.0" yPosition="412.0">
+      <Fields>
+        <Field name="descripton" type="String" visibility="private"/>
+        <Field name="personA" type="Person" visibility="private"/>
+        <Field name="personB" type="Person" visibility="private"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="hr" type="Integer" visibility="private"/>
+        <Field name="mth" type="Integer" visibility="private"/>
+        <Field name="yr" type="Integer" visibility="private"/>
+        <Field name="durationMinutes" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Role" package="org.solent.com504.jpaexample1.model.dto" visibility="public" xPosition="183.0" yPosition="402.0">
+      <Literals>
+        <Literal name="PATIENT"/>
+        <Literal name="DENTIST"/>
+      </Literals>
+    </Enum>
+    <Interface name="AppointmentDAO" package="org.solent.com504.jpaexample1.model.dao" visibility="public" xPosition="565.0" yPosition="27.0">
+      <Methods>
+        <Method name="findById" returnType="Appointment" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="save" returnType="Appointment" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;Appointment&gt;" visibility="public"/>
+        <Method name="delete" returnType="Appointment" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="deleteById" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="findByPersonA" returnType="List&lt;Appointment&gt;" visibility="public">
+          <Argument type="Person" name="personA"/>
+        </Method>
+        <Method name="findByPersonB" returnType="List&lt;Appointment&gt;" visibility="public">
+          <Argument type="Person" name="personB"/>
+        </Method>
+        <Method name="findByDate" returnType="List&lt;Appointment&gt;" visibility="public">
+          <Argument type="Integer" name="year"/>
+          <Argument type="Integer" name="month"/>
+          <Argument type="Integer" name="hour"/>
+          <Argument type="Integer" name="minutes"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="DAOFactory" package="org.solent.com504.jpaexample1.model.dao" visibility="public" xPosition="1126.0" yPosition="66.0">
+      <Methods>
+        <Method name="getPersonDAO" returnType="PersonDAO" visibility="public"/>
+        <Method name="getAppointmentDAO" returnType="AppointmentDAO" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="personHasRole" source="org.solent.com504.jpaexample1.model.dto.Person" target="org.solent.com504.jpaexample1.model.dto.Role" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="appointmentHasPersonA" source="org.solent.com504.jpaexample1.model.dto.Appointment" target="org.solent.com504.jpaexample1.model.dto.Person" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="appointmentHasPersonB" source="org.solent.com504.jpaexample1.model.dto.Appointment" target="org.solent.com504.jpaexample1.model.dto.Person" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
