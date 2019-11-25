@@ -36,12 +36,12 @@
             <AppenderRef ref="appLog"/>
         </Logger>
         
-        <Logger name="org.hibernate"  additivity="false" level="DEBUG">
+        <Logger name="org.hibernate"  additivity="false" level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
         
-        <Logger name="org.hsqldb.jdbc"  additivity="false" level="DEBUG">
+        <Logger name="org.hsqldb.jdbc"  additivity="false" level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
@@ -54,7 +54,7 @@
         </logger>
         
         <!-- log spring -->
-        <Logger name="org.springframework"  additivity="false" level="DEBUG">
+        <Logger name="org.springframework"  additivity="false" level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>

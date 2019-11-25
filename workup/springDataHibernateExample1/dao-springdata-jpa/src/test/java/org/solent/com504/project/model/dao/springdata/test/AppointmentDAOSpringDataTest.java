@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.project.impl.dao.jpa.test;
+package org.solent.com504.project.model.dao.springdata.test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +14,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.solent.com504.project.impl.dao.jpa.DAOFactoryJPAImpl;
-import org.solent.com504.project.impl.dao.springdata.AppointmentDAOSpring;
 import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dto.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
 
 /**
  * http://cleancodejava.com/simple-spring-data-jpa-example/ Simple Spring Data
@@ -34,14 +33,12 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+public class AppointmentDAOSpringDataTest {
 
-public class AppointmentDAOTest {
-
-    final static Logger LOG = LogManager.getLogger(AppointmentDAOTest.class);
+    final static Logger LOG = LogManager.getLogger(AppointmentDAOSpringDataTest.class);
 
     @Autowired
-    private AppointmentDAOSpring appointmentDAO = null;
+    private AppointmentDAOSpringData appointmentDAOspring = null;
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -49,7 +46,7 @@ public class AppointmentDAOTest {
     @Before
     public void before() {
         LOG.debug("before test running");
-        assertNotNull(appointmentDAO);
+        assertNotNull(appointmentDAOspring);
         LOG.debug("before test complete");
     }
 
@@ -74,11 +71,11 @@ public class AppointmentDAOTest {
         LOG.debug("start of test1");
 
         Appointment appt1 = new Appointment();
-        appt1 = appointmentDAO.save(appt1);
+        appt1 = appointmentDAOspring.save(appt1);
         System.out.println("appt1=" + appt1);
 
         Long id = appt1.getId();
-        Appointment appt2 = appointmentDAO.getOne(id);
+        Appointment appt2 = appointmentDAOspring.findOne(id);
         System.out.println("appt2=" + appt2);
         LOG.debug("end of test1");
     }

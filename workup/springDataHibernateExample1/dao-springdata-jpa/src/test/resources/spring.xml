@@ -17,9 +17,9 @@
         ">
 
     <!-- Scans for components that will be auto-registered as Spring beans -->
-    <context:component-scan base-package="org.solent.com504.project.impl.dao.springdata" />
+    <context:component-scan base-package="org.solent.com504.project.impl.dao" />
     <!-- Scans for repositories that will be auto-registered -->
-    <jpa:repositories base-package="org.solent.com504.project.impl.dao.springdata" />
+    <jpa:repositories base-package="org.solent.com504.project.model.dao.springdata" />
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config />
 

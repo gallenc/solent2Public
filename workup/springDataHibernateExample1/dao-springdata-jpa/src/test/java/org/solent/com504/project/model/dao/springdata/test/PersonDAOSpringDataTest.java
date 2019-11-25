@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.solent.com504.project.model.dao.springdata.test;
+
+import java.util.Arrays;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.solent.com504.project.model.dao.PersonDAO;
+import org.solent.com504.project.model.dto.Appointment;
+import org.solent.com504.project.model.dto.Person;
+import org.solent.com504.project.model.dto.Role;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
+import org.solent.com504.project.model.dao.springdata.PersonDAOSpringData;
+
+/**
+ *
+ * @author cgallen
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/spring.xml"})
+public class PersonDAOSpringDataTest {
+
+    final static Logger LOG = LogManager.getLogger(PersonDAOSpringDataTest.class);
+
+    @Autowired
+    private PersonDAOSpringData personDAOspring = null;
+
+    @Before
+    public void before() {
+        LOG.debug("before test running");
+        assertNotNull(personDAOspring);
+        LOG.debug("before test complete");
+    }
+
+    
+    @Transactional
+    @Test
+    public void test1() {
+        LOG.debug("start of test1");
+
+        Person person1 = new Person();
+        person1 = personDAOspring.save(person1);
+        System.out.println("person1=" + person1);
+
+        Long id = person1.getId();
+        Person person2 = personDAOspring.findOne(id);
+        System.out.println("person2=" + person2);
+        LOG.debug("end of test1");
+    }
+}

@@ -38,6 +38,8 @@ public class Appointment {
     private Integer mth;
 
     private Integer yr;
+    
+    private Integer dayOfMonth;
 
     private Integer durationMinutes;
 
@@ -99,9 +101,19 @@ public class Appointment {
         this.durationMinutes = durationMinutes;
     }
 
+    public Integer getDayOfMonth() {
+        return dayOfMonth;
+    }
+
+    public void setDayOfMonth(Integer dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
+    }
+
     @Override
     public String toString() {
-        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + '}';
+        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", dayOfMonth=" + dayOfMonth + ", durationMinutes=" + durationMinutes + '}';
     }
+    
+
 
 }
