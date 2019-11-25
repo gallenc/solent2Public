@@ -71,7 +71,7 @@ public class AppointmentDAOSpringDataTest {
         System.out.println("appt1=" + appt1);
 
         Long id = appt1.getId();
-        Appointment appt2 = appointmentDAOspring.findOne(id);
+        Appointment appt2 = appointmentDAOspring.getOne(id);
         System.out.println("appt2=" + appt2);
         LOG.debug("end of test1");
     }

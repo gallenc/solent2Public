@@ -49,7 +49,7 @@ public class PersonDAOSpringDataTest {
         System.out.println("person1=" + person1);
 
         Long id = person1.getId();
-        Person person2 = personDAOspring.findOne(id);
+        Person person2 = personDAOspring.getOne(id);
         System.out.println("person2=" + person2);
         LOG.debug("end of test1");
     }

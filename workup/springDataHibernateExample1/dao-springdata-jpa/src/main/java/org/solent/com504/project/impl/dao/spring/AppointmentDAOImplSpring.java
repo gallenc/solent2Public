@@ -25,7 +25,7 @@ public class AppointmentDAOImplSpring implements AppointmentDAO {
 
     @Override
     public Appointment findById(Long id) {
-        return appointmentDAOspring.findOne(id);
+        return appointmentDAOspring.getOne(id);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class AppointmentDAOImplSpring implements AppointmentDAO {
 
     @Override
     public void deleteById(Long id) {
-        appointmentDAOspring.delete(id);
+        appointmentDAOspring.deleteById(id);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class PersonDAOImplSpring implements PersonDAO {
 
     @Override
     public Person findById(Long id) {
-        return personDAOspring.findOne(id);
+        return personDAOspring.getOne(id);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class PersonDAOImplSpring implements PersonDAO {
 
     @Override
     public void deleteById(long id) {
-        personDAOspring.delete(id);
+        personDAOspring.deleteById(id);
     }
 
     @Override
