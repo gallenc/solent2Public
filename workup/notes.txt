@@ -63,3 +63,8 @@ good https://howtodoinjava.com/spring5/webmvc/spring-dispatcherservlet-tutorial/
 https://www.codesenior.com/en/tutorial/Spring-ContextLoaderListener-And-DispatcherServlet-Concepts
 
 http://cleancodejava.com/simple-spring-data-jpa-example/
+
+https://howtodoinjava.com/spring5/webmvc/spring5-mvc-hibernate5-example/
+
+
+https://www.javaguides.net/p/spring-data-jpa-tutorial.html
