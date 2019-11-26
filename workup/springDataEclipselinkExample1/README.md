@@ -1,4 +1,4 @@
 
-# Simple JPA Project
+# Spring Data JPA project using Eclipselink
 
 
