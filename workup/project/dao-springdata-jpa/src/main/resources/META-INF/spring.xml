@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        ">
+
+    <!-- Scans for components that will be auto-registered as Spring beans -->
+    <context:component-scan base-package="org.solent.com504.project.impl.dao" />
+    <!-- Scans for repositories that will be auto-registered -->
+    <jpa:repositories base-package="org.solent.com504.project.model.dao.springdata" />
+    <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
+    <context:annotation-config />
+
+    <!-- this config uses separate persistance.xml file -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+            <property name="persistenceUnitName" value="modelPersistence" />
+    </bean>
+    
+    
+    <!-- this would use only the spring config - but not yet working :( -->
+    <!-- JPA -->
+    <!-- see also http://nadegegriesser.github.io/Persistence-SpringData-EclipseLink/ -->
+
+    <!-- Datasource, that is currently hsqldb (in-memory database). -->
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="url" value="jdbc:derby:target/tmp/farmdb;create=true" />
+        <property name="username" value="je" />
+        <property name="password" value="je" />
+    </bean>
+
+     EntityManagerFactory 
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:packagesToScan="org.solent.com504.project.model"
+          p:dataSource-ref="dataSource" >
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <property name="database" value="DERBY"/>
+                <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect"/>
+                <property name="generateDdl" value="true" />
+                <property name="showSql" value="true" />
+
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <properties>               
+                 EclipseLink should create the database schema automatically 
+                <property name="eclipselink.ddl-generation" value="create-tables" />
+                <property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> 
+                <property name="eclipselink.ddl-generation.output-mode" value="database" /> 
+                <property name="eclipselink.ddl-generation.output-mode" value="both" />
+                <property name="eclipselink.application-location" value="./target" />
+                <property name="eclipselink.logging.level" value="FINEST" />
+                <property name="eclipselink.logging.level.sql" value="FINE"/>
+                <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/>
+            </properties>
+        </property>
+    </bean>-->
+
+    <!-- Transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+</beans>

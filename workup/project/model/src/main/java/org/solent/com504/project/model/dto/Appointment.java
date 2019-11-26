@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,6 +38,8 @@ public class Appointment {
     private Integer mth;
 
     private Integer yr;
+
+    private Integer dayOfMonth;
 
     private Integer durationMinutes;
 
@@ -72,6 +75,7 @@ public class Appointment {
         this.descripton = descripton;
     }
 
+    @OneToOne
     public Person getPersonA() {
         return personA;
     }
@@ -80,6 +84,7 @@ public class Appointment {
         this.personA = personA;
     }
 
+    @OneToOne
     public Person getPersonB() {
         return personB;
     }
@@ -96,9 +101,19 @@ public class Appointment {
         this.durationMinutes = durationMinutes;
     }
 
+    public Integer getDayOfMonth() {
+        return dayOfMonth;
+    }
+
+    public void setDayOfMonth(Integer dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
+    }
+
     @Override
     public String toString() {
-        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", durationMinutes=" + durationMinutes + '}';
+        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", dayOfMonth=" + dayOfMonth + ", durationMinutes=" + durationMinutes + '}';
     }
+
+
 
 }
