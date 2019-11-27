@@ -9,6 +9,10 @@ This week we will look at SpringData which is designed to simplify and remove du
 SpringData allows you to simpley define a DAO using only an interface with some annotations. 
 Spring automattacillay connstructs the DAO for you.
 THis significantly simplifys the code. 
+THis is done by extending a generic DAO qwhich is defined usign hjava generics.
+
+Te interface we extend is 
+https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
 
 Most of the methods are predefined but you can add methods using JSQL as shown in [PersonDAOSpringData.java](../week10/springDataEclipselinkExample1/dao-springdata-jpa/src/main/java/org/solent/com504/project/model/dao/springdata/PersonDAOSpringData.java )
 
