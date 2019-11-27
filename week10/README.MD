@@ -45,5 +45,5 @@ Note that you will need to update the dependencies in your POM files.
 
 # Exercise
 
-Rew the Spring Data DAO's examples to see how much work is saved
+Review the Spring Data DAO's examples to see how much boilerplate code is ommitted
 
