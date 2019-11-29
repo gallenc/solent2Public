@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.project.model.dao.springdata.test;
+package org.solent.com504.factoryandfacade.impl.dao.springdata.test;
 
 import java.util.Arrays;
 
@@ -13,13 +13,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.solent.com504.project.model.dto.Appointment;
+import org.solent.com504.factoryandfacade.impl.dao.springdata.AnimalDAOSpringData;
+import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
+
 
 /**
  * http://cleancodejava.com/simple-spring-data-jpa-example/ Simple Spring Data
@@ -29,12 +30,12 @@ import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring.xml"})
-public class AppointmentDAOSpringDataTest {
+public class AnimalDAOSpringDataTest {
 
-    final static Logger LOG = LogManager.getLogger(AppointmentDAOSpringDataTest.class);
+    final static Logger LOG = LogManager.getLogger(AnimalDAOSpringDataTest.class);
 
     @Autowired
-    private AppointmentDAOSpringData appointmentDAOspring = null;
+    private AnimalDAOSpringData animalDAOspringData = null;
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -42,7 +43,7 @@ public class AppointmentDAOSpringDataTest {
     @Before
     public void before() {
         LOG.debug("before test running");
-        assertNotNull(appointmentDAOspring);
+        assertNotNull(animalDAOspringData);
         LOG.debug("before test complete");
     }
 
@@ -68,15 +69,14 @@ public class AppointmentDAOSpringDataTest {
     public void test1() {
         LOG.debug("start of test1");
 
-        Appointment appt1 = new Appointment();
-        
-       
-        appt1 = appointmentDAOspring.save(appt1);
+        Animal appt1 = new Animal();
+
+        appt1 = animalDAOspringData.save(appt1);
         System.out.println("appt1=" + appt1);
 
-       // Long id = appt1.getId();
-       // Appointment appt2 = appointmentDAOspring.getOne(id);
-       // System.out.println("appt2=" + appt2);
+        Long id = appt1.getId();
+        Animal appt2 = animalDAOspringData.getOne(id);
+        System.out.println("appt2=" + appt2);
         LOG.debug("end of test1");
     }
 
