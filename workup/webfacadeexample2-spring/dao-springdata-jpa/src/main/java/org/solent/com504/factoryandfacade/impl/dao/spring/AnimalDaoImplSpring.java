@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.factoryandfacade.impl.dao.springdata.AnimalDAOSpringData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 /**
@@ -29,37 +30,47 @@ public class AnimalDaoImplSpring implements AnimalDao {
 
     @Override
     public Animal retrieve(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return animalDAOSpringData.getOne(id);
     }
 
     @Override
     public Animal updateOrSave(Animal animal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return animalDAOSpringData.save(animal);
     }
 
     @Override
     public boolean delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        animalDAOSpringData.deleteById(id);
+        return true;
     }
 
     @Override
     public List<Animal> retrieve(Animal animalTemplate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // using QueryByExampleExecutor<Animal>
+        // see https://www.logicbig.com/tutorials/spring-framework/spring-data/query-by-example.html
+
+        Example<Animal> employeeExample = Example.of(animalTemplate);
+        //calling QueryByExampleExecutor#findAll(Example)
+        List<Animal> animals = animalDAOSpringData.findAll(employeeExample);
+        return animals;
+
     }
 
     @Override
     public List<Animal> retrieveAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return animalDAOSpringData.findAll();
     }
 
     @Override
     public Animal create(AnimalType animalType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Animal animal = new Animal();
+        animal.setAnimalType(animalType);
+        return animalDAOSpringData.saveAndFlush(animal);
     }
 
     @Override
     public void deleteAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        animalDAOSpringData.deleteAll();
     }
 
 }

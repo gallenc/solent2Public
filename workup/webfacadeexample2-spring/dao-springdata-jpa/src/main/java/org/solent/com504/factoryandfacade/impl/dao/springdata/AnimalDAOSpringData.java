@@ -7,14 +7,15 @@ package org.solent.com504.factoryandfacade.impl.dao.springdata;
 
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
- *
+ * see  https://www.logicbig.com/tutorials/spring-framework/spring-data/query-by-example.html
  * @author gallenc
  */
 @Repository
-public interface AnimalDAOSpringData extends JpaRepository<Animal, Long> {
-    
+public interface AnimalDAOSpringData extends JpaRepository<Animal, Long>, QueryByExampleExecutor<Animal>  {
+
 }
 
