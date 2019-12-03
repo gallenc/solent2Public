@@ -28,9 +28,9 @@ Then open the project and all its subprojects in Netbeans and run both the webfa
 
 ## exercise
 
-Run the project in netbeans ans see that it works similarly to the previous version
+Run the project in netbeans and see that it works similarly to the previous version
 
-Try using netbeans to do a diff with the previous version of the project.
+compare this project with the previous version in Week9
 
 
 
