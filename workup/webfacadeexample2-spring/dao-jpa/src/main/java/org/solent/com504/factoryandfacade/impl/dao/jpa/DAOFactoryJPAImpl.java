@@ -13,7 +13,7 @@ public class DAOFactoryJPAImpl implements DAOFactory {
 
     final static Logger LOG = LogManager.getLogger(DAOFactoryJPAImpl.class);
     // TODO FACTORY MAY WANT TO CLOSE ENTITY MANAGER AT END OF SESSION
-    private static final String PERSISTENCE_UNIT_NAME = "farmPersistence";
+    private static final String PERSISTENCE_UNIT_NAME = "modelPersistence";
     private static EntityManagerFactory factory = null;
     private static EntityManager em = null;
     private static AnimalDao animalDao = null;
