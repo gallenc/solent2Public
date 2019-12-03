@@ -9,18 +9,24 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactorySpringImpl;
+import org.junit.runner.RunWith;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
-import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  *
  * @author gallenc
  */
-public class FarmFacadeJpaTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/applicationContext.xml"})
+public class FarmFacadeSpringDataTest {
     
-    ServiceObjectFactory serviceObjectFactory = null;
+   // ServiceObjectFactory serviceObjectFactory = null;
+    
+    @Autowired
     FarmFacade farmFacade = null;
 
     List<String> supportedAnimalTypes = null;
@@ -28,9 +34,9 @@ public class FarmFacadeJpaTest {
     @Before
     public void loadFactory() {
 
-        serviceObjectFactory = new ServiceObjectFactorySpringImpl();
-        
-        farmFacade = serviceObjectFactory.getFarmFacade();
+//        serviceObjectFactory = new ServiceObjectFactorySpringImpl();
+//        
+//        farmFacade = serviceObjectFactory.getFarmFacade();
 
         // delete all previously added animals
         List<Animal> allAnimals = farmFacade.getAllAnimals();

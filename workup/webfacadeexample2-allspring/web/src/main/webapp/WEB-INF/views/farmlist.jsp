@@ -7,37 +7,12 @@
 <%@page import="java.util.Date"%>
 <%@page import="org.solent.com504.factoryandfacade.model.dto.Animal"%>
 <%@page import="org.solent.com504.factoryandfacade.model.service.FarmFacade"%>
-<%@page import="org.solent.com504.factoryandfacade.impl.web.WebObjectFactory"%>
+
 
 <%
-    // used to place error message at top of page 
-    //String errorMessage = "";
-    //String message = "";
-
     // used to set html header autoload time. This automatically refreshes the page
     // Set refresh, autoload time every 20 seconds
     response.setIntHeader("Refresh", 20);
-
-    // accessing service 
-    // FarmFacade farmFacade = (FarmFacade) WebObjectFactory.getServiceFacade();
-    // List<String> supportedAnimalTypes = farmFacade.getSupportedAnimalTypes();
-    // accessing request parameters
-    //  String actionStr = request.getParameter("action");
-    //  String animalNameStr = request.getParameter("animalName");
-    //   String animalTypeStr = request.getParameter("animalType");
-    // basic error checking before making a call
-    //  if (actionStr == null || actionStr.isEmpty()) {
-    // do nothing
-    //  } else if ("deleteAnimal".equals(actionStr)) {
-    //     if (animalNameStr == null || animalNameStr.isEmpty()) {
-    //         errorMessage = "ERROR: animalName must be set when deleting animal.";
-    //     } else {
-    //         message = "Deleting animal name=" + animalNameStr;
-    //         farmFacade.removeAnimal(animalNameStr);
-    //     }
-    // } else {
-    //      errorMessage = "ERROR: page called for unknown action";
-    //  }
 
 %>
 

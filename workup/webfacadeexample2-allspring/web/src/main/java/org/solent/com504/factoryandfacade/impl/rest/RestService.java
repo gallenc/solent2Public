@@ -21,12 +21,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.com504.factoryandfacade.impl.web.WebObjectFactory;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 /**
  * To make the ReST interface easier to program. All of the replies are
@@ -45,10 +46,11 @@ public class RestService {
     final static Logger LOG = LogManager.getLogger(RestService.class);
 
     // This serviceFacade object is injected by Spring
-    @Resource(name="serviceFacade")
-    FarmFacade serviceFacade = null;   
-    
-    
+    // @Resource(name = "farmFacade")
+    @Autowired(required = true)
+    @Qualifier("farmFacade")
+    FarmFacade serviceFacade = null;
+
     /**
      * this is a very simple rest test message which only returns a string
      *
@@ -78,18 +80,20 @@ public class RestService {
 
             // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getAllAnimals called");
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
 
             List<Animal> animals = serviceFacade.getAllAnimals();
             replyMessage.getAnimalList().setAnimals(animals);
             replyMessage.getAnimalList().setCurrentMaxId(null);
-            
+
             replyMessage.setCode(Response.Status.OK.getStatusCode());
-            
+
             return Response.status(Response.Status.OK).entity(replyMessage).build();
-            
+
         } catch (Exception ex) {
             LOG.error("error calling /getAllAnimals ", ex);
             ReplyMessage replyMessage = new ReplyMessage();
@@ -121,10 +125,12 @@ public class RestService {
     public Response addAnimal(@QueryParam("animalType") String animalType, @QueryParam("animalName") String animalName) {
         try {
             LOG.debug("/addAnimal called animalType=" + animalType + "animalName=" + animalName);
-
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
             // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-            
+
             ReplyMessage replyMessage = new ReplyMessage();
 
             Animal addedAnimal = serviceFacade.addAnimal(animalType, animalName);
@@ -159,14 +165,15 @@ public class RestService {
     public Response getAnimalsOfType(@QueryParam("animalType") String animalType) {
         try {
             LOG.debug("/getAnimalsOfType called animalType=" + animalType);
-
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
             // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-            
+
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
 
             //replyMessage.setCode(Response.Status.OK.getStatusCode());
             //return Response.status(Response.Status.OK).entity(replyMessage).build();
@@ -194,16 +201,15 @@ public class RestService {
     public Response getAnimal(@QueryParam("animalName") String animalName) {
         try {
             LOG.debug("/getAnimal called animalName=" + animalName);
-
-                        // replaced by @Autowired annotation
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
+            // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-            
-            
-            
+
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
 
             //replyMessage.setCode(Response.Status.OK.getStatusCode());
             //return Response.status(Response.Status.OK).entity(replyMessage).build();
@@ -232,11 +238,12 @@ public class RestService {
         try {
 
             LOG.debug("/removeAnimal called animalName=" + animalName);
-
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
             // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-            
-            
+
             ReplyMessage replyMessage = new ReplyMessage();
 
             throw new UnsupportedOperationException("Not supported yet.");
@@ -265,10 +272,12 @@ public class RestService {
     public Response getSupportedAnimalTypes() {
         try {
             LOG.debug("/getSupportedAnimalTypes called");
-
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
             // replaced by @Autowired annotation
             //FarmFacade serviceFacade = WebObjectFactory.getServiceFacade();
-            
+
             ReplyMessage replyMessage = new ReplyMessage();
 
             List<String> stringList = serviceFacade.getSupportedAnimalTypes();

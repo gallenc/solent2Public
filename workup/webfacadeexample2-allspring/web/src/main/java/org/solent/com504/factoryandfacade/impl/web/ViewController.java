@@ -11,6 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,8 @@ public class ViewController {
     }
 
     // This serviceFacade object is injected by Spring
-    @Resource(name = "serviceFacade")
+    @Autowired(required = true)
+    @Qualifier("farmFacade")
     FarmFacade serviceFacade = null;
 
     @RequestMapping("/farmhome")
@@ -40,6 +43,9 @@ public class ViewController {
             @RequestParam(value = "animalType", required = false) String animalType) {
 
         LOG.debug("farmhome called animalType=" + animalType + " animalName=" + animalName);
+        if (serviceFacade == null) {
+            throw new RuntimeException("serviceFacade==null and has not been initialised");
+        }
 
         List<Animal> animalsList = serviceFacade.getAllAnimals();
         List<String> supportedAnimalTypes = serviceFacade.getSupportedAnimalTypes();
@@ -61,6 +67,9 @@ public class ViewController {
             @RequestParam(value = "animalName", required = false) String animalName,
             @RequestParam(value = "animalType", required = false) String animalType) {
         LOG.debug("deleteAnimal called animalType=" + animalType + " animalName=" + animalName);
+        if (serviceFacade == null) {
+            throw new RuntimeException("serviceFacade==null and has not been initialised");
+        }
 
         String errorMessage = "";
         String message = "";
@@ -84,6 +93,9 @@ public class ViewController {
             @RequestParam(value = "animalName", required = false) String animalName,
             @RequestParam(value = "animalType", required = false) String animalType) {
         LOG.debug("createAnimal called animalType=" + animalType + " animalName=" + animalName);
+        if (serviceFacade == null) {
+            throw new RuntimeException("serviceFacade==null and has not been initialised");
+        }
 
         m.addAttribute("animalType", animalType);
         m.addAttribute("animalName", animalName);
@@ -108,6 +120,9 @@ public class ViewController {
             @RequestParam(value = "animalName", required = false) String animalName,
             @RequestParam(value = "animalType", required = false) String animalType) {
         LOG.debug("addAnimal called animalType=" + animalType + " animalName=" + animalName);
+        if (serviceFacade == null) {
+            throw new RuntimeException("serviceFacade==null and has not been initialised");
+        }
         // add error / response messages to page
         String errorMessage = "";
         String message = "";

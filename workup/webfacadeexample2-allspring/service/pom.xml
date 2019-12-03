@@ -38,6 +38,12 @@
             <scope>compile</scope>
         </dependency>
         
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
         <!-- SLF4J // jcl used to provide logging for eclipselink JPA and derby  -->
         <dependency>
             <groupId>org.slf4j</groupId>

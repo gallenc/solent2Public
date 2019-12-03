@@ -14,74 +14,45 @@ import java.util.Enumeration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import org.solent.com504.factoryandfacade.model.service.FarmFacade;
-import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
-import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactorySpringImpl;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
  * ServletContextListeneer executes code on web app startup and shutdown
  * https://www.deadcoderising.com/execute-code-on-webapp-startup-and-shutdown-using-servletcontextlistener/
- * https://blog.georgovassilis.com/2014/01/15/tomcat-spring-and-memory-leaks-when-undeploying-or-redeploying-an-web-application/  
- * Tomcat, Spring and memory leaks when undeploying or redeploying an web application
+ * https://blog.georgovassilis.com/2014/01/15/tomcat-spring-and-memory-leaks-when-undeploying-or-redeploying-an-web-application/
+ * Tomcat, Spring and memory leaks when undeploying or redeploying an web
+ * application
  *
  * @author gallenc
  */
 @WebListener
-public class WebObjectFactory implements ServletContextListener {
+public class DatabaseInitialiser implements ServletContextListener {
 
-    final static Logger LOG = LogManager.getLogger(WebObjectFactory.class);
+    final static Logger LOG = LogManager.getLogger(DatabaseInitialiser.class);
 
     final static String TMP_DIR = System.getProperty("java.io.tmpdir");
 
-    private static FarmFacade farmFacade = null;
-
-    private static ServiceObjectFactory serviceObjectFactory = null;
-
-    public static FarmFacade getServiceFacade() {
-        LOG.debug("WebObjectFactory getServiceFacade called");
-        if (farmFacade == null) {
-            synchronized (WebObjectFactory.class) {
-                if (farmFacade == null) {
-                    LOG.debug("web application starting");
-
-                    // this is needed to allow Derby to work as in embedded server
-                    String derbyHome = TMP_DIR + File.separator + "derby";
-                    LOG.debug("setting derby.system.home=" + derbyHome);
-
-                    System.setProperty("derby.system.home", derbyHome);
-                    // note we can choose which we use
-                    // ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryImpl();
-                    // ServiceObjectFactory serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
-                    serviceObjectFactory = new ServiceObjectFactorySpringImpl();
-                    farmFacade = serviceObjectFactory.getFarmFacade();
-                }
-            }
-        }
-        return farmFacade;
-    }
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LOG.debug("WEB OBJECT FACTORY context initialised");
-        // nothing to do
+        init();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        LOG.debug("WEB OBJECT FACTORY shutting down context");
-        if (serviceObjectFactory != null) {
-            synchronized (WebObjectFactory.class) {
-                LOG.debug("WEB OBJECT FACTORY shutting down serviceObjectFactory");
-                serviceObjectFactory.shutDown();
-                LOG.debug("WEB OBJECT FACTORY shutting down derby database");
-                shutdownDerby();
-                LOG.debug("WEB OBJECT FACTORY derby shutdown");
-            }
+        destroy();
+    }
 
-        }
+    public void init() {
+        // this is needed to allow Derby to work as in embedded server
+        String derbyHome = TMP_DIR + File.separator + "derby";
+        LOG.debug("setting derby.system.home=" + derbyHome);
+
+        System.setProperty("derby.system.home", derbyHome);
+    }
+
+    public void destroy() {
+        shutdownDerby();
     }
 
     // code to shutdown derby 

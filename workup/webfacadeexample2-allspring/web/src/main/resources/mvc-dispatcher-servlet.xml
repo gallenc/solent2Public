@@ -11,11 +11,13 @@
            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
                
     <!-- this allows annotations to be picked up by configuration -->
+    <!-- Scans for components that will be auto-registered as Spring beans -->
+    <context:component-scan base-package="org.solent.com504.factoryandfacade.impl.rest, org.solent.com504.factoryandfacade.impl.web" />
+   
+    <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config/>
-    <context:component-scan base-package="org.solent.com504.factoryandfacade.impl.web" />
-    
-        <!-- this just activates and destroys a bean as an example -->
-    <bean id="helloWorld" class="org.solent.com504.factoryandfacade.impl.web.HelloWorld" init-method="init" destroy-method="destroy">
+    <!-- this just activates and destroys a bean as an example -->
+    <bean id="helloWorld2" class="org.solent.com504.factoryandfacade.impl.service.HelloWorld" init-method="init" destroy-method="destroy">
         <property name="message" value="mvc-dispatcher-servlet" />
     </bean>
 

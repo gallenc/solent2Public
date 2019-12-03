@@ -7,11 +7,17 @@ import org.solent.com504.factoryandfacade.model.dao.AnimalTypeDao;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.AnimalType;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+// note we give the bean this name so picked up later
+@Component("farmFacade")
 public class FarmFacadeImpl implements FarmFacade {
 
+    @Autowired
     private AnimalDao animalDao = null;
 
+    @Autowired
     private AnimalTypeDao animalTypeDao = null;
 
     // setters for DAOs

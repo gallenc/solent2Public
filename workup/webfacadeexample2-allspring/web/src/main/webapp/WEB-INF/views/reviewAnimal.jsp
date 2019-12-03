@@ -5,42 +5,9 @@
 <%@page import="java.util.List"%>
 <%@page import="org.solent.com504.factoryandfacade.model.dto.Animal"%>
 <%@page import="org.solent.com504.factoryandfacade.model.service.FarmFacade"%>
-<%@page import="org.solent.com504.factoryandfacade.impl.web.WebObjectFactory"%>
+
 
 <%
-    // used to place error message at top of page 
-    //String errorMessage = "";
-    // String message = "";
-
-    // accessing service 
-    //   FarmFacade farmFacade = (FarmFacade) WebObjectFactory.getServiceFacade();
-    //   List<String> supportedAnimalTypes = farmFacade.getSupportedAnimalTypes();
-    // accessing request parameters
-    //   String actionStr = request.getParameter("action");
-    //   String animalNameStr = request.getParameter("animalName");
-    //   String animalTypeStr = request.getParameter("animalType");
-    // basic error checking before making a call
-    //   if (actionStr == null) {
-    // redirect back to home page
-    //       response.sendRedirect("./farm2.jsp");
-    //   } else if ("addAnimal".equals(actionStr)) {
-    //       if (animalNameStr == null || animalNameStr.isEmpty() || animalTypeStr == null || animalTypeStr.isEmpty()) {
-    //           errorMessage = "ERROR: animalType and animalName must both be set when adding animal.";
-    //      } else {
-    //          if (farmFacade.getAnimal(animalNameStr) != null) {
-    //              errorMessage = "ERROR: you cannot have dupicate animal names (" + animalNameStr + ")";
-    //          } else {
-    //              farmFacade.addAnimal(animalTypeStr, animalNameStr);
-    //              response.sendRedirect("./farm2.jsp");
-    //          }
-    //      }
-    //  } else if ("createAnimal".equals(actionStr)) {
-    //      if (animalTypeStr == null || animalTypeStr.isEmpty()) {
-    //          errorMessage = "ERROR: animalType must be set when creating animal.";
-    //      }
-    //  } else {
-    //      errorMessage = "ERROR: page called for unknown action";
-    //   }
 
 %>
 
