@@ -28,11 +28,11 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>webfacadeexample2-dao-jpa</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>

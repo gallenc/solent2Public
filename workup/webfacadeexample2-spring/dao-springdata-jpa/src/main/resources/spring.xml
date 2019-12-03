@@ -25,8 +25,8 @@
 
     <!-- this config uses separate persistance.xml file -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-            <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-            <property name="persistenceUnitName" value="modelPersistence" />
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+        <property name="persistenceUnitName" value="modelPersistence" />
     </bean>
     
     

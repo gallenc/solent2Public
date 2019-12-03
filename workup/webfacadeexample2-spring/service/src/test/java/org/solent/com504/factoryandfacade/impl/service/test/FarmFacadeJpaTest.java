@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryImpl;
-import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryJpaImpl;
+import org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactorySpringImpl;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
 import org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory;
@@ -29,7 +29,7 @@ public class FarmFacadeJpaTest {
     @Before
     public void loadFactory() {
 
-        serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
+        serviceObjectFactory = new ServiceObjectFactorySpringImpl();
         
         farmFacade = serviceObjectFactory.getFarmFacade();
 

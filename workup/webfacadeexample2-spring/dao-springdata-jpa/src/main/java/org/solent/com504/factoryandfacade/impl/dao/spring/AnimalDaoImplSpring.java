@@ -6,6 +6,7 @@
 package org.solent.com504.factoryandfacade.impl.dao.spring;
 
 import java.util.List;
+import java.util.Optional;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.AnimalType;
@@ -30,7 +31,9 @@ public class AnimalDaoImplSpring implements AnimalDao {
 
     @Override
     public Animal retrieve(long id) {
-        return animalDAOSpringData.getOne(id);
+        // note new Optional value used in java 8
+        Optional<Animal> found = animalDAOSpringData.findById(id);
+        return (found.isPresent()) ? found.get() : null;
     }
 
     @Override
@@ -61,11 +64,16 @@ public class AnimalDaoImplSpring implements AnimalDao {
         return animalDAOSpringData.findAll();
     }
 
+    /**
+     * Note that this Create DOES NOT SAVE ANIMAL
+     * @param animalType
+     * @return 
+     */
     @Override
     public Animal create(AnimalType animalType) {
         Animal animal = new Animal();
         animal.setAnimalType(animalType);
-        return animalDAOSpringData.saveAndFlush(animal);
+        return animal;
     }
 
     @Override
