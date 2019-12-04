@@ -1,7 +1,7 @@
 
 # Feature list and Test Plan
 
-![alt text](../UMLfactoryandfacade/drawio/farmUseCase_draw_io.png "Figure farmUseCase_draw_io.png" )
+![alt text](../drawio/farmUseCase_draw_io.png "Figure farmUseCase_draw_io.png" )
 
 
 
