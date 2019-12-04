@@ -4,7 +4,7 @@
 This version of the project uses only springdata and springMVC.
 No factories are used in this version of the project
 
-
+See also test plan example in docs folder
 
 ## running the application
 As usual, build the whole project using 
