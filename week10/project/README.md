@@ -1,5 +1,7 @@
 
-# template jpa and springdata jpa project
+# project with DAO's based on  jpa and springdata jpa 
+
+## Comparing time objects and searching by time
 
 Note that the model has now been changed so that you can use a 'java.util.Date startDate' in each appointment
 
@@ -7,7 +9,7 @@ You can compare dates if you use startDate in the model. See example test and DA
 
 see the model class
 
-[Appointment.java](../week10/project/model/src/main/java/org/solent/com504/project/model/dto/Appointment.java )
+[Appointment.java](../project/model/src/main/java/org/solent/com504/project/model/dto/Appointment.java )
 ```
 ...
     private Date startDate  = new Date();  // appointment initialised with date
@@ -24,7 +26,7 @@ see the model class
 
 The Dao has a new method to compare dates
 
-[AppointmentDAOJpaImpl.java](../week10/project/dao-jpa/src/main/java/org/solent/com504/project/impl/dao/jpa/AppointmentDAOJpaImpl.java )
+[AppointmentDAOJpaImpl.java](../project/dao-jpa/src/main/java/org/solent/com504/project/impl/dao/jpa/AppointmentDAOJpaImpl.java )
 ```
    @Override
     public List<Appointment> findBetweenDates(Date startDate, Date endDate) {
@@ -39,7 +41,7 @@ The Dao has a new method to compare dates
 
 And the test shows you how to use it
 
-[AppointmentDAOTest.java](../week10/project/dao-jpa/src/test/java/org/solent/com504/project/impl/dao/jpa/test/AppointmentDAOTest.java )
+[AppointmentDAOTest.java](../project/dao-jpa/src/test/java/org/solent/com504/project/impl/dao/jpa/test/AppointmentDAOTest.java )
 ```
    @Test
     public void findBetweenDatesTest() {
