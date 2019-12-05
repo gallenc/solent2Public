@@ -5,6 +5,8 @@
  */
 package org.solent.com504.project.impl.dao.jpa.test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
@@ -33,6 +35,9 @@ public class AppointmentDAOTest {
         appointmentDao = daoFactory.getAppointmentDAO();
         assertNotNull(appointmentDao);
 
+        // delete all appointments before each test
+        appointmentDao.deleteAll();
+
     }
 
     @Test
@@ -46,12 +51,45 @@ public class AppointmentDAOTest {
     public void findBetweenDates() {
         LOG.debug("start of findBetweenDates(");
 
-        Date startDate = new Date();
-        Date endDate = new Date();
+        // e.g. (2009-12-31 23:59)
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        Date startDate = null;
+        Date endDate = null;
+
+        Appointment appointment1 = new Appointment();
+        Appointment appointment2 = new Appointment();
+        Appointment appointment3 = new Appointment();
+        
+        try {
+
+            appointment1.setStartDate(format.parse("2020-12-31 14:59"));
+            appointment1.setDurationMinutes(30);
+            appointment2.setStartDate(format.parse("2020-12-31 15:59"));
+            appointment2.setDurationMinutes(30);
+            appointment3.setStartDate(format.parse("2020-11-30 15:59"));
+            appointment3.setDurationMinutes(30);
+
+            startDate = format.parse("2020-12-31 13:59");
+            endDate = format.parse("2020-12-31 23:59");
+            LOG.debug("start date = " + format.format(startDate));
+            LOG.debug("end date = " + format.format(startDate));
+        } catch (ParseException ex) {
+            LOG.error("problem parsing date", ex);
+        }
+
+        appointmentDao.save(appointment1);
+        appointmentDao.save(appointment2);
 
         List<Appointment> appointments = appointmentDao.findBetweenDates(startDate, endDate);
+        assertEquals(2,appointments.size());
+        LOG.debug("found appointments " + appointments.size());
 
-        LOG.debug("end of findBetweenDates(");
+        for (Appointment appointment : appointments) {
+            LOG.debug(" " + appointment);
+        }
+
+        LOG.debug("end of findBetweenDates");
     }
 
 }

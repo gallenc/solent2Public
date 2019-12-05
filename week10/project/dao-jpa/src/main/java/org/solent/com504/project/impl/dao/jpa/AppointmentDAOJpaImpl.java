@@ -38,7 +38,11 @@ public class AppointmentDAOJpaImpl implements AppointmentDAO {
 
     @Override
     public Appointment save(Appointment appointment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        entityManager.persist(appointment);  // NOTE merge(animal) differnt semantics
+        // entityManager.flush() could be used
+        entityManager.getTransaction().commit();
+        return appointment;
     }
 
     @Override
@@ -58,7 +62,9 @@ public class AppointmentDAOJpaImpl implements AppointmentDAO {
 
     @Override
     public void deleteAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManager.getTransaction().begin();
+        entityManager.createQuery("DELETE FROM Appointment ").executeUpdate();
+        entityManager.getTransaction().commit();
     }
 
     @Override
