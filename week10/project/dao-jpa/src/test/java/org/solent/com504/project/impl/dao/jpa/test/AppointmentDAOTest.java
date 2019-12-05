@@ -5,6 +5,8 @@
  */
 package org.solent.com504.project.impl.dao.jpa.test;
 
+import java.util.Date;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -12,7 +14,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.project.impl.dao.jpa.DAOFactoryJPAImpl;
 import org.solent.com504.project.model.dao.AppointmentDAO;
-
+import org.solent.com504.project.model.dto.Appointment;
 
 /**
  *
@@ -30,6 +32,7 @@ public class AppointmentDAOTest {
     public void before() {
         appointmentDao = daoFactory.getAppointmentDAO();
         assertNotNull(appointmentDao);
+
     }
 
     @Test
@@ -38,11 +41,17 @@ public class AppointmentDAOTest {
         // this test simply runs the before method
         LOG.debug("end of createAppointmentDAOTest(");
     }
-    
-    
-    
-    
-    
-    
-    
+
+    @Test
+    public void findBetweenDates() {
+        LOG.debug("start of findBetweenDates(");
+
+        Date startDate = new Date();
+        Date endDate = new Date();
+
+        List<Appointment> appointments = appointmentDao.findBetweenDates(startDate, endDate);
+
+        LOG.debug("end of findBetweenDates(");
+    }
+
 }

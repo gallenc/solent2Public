@@ -5,6 +5,7 @@
  */
 package org.solent.com504.project.impl.dao.spring;
 
+import java.util.Date;
 import java.util.List;
 import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dao.springdata.AppointmentDAOSpringData;
@@ -66,6 +67,11 @@ public class AppointmentDAOImplSpring implements AppointmentDAO {
 
     @Override
     public List<Appointment> findByDate(Integer year, Integer month, Integer hour, Integer minutes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Appointment> findBetweenDates(Date startDate, Date endDate) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

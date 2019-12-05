@@ -1,5 +1,6 @@
 package org.solent.com504.project.model.dto;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +43,16 @@ public class Appointment {
     private Integer dayOfMonth;
 
     private Integer durationMinutes;
+    
+    private Date startDate  = new Date();  // appointment initialised with date
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
     public Integer getHr() {
         return hr;
@@ -111,7 +122,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", dayOfMonth=" + dayOfMonth + ", durationMinutes=" + durationMinutes + '}';
+        return "Appointment{" + "descripton=" + descripton + ", personA=" + personA + ", personB=" + personB + ", id=" + id + ", hr=" + hr + ", mth=" + mth + ", yr=" + yr + ", dayOfMonth=" + dayOfMonth + ", durationMinutes=" + durationMinutes + ", startDate=" + startDate + '}';
     }
 
 

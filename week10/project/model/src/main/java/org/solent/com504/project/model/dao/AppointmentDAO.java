@@ -1,5 +1,6 @@
 package org.solent.com504.project.model.dao;
 
+import java.util.Date;
 import java.util.List;
 import org.solent.com504.project.model.dto.Appointment;
 import org.solent.com504.project.model.dto.Person;
@@ -23,4 +24,8 @@ public interface AppointmentDAO {
     public List<Appointment> findByPersonB(Person personB);
 
     public List<Appointment> findByDate(Integer year, Integer month, Integer hour, Integer minutes);
+    
+    public List<Appointment> findBetweenDates(Date startDate, Date endDate);
+    
+    
 }
