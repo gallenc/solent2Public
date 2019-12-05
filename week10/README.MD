@@ -9,8 +9,8 @@ This week we will look at SpringData which is designed to simplify and remove du
 A good tutorial on spring data is provided here (although it uses spring 4 and my exmaples use spring 5).
 http://cleancodejava.com/simple-spring-data-jpa-example/
 
-SpringData allows you to simpley define a DAO using only an interface with some annotations. 
-Spring automattacillay connstructs the DAO for you.
+SpringData allows you to simply define a DAO using only an interface with some annotations. 
+Spring automaticallay connstructs the DAO for you.
 This significantly simplifys the code. 
 This is done by extending a generic DAO which is defined usign hjava generics.
 

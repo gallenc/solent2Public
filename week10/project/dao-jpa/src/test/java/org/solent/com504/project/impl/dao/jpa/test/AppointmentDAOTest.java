@@ -48,7 +48,7 @@ public class AppointmentDAOTest {
     }
 
     @Test
-    public void findBetweenDates() {
+    public void findBetweenDatesTest() {
         LOG.debug("start of findBetweenDates(");
 
         // e.g. (2009-12-31 23:59)
