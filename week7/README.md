@@ -1,4 +1,4 @@
-# Week 6 - Using JPA or JDBC for model persistance
+# Week 7 - Using JPA or JDBC for model persistance
 
 
 # Exercises for week 7
