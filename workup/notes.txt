@@ -68,3 +68,5 @@ https://howtodoinjava.com/spring5/webmvc/spring5-mvc-hibernate5-example/
 
 
 https://www.javaguides.net/p/spring-data-jpa-tutorial.html
+
+https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-adding-custom-methods-into-all-repositories/ very good
