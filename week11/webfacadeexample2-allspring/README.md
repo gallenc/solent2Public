@@ -2,6 +2,7 @@
 # Project using Spring MVC  and SpringDATA
 
 This version of the project uses only springdata and springMVC.
+Eclipselink is the JPA provider and Derby is used as the embedded database
 No factories are used in this version of the project
 
 See also test plan example in docs folder

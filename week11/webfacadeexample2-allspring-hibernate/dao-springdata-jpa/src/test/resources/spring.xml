@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        ">
+
+    <!-- Scans for components that will be auto-registered as Spring beans -->
+    <context:component-scan base-package="org.solent.com504.factoryandfacade.impl.dao" />
+    <!-- Scans for repositories that will be auto-registered -->
+    <jpa:repositories base-package="org.solent.com504.factoryandfacade.impl.dao" />
+    <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
+    <context:annotation-config />
+
+    <!-- JPA Hibernate -->
+
+    <!-- Datasource, that is currently hsqldb (in-memory database). -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+        
+        <!-- this is or in memory database - no files created -->
+        <!-- <property name="url" value="jdbc:hsqldb:mem://productDb" />-->
+        
+        <!-- this is for file based database created in target directory-->
+        <property name="url" value="jdbc:hsqldb:file:target/hsqldb/productDb" />
+        
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <!-- EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:packagesToScan="org.solent.com504.factoryandfacade.model"
+          p:dataSource-ref="dataSource" >
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="HSQL"/>
+                <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect"/>
+                <property name="generateDdl" value="true" />
+                <property name="showSql" value="true" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+</beans>

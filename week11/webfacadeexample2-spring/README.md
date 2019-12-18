@@ -14,6 +14,7 @@ We now introduce dao-springdata-jpa and this is wired into the higher layers. (d
 
 We looked at stand alone SpringData dao's in week10.
 This project simply uses the technology previously introduced within the service layer.
+Eclipselink is the JPA provider and Derby is used as the embedded database.
 
 The SpringMVC code introduced earlier still coexists with the original JSP's and this requires that we still use factories throughout.
 
