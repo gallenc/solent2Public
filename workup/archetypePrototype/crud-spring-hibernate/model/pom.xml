@@ -4,11 +4,11 @@
     
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
-        <artifactId>webfacadeexample2</artifactId>
+        <artifactId>crudexample1</artifactId>
         <version>1.5-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webfacadeexample2-model</artifactId>
+    <artifactId>crudexample1-model</artifactId>
     <packaging>jar</packaging>
     
     <dependencies>

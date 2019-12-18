@@ -4,24 +4,24 @@
     
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
-        <artifactId>webfacadeexample2</artifactId>
+        <artifactId>crudexample1</artifactId>
         <version>1.5-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webfacadeexample2-service</artifactId>
+    <artifactId>crudexample1-service</artifactId>
     <packaging>jar</packaging>
     
     <dependencies>
 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-model</artifactId>
+            <artifactId>crudexample1-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-dao-springdata-jpa</artifactId>
+            <artifactId>crudexample1-dao-springdata-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         

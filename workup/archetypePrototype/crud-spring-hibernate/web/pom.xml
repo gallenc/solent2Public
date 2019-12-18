@@ -4,12 +4,12 @@
     
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
-        <artifactId>webfacadeexample2</artifactId>
+        <artifactId>crudexample1</artifactId>
         <version>1.5-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webfacadeexample2-web</artifactId>
-    <name>webfacadeexample2-web</name>
+    <artifactId>crudexample1-web</artifactId>
+    <name>crudexample1-web</name>
         
     <packaging>war</packaging>
     
@@ -24,13 +24,13 @@
 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-model</artifactId>
+            <artifactId>crudexample1-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-service</artifactId>
+            <artifactId>crudexample1-service</artifactId>
             <version>${project.version}</version>
         </dependency>
             
