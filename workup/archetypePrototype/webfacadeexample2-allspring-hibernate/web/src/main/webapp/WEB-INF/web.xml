@@ -8,11 +8,6 @@
         <session-timeout>30</session-timeout>
     </session-config>
     
-    <!-- initialise and shuts down derby before anything else -->
-    <listener>
-        <listener-class>org.solent.com504.factoryandfacade.impl.web.DatabaseInitialiser</listener-class>
-    </listener>
-    
      <!-- initialise spring -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

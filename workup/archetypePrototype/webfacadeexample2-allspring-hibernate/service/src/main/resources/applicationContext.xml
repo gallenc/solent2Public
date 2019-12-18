@@ -24,7 +24,7 @@
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config />
     
-        <!-- this just activates and destroys a bean as an example -->
+    <!-- this just activates and destroys a bean as an example -->
     <bean id="helloWorld" class="org.solent.com504.factoryandfacade.impl.service.HelloWorld" init-method="init" destroy-method="destroy">
         <property name="message" value="service applicationContext " />
     </bean>
@@ -32,7 +32,16 @@
     <!-- Datasource, that is currently hsqldb (in-memory database). -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-        <property name="url" value="jdbc:hsqldb:mem://productDb" />
+        
+        <!-- this is or in memory database - no files created -->
+        <!--  <property name="url" value="jdbc:hsqldb:mem://productDb" />-->
+        
+        <!-- this is for file based database created in target directory or tomcat temp -->
+        <!-- shutdown = true shuts down database when last connection is closed -->
+        <!-- an alternative is to use SHUTDOWN -->
+        <!-- see https://stackoverflow.com/questions/16201704/transactional-on-spring-shutdown-to-properly-shutdown-hsqldb -->
+        <property name="url" value="jdbc:hsqldb:file:#{ systemProperties['java.io.tmpdir'] }/hsqldb/productDb;shutdown=true" />
+
         <property name="username" value="sa" />
         <property name="password" value="" />
     </bean>
