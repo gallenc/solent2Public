@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ReplyMessage">
+  <ClassDiagramComponents>
+    <Class name="Thing" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="632.0" yPosition="999.0">
+      <Fields>
+        <Field name="field_A" type="String" visibility="private"/>
+        <Field name="field_B" type="String" visibility="private"/>
+        <Field name="field_C" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ReplyMessage" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="22.0" yPosition="208.0">
+      <Fields>
+        <Field name="code" type="Integer" visibility="private"/>
+        <Field name="debugMessage" type="String" visibility="private"/>
+        <Field name="things" type="ThingList" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ThingList" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="22.0" yPosition="436.0">
+      <Fields>
+        <Field name="things" type="List&lt;Thing&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="ServiceFacade" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="602.0" yPosition="552.0">
+      <Methods/>
+    </Interface>
+    <Interface name="ThingDAO" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="556.0" yPosition="711.0">
+      <Methods>
+        <Method name="createThing" returnType="Thing" visibility="public">
+          <Argument type="Thing" name="thing"/>
+        </Method>
+        <Method name="deleteThing" returnType="Integer" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="retrieveThing" returnType="Integer" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="retrieveAllThings" returnType="List&lt;Thing&gt;" visibility="public"/>
+        <Method name="retrieveMatchingThings" returnType="Thing" visibility="public">
+          <Argument type="Thing" name="thingTempate"/>
+        </Method>
+        <Method name="updateThing" returnType="Thing" visibility="public">
+          <Argument type="Thing" name="thing"/>
+        </Method>
+        <Method name="deleteAllThings" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="RestInterface" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="246.0" yPosition="19.0">
+      <Methods>
+        <Method name="retrieveMatchingEntites" returnType="ReplyMessage" visibility="public">
+          <Argument type="Thing" name="thingTempate"/>
+        </Method>
+        <Method name="retrieveThing" returnType="ReplyMessage" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceFactory" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="579.0" yPosition="173.0">
+      <Methods>
+        <Method name="getServiceFacade" returnType="ServiceFacade" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="WebUiJsp_do_not_generate" package="solent.ac.uk.ood.examples.model" visibility="public" xPosition="881.0" yPosition="19.0">
+      <Methods/>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="usesServiceFacade" source="solent.ac.uk.ood.examples.model.WebUiJsp_do_not_generate" target="solent.ac.uk.ood.examples.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesObjectFactoryToGetService" source="solent.ac.uk.ood.examples.model.RestInterface" target="solent.ac.uk.ood.examples.model.ServiceFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useReplyMessage" source="solent.ac.uk.ood.examples.model.RestInterface" target="solent.ac.uk.ood.examples.model.ReplyMessage" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <IsRelation name="is" source="solent.ac.uk.ood.examples.model.ServiceFacade" target="solent.ac.uk.ood.examples.model.ThingDAO"/>
+    <UseRelation name="usesServiceFacade" source="solent.ac.uk.ood.examples.model.RestInterface" target="solent.ac.uk.ood.examples.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesObjectFactoryToGetService" source="solent.ac.uk.ood.examples.model.WebUiJsp_do_not_generate" target="solent.ac.uk.ood.examples.model.ServiceFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsAndAccesses" source="solent.ac.uk.ood.examples.model.ServiceFactory" target="solent.ac.uk.ood.examples.model.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hasThingList" source="solent.ac.uk.ood.examples.model.ReplyMessage" target="solent.ac.uk.ood.examples.model.ThingList" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="usesThings" source="solent.ac.uk.ood.examples.model.ThingDAO" target="solent.ac.uk.ood.examples.model.Thing" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesThingDao" source="solent.ac.uk.ood.examples.model.ServiceFacade" target="solent.ac.uk.ood.examples.model.ThingDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
