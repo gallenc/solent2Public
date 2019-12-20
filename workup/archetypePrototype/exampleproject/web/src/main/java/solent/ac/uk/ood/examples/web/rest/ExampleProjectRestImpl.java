@@ -66,7 +66,8 @@ public class ExampleProjectRestImpl {
         }
     }
 
-    // GET localhost:8680/rest/example/retrieve?id=9
+    // GET localhost:8084/rest/example/retrieve?id=9
+    // http://localhost:8084/exampleproject-web/rest/example/retrieve?id=32
     @GET
     @Path("/retrieve")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

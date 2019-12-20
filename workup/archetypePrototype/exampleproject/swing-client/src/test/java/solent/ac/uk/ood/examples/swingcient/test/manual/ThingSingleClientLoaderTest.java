@@ -26,7 +26,7 @@ public class ThingSingleClientLoaderTest {
 
     public static final String TEST_DATA_FILE_LOCATION = "target/testDaofile.xml";
 
-    public static final String TEST_BASE_URL = "http://localhost:8680/";
+    public static final String TEST_BASE_URL = "http://localhost:8084/";
 
     @Test
     public void testSingleClientLoader() {
@@ -43,7 +43,7 @@ public class ThingSingleClientLoaderTest {
         List<Thing> list = thingDAO.retrieveAllThings();
         assertTrue(list.isEmpty());
 
-        String baseUrl = "http://localhost:8680/";
+        String baseUrl = "http://localhost:8084/";
 
         ThingClientLoader thingClientLoader = new ThingClientLoader(thingDAO, baseUrl);
 

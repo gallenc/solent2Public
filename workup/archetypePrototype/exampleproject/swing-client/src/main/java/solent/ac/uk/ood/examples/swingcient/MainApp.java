@@ -17,7 +17,7 @@ public class MainApp {
 
     public static final Logger TRANSACTIONLOG = LoggerFactory.getLogger("transaction-log");
 
-    public static final String DEFAULT_BASE_URL = "http://localhost:8680/";
+    public static final String DEFAULT_BASE_URL = "http://localhost:8084/";
 
     public static final String DEFAULT_DAO_FILE = "./localDataFile.xml";
 

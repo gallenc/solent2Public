@@ -33,7 +33,7 @@ public class ThingClientLoader {
 
     private ThingDAO thingDAO = null;
 
-    private String baseUrl = "http://localhost:8680/";
+    private String baseUrl = "http://localhost:8084/";
 
     private MediaType mediaType = MediaType.APPLICATION_XML_TYPE;
 

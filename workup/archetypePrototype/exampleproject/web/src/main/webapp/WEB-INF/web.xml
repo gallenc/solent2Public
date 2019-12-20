@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
         <!-- Rest Servlet -->
-	<servlet>
+<!--	<servlet>
 		<servlet-name>RestApp</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
@@ -16,9 +16,9 @@
 		<servlet-name>RestApp</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-        
+        -->
         <!-- jsp servlet -->
-        <servlet id="jsp">
+<!--        <servlet id="jsp">
 		<servlet-name>uu</servlet-name>
 		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
 		<init-param>
@@ -46,5 +46,5 @@
 		<url-pattern>*.JSPF</url-pattern>
 		<url-pattern>*.JSPX</url-pattern>
 		<url-pattern>*.XSP</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>-->
 </web-app>

@@ -26,7 +26,7 @@ public class ScheduledThingClientLoaderTest {
 
     public static final String TEST_DATA_FILE_LOCATION = "target/testDaofile.xml";
 
-    public static final String TEST_BASE_URL = "http://localhost:8680/";
+    public static final String TEST_BASE_URL = "http://localhost:8084/";
 
     @Test
     public void testScheduledClientLoader() {

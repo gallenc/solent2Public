@@ -111,29 +111,7 @@
             <artifactId>exampleproject-dao-jaxb</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
-        <!-- Jetty dependencies -->
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-jetty-http</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <scope>compile</scope>
-        </dependency>
-      
+              
         <!-- Logging SLF4J dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
