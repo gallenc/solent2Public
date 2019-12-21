@@ -1,51 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.solent.com504.project.impl.dao.jpa.test;
 
-# project with DAO's based on  jpa and springdata jpa with Eclipselink
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.solent.com504.project.impl.dao.jpa.DAOFactoryJPAImpl;
+import org.solent.com504.project.model.dao.AppointmentDAO;
+import org.solent.com504.project.model.dto.Appointment;
 
-## Comparing time objects and searching by time
+/**
+ *
+ * @author cgallen
+ */
+public class AppointmentDAOTest {
 
-Note that the model has now been changed so that you can use a 'java.util.Date startDate' in each appointment
+    final static Logger LOG = LogManager.getLogger(AppointmentDAOTest.class);
 
-You can compare dates if you use startDate in the model. See example test and DAO below
+    private AppointmentDAO appointmentDao = null;
 
-see the model class
+    private DAOFactoryJPAImpl daoFactory = new DAOFactoryJPAImpl();
 
-[Appointment.java](../project/model/src/main/java/org/solent/com504/project/model/dto/Appointment.java )
-```
-...
-    private Date startDate  = new Date();  // appointment initialised with date
+    @Before
+    public void before() {
+        appointmentDao = daoFactory.getAppointmentDAO();
+        assertNotNull(appointmentDao);
 
-    public Date getStartDate() {
-        return startDate;
+        // delete all appointments before each test
+        appointmentDao.deleteAll();
+
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    @Test
+    public void createAppointmentDAOTest() {
+        LOG.debug("start of createAppointmentDAOTest(");
+        // this test simply runs the before method
+        LOG.debug("end of createAppointmentDAOTest(");
     }
 
-```
-
-The Dao has a new method to compare dates
-
-[AppointmentDAOJpaImpl.java](../project/dao-jpa/src/main/java/org/solent/com504/project/impl/dao/jpa/AppointmentDAOJpaImpl.java )
-```
-   @Override
-    public List<Appointment> findBetweenDates(Date startDate, Date endDate) {
-        TypedQuery<Appointment> q = entityManager.createQuery("SELECT a FROM Appointment a WHERE a.startDate BETWEEN :startDate AND :endDate", Appointment.class);
-        q.setParameter("startDate", startDate);
-        q.setParameter("endDate", endDate);
-        List<Appointment> appointmentList = q.getResultList();
-        return appointmentList;
-
-    }
-```
-
-And the test shows you how to use it
-
-[AppointmentDAOTest.java](../project/dao-jpa/src/test/java/org/solent/com504/project/impl/dao/jpa/test/AppointmentDAOTest.java )
-```
-   @Test
+    @Test
     public void findBetweenDatesTest() {
-        LOG.debug("start of findBetweenDatesTest(");
+        LOG.debug("start of findBetweenDates(");
 
         // e.g. (2009-12-31 23:59)
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -87,5 +91,5 @@ And the test shows you how to use it
 
         LOG.debug("end of findBetweenDates");
     }
-```
 
+}
