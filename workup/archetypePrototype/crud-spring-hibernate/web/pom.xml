@@ -27,7 +27,7 @@
             <artifactId>crudexample1-model</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>crudexample1-service</artifactId>
@@ -77,8 +77,7 @@
             <version>2.1.5</version>
         </dependency>-->
 
-            
-            
+
         <!-- servelet dependencies provided by tomcat -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>

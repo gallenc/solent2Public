@@ -17,7 +17,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("/rest")
 public class RestApp extends ResourceConfig {
     public RestApp() {
-        packages("org.solent.com504.factoryandfacade.impl.rest");
+        packages("org.solent.com504.project.impl.rest");
     }
 }
 

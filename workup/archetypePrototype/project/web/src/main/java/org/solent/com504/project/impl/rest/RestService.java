@@ -20,9 +20,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.com504.project.impl.web.WebObjectFactory;
 import org.solent.com504.project.model.dto.ReplyMessage;
 import org.solent.com504.project.model.service.ServiceFacade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -33,12 +35,18 @@ import org.solent.com504.project.model.service.ServiceFacade;
  * replyMessage.getAnimalList() int replyMessage.getCode()
  * replyMessage.getDebugMessage(); * @author cgallen
  */
+@Component // component allows resource to be picked up
 @Path("/appointmentService")
 public class RestService {
 
     // SETS UP LOGGING 
-    // note that log name will be org.solent.com504.factoryandfacade.impl.rest.RestService
+    // note that log name will be org.solent.com504.project.impl.rest.RestService
     final static Logger LOG = LogManager.getLogger(RestService.class);
+    
+    // This serviceFacade object is injected by Spring
+    @Autowired(required = true)
+    @Qualifier("serviceFacade")
+    ServiceFacade serviceFacade = null;
 
     /**
      * this is a very simple rest test message which only returns a string
@@ -58,17 +66,20 @@ public class RestService {
      *
      * http://localhost:8084/projectfacadeweb/rest/appointmentService/getHeartbeat
      *
-     * @return list of all Animals in List<String> replyMessage.getStringList()
+     * @return Response OK and heartbeat in debug message
      */
     @GET
     @Path("/getHeartbeat")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response getAllAnimals() {
+    public Response getHeartbeat() {
         try {
-
-            ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
+            
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getHeartbeat called");
+            
+            if (serviceFacade == null) {
+                throw new RuntimeException("serviceFacade==null and has not been initialised");
+            }
 
             String heartbeat = serviceFacade.getHeartbeat();
             replyMessage.setDebugMessage(heartbeat);

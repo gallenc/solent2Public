@@ -39,9 +39,7 @@ public class PersonDAOSpringDataTest {
     }
 
     
-    // see https://www.baeldung.com/spring-data-jpa-save-saveandflush 
-    // https://www.marcobehler.com/2014/06/25/should-my-tests-be-transactional 
-    //@Transactional
+    @Transactional
     @Test
     public void test1() {
         LOG.debug("start of test1");

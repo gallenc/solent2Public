@@ -61,16 +61,12 @@ public class AppointmentDAOSpringDataTest {
         LOG.debug("end of applicationContextTest");
     }
 
-    // see https://www.baeldung.com/spring-data-jpa-save-saveandflush 
-    // https://www.marcobehler.com/2014/06/25/should-my-tests-be-transactional 
-    //@Transactional
+    @Transactional
     @Test
     public void test1() {
         LOG.debug("start of test1");
 
         Appointment appt1 = new Appointment();
-        
-       
         appt1 = appointmentDAOspring.save(appt1);
         System.out.println("appt1=" + appt1);
 

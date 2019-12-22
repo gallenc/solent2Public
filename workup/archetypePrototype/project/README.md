@@ -1,5 +1,5 @@
 
-# project with DAO's based on  jpa and springdata jpa with Eclipselink
+# project with DAO's based on spring MVC, jpa and springdata jpa with Hibernate and HSQLDB
 
 ## Comparing time objects and searching by time
 

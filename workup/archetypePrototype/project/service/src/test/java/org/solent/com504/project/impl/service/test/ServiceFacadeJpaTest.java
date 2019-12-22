@@ -9,29 +9,25 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.solent.com504.project.impl.service.ServiceObjectFactoryJpaImpl;
 import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.dto.Role;
 import org.solent.com504.project.model.service.ServiceFacade;
-import org.solent.com504.project.model.service.ServiceObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  *
  * @author gallenc
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/applicationContext.xml"})
 public class ServiceFacadeJpaTest {
 
-    ServiceObjectFactory serviceObjectFactory = null;
+    @Autowired
     ServiceFacade serviceFacade = null;
-
-    @Before
-    public void loadFactory() {
-
-        serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
-
-        serviceFacade = serviceObjectFactory.getServiceFacade();
-
-    }
 
     @Test
     public void testFactory() {

@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+               
+    <!-- this allows annotations to be picked up by configuration -->
+    <!-- Scans for components that will be auto-registered as Spring beans -->
+    <context:component-scan base-package="org.solent.com504.project.impl.rest, org.solent.com504.project.impl.web" />
+   
+    <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
+    <context:annotation-config/>
+    <!-- this just activates and destroys a bean as an example -->
+    <bean id="helloWorld2" class="org.solent.com504.project.impl.service.HelloWorld" init-method="init" destroy-method="destroy">
+        <property name="message" value="mvc-dispatcher-servlet" />
+    </bean>
+
+
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources  -->
+    <!--	in the /WEB-INF/views directory -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- this allows the dispatcher to handle other content -->
+    <!--<mvc:default-servlet-handler/>-->
+    
+</beans>

@@ -9,11 +9,17 @@ import org.solent.com504.project.model.dao.PersonDAO;
 import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.dto.Role;
 import org.solent.com504.project.model.service.ServiceFacade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+// note we give the bean this name so it is picked up later in application context
+@Component("serviceFacade")
 public class ServiceFacadeImpl implements ServiceFacade {
 
+        @Autowired
     private PersonDAO personDao = null;
 
+            @Autowired
     private AppointmentDAO appointmentDao = null;
 
     // used to concurently count heartbeat requests

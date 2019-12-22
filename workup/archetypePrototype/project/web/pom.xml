@@ -30,17 +30,55 @@
 
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>project-dao-jpa</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>project-service</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <scope>compile</scope>
+        </dependency> 
             
-        <!-- tomcat / jsp depencencies -->
+        <!--Spring MVC framework--> 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- to allow jersey to work with spring as a component -->
+        <!-- note if not present need to have jersey-hk2 on classpath -->
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-spring5</artifactId>
+            <scope>compile</scope>
+            <exclusions>
+                <!-- even when excluded and down version this is a problem - need later version of tomcat -->
+                <!--excluding jakarta.ws.rs-api 2.1.6 as doenst work with tomcat--> 
+                <!--                <exclusion>   
+                    <groupId>jakarta.ws.rs</groupId>
+                    <artifactId>jakarta.ws.rs-api</artifactId>
+                </exclusion>-->
+            </exclusions> 
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+        <!--        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>2.1.5</version>
+        </dependency>-->
+
+
+        <!-- servelet dependencies provided by tomcat -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
@@ -50,6 +88,12 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <!-- java server tag library -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         
         
@@ -71,6 +115,13 @@
         </dependency>
         
         <!-- logging dependencies to be included in war so scope compile-->
+        <!-- jcl over slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- SLF4J over Log4j needed for jpa-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

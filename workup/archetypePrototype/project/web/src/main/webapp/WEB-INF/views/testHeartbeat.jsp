@@ -4,7 +4,6 @@
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
-<%@page import="org.solent.com504.project.impl.web.WebObjectFactory"%>
 <%@page import="org.solent.com504.project.model.service.ServiceFacade"%>
 
 
@@ -18,7 +17,7 @@
     response.setIntHeader("Refresh", 20);
 
     // accessing service 
-    ServiceFacade serviceFacade = (ServiceFacade) WebObjectFactory.getServiceFacade();
+    ServiceFacade serviceFacade = (ServiceFacade) request.getAttribute("serviceFacade");
 
     // accessing request parameters
     String actionStr = request.getParameter("action");

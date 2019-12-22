@@ -40,6 +40,26 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
+        
+        <!-- used to show request mappings in spring 5 -->
+        <!--<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="TRACE" >-->
+        <logger name="org.springframework.web.servlet.mvc" level="TRACE" >
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </logger>
+        
+        <!-- log spring -->
+        <Logger name="org.springframework"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </Logger>
+        
+        <!-- log tomcat -->
+        <Logger name="org.apache.catalina"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="appLog"/>
+        </Logger>
+        
 
         <!-- this logs to  the Consol (System.out) -->
         <Root level="DEBUG">
