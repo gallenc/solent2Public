@@ -1,0 +1,68 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "appointment",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8084/projectfacadeweb/rest/appointmentService/getHeartbeat",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-12",
+                    "name": "heartbeat"
+                }
+            ]
+        },
+        {
+            "name": "Store",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8084/rest/example/retrieve?id=1",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-10",
+                    "name": "Retrieve"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8084/rest/example/retrievematching",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<item>\n <sku>abcd</sku>\n</item>"
+                        }
+                    },
+                    "id": "rester-11",
+                    "name": "RetrieveMatchine"
+                }
+            ]
+        }
+    ]
+}

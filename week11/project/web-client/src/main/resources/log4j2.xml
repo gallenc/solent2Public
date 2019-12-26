@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <!-- Logging Properties -->
+    <Properties>
+        <!-- this sets the output style properties for the log messages -->
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <!--<Property name="APP_LOG_ROOT" >target</Property>-->
+        
+        <!-- this creates log files in the catalina base directory -->
+        <!-- e.g. in netbeans C:\Users\<your username>\AppData\Roaming\NetBeans\8.2\apache-tomcat-8.0.27.0_base -->
+        <Property name="APP_LOG_ROOT" >${sys:catalina.base}/logs/app</Property>
+    </Properties>
+    <Appenders>
+        
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        
+        <!-- a roling file appender limits the size of log files -->
+        <RollingFile name="clientAppLog" fileName="${APP_LOG_ROOT}/client-app-perf.log"
+                     filePattern="${APP_LOG_ROOT}/app-perf-%d{yyyy-MM-dd}-%i.log" >
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+        
+    </Appenders>
+    <Loggers>
+        
+        <!-- The name org.solent specifies that log names beginning with this string are dealt with by the following appenders -->
+        <!-- i.e. in our config, classes in package names beginnign org.solent -->
+        <Logger name="org.solent"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="clientAppLog"/>
+        </Logger>
+
+        
+        <!-- used to show request mappings in spring 5 -->
+        <!--<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="TRACE" >-->
+        <logger name="org.springframework.web.servlet.mvc" level="TRACE" >
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="clientAppLog"/>
+        </logger>
+        
+        <!-- log spring -->
+        <Logger name="org.springframework"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="clientAppLog"/>
+        </Logger>
+        
+        <!-- log tomcat -->
+        <Logger name="org.apache.catalina"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="clientAppLog"/>
+        </Logger>
+
+        <!-- this logs to  the Consol (System.out) -->
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

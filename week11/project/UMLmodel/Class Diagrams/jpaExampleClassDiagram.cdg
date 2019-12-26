@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="jpaExampleClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="Person" package="org.solent.com504.project.model.dto" visibility="public" xPosition="606.0" yPosition="928.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="secondName" type="String" visibility="private"/>
+        <Field name="role" type="Role" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Appointment" package="org.solent.com504.project.model.dto" visibility="public" xPosition="1018.0" yPosition="928.0">
+      <Fields>
+        <Field name="descripton" type="String" visibility="private"/>
+        <Field name="personA" type="Person" visibility="private"/>
+        <Field name="personB" type="Person" visibility="private"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="hr" type="Integer" visibility="private"/>
+        <Field name="mth" type="Integer" visibility="private"/>
+        <Field name="yr" type="Integer" visibility="private"/>
+        <Field name="durationMinutes" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ReplyMessage" package="org.solent.com504.project.model.dto" visibility="public" xPosition="73.0" yPosition="928.0">
+      <Fields>
+        <Field name="code" type="Integer" visibility="private"/>
+        <Field name="debugMessage" type="String" visibility="private"/>
+        <Field name="stringList" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="personList" type="List&lt;Person&gt;" visibility="private"/>
+        <Field name="appointmentList" type="List&lt;Appointment&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="PersonDAO" package="org.solent.com504.project.model.dao" visibility="public" xPosition="375.0" yPosition="491.0">
+      <Methods>
+        <Method name="findById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="save" returnType="Person" visibility="public">
+          <Argument type="Person" name="person"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;Person&gt;" visibility="public"/>
+        <Method name="deleteById" returnType="long" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="delete" returnType="Person" visibility="public">
+          <Argument type="Person" name="person"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="findByRole" returnType="Role" visibility="public">
+          <Argument type="Role" name="role"/>
+        </Method>
+        <Method name="findByName" returnType="String" visibility="public">
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="secondName"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="AppointmentDAO" package="org.solent.com504.project.model.dao" visibility="public" xPosition="974.0" yPosition="491.0">
+      <Methods>
+        <Method name="findById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="save" returnType="Appointment" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;Appointment&gt;" visibility="public"/>
+        <Method name="delete" returnType="Appointment" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="deleteById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="findByPersonA" returnType="Person" visibility="public">
+          <Argument type="Person" name="personA"/>
+        </Method>
+        <Method name="findByPersonB" returnType="Person" visibility="public">
+          <Argument type="Person" name="personB"/>
+        </Method>
+        <Method name="findByDate" returnType="Integer" visibility="public">
+          <Argument type="Integer" name="year"/>
+          <Argument type="Integer" name="month"/>
+          <Argument type="Integer" name="hour"/>
+          <Argument type="Integer" name="minutes"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="DAOFactory" package="org.solent.com504.project.model.dao" visibility="public" xPosition="974.0" yPosition="304.0">
+      <Methods>
+        <Method name="getPersonDAO" returnType="PersonDAO" visibility="public"/>
+        <Method name="getAppointmentDAO" returnType="AppointmentDAO" visibility="public"/>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceFacade" package="org.solent.com504.project.model.service" visibility="public" xPosition="447.0" yPosition="232.0">
+      <Methods>
+        <Method name="getHeartbeat" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceObjectFactory" package="org.solent.com504.project.model.service" visibility="public" xPosition="992.0" yPosition="152.0">
+      <Methods>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+        <Method name="getServiceFacade" returnType="ServiceFacade" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="JSP_Pages_do_not_generate" package="org.solent.com504.project.model.web" visibility="public" xPosition="92.0" yPosition="22.0">
+      <Methods/>
+    </Interface>
+    <Interface name="WebObjectFactory" package="org.solent.com504.project.model.web" visibility="public" xPosition="1000.0" yPosition="13.0">
+      <Methods>
+        <Method name="getServiceFacade" returnType="ServiceFacade" visibility="public"/>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceFacadeRest" package="org.solent.com504.project.model.rest" visibility="public" xPosition="73.0" yPosition="203.0">
+      <Methods>
+        <Method name="getHeartbeat" returnType="ReplyMessage" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="RestClient" package="org.solent.com504.project.model.rest" visibility="public" xPosition="-8.0" yPosition="332.0">
+      <Methods/>
+    </Interface>
+    <Enum name="Role" package="org.solent.com504.project.model.dto" visibility="public" xPosition="365.0" yPosition="928.0">
+      <Literals>
+        <Literal name="PATIENT"/>
+        <Literal name="DENTIST"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="createsPersonDAO" source="org.solent.com504.project.model.dao.DAOFactory" target="org.solent.com504.project.model.dao.PersonDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="restInteraceUsesReplyMessage" source="org.solent.com504.project.model.rest.ServiceFacadeRest" target="org.solent.com504.project.model.dto.ReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebobjectFactory" source="org.solent.com504.project.model.rest.ServiceFacadeRest" target="org.solent.com504.project.model.web.WebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesDAOFactory" source="org.solent.com504.project.model.service.ServiceObjectFactory" target="org.solent.com504.project.model.dao.DAOFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceFacade" source="org.solent.com504.project.model.web.JSP_Pages_do_not_generate" target="org.solent.com504.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesAppointmentDAO" source="org.solent.com504.project.model.service.ServiceFacade" target="org.solent.com504.project.model.dao.AppointmentDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesAppointment" source="org.solent.com504.project.model.dao.AppointmentDAO" target="org.solent.com504.project.model.dto.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebObjectFactory" source="org.solent.com504.project.model.web.JSP_Pages_do_not_generate" target="org.solent.com504.project.model.web.WebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsServiceFacade" source="org.solent.com504.project.model.service.ServiceObjectFactory" target="org.solent.com504.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceObjectFactory" source="org.solent.com504.project.model.web.WebObjectFactory" target="org.solent.com504.project.model.service.ServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesPersonDAO" source="org.solent.com504.project.model.service.ServiceFacade" target="org.solent.com504.project.model.dao.PersonDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsAppointmentDAO" source="org.solent.com504.project.model.dao.DAOFactory" target="org.solent.com504.project.model.dao.AppointmentDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesPerson" source="org.solent.com504.project.model.dao.PersonDAO" target="org.solent.com504.project.model.dto.Person" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="uses" source="org.solent.com504.project.model.rest.RestClient" target="org.solent.com504.project.model.rest.ServiceFacadeRest" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="appointmentHasPersonA" source="org.solent.com504.project.model.dto.Appointment" target="org.solent.com504.project.model.dto.Person" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="personHasRole" source="org.solent.com504.project.model.dto.Person" target="org.solent.com504.project.model.dto.Role" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="appointmentHasPersonB" source="org.solent.com504.project.model.dto.Appointment" target="org.solent.com504.project.model.dto.Person" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceFacade" source="org.solent.com504.project.model.rest.ServiceFacadeRest" target="org.solent.com504.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

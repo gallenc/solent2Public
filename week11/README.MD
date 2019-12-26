@@ -18,3 +18,11 @@ This version uses EclipseLink and Derby
 omits all of the Object Factories and simply uses Spring to wire the application.
 This version uses Hibernate and HSQLDB
 
+[project](../week11/project) 
+Project template reworked to only use Spring Data, SpringMVC, JSP, Hibernate JPA and HSQLDB
+
+
+
+
+
+
