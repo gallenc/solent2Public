@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.factoryandfacade.impl.service.rest.client;
+package org.solent.com504.project.impl.service.rest.client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.logging.LoggingFeature;
-import org.solent.com504.project.model.dto.Person;
+import org.solent.com504.project.model.dto.Actor;
 import org.solent.com504.project.model.dto.ReplyMessage;
 import org.solent.com504.project.model.dto.Role;
 import org.solent.com504.project.model.service.ServiceFacade;
@@ -70,7 +70,7 @@ public class ServiceRestClientImpl implements ServiceFacade {
     }
 
     @Override
-    public List<Person> findByRole(Role role) {
+    public List<Actor> findByRole(Role role) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

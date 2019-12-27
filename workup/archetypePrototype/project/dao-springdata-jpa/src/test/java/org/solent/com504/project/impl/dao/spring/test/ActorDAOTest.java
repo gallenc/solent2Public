@@ -12,65 +12,62 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.solent.com504.project.model.dao.AppointmentDAO;
-import org.solent.com504.project.model.dao.PersonDAO;
-import org.solent.com504.project.model.dto.Person;
+import org.solent.com504.project.model.dto.Actor;
 import org.solent.com504.project.model.dto.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.solent.com504.project.model.dao.ActorDAO;
+import org.solent.com504.project.model.dto.Address;
 
 /**
- * NOTE tests cannot be @transactional if you are  using the id of an entity which has not been saveAndFlush'ed
- * this could be an eclipselink problem or a database problem.
- * In practice make tests non transactional and make sure the database is clean at start of tests.
+ * NOTE tests cannot be @transactional if you are using the id of an entity which has not been saveAndFlush'ed this could be an eclipselink problem or a
+ * database problem. In practice make tests non transactional and make sure the database is clean at start of tests.
+ *
  * @author cgallen
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring.xml"})
-public class PersonDAOTest {
+public class ActorDAOTest {
 
-    final static Logger LOG = LogManager.getLogger(PersonDAOTest.class);
-
-    @Autowired
-    private PersonDAO personDao = null;
+    final static Logger LOG = LogManager.getLogger(ActorDAOTest.class);
 
     @Autowired
-    private AppointmentDAO appointmentDao = null;
+    private ActorDAO actorDao = null;
 
     @Before
     public void before() {
-        assertNotNull(personDao);
+        assertNotNull(actorDao);
     }
 
     // initialises database for each test
     private void init() {
         // delete all in database
-        // delete appointments first
-        appointmentDao.deleteAll();
 
-        // delete persons after appointments
-        personDao.deleteAll();
+        actorDao.deleteAll();
 
-        personDao.deleteAll();
-        // add 5 patients
+        // add 5 admin
         for (int i = 1; i < 6; i++) {
-            Person p = new Person();
-            p.setAddress("address_A_" + i);
+            Actor p = new Actor();
+            Address a = new Address();
+            a.setAddressLine1("address_A_" + i);
+            p.setAddress(a);
             p.setFirstName("firstName_A_" + i);
             p.setSecondName("secondName_A_" + i);
-            p.setRole(Role.PATIENT);
-            personDao.save(p);
+            p.setRole(Role.GLOBALADMIN);
+            actorDao.save(p);
         }
-        // add 5 dentists
+        // add 5 anonymous
         for (int i = 1; i < 7; i++) {
-            Person p = new Person();
-            p.setAddress("address_B_" + i);
+            Actor p = new Actor();
+            Address a = new Address();
+            a.setAddressLine1("address_B_" + i);
+            p.setAddress(a);
             p.setFirstName("firstName_B_" + i);
             p.setSecondName("secondName_B_" + i);
-            p.setRole(Role.DENTIST);
-            personDao.save(p);
+            p.setRole(Role.ANONYMOUS);
+            actorDao.save(p);
         }
     }
 
@@ -78,10 +75,10 @@ public class PersonDAOTest {
     // https://www.marcobehler.com/2014/06/25/should-my-tests-be-transactional 
     //@Transactional
     @Test
-    public void createPersonDAOTest() {
-        LOG.debug("start of createPersonDAOTest");
+    public void createActorDAOTest() {
+        LOG.debug("start of createActorDAOTest");
         // this test simply runs the before method
-        LOG.debug("end of createPersonDAOTest");
+        LOG.debug("end of createActorDAOTest");
     }
 
     //@Transactional
@@ -108,16 +105,16 @@ public class PersonDAOTest {
         LOG.debug("start of findAllTest()");
 
         init();
-        List<Person> personList = personDao.findAll();
-        assertNotNull(personList);
+        List<Actor> actorList = actorDao.findAll();
+        assertNotNull(actorList);
 
         // init should insert 11 people
-        assertEquals(11, personList.size());
+        assertEquals(11, actorList.size());
 
         // print out result
         String msg = "";
-        for (Person person : personList) {
-            msg = msg + "\n   " + person.toString();
+        for (Actor actor : actorList) {
+            msg = msg + "\n   " + actor.toString();
         }
         LOG.debug("findAllTest() retrieved:" + msg);
 
@@ -158,17 +155,17 @@ public class PersonDAOTest {
 
         init();
 
-        List<Person> personList = null;
-        personList = personDao.findAll();
-        assertFalse(personList.isEmpty());
+        List<Actor> actorList = null;
+        actorList = actorDao.findAll();
+        assertFalse(actorList.isEmpty());
 
-        personList = personDao.findByRole(Role.PATIENT);
-        assertNotNull(personList);
-        assertEquals(5, personList.size());
+        actorList = actorDao.findByRole(Role.GLOBALADMIN);
+        assertNotNull(actorList);
+        assertEquals(5, actorList.size());
 
-        personList = personDao.findByRole(Role.DENTIST);
-        assertNotNull(personList);
-        assertEquals(6, personList.size());
+        actorList = actorDao.findByRole(Role.ANONYMOUS);
+        assertNotNull(actorList);
+        assertEquals(6, actorList.size());
 
         LOG.debug("end of findByIdTest()");
     }
@@ -179,24 +176,24 @@ public class PersonDAOTest {
         LOG.debug("start of findByNameTest()");
 
         init();
-        List<Person> personList = null;
-        personList = personDao.findAll();
-        assertFalse(personList.isEmpty());
+        List<Actor> actorList = null;
+        actorList = actorDao.findAll();
+        assertFalse(actorList.isEmpty());
 
-        // choose from personList
-        int i = personList.size() / 2;
-        Person person1 = personList.get(i);
-        LOG.debug("Selecting Person " + i + " person=" + person1);
-        String firstName = person1.getFirstName();
-        String secondName = person1.getSecondName();
+        // choose from actorList
+        int i = actorList.size() / 2;
+        Actor actor1 = actorList.get(i);
+        LOG.debug("Selecting Actor " + i + " actor=" + actor1);
+        String firstName = actor1.getFirstName();
+        String secondName = actor1.getSecondName();
 
-        personList = personDao.findByName(firstName, secondName);
-        assertFalse(personList.isEmpty());
+        actorList = actorDao.findByName(firstName, secondName);
+        assertFalse(actorList.isEmpty());
 
-        Person person2 = personList.get(0);
-        LOG.debug("Finding person by name Person " + person2);
+        Actor actor2 = actorList.get(0);
+        LOG.debug("Finding actor by name Actor " + actor2);
 
-        assertTrue(person1.toString().equals(person2.toString()));
+        assertTrue(actor1.toString().equals(actor2.toString()));
 
         LOG.debug("end of findByNameTest())");
 

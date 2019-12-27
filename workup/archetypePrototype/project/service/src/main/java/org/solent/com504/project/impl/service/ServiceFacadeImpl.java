@@ -4,35 +4,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.solent.com504.project.model.dao.AppointmentDAO;
-import org.solent.com504.project.model.dao.PersonDAO;
-import org.solent.com504.project.model.dto.Person;
+import org.solent.com504.project.model.dto.Actor;
 import org.solent.com504.project.model.dto.Role;
 import org.solent.com504.project.model.service.ServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.solent.com504.project.model.dao.ActorDAO;
 
 // note we give the bean this name so it is picked up later in application context
 @Component("serviceFacade")
 public class ServiceFacadeImpl implements ServiceFacade {
 
         @Autowired
-    private PersonDAO personDao = null;
+    private ActorDAO actorDao = null;
 
-            @Autowired
-    private AppointmentDAO appointmentDao = null;
+
 
     // used to concurently count heartbeat requests
     private static AtomicInteger heartbeatRequests = new AtomicInteger();
 
     // setters for DAOs
-    public void setPersonDao(PersonDAO personDao) {
-        this.personDao = personDao;
+    public void setActorDao(ActorDAO actorDao) {
+        this.actorDao = actorDao;
     }
 
-    public void setAppointmentDao(AppointmentDAO appointmentDao) {
-        this.appointmentDao = appointmentDao;
-    }
 
     // Service facade methods
     @Override
@@ -42,11 +37,11 @@ public class ServiceFacadeImpl implements ServiceFacade {
     }
 
     @Override
-    public List<Person> findByRole(Role role) {
+    public List<Actor> findByRole(Role role) {
         if (role == null) {
-            return personDao.findAll();
+            return actorDao.findAll();
         } else {
-            return personDao.findByRole(role);
+            return actorDao.findByRole(role);
         }
     }
 

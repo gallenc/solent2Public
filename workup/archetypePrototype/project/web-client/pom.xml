@@ -5,7 +5,7 @@
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
         <artifactId>project</artifactId>
-        <version>1.3-SNAPSHOT</version>
+        <version>1.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>project-web-client</artifactId>

@@ -16,9 +16,12 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.solent.com504.project.model.dto.Appointment;
-import org.solent.com504.project.model.dto.Person;
+
+import org.solent.com504.project.model.dto.Actor;
+import org.solent.com504.project.model.dto.Address;
 import org.solent.com504.project.model.dto.ReplyMessage;
+import org.solent.com504.project.model.dto.Role;
+import org.solent.com504.project.model.dto.Status;
 
 public class ModelJaxbTest {
 
@@ -42,10 +45,16 @@ public class ModelJaxbTest {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             ReplyMessage replyMessage = new ReplyMessage();
-            List<Appointment> appointments = new ArrayList<Appointment>();
-            replyMessage.setAppointmentList(appointments);
-            List<Person> personList = new ArrayList<Person>();
-            replyMessage.setPersonList(personList);
+
+            List<Actor> actorList = new ArrayList<Actor>();
+            replyMessage.setActorList(actorList);
+            Actor actor = new Actor();
+            actor.setStatus(Status.ACTIVE);
+            actor.setRole(Role.USER);
+            Address address = new Address();
+            address.setAddressLine1("home for me");
+            actor.setAddress(address);
+            actorList.add(actor);
 
             // create XML from the object
             // marshal the object lists to system out, a file and a stringWriter

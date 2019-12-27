@@ -5,7 +5,7 @@
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
         <artifactId>project</artifactId>
-        <version>1.3-SNAPSHOT</version>
+        <version>1.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>project-client-rest</artifactId>
@@ -36,18 +36,24 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Spring dependencies -->
-<!--        <dependency>
+        <!-- Spring dependencies (Test) -->
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <scope>compile</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <scope>compile</scope>
-        </dependency>-->
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         
         <!-- jersey dependencies -->
         <dependency>

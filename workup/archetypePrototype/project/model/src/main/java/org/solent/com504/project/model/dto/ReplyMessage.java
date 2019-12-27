@@ -19,13 +19,11 @@ public class ReplyMessage {
     @XmlElement(name = "string")
     private List<String> stringList = null;
 
-    @XmlElementWrapper(name = "personlist")
-    @XmlElement(name = "person")
-    private List<Person> personList = null;
+    @XmlElementWrapper(name = "actorlist")
+    @XmlElement(name = "actor")
+    private List<Actor> actorList = null;
 
-    @XmlElementWrapper(name = "appointmentlist")
-    @XmlElement(name = "appointment")
-    private List<Appointment> appointmentList = null;
+  
 
     public Integer getCode() {
         return code;
@@ -51,20 +49,14 @@ public class ReplyMessage {
         this.stringList = stringList;
     }
 
-    public List<Person> getPersonList() {
-        return personList;
+    public List<Actor> getActorList() {
+        return actorList;
     }
 
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
     }
 
-    public List<Appointment> getAppointmentList() {
-        return appointmentList;
-    }
-
-    public void setAppointmentList(List<Appointment> appointmentList) {
-        this.appointmentList = appointmentList;
-    }
+   
 
 }

@@ -1,9 +1,11 @@
 package org.solent.com504.project.model.dto;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 
 @Entity
-public class Person {
+public class Actor {
 
     private Long id;
 
@@ -22,7 +24,13 @@ public class Person {
 
     private Role role;
 
-    private String address;
+    private Address address = new Address(); // need not null initial value
+
+    private Status status;
+
+    private String uuid;
+
+    private Actor represents;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,20 +66,45 @@ public class Person {
         this.role = role;
     }
 
-    public String getAddress() {
+    @Embedded
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    @OneToOne
+    public Actor getRepresents() {
+        return represents;
+    }
+
+    public void setRepresents(Actor represents) {
+        this.represents = represents;
     }
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + '}';
+        return "Actor{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + ", status=" + status + ", uuid=" + uuid + ", represents=" + represents + '}';
     }
-    
-    
-    
+
+ 
     
 }
