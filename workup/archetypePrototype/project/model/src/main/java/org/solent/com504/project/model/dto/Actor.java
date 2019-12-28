@@ -30,6 +30,8 @@ public class Actor {
 
     private String uuid;
 
+    private String password;
+
     private Actor represents;
 
     @Id
@@ -100,11 +102,19 @@ public class Actor {
         this.represents = represents;
     }
 
-    @Override
-    public String toString() {
-        return "Actor{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + ", status=" + status + ", uuid=" + uuid + ", represents=" + represents + '}';
+    public String getPassword() {
+        return password;
     }
 
- 
-    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" + "id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", role=" + role + ", address=" + address + ", status=" + status + ", uuid=" + uuid + ", password=" + password + ", represents=" + represents + '}';
+    }
+
+
+
 }
