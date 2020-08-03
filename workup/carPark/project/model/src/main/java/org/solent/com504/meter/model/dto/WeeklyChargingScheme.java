@@ -36,7 +36,7 @@ public class WeeklyChargingScheme {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "weeklyChargingScheme", cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.REMOVE)
     public List<DailyChargingScheme> getDailyChargingSchemeList() {
         return dailyChargingSchemeList;
     }
