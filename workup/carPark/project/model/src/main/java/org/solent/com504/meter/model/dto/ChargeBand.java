@@ -17,9 +17,9 @@ public class ChargeBand {
     
     private Long id;
 
-    private Integer hr;
+    private Integer hrs;
 
-    private Integer min;
+    private Integer mins;
 
     private Double pricePerHr;
     
@@ -33,20 +33,20 @@ public class ChargeBand {
         this.id = id;
     }
 
-    public Integer getHr() {
-        return hr;
+    public Integer getHrs() {
+        return hrs;
     }
 
-    public void setHr(Integer hr) {
-        this.hr = hr;
+    public void setHrs(Integer hrs) {
+        this.hrs = hrs;
     }
 
-    public Integer getMin() {
-        return min;
+    public Integer getMins() {
+        return mins;
     }
 
-    public void setMin(Integer min) {
-        this.min = min;
+    public void setMins(Integer mins) {
+        this.mins = mins;
     }
 
     public Double getPricePerHr() {
@@ -59,8 +59,9 @@ public class ChargeBand {
 
     @Override
     public String toString() {
-        return "ChargeBand{" + "hr=" + hr + ", min=" + min + ", pricePerHr=" + pricePerHr + '}';
+        return "ChargeBand{" + "id=" + id + ", hrs=" + hrs + ", mins=" + mins + ", pricePerHr=" + pricePerHr + '}';
     }
+
 
  
     

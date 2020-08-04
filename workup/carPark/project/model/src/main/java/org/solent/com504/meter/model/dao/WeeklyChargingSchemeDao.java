@@ -7,7 +7,7 @@ public interface WeeklyChargingSchemeDao {
 
     public WeeklyChargingScheme  findById(Long id);
 
-    public WeeklyChargingScheme save(WeeklyChargingScheme chargingScheme);
+    public WeeklyChargingScheme save(WeeklyChargingScheme weeklyChargingScheme);
 
     public List<WeeklyChargingScheme> findAll();
 

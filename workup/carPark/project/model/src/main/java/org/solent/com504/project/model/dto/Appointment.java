@@ -44,7 +44,7 @@ public class Appointment {
         return hr;
     }
 
-    public void setHr(Integer hr) {
+    public void setHrs(Integer hr) {
         this.hr = hr;
     }
 

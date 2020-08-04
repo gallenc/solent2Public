@@ -43,11 +43,11 @@
         <!-- This allows slf4j logging and you need to set the following persistence property -->
         <!-- <property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.slf4j.SLF4JLogger"/> -->
         <!-- see https://marschall.github.io/2017/10/07/eclipselink-slfj4.html -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.extension</artifactId>
             <version>2.7.0</version>
-        </dependency>
+        </dependency>-->
 
         <!-- <dependency> -->
         <!-- <groupId>org.eclipse.persistence</groupId> -->

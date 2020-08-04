@@ -41,8 +41,8 @@
     </Class>
     <Class name="ChargeBand" package="org.solent.com504.meter.model.dto" visibility="public" xPosition="1268.0" yPosition="1038.0">
       <Fields>
-        <Field name="hr" type="Integer" visibility="private"/>
-        <Field name="min" type="Integer" visibility="private"/>
+        <Field name="hrs" type="Integer" visibility="private"/>
+        <Field name="mins" type="Integer" visibility="private"/>
         <Field name="pricePerHr" type="Double" visibility="private"/>
       </Fields>
       <Constructors/>
@@ -141,26 +141,26 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="usesWebObjectFactory" source="org.solent.com504.meter.model.web.JSP_Pages_do_not_generate" target="org.solent.com504.meter.model.web.MeterWebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="hasLocation" source="org.solent.com504.meter.model.dto.ParkingMeter" target="org.solent.com504.meter.model.dto.Location" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesServiceFacade" source="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" target="org.solent.com504.meter.model.service.MeterServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesServiceObjectFactory" source="org.solent.com504.meter.model.web.MeterWebObjectFactory" target="org.solent.com504.meter.model.service.MeterServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="createsParkingMeterDAO" source="org.solent.com504.meter.model.dao.MeterDAOFactory" target="org.solent.com504.meter.model.dao.ParkingMeterDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsServiceFacade" source="org.solent.com504.meter.model.service.MeterServiceObjectFactory" target="org.solent.com504.meter.model.service.MeterServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesparkingMeter" source="org.solent.com504.meter.model.dto.MeterReplyMessage" target="org.solent.com504.meter.model.dto.ParkingMeter" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="hasDayName" source="org.solent.com504.meter.model.dto.DailyChargingScheme" target="org.solent.com504.meter.model.dto.DayOfWeek" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesWeeklyShargingSchemeDAO" source="org.solent.com504.meter.model.service.MeterServiceFacade" target="org.solent.com504.meter.model.dao.WeeklyChargingSchemeDao" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesParkingMeter" source="org.solent.com504.meter.model.dao.ParkingMeterDao" target="org.solent.com504.meter.model.dto.ParkingMeter" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <UseRelation name="hasChargeBands" source="org.solent.com504.meter.model.dto.DailyChargingScheme" target="org.solent.com504.meter.model.dto.ChargeBand" sourceCardinality="1..1" targetCardinality="1..*"/>
-    <UseRelation name="uses" source="org.solent.com504.meter.model.rest.MeterRestClient" target="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsWeeklyChargingSchemeDAO" source="org.solent.com504.meter.model.dao.MeterDAOFactory" target="org.solent.com504.meter.model.dao.WeeklyChargingSchemeDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="hasDailyChargingSchem" source="org.solent.com504.meter.model.dto.WeeklyChargingScheme" target="org.solent.com504.meter.model.dto.DailyChargingScheme" sourceCardinality="1..1" targetCardinality="1..*"/>
     <UseRelation name="usesServiceFacade" source="org.solent.com504.meter.model.web.JSP_Pages_do_not_generate" target="org.solent.com504.meter.model.service.MeterServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="hasChargeBands" source="org.solent.com504.meter.model.dto.DailyChargingScheme" target="org.solent.com504.meter.model.dto.ChargeBand" sourceCardinality="1..1" targetCardinality="1..*"/>
     <UseRelation name="usesWeeklyChargingSchemt" source="org.solent.com504.meter.model.dao.WeeklyChargingSchemeDao" target="org.solent.com504.meter.model.dto.WeeklyChargingScheme" sourceCardinality="1..1" targetCardinality="0..*"/>
     <UseRelation name="usesWebobjectFactory" source="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" target="org.solent.com504.meter.model.web.MeterWebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="createsServiceFacade" source="org.solent.com504.meter.model.service.MeterServiceObjectFactory" target="org.solent.com504.meter.model.service.MeterServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="createsWeeklyChargingSchemeDAO" source="org.solent.com504.meter.model.dao.MeterDAOFactory" target="org.solent.com504.meter.model.dao.WeeklyChargingSchemeDao" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="restInteraceUsesReplyMessage" source="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" target="org.solent.com504.meter.model.dto.MeterReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsParkingMeterDAO" source="org.solent.com504.meter.model.dao.MeterDAOFactory" target="org.solent.com504.meter.model.dao.ParkingMeterDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWeeklyShargingSchemeDAO" source="org.solent.com504.meter.model.service.MeterServiceFacade" target="org.solent.com504.meter.model.dao.WeeklyChargingSchemeDao" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="hasWeeklyShargingScheme" source="org.solent.com504.meter.model.dto.ParkingMeter" target="org.solent.com504.meter.model.dto.WeeklyChargingScheme" sourceCardinality="0..*" targetCardinality="1..1"/>
-    <UseRelation name="hasDailyChargingSchem" source="org.solent.com504.meter.model.dto.WeeklyChargingScheme" target="org.solent.com504.meter.model.dto.DailyChargingScheme" sourceCardinality="1..1" targetCardinality="1..*"/>
-    <UseRelation name="usesparkingMeter" source="org.solent.com504.meter.model.dto.MeterReplyMessage" target="org.solent.com504.meter.model.dto.ParkingMeter" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="usesDAOFactory" source="org.solent.com504.meter.model.service.MeterServiceObjectFactory" target="org.solent.com504.meter.model.dao.MeterDAOFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="usesParkingMeterDAO" source="org.solent.com504.meter.model.service.MeterServiceFacade" target="org.solent.com504.meter.model.dao.ParkingMeterDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesParkingMeter" source="org.solent.com504.meter.model.dao.ParkingMeterDao" target="org.solent.com504.meter.model.dto.ParkingMeter" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="restInteraceUsesReplyMessage" source="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" target="org.solent.com504.meter.model.dto.MeterReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceObjectFactory" source="org.solent.com504.meter.model.web.MeterWebObjectFactory" target="org.solent.com504.meter.model.service.MeterServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="uses" source="org.solent.com504.meter.model.rest.MeterRestClient" target="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="hasLocation" source="org.solent.com504.meter.model.dto.ParkingMeter" target="org.solent.com504.meter.model.dto.Location" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebObjectFactory" source="org.solent.com504.meter.model.web.JSP_Pages_do_not_generate" target="org.solent.com504.meter.model.web.MeterWebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceFacade" source="org.solent.com504.meter.model.rest.MeterServiceFacadeRest" target="org.solent.com504.meter.model.service.MeterServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

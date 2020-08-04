@@ -45,7 +45,7 @@ public class DailyChargingScheme {
         this.day = day;
     }
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     public List<ChargeBand> getChargeBandList() {
         return chargeBandList;
     }
