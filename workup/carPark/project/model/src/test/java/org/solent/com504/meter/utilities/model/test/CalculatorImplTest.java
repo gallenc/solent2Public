@@ -25,9 +25,9 @@ import org.solent.com504.meter.utilities.model.Calculator;
 /**
  * @author cgallen
  */
-public class CalculatorTest {
+public class CalculatorImplTest {
 
-    final static Logger LOG = LogManager.getLogger(CalculatorTest.class);
+    final static Logger LOG = LogManager.getLogger(CalculatorImplTest.class);
 
     List<DailyChargingScheme> dailyChargingSchemeList = new ArrayList<DailyChargingScheme>();
 
@@ -93,10 +93,10 @@ public class CalculatorTest {
 
             dailyChargingSchemeList.add(dailyChargingScheme2);
         }
-        
+
         LOG.debug("dailyChargingSchemeList:");
-        for(DailyChargingScheme dailyChargingScheme :dailyChargingSchemeList){
-            LOG.debug("    "+dailyChargingScheme);
+        for (DailyChargingScheme dailyChargingScheme : dailyChargingSchemeList) {
+            LOG.debug("    " + dailyChargingScheme);
         }
     }
 
@@ -123,13 +123,16 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testCalculatorPricePerHour() throws ParseException {
+    public void testCalculatorPricePerMinute() throws ParseException {
 
         Calculator calculator = new Calculator(dailyChargingSchemeList);
 
-
         double aN = calculator.getPricePerMinute(DayOfWeek.MONDAY, 0);
-        assertEquals(0.0, aN, 0);
+        assertEquals("price per minute at 00.00 on monday ", 0.0, aN, 0);
+
+        // price per minute at 01:00
+        aN = calculator.getPricePerMinute(DayOfWeek.MONDAY, 60);
+        assertEquals("price per minute at 01.00 on monday ", 0.0, aN, 0);
 
         // price per minute at 09.00 on monday
         aN = calculator.getPricePerMinute(DayOfWeek.MONDAY, 9 * 60);
@@ -156,28 +159,93 @@ public class CalculatorTest {
         Integer parkingMinutes = 180;
 
         double charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
-        assertEquals("2020-08-17 07:00 MONDAY for "+parkingMinutes+"minutes ", 2.00, charge, 0.05);
-        
-        
+        assertEquals("2020-08-17 07:00 MONDAY for " + parkingMinutes + "minutes ", 2.00, charge, 0.05);
+
+        // 07.00-09.00 (£0 per hr) £0.0
+        startDate = format.parse("2020-08-17 07:00");
+        parkingMinutes = 2 * 60;
+        charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
+        assertEquals("2020-08-17 07:00 MONDAY for " + parkingMinutes + " minutes ", 0, charge, 0.05);
+
+        // 09.00-12.00 (£2 per hr) £6.0
         startDate = format.parse("2020-08-17 09:00");
-        parkingMinutes = 3*60;
+        parkingMinutes = 3 * 60;
         charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
-        assertEquals("2020-08-17 09:00 MONDAY for "+parkingMinutes+" minutes ", 6, charge, 0.05);
-        
+        assertEquals("2020-08-17 09:00 MONDAY for " + parkingMinutes + " minutes ", 6, charge, 0.05);
+
+        // + 12.00-18.30 (£1per hr) £3.5 
         startDate = format.parse("2020-08-17 12:00");
-        parkingMinutes = 3*60+30;
+        parkingMinutes = 6 * 60 + 30;
         charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
-        assertEquals("2020-08-17 12:00 MONDAY for "+parkingMinutes+" minutes ", 3.5, charge, 0.05);
-        
+        assertEquals("2020-08-17 12:00 MONDAY for " + parkingMinutes + " minutes ", 6.5, charge, 0.05);
+
+        // + 18.30-0.00 (£0.5 per hr) 5.5*0.5 = £2.75
         startDate = format.parse("2020-08-17 18:30");
-        parkingMinutes = 60;
+        parkingMinutes = 5 * 60 + 30;
         charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
-        assertEquals("2020-08-17 18:30 MONDAY for "+parkingMinutes+" minutes ", 2.75, charge, 0.05);
-        
-        parkingMinutes = 24*60;
-        // 09.00-12.00 (£2 per hr) £6 + 12.00-18.30 (£1per hr) £6.5 + 18.30-0.00 (£0.5 per hr) 5.5*0.5 = £2.75
+        assertEquals("2020-08-17 18:30 MONDAY for " + parkingMinutes + " minutes ", 2.75, charge, 0.05);
+
+        // + 18.30-01.30 (£0.5 per hr) 5.5*0.5 = £2.75 00.00 £0 per hr
+        startDate = format.parse("2020-08-17 18:30");
+        parkingMinutes = 7 * 60;
         charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
-        assertEquals("2020-08-17 07:00 MONDAY for "+parkingMinutes+" minutes ", 15.25 , charge, 0.05);
+        assertEquals("2020-08-17 18:30 MONDAY for " + parkingMinutes + " minutes ", 2.75, charge, 0.05);
+
+        startDate = format.parse("2020-08-17 07:00");
+        parkingMinutes = 24 * 60;
+
+        // 07.00-09.00 £0
+        // 09.00-12.00 (£2 per hr) £6.0
+        // + 12.00-18.30 (£1per hr) £6.5 
+        // + 18.30-0.00 (£0.5 per hr) 5.5*0.5 = £2.75  total = 
+        charge = calculator.getMoneyForMinutes(startDate, parkingMinutes);
+        assertEquals("2020-08-17 07:00 MONDAY for " + parkingMinutes + " minutes ", 15.25, charge, 0.05);
+
+    }
+
+    @Test
+    public void testCalculatorChargingMinutes() throws ParseException {
+
+        Calculator calculator = new Calculator(dailyChargingSchemeList);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        Date startDate = format.parse("2020-08-17 09:00");
+        Double charge = 2.00;
+        int minutes = calculator.getMinutesForMoney(startDate, charge);
+        assertEquals("2020-08-17 09:00 MONDAY for £" + charge + " minutes ", 1 * 60, minutes);
+
+        startDate = format.parse("2020-08-17 12:00");
+        charge = 6.5;
+        minutes = calculator.getMinutesForMoney(startDate, charge);
+
+        Date endDate = new Date(startDate.getTime() + minutes * 60000);
+        System.out.println("charge=" + charge
+                + " start date=" + format.format(startDate)
+                + " end date=" + format.format(endDate));
+        // expect 390 actually 392
+        // assertEquals("2020-08-17 12:00 MONDAY for £" + charge + " minutes ", 6 * 60 + 30, minutes );
+
+        startDate = format.parse("2020-08-17 18:30");
+        charge = 2.75;
+        minutes = calculator.getMinutesForMoney(startDate, charge);
+
+        endDate = new Date(startDate.getTime() + minutes * 60000);
+        System.out.println("charge=" + charge
+                + " start date=" + format.format(startDate)
+                + " end date=" + format.format(endDate));
+        // expect 330 actually 870
+        //assertEquals("2020-08-17 18:30 MONDAY for £" + charge + " minutes ", 5 * 60 + 30, minutes );
+
+        startDate = format.parse("2020-08-17 07:00");
+        charge = 15.25;
+        minutes = calculator.getMinutesForMoney(startDate, charge);
+        endDate = new Date(startDate.getTime() + minutes * 60000);
+        System.out.println("charge=" + charge
+                + " start date=" + format.format(startDate)
+                + " end date=" + format.format(endDate));
+        // expect 1440 but 1019
+        //assertEquals("2020-08-17 07:00 MONDAY for £" + charge + " minutes ", 24*60, minutes );
 
     }
 

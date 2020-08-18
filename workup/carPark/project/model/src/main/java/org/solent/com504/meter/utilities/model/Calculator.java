@@ -20,9 +20,18 @@ import org.solent.com504.meter.model.dto.ChargeBand;
 import org.solent.com504.meter.model.dto.DailyChargingScheme;
 import org.solent.com504.meter.model.dto.DayOfWeek;
 
-
 /**
- *
+ * This calculator class calculates the charge for a parking period based upon the dailyChargingSchemeList
+ * 
+ * You must initialize the class  using a dailyChargingSchemeList in the constructor.
+ * The two key business methods are:
+ * 
+ * Double getMoneyForMinutes(Date startTime, Integer parkingMinutes)
+ * calculates the charge for parkingMinutes spent at meter from Date startTime
+ * 
+ * Integer getMinutesForMoney(Date startTime, Double parkingPayment)
+ * calculates the number of parking minutes allowed for a given parking payment given a meter startTime
+ * 
  * @author cgallen
  */
 public class Calculator {
@@ -32,6 +41,10 @@ public class Calculator {
     // Map<DayOfWeek,Map<Time in mins ,Double price per minute>>
     private Map<DayOfWeek, SortedMap<Integer, Double>> weekTimeMap = new HashMap();
 
+    /**
+     * Constructor. You must supply a validly populated list of dailyChargingSchemes
+     * @param dailyChargingSchemeList 
+     */
     public Calculator(List<DailyChargingScheme> dailyChargingSchemeList) {
 
         // fill weekTimeMap with empty days as default
@@ -45,7 +58,7 @@ public class Calculator {
         if (dailyChargingSchemeList == null) {
             throw new IllegalArgumentException("dailyChargingSchemeList cannot be null");
         }
-        
+
         for (DailyChargingScheme dailyScheme : dailyChargingSchemeList) {
             DayOfWeek day = dailyScheme.getDay();
             if (day == null) {
@@ -64,11 +77,17 @@ public class Calculator {
         }
     }
 
+    /**
+     * calculates the charge for parkingMinutes spent at meter from Date startTime
+     * @param startTime
+     * @param parkingMinutes
+     * @return 
+     */
     public Double getMoneyForMinutes(Date startTime, Integer parkingMinutes) {
         Double charge = 0.0;
         long startTimeLong = startTime.getTime();
-        
-        for (long min = 0; min <= parkingMinutes; min++ ){
+
+        for (long min = 0; min <= parkingMinutes; min++) {
             long t = startTimeLong + min * 60000; // 60000ms = 1 minute
             Date date = new Date(t);
             DayOfWeek day = getDayOfWeekFromDate(date);
@@ -78,12 +97,18 @@ public class Calculator {
         return charge;
     }
 
+    /**
+     * calculates the number of parking minutes allowed for a given parking payment given a meter startTime
+     * @param startTime
+     * @param parkingPayment
+     * @return 
+     */
     public Integer getMinutesForMoney(Date startTime, Double parkingPayment) {
         Integer parkingMinutes = 0;
         Double currentCharge = 0.0;
         long startTimeLong = startTime.getTime();
-        
-        while( parkingPayment > currentCharge){
+
+        while (parkingPayment > currentCharge) {
             parkingMinutes++;
             long t = startTimeLong + parkingMinutes * 60000; // 60000ms = 1 minute
             Date date = new Date(t);
@@ -101,14 +126,23 @@ public class Calculator {
 
     private double getPricePerMinute(SortedMap<Integer, Double> dailyChargeMap, Integer minuteInDay) {
         Iterator<Integer> chargingSchemeIterator = dailyChargeMap.keySet().iterator();
-        Integer tn0 = chargingSchemeIterator.next();
-        Double aN = dailyChargeMap.get(tn0);
-        Integer tn1 = tn0;
-        while (chargingSchemeIterator.hasNext() && tn1 <= minuteInDay) {
-            tn0 = tn1;
-            tn1 = chargingSchemeIterator.next();
-            aN =  dailyChargeMap.get(tn0);
+
+        if (dailyChargeMap.isEmpty()) {
+            return 0.0;
         }
+        
+        Double aN =0.0;
+        Integer tn0 = chargingSchemeIterator.next();
+        Integer tn1 = tn0;
+        while (tn1 <= minuteInDay) {
+            tn0 = tn1;
+            aN = dailyChargeMap.get(tn0);
+            if (!chargingSchemeIterator.hasNext()) {
+                break;
+            }
+            tn1 = chargingSchemeIterator.next();
+        }
+        
         return aN;
     }
 
@@ -127,6 +161,7 @@ public class Calculator {
 
     /**
      * number ranges from 1 (Sunday) to 7 (Saturday)
+     *
      * @param date
      * @return
      */
