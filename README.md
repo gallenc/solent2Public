@@ -6,12 +6,13 @@ The repository contains a number of example projects, weekly exercises and an ar
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
-[maven-setup](../master/maven-setup) This contains scripts to help you set the java class path and install maven if necessary.
-
 [week1](../master/week1/) Initial exercises for the course.
 
-PLEASE NOTE that the class PC's should now have maven pre-installed so these steps in [maven-setup](../master/maven-setup) not necessary on all machines. 
+## Prerequisites
+In order to complete these exercises you will need Java 8 or 11, Netbeans 8 or 12, Tomcat, Maven and git installed on your machine. Seperate installation instructions have been provided if you dont have this software installed already.
 
+[maven-setup](../master/maven-setup) DEPRICATED: This contains scripts to help you set the java class path and temporarily install maven on university machines which dont support maven. 
+PLEASE NOTE that the university lab PC's should now have maven pre-installed so these steps in [maven-setup](../master/maven-setup) are not necessary on all machines. 
 
 ## Getting Started with GIT
 Before doing anything else you will need to follow these getting started instructions.
@@ -52,7 +53,7 @@ Therefore, to be able to use the examples and save your own work, it will be bet
 
 You should open your own personal github account and FORK this repository into your own account. 
 This will give you your own copy to work with and a backup of your work on github.
-PLEASE NOTE, while github is very reliable, you should also keep a backup copy of your repo in case anything goes wrong.
+PLEASE NOTE, while github is very reliable, you should also keep a local backup copy of your repo in case anything goes wrong.
 
 To create a fork of this repository
 1. sign in to your own github account
@@ -71,6 +72,12 @@ Rather than just clone the repository into a workspace on your IDE, it is good p
 You can import separate projects from this clone into your IDE workspace as you need to work on them.
 
 Create a git repo folder on your local drive and clone your fork of solent2Public into it.
+
+DO NOT check out your repository onto a network (e.g. U:) drive or a One Drive location. 
+The time latency in these drives can cause git to fail.
+
+I usually create a git repository close the the root of the C: drive (e.g. C:/devel/gitrepos/solent2Public)
+
 ```
 mkdir gitrepos
 cd gitrepos
@@ -101,8 +108,6 @@ It is VERY important to ensure that, in particular 'target', directories are NOT
 You should also ensure that in most cases IDE specific sub folders and files are not checked in to git as this will cause confusion if you change or upgrade your IDE. Your ide will read the maven pom.xml file and recreate these folders locally if necessary.
 
 The example [.gitignore](../master/.gitignore)  should be suitable for most purposes and should be copied into the top level of your git repository.
-
-
 
 ### Syncing with the upstream repo
 I will be adding stuff to the upstream repo each week and you should be able to pull these into your local repo using the procedure described below.
@@ -194,7 +199,7 @@ nothing to commit, working directory clean
 ```
 
 ## Summary
-to synchronise your repository with the upstream use the following commands
+To synchronise your repository with the upstream use the following commands
 
 if you have not set up the upstream repo
 ```
