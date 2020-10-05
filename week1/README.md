@@ -1,5 +1,10 @@
 # Week 1 Exercises
 
+## Starting to use TOMCAT and JSP's
+See instruction powerpoint and example video
+
+## Java build and test exercises and some Java revision
+
 These exercises will help you appreciate what maven does to help your build.
 
 Before you do anything, you should ensure that you have maven installed and a windows command prompt with the correct class path. 
@@ -10,10 +15,14 @@ mvn -version
 javac -version
 java -version
 ```
-If any of these commands does not work, you do not have the correct maven and java installation on your machine. 
-All is not lost since we can do a temporary install using the instructions and script in  [maven-setup](../maven-setup).
+If any of these commands does not work, you do not have the correct maven and java installation on your machine.
+Please go through the seperate instructions to get your machine set up correctly.
 
-If you use [maven-setup](../maven-setup). Keep the command prompt open and CD to the correct folder to use this command prompt to run the build commands in these exercises.
+( DEPRICATED:
+If you are on a university machine which does not have maven installed all is not lost since we can do a temporary install using the instructions and script in  [maven-setup](../maven-setup) 
+
+If you use [maven-setup](../maven-setup). Keep the command prompt open and CD to the correct folder to use this command prompt to run the build commands in these exercises 
+).
 
 First try the  [command-line-exercise](../week1/command-line-exercise) to help you appreciate what manually compiling and running java code entails.
 
@@ -23,3 +32,4 @@ Finally try the [revisionCOM405](../week1/revisionCOM405).
 This exercise will help you revise the final weeks of COM405 Introduction to OOD / Java and introduce UML, Testing and maven.
 
 The answer to this exercise is here [revisionCOM405Answer](../week1/revisionCOM405Answer) but dont look at it until you have tried your own. 
+
