@@ -30,12 +30,14 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:3.2.0:generate
 
 SIDE NOTE: 
 ```
-we could have used 
+We could have just used 
 
 mvn archetype:generate
 
-But I have found that depending on the version of maven installed, this might geneate a different list of possible projects.
-So we are specifying exactly which version of plugin to run to remove the uncertainty using the command format
+But I have found that depending on the version of maven installed, 
+this might generate a different list of possible projects.
+So we are specifying exactly which version of plugin to 
+run to remove the uncertainty using the command format
 
 mvn groupID:artifactID:version:goal
 ```
@@ -43,12 +45,22 @@ mvn groupID:artifactID:version:goal
 When you run the command 
 You will be presented with a very large list of possible archetypes.
 
-Choose the default (1245) 1245: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
+Choose the default (1674) 1674: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
 When asked, enter the following values REPLACING gallenc with YOUR github username
 ```
-Choose a number: 7: 1245
-Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc)
+Choose a number: 1674: 1674
+Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
+1: 1.0-alpha-1
+2: 1.0-alpha-2
+3: 1.0-alpha-3
+4: 1.0-alpha-4
+5: 1.0
+6: 1.1
+7: 1.3
+8: 1.4
+Choose a number: 8: 8
+Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc with your username)
 Define value for property 'artifactId': : example1  (call this example1)
 Define value for property 'version':  1.0-SNAPSHOT: :   (leave as 1.0-SNAPSHOT)
 Define value for property 'package':  org.gallenc.com504.ood: : (leave the suggested package)
@@ -60,7 +72,7 @@ package: org.gallenc.com504.ood
  Y: :
 ```
 
-You should now have an example1 project generated in your myPracticeCourseWork folder.
+You should now have an example1 project generated in your myPracticeCourseWork\week1\mavenTestExercises\example1 folder.
 
 4. Build your new project
 ```
@@ -73,7 +85,7 @@ congratulations, you have built your first maven project
 ## Open the project in your netbeans IDE
 Open Netbeans in windows
 
-1. right click in Projects panel and slelect 'import project'
+1. right click in Projects panel and select 'import project'
 
 2. navigate to your myPracticeCourseWork folder and select example1
 
