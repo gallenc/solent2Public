@@ -49,7 +49,7 @@ there should be lots of output followed by 'BUILD SUCCESSFULL'
 congratulations, you have built your first maven project
 
 ## Open the project in your netbeans IDE
-Open Netbeans 8.2 in windows
+Open Netbeans in windows
 
 1. right click in Projects panel and slelect 'import project'
 
