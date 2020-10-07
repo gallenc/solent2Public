@@ -5,21 +5,42 @@ It simplifies greatly the problem of building, testing and packaging projects an
 All of the major IDE's such as Eclipse, Netbeans and Intellij support maven.
 This means that  
 Maven allows you to create projects which are completely independent of the IDE you choose to use.
-Nearly all modern open source java projects use Maven (or Gradel which uses maven artefacts) as their build system. 
+Nearly all modern open source java projects use Maven (or Gradel which also uses maven artefacts) as their build system. 
+
+I am assuming you have copied week1 into myPracticeCourseWork and you are running these commands in your 'myPracticeCourseWork\week1\mavenTestExercises' folder
 
 # Choosing and using a maven archetype
 Maven has a vast number of contributed architype projects which provide templates to help you get started using a variety of java technologies. We will use an archetype to create our first maven project. 
+
 (You can find more information about this process here
 https://maven.apache.org/archetype/maven-archetype-plugin/usage.html)
 
 1. open a command prompt and ensure maven is on your class path
+```
+mvn -version
+```
 
-2. cd into to your myPracticeCourseWork folder
+2. cd into to your new myPracticeCourseWork\week1\mavenTestExercises folder
 
 3. use the following command
+
 ```
+mvn org.apache.maven.plugins:maven-archetype-plugin:3.2.0:generate
+```
+
+SIDE NOTE: 
+```
+we could have used 
+
 mvn archetype:generate
+
+But I have found that depending on the version of maven installed, this might geneate a different list of possible projects.
+So we are specifying exactly which version of plugin to run to remove the uncertainty using the command format
+
+mvn groupID:artifactID:version:goal
 ```
+
+When you run the command 
 You will be presented with a very large list of possible archetypes.
 
 Choose the default (1245) 1245: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
