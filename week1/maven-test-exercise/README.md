@@ -143,7 +143,7 @@ c) can you write a test class MyTestClassLog4jTest.java which runs the writeAbou
 # Finally
 You have created a new project in  
 ```
-myPracticeCourseWork/example1
+myPracticeCourseWork\week1\mavenTestExercises
 ```
 You should check this in to your local git repository and push to your github account.
 
