@@ -21,11 +21,12 @@ https://maven.apache.org/archetype/maven-archetype-plugin/usage.html)
 mvn archetype:generate
 ```
 You will be presented with a very large list of possible archetypes.
+
 Choose the default (1245) 1245: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
 When asked, enter the following values REPLACING gallenc with YOUR github username
 ```
-Choose a number: 7:
+Choose a number: 7: 1245
 Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc)
 Define value for property 'artifactId': : example1  (call this example1)
 Define value for property 'version':  1.0-SNAPSHOT: :   (leave as 1.0-SNAPSHOT)
