@@ -130,6 +130,14 @@ I am running the following java class: class MyTestClassLog4j
 ```
 The last line is the output from the logger
 
+NOTE if you are using power-shell instead of cmd to run the exercies, you may need to change the commands to have quotes around the class path:
+
+```
+ javac -classpath "log4j-core-2.11.0.jar;log4j-api-2.11.0.jar" MyTestClassLog4j.java
+ java -classpath "log4j-core-2.11.0.jar;log4j-api-2.11.0.jar;." MyTestClassLog4j
+ 
+```
+
 ## Creating your own jar
 Jar files are simply zip files which contain class files, other resources and MANIFEST files.
 Open one of the downloaded jars with an archive viewer to see what is inside.
@@ -159,18 +167,4 @@ run this command and then open the generated /doc/index.html file in a browser t
 ## Summary
 Hopefully this little exercise will help you appreciate that if you were constrained to just using the command line tools, writing documenting and packaging java code would be a tedious exercise.
 This sets us up for beginning to use maven to help with java builds
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
