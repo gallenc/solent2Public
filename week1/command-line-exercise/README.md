@@ -67,11 +67,11 @@ log4j-core-2.11.0.jar
 
 Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.11.0
 
-Download: http://central.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar
+Download: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar
 
 Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.11.0
 
-Download: http://central.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar
+Download: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar
 
 2. create the following file MyTestClassLog4j.java and add the content:
 
