@@ -138,6 +138,24 @@ NOTE if you are using power-shell instead of cmd to run the exercies, you may ne
  
 ```
 
+If you are using linux and possibly on a Mac (I tested on centos 8) try using a colon : instead of ;
+```
+javac -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar" MyTestClassLog4j.java
+java -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar:." MyTestClassLog4j
+```
+The resulting directory structure is
+```
+week1/command-line-exercise/src/java
+log4j-api-2.11.0.jar
+log4j-core-2.11.0.jar
+MyTestClass.class
+MyTestClass.java
+MyTestClassLog4j.class
+MyTestClassLog4j.java
+
+```
+
+
 ## Creating your own jar
 Jar files are simply zip files which contain class files, other resources and MANIFEST files.
 Open one of the downloaded jars with an archive viewer to see what is inside.
