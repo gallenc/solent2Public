@@ -16,4 +16,7 @@ public interface ShoppingService {
         public List<ShoppingItem> getAvailableItems();
         
         public boolean purchaseItems(ShoppingCart shoppinCart);
+        
+        public ShoppingItem getNewItemByName(String uuid);
+
 }

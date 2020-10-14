@@ -10,9 +10,10 @@
 <%@ page import="org.solent.com504.oodd.week2.model.ShoppingService" %>
 <%@ page import="org.solent.com504.oodd.week2.model.ShoppingCart" %>
 <%@ page import="org.solent.com504.oodd.week2.model.ShoppingItem" %>
-<%@page import="org.solent.com504.oodd.week2.web.WebObjectFactory"%>
+<%@ page import="org.solent.com504.oodd.week2.web.WebObjectFactory"%>
 <%
     request.setAttribute("selectedPage", "home");
+    String message="";
 
     ShoppingService shoppingService = WebObjectFactory.getShoppingService();
 
@@ -22,13 +23,32 @@
         session.setAttribute("shoppingCart", shoppingCart);
     }
 
+    String action = (String) request.getAttribute("action");
+    String itemName = (String) request.getAttribute("itemName");
+    String itemUuid = (String) request.getAttribute("itemuuid");
+
+    if ("addItemToCart".equals(action)) {
+        message = "adding "+itemName + " to cart";
+        ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
+        message = "adding "+itemName + " to cart : "+shoppingItem;
+        shoppingCart.addItemToCart(shoppingItem);
+    }
+    if ("removeItemFromCart".equals(action)) {
+        message = "removing "+itemName + " from cart";
+        shoppingCart.removeItemFromCart(itemUuid);
+    } else {
+        message = "action="+action;
+    }
+
 %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->
 <main role="main" class="container">
     <H1>Home</H1>
+    <p><%=message %><p>
 
     <!-- The .table class adds basic styling (light padding and only horizontal dividers) to a table: -->     
+    <H1>Available Items</H1>
     <table class="table">
 
         <tr>
@@ -42,9 +62,47 @@
             <td><%=item.getName()%></td>
             <td><%=item.getPrice()%></td>
             <td><%=item.getQuantity()%></td>
+            <td>
+                <!-- post avoids url encoded parameters -->
+                <form action="./home.jsp" method="get">
+                    <input type="hidden" name="itemName" value="<%=item.getName() %>">
+                    <input type="hidden" name="action" value="addItemToCart">
+                    <button type="submit" >Add Item</button>
+                </form> 
+            </td>
         </tr>
         <% }%>
 
     </table>
+
+    <H1>Shopping cart</H1>
+    <table class="table">
+
+        <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+
+        <% for (ShoppingItem item : shoppingCart.getShoppingCartItems()) {%>
+        <tr>
+            <td><%=item.getName()%></td>
+            <td><%=item.getPrice()%></td>
+            <td><%=item.getQuantity()%></td>
+            <td>
+                <!-- post avoids url encoded parameters -->
+                <form action="./home.jsp" method="get">
+                    <input type="hidden" name="itemUUID" value="<%=item.getUuuid()%>">
+                    <input type="hidden" name="action" value="removeItemFromCart">
+                    <button type="submit" >Remove Item</button>
+                </form> 
+            </td>
+        </tr>
+        <% }%>
+
+    </table>
+
+
+
 </main>
 <jsp:include page="footer.jsp" />

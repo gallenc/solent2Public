@@ -15,8 +15,8 @@ public class ShoppingItem {
     
     String uuuid=null;
     String name=null;
-    Integer quantity=null;
-    Double price=null;
+    Integer quantity=0;
+    Double price=0.0;
     
     public ShoppingItem(){
         

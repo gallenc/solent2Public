@@ -5,6 +5,8 @@
  */
 package org.solent.com504.oodd.week2.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.solent.com504.oodd.week2.model.ShoppingCart;
 import org.solent.com504.oodd.week2.model.ShoppingItem;
@@ -14,15 +16,22 @@ import org.solent.com504.oodd.week2.model.ShoppingItem;
  * @author cgallen
  */
 public class ShoppingCartImpl implements ShoppingCart{
+    
+        private HashMap<String,ShoppingItem> itemMap = new HashMap<String,ShoppingItem>();
 
     @Override
     public List<ShoppingItem> getShoppingCartItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    List<ShoppingItem> itemlist  = new ArrayList();
+    for(String itemUUID :itemMap.keySet()){
+        ShoppingItem shoppingCartItem = itemMap.get(itemUUID);
+        itemlist.add(shoppingCartItem);
+    }
+    return itemlist;
     }
 
     @Override
     public void addItemToCart(ShoppingItem shoppingItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        itemMap.put(shoppingItem.getUuuid(), shoppingItem);
     }
 
     @Override
