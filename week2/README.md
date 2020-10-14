@@ -4,6 +4,10 @@
 
 This example will take you through logging with log4j
 
+Look at the answers to last weeks exercise in the example1 project. 
+
+Then see if you can complete tests for SimpleMathClass.java and SimpleMathClassTest
+
 ## webApplicationExercise
 
 This example introduces web application development using tomcat
