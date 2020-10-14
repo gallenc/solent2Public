@@ -10,7 +10,7 @@ This example introduces web application development using tomcat
 
 The application is not complete and you can complete the methods which are not yet implemented. 
 
-See if you can remove an item from the shopping cart - at teh moment this throws a notImplemented exception in one of the classes.
+See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
 
 See if you can calculate a total and display the total of all items in the shopping cart
 
