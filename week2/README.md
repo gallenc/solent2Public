@@ -2,7 +2,16 @@
 
 ## maven-test-exercise-logging
 
-This example will take you through logging with log4j
+This example gives answers to last weeks class and  will take you through logging with log4j. 
+
+Look at the log4j2.xml file. 
+See  that as well as printing to the terminal it is creting a log file in the target directory
+
+Look at the answers to last weeks exercise in the example1 project. 
+
+Then see if you can complete extra tests for SimpleMathClass.java and SimpleMathClassTest.java
+
+Add the ability to test for subtract, multiply, divide.
 
 ## webApplicationExercise
 
