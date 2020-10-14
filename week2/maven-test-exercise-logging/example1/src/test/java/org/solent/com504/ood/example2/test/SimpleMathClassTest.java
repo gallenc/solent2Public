@@ -36,11 +36,15 @@ public class SimpleMathClassTest {
         SimpleMathClass simpleMathClass = new SimpleMathClass();
         
         String[] args = {"add","1.5", "300"};
+
         double result = simpleMathClass.parseArguments(args);
 
         // expected, result, delta (compare floating point numbers
         Assert.assertEquals(301.5, result, 0.00001);
+        
+      
     }
+    
     
     // add tests for subtract, multiply, divide
     
