@@ -23,9 +23,9 @@
         session.setAttribute("shoppingCart", shoppingCart);
     }
 
-    String action = (String) request.getAttribute("action");
-    String itemName = (String) request.getAttribute("itemName");
-    String itemUuid = (String) request.getAttribute("itemuuid");
+    String action = (String) request.getParameter("action");
+    String itemName = (String) request.getParameter("itemName");
+    String itemUuid = (String) request.getParameter("itemuuid");
 
     if ("addItemToCart".equals(action)) {
         message = "adding "+itemName + " to cart";
