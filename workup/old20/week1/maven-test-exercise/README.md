@@ -24,6 +24,7 @@ You will be presented with a very large list of possible archetypes.
 Choose the default (1245) 1245: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
 When asked, enter the following values REPLACING gallenc with YOUR github username
+(please note do not start a path segment with a number 'org.gallenc.com504.ood' is OK but 'org.2gallenc.com504.ood' is not because of the 2)
 ```
 Choose a number: 7:
 Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc)

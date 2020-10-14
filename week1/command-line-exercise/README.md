@@ -67,11 +67,11 @@ log4j-core-2.11.0.jar
 
 Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.11.0
 
-Download: http://central.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar
+Download: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.11.0/log4j-api-2.11.0.jar
 
 Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.11.0
 
-Download: http://central.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar
+Download: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.11.0/log4j-core-2.11.0.jar
 
 2. create the following file MyTestClassLog4j.java and add the content:
 
@@ -130,6 +130,32 @@ I am running the following java class: class MyTestClassLog4j
 ```
 The last line is the output from the logger
 
+NOTE if you are using power-shell instead of cmd to run the exercies, you may need to change the commands to have quotes around the class path:
+
+```
+ javac -classpath "log4j-core-2.11.0.jar;log4j-api-2.11.0.jar" MyTestClassLog4j.java
+ java -classpath "log4j-core-2.11.0.jar;log4j-api-2.11.0.jar;." MyTestClassLog4j
+ 
+```
+
+If you are using linux and possibly on a Mac (I tested on centos 8) try using a colon : instead of ;
+```
+javac -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar" MyTestClassLog4j.java
+java -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar:." MyTestClassLog4j
+```
+The resulting directory structure is
+```
+week1/command-line-exercise/src/java
+log4j-api-2.11.0.jar
+log4j-core-2.11.0.jar
+MyTestClass.class
+MyTestClass.java
+MyTestClassLog4j.class
+MyTestClassLog4j.java
+
+```
+
+
 ## Creating your own jar
 Jar files are simply zip files which contain class files, other resources and MANIFEST files.
 Open one of the downloaded jars with an archive viewer to see what is inside.
@@ -159,18 +185,4 @@ run this command and then open the generated /doc/index.html file in a browser t
 ## Summary
 Hopefully this little exercise will help you appreciate that if you were constrained to just using the command line tools, writing documenting and packaging java code would be a tedious exercise.
 This sets us up for beginning to use maven to help with java builds
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
