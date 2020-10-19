@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="classDiagram">
+  <ClassDiagramComponents>
+    <Interface name="ShoppingCart" package="org.solent.com504.oodd.cart.model.service" visibility="public" xPosition="428.0" yPosition="129.0">
+      <Methods>
+        <Method name="getShoppingCartItems" returnType="List&lt;ShoppingItem&gt;" visibility="public"/>
+        <Method name="addItemToCart" returnType="void" visibility="public">
+          <Argument type="ShoppingItem" name="shoppingItem"/>
+        </Method>
+        <Method name="removeItemFromCart" returnType="void" visibility="public">
+          <Argument type="String" name="itemUuid"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="ShoppingItem" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="294.0" yPosition="344.0">
+      <Fields>
+        <Field name="uuid" type="String" visibility="private"/>
+        <Field name="name" type="Sring" visibility="private"/>
+        <Field name="quantity" type="Integer" visibility="private"/>
+        <Field name="price" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ShoppingService" package="org.solent.com504.oodd.cart.model.service" visibility="public" xPosition="24.0" yPosition="129.0">
+      <Methods>
+        <Method name="getAvailableItems" returnType="List&lt;ShoppingItem&gt;" visibility="public"/>
+        <Method name="purchaseItems" returnType="boolean" visibility="public">
+          <Argument type="ShoppingCart" name="shoppingCart"/>
+        </Method>
+        <Method name="getNewItemByName" returnType="ShoppingItem" visibility="public">
+          <Argument type="String" name="uuid"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="shoppingCartUses" source="org.solent.com504.oodd.cart.model.service.ShoppingCart" target="org.solent.com504.oodd.cart.model.dto.ShoppingItem" sourceCardinality="1..1" targetCardinality="0..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

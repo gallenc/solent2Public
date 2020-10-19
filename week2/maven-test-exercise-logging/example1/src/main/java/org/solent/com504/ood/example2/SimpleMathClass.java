@@ -48,7 +48,7 @@ public class SimpleMathClass {
         }
 
         if (arguments.length != 3) {
-            throw new IllegalArgumentException("you must have 3 arguments (add|subrract) number1 number2");
+            throw new IllegalArgumentException("you must have 3 arguments (add|subtract) number1 number2");
         }
         double answer = 0;
         double number1 = Double.valueOf(arguments[1]);
