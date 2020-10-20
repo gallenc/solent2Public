@@ -13,10 +13,10 @@ import java.util.UUID;
  */
 public class ShoppingItem {
     
-    String uuid=null;
-    String name=null;
-    Integer quantity=0;
-    Double price=0.0;
+    private String uuid=null;
+    private String name=null;
+    private Integer quantity=0;
+    private Double price=0.0;
     
     public ShoppingItem(){
         
@@ -35,7 +35,6 @@ public class ShoppingItem {
     public void setUuid(String uuuid) {
         this.uuid = uuuid;
     }
-
 
     public String getName() {
         return name;
