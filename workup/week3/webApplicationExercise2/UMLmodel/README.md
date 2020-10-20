@@ -1,15 +1,23 @@
 
-## UML Model
+# UML Models
 
-A simple UML model of the project 
+## class diagrams
 
-![alt text](../webApplicationExercise2/images/classDiagram.png "Figure classDiagram.png" )
+### A simple UML model of the project 
+
+![alt text](../UMLmodel/images/classDiagram.png "Figure classDiagram.png" )
 
 DTO classes are at the bottom of the diagram. 
 These are simple java beans which are used to pass information between layers.
 
 Service in the middle of the diagram.
 These are used to items to put in the shopping cart
+
+### Full UML model showing implementation and factory classes
+This diagram shows the implementation and factory classes and the supporting classes provided by the web container.
+Usually a model doesn't need to go into this detail if we know the supporting classes exist.
+
+![alt text](../UMLmodel/images/classDiagram_2.png "Figure classDiagram_2.png" )
 
 
 ## Use Cases and Robustness Diagrams
@@ -24,11 +32,11 @@ These are also referenced below;
 
 ### Use Case Diagram
 
-![alt text](../webApplicationExercise2/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
+![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
 
 ### Robustness Diagram
 
-![alt text](../webApplicationExercise2/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
+![alt text](../UMLmodel/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
 
 
 
