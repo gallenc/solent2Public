@@ -46,13 +46,12 @@ Bennett, Simon.2nd ed.; c2005 in Solent library](https://catalogue.solent.ac.uk/
 
 ### Robustness Diagram
 
+Robustness diagrams are an optional 'stereotype' applied to standard UML and not covered in all texts.
+They are used as part of the ICONIX process.  
+
 See [A practical Tutorial on Robustness Analysis] (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/)
 
-![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
-
-### Robustness Diagram
-
-![alt text](../UMLmodel/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
+![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure cart-robustness-diagram-drawio.png")
 
 
 
