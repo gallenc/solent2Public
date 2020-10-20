@@ -32,7 +32,6 @@ These are also referenced below;
 
 ### Use Case Diagram
 
-<<<<<<< HEAD
 For a tutorial on use case diagrams see
 https://drawio-app.com/uml-use-case-diagrams-with-draw-io/
 
@@ -50,13 +49,13 @@ Bennett, Simon.2nd ed.; c2005 in Solent library](https://catalogue.solent.ac.uk/
 See [A practical Tutorial on Robustness Analysis] (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/)
 
 ![alt text](../webApplicationExercise2/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
-=======
+
 ![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
 
 ### Robustness Diagram
 
 ![alt text](../UMLmodel/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
->>>>>>> e6c917524e9c05260fc1f516fafc349ec1e775aa
+
 
 
 
