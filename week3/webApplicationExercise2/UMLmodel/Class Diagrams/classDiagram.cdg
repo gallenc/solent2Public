@@ -5,7 +5,7 @@
     <Class name="ShoppingItem" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="382.0" yPosition="449.0">
       <Fields>
         <Field name="uuid" type="String" visibility="private"/>
-        <Field name="name" type="Sring" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
         <Field name="quantity" type="Integer" visibility="private"/>
         <Field name="price" type="Double" visibility="private"/>
       </Fields>
@@ -41,9 +41,9 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <UseRelation name="usesShoppingService" source="JSPs_doNotGenerate" target="org.solent.com504.oodd.cart.model.service.ShoppingService" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="useShoppingCart" source="JSPs_doNotGenerate" target="org.solent.com504.oodd.cart.model.service.ShoppingCart" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="shoppingServiceUses" source="org.solent.com504.oodd.cart.model.service.ShoppingService" target="org.solent.com504.oodd.cart.model.dto.ShoppingItem" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="usesShoppingService" source="JSPs_doNotGenerate" target="org.solent.com504.oodd.cart.model.service.ShoppingService" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="shoppingCartUses" source="org.solent.com504.oodd.cart.model.service.ShoppingCart" target="org.solent.com504.oodd.cart.model.dto.ShoppingItem" sourceCardinality="1..1" targetCardinality="0..*"/>
   </ClassDiagramRelations>
 </ClassDiagram>
