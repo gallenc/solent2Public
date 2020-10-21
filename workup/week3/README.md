@@ -1,26 +1,30 @@
-# Week 2 Exercises
+# Week 3 Exercises
 
-## maven-test-exercise-logging
+## webApplicationExercise2
 
-This example gives answers to last weeks class and  will take you through logging with log4j. 
+### merge last weeks code
 
-Look at the log4j2.xml file. 
-See  that as well as printing to the terminal it is creting a log file in the target directory
+This week we are looking at a more complete version of the web application we looked at last week. 
 
-Look at the answers to last weeks exercise in the example1 project. 
+You will see we have split the project into seperate modules; model, service and web and also have a supporting UML model
 
-Then see if you can complete extra tests for SimpleMathClass.java and SimpleMathClassTest.java
+Each layer has object actories which the higher layer can use to access the library.
 
-Add the ability to test for subtract, multiply, divide.
+See if you can merge the changes you made to last weeks web application into this version.
 
-## webApplicationExercise
+### You should have already found solutions to
 
-This example introduces web application development using tomcat
+- See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
 
-The application is not complete and you can complete the methods which are not yet implemented. 
+- See if you can calculate a total and display the total of all items in the shopping cart
 
-See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
+- See if you can work out how to change the quantities  of each item and calculate a total (needs a little thought);
 
-See if you can calculate a total and display the total of all items in the shopping cart
+### New work:
 
-See if you can work out how to change the quantities  of each item and calculate a total (needs a little thought);
+- See if you can add comprehensive tests to the service layer
+
+- See if you can add log messages whenever items are added to he cart or a cart is purchased.
+
+
+
