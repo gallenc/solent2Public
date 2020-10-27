@@ -19,7 +19,7 @@ The following uml diagram extends the factory to include a facade.
 
 ## More advanced Facade Pattern
 
-A more advanced example is provided below which is implemented in the factoryandfacade2 project
+A more advanced example is provided below which is implemented in the factoryandfacade3 project
 
 ![alt text](../UMLfactoryandfacade/images/facadediagram2.png "Figure facadediagram2.png" )
 
