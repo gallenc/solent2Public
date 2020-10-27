@@ -64,6 +64,10 @@ This exercise will show you how to create a UML class diagram in Netbeans and ge
 
 ### 1. Import the easyUML plugin into netbeans
 
+(Note these instructions reflect Netbeans 8. 
+Installing easyUML into Netbeans 12 is sligtly different to these instructions. 
+See the installation video covered in Week 1. )
+
 To create UML diagrams in Netbeans we need to install the [easyUML Plugin](http://plugins.netbeans.org/plugin/55435/easyuml).
 (There is more documentation if you google on line and a also a youtube tutorial [EasyUML video](https://www.youtube.com/watch?v=QME_S7gPnVI) 
 
