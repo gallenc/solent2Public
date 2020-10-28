@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import static javax.management.Query.value;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.solent.com504.factoryandfacade.model.Animal;
