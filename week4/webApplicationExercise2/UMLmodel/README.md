@@ -19,6 +19,9 @@ Usually a model doesn't need to go into this detail if we know the supporting cl
 
 ![alt text](../UMLmodel/images/classDiagram_2.png "Figure classDiagram_2.png" )
 
+### UML model with additional Invoice class
+
+![alt text](../UMLmodel/images/classDiagram_3.png "Figure classDiagram_3.png" )
 
 ## Use Cases and Robustness Diagrams
 
