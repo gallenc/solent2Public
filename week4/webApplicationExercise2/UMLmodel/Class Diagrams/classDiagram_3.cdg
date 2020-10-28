@@ -25,9 +25,7 @@
         <Field name="purchasedItems" type="List&lt;SjoppingItems&gt;" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods>
-        <Method name="untitledMethod" returnType="void" visibility="public"/>
-      </Methods>
+      <Methods/>
     </Class>
     <Interface name="ShoppingCart" package="org.solent.com504.oodd.cart.model.service" visibility="public" xPosition="551.0" yPosition="226.0">
       <Methods>
