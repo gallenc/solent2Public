@@ -96,6 +96,7 @@ You can export this diagram as a png image for your documentation.
 One of the key benefits of UML is its ability to support the generation of code in any language from the diagram. 
 How each UML CASE tool generates code is different for each tool. 
 Some tools are better or more flexible than others.
+
 The easyUML tool in Netbeans provides a degree of java code generation although it is not perfect. 
 You will need to manually correct some errors before you can use the generated code.
 However the tools is still very useful to help create and document the structure of your project.
@@ -128,7 +129,10 @@ You should be able to see that this process allows you to use a UML class diagra
 
 Add a Duck class which extends Animal to the model.
 
-Add the Duck class to the object factory and also the facade ( addDuck(String name)).
+Add the Duck class to the object factory and also a method in the facade 
+```
+addDuck(String name);
+```
 
 Generate the code into your temporary project and use the generated code to show what changes you need to make to your factoryandfacade model
 
