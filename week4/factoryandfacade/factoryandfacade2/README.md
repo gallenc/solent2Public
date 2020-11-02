@@ -8,4 +8,5 @@ See if you can complete the implementations and tests as you did in the factorya
 
 See if you can add a Duck that quacks.
 
+![alt text](../../factoryandfacade/UMLfactoryandfacade/image/facadediagram2.png "Figure facadediagram2.png")
 

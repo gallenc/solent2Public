@@ -17,3 +17,4 @@ See if you can extend FarmFacadeTest with more test methods to test your impleme
 
 See if you can add a Duck that quacks.
 
+![alt text](../../factoryandfacade/UMLfactoryandfacade/image/facadediagram.png "Figure facadediagram.png")
