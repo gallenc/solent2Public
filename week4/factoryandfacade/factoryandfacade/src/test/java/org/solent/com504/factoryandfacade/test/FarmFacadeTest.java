@@ -1,5 +1,6 @@
 package org.solent.com504.factoryandfacade.test;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,6 +16,7 @@ import org.solent.com504.factoryandfacade.model.FarmFacade;
  * @author cgallen
  */
 public class FarmFacadeTest {
+   
 
     @Test
     public void FarmFacadeTest() {
@@ -22,7 +24,19 @@ public class FarmFacadeTest {
         FarmFacade farmFacade = AnimalObjectFactory.getFarmFacade();
         assertNotNull(farmFacade);
         
-        // WHAT TESTS WOULD YOU CREATE HERE TO SET UP AND TEST THE FARM FACADE?
+        List<Animal> animals = farmFacade.getAllAnimals();
+        assertTrue(animals.isEmpty());
+        
+        // test create cat
+        String catName = "fluffy";
+        farmFacade.addCat(catName);
+        
+        animals = farmFacade.getAllAnimals();
+        assertEquals(1, animals.size());
+        
+        assertEquals(catName, animals.get(0).getName());
+  
+        // WHAT OTHER TESTS WOULD YOU CREATE HERE TO SET UP AND TEST THE FARM FACADE?
 
     }
 }

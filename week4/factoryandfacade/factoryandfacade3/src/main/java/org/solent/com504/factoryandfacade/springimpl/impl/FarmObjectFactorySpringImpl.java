@@ -1,6 +1,7 @@
-package org.solent.com504.factoryandfacade.impl;
+package org.solent.com504.factoryandfacade.springimpl.impl;
 
 import java.util.List;
+import org.solent.com504.factoryandfacade.impl.FarmFacadeImpl;
 import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;

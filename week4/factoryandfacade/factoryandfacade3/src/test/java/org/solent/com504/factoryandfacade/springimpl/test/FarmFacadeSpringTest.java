@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.factoryandfacade.test;
+package org.solent.com504.factoryandfacade.springimpl.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.factoryandfacade.impl.FarmObjectFactorySpringImpl;
+import org.solent.com504.factoryandfacade.springimpl.impl.FarmObjectFactorySpringImpl;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
+import org.solent.com504.factoryandfacade.test.FarmFacadeTest;
 
 /**
  *

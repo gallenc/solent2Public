@@ -7,6 +7,9 @@ import org.solent.com504.factoryandfacade.model.Dog;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 
 public class AnimalObjectFactory{
+    
+    // note there is only oe of these ever
+    private static FarmFacade farmFacade = new FarmFacadeImpl();
 
     public static Animal createCat() {
         return new Cat();
@@ -21,6 +24,6 @@ public class AnimalObjectFactory{
     }
 
     public static FarmFacade getFarmFacade() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return farmFacade;
     }
 }
