@@ -10,4 +10,4 @@ There are both a simple implementation and a Spring implementation of the object
 See if you can add a Duck that quacks to both implementations and their corresponding tests
 
 
-![alt text](../../factoryandfacade/UMLfactoryandfacade/image/facadediagram2.png "Figure facadediagram2.png")
+![alt text](../../factoryandfacade/UMLfactoryandfacade/images/facadediagram2.png "Figure facadediagram2.png")
