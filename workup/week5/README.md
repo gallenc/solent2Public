@@ -301,7 +301,15 @@ Try the  [webfacadeexample2](../week5/webfacadeexample2) exercises.
 Initially this is using a simple dao but you change it by modifying ServiceObjectFactoryImpl.java to use the jaxb dao
 The Jaxb DAO dao uses a jaxb context to store data in a file.
 
+Can you modify the project to add an extra animal type?
+
 ## Exercise 2 ReST interface
 
+You will see on the index.xml page that there are extra links for ReST end points.
 
+Some of these links work and some dont.
+
+Look at the RestServiceImpl.java class and see if you can fix the missing GET methods.
+
+We will look more at this next week
 
