@@ -67,8 +67,10 @@ The output is determined by a log4j2 config file on the class path which is plac
 ```
 ## JAXB Java Architecture for XML Binding
 
-JAXB is a standard java library used to 'marshal' and 'unmarshall' java objects to and from XML. 
+JAXB is a standard java library used to 'marshal' and 'unmarshall' java objects to and from XML.
+ 
 JAXB is specified in JSR 222 https://jcp.org/en/jsr/detail?id=222
+
 Many tutorials are available on lien to help you learn JAXB however we will only be using a very small part of the specification.
 In order to use JAXB, you need to annotate the classes in your model.
 
@@ -247,7 +249,6 @@ public class ModelJaxbTest {
 ## Set up
 1. remember to merge your project with the upstream project
 2. create a new 'week5' folder under your myPracticeCouseWork folder.
-3. copy the contents of week4 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
 
 ## Exercise 1 webfacadeexample2
 
@@ -255,5 +256,5 @@ In this exercise you will look at how the facade and factory you created last we
 
 Try the  [webfacadeexample2](../week4/webfacadeexample2) exercises.
 
-This has been extended with a jaxb based dao. THis dao uses a jaxb context to store data in a file.
+This has been extended with a jaxb based dao. This dao uses a jaxb context to store data in a file.
 

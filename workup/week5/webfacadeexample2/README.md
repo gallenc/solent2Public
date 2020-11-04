@@ -36,6 +36,8 @@ You must run the following command after your build in the web directory
 cd web
 mvn org.codehaus.cargo:cargo-maven2-plugin:run
 ```
+(make sure you have turned off tomcat in netbeans so that the ports dont clash)
+
 If you open a browser and browse to http://localhost:8080/basicfacadeweb/
 you will see the index page of the application.
 

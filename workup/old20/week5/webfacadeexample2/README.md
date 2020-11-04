@@ -17,7 +17,7 @@ We are doing the build first so that netbeans has the dependencies already downl
 
 Now you will need to import the poject into Netbeans using 'open existing project'
 
-![alt text](../webfacadeexample1/images/NetbeansOpenProject.png "Figure NetbeansOpenProject.png" )
+![alt text](../webfacadeexample2/images/NetbeansOpenProject.png "Figure NetbeansOpenProject.png" )
 
 Remember to click 'open required projects' so that the parent project and its subprojects are all imported.
 
@@ -32,7 +32,7 @@ If you do run into problems restart Netbeans.
 Maven used the cargo plugin to start an embedded tomcat container.
 You must run the following command after your build in the web directory
 
-(Make sure you have turend off tomcat in netbeans so that the ports in use dont clash)
+(Make sure you have turned off tomcat in netbeans so that the ports in use dont clash)
 
 ```
 cd web

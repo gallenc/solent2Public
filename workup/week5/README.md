@@ -1,11 +1,51 @@
-# Week 5 - Using JAXB for model persistance
+# Week 5 - Data Access Objects, JAXB and ReST
 
-# Logging
-One of the important wasys in whc you can check that your program is running correctly is logging error and debug messages. 
+THis week we are taking the work we did on object factories and service facades last week and incorporating this into
+ a web project which allows you to add and delete animals from a farm. 
+We will also look at creating a ReST interface.
+To do this we are also introducing a new Data Access Object (DAO) Layer.
+
+## Simple DAO (dao-simple)
+
+You will see in the new webfacadeexample2 project that we have introduced a Data Access Object Layer.
+
+In the model you will see new DAO interaces  AnimalDao.java and AnimalTypeDao.java
+
+These are implemented in the dao-simple project
+
+The simple dao implements the required behaviour but keeps everything in memory in java List objects.
+
+If you look at the ServiceObjectFactoryImpl.java, you will see that there are some lines 
+which 'wire in' the simple dao to our ServiceFacade object.
+
+You will also see that we can change which DAO implementation we will use by changeing a few lines.
+Note that the rest of the code will work with either implementation because it is written to use interfaces and an object factory.
+
+```
+ServiceObjectFactoryImpl.java
+
+        // UNCOMMENT THIS TO USE SIMPLE DAO AND COMMENT OUT AnimalDaoJaxbImpl
+        // if you just want to use simple DAO do this
+        AnimalDao animalDao = new AnimalDaoImpl();
+
+        // UNCOMMENT THIS TO USE JAXB DAO AND COMMENT OUT AnimalDaoImpl()
+        // NOTE THIS IS SAYING WHERE THE FILE GOES in TOMCAT
+        //AnimalDao animalDao = new AnimalDaoJaxbImpl(jaxbFile);
+
+
+```
+
+
+## Logging
+
+(We have covered this in previous exercises but now we are encorporating logging into our web application).
+
+One of the important ways in which you can check that your program is running correctly is logging error and debug messages. 
 This is often done using a logging framework - a library designed to help with the task.
-Going forwards I will be using Log4j 2 which is a widely used library.
-Logging is implemented using a static factory which is involked to create a logger for each class.
-Once you have a logger for the class, you an log mesages with different severities, error, info, debug, trace 
+Going forwards we will be using Log4j2 which is a widely used library.
+
+Logging is implemented using a static factory which is invoked to create a logger for each class.
+Once you have a logger for the class, you an log messages with different severities; error, info, debug, trace 
 ```
 public class RestService {
 
@@ -18,7 +58,7 @@ public class RestService {
     LOG.error("this is a error message");
     
 ```
-The output is determined by a log4j2 config file on the class path which is placed in the /src/main/resources folder
+The output is determined by a log4j2.xml config file on the class path which is placed in the /src/main/resources folder
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
@@ -65,11 +105,18 @@ The output is determined by a log4j2 config file on the class path which is plac
     </Loggers>
 </Configuration>
 ```
+
 ## JAXB Java Architecture for XML Binding
 
-JAXB is a standard java library used to 'marshal' and 'unmarshall' java objects to and from XML. 
+Before we go any further, we need to understand how we can turn java objects into a human readable XML represenation.
+
+JAXB is a standard java library used to 'marshal' and 'unmarshall' java objects to and from XML.
+ 
 JAXB is specified in JSR 222 https://jcp.org/en/jsr/detail?id=222
-Many tutorials are available on lien to help you learn JAXB however we will only be using a very small part of the specification.
+
+Many tutorials are available on line to help you learn JAXB however we will only be using a very 
+small part of the specification.
+
 In order to use JAXB, you need to annotate the classes in your model.
 
 ### Add additional methods, and annotations to your model
@@ -103,7 +150,8 @@ You will also want to add any relevant annotations to the model objects.
 For instance JAXB (in more advanced designs you might use JPA, Spring, JAX-RS or EJB annotations). 
 
 ### Making the model work with JAXB
-You will need to make you model work with JAXB for your ReST interface and also if you are going to write a JAXB based DAO implementation.
+You will need to make you model work with JAXB for your ReST interface and also 
+if you are going to write a JAXB based DAO implementation.
 
 #### JAXB annotations
 For a simple case the following JAXB annotations can be used
@@ -244,16 +292,16 @@ public class ModelJaxbTest {
 
 # Exercises for week 5 Using JAXB for model persistance
 
-## Set up
-1. remember to merge your project with the upstream project
-2. create a new 'week5' folder under your myPracticeCouseWork folder.
-3. copy the contents of week4 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
-
 ## Exercise 1 webfacadeexample2
 
 In this exercise you will look at how the facade and factory you created last week can be used as the back end of a web site. 
 
-Try the  [webfacadeexample2](../week4/webfacadeexample2) exercises.
+Try the  [webfacadeexample2](../week5/webfacadeexample2) exercises.
 
-This has been extended with a jaxb based dao. THis dao uses a jaxb context to store data in a file.
+Initially this is using a simple dao but you change it by modifying ServiceObjectFactoryImpl.java to use the jaxb dao
+The Jaxb DAO dao uses a jaxb context to store data in a file.
+
+## Exercise 2 ReST interface
+
+
 
