@@ -67,6 +67,8 @@ Normally you dont need to worry about the contents of the servelet but this show
 
 ## Task 3 Extend example2.jsp
 
+(Note - this task is already done for you - we did this exercise earlier in the module :) )
+
 See if you can add a form to the example2.jsp so that a user can input a name of an animal and add it to the list.
 
 note the lines
@@ -92,7 +94,9 @@ You can use a form to generate such an input. For axample:
 
 ## Task 4 adding extra fields
 
-See if you can add another field for each animal in order to to add it's address. Note you will need to change the animal model class and test this before adding to the JSP.
+See if you can add another field for each animal in order to to add the food it eats.
+
+You will need to change the animal model class and test this before adding to the JSP.
 
 
 
