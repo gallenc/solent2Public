@@ -18,3 +18,11 @@ public class Lorry extends Vehicle {
          
     }
 }
+
+// Answer
+
+//   @Override
+//    public Double calculateFee() {
+//        //Lorries pay a fee of £10.00 although this becomes £15.00 if the lorry exceeds 8000kg.
+//        return (getWeight() < THRESHOLD_WEIGHT) ? 10.00 : 15.00;
+//    }
