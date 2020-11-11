@@ -111,6 +111,13 @@
             <artifactId>jaxb-runtime</artifactId>
             <scope>compile</scope>
         </dependency>
+                
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- needed by Hibernate for java 11 -->
         <dependency>
             <groupId>org.javassist</groupId>

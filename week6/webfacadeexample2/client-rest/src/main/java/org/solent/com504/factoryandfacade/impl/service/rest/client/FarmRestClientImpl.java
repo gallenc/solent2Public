@@ -19,10 +19,11 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.filter.LoggingFilter;
+import org.glassfish.jersey.logging.LoggingFeature;
 import org.solent.com504.factoryandfacade.model.dto.Animal;
 import org.solent.com504.factoryandfacade.model.dto.ReplyMessage;
 import org.solent.com504.factoryandfacade.model.service.FarmFacade;
+import java.util.logging.Level;
 
 /**
  *
@@ -43,7 +44,8 @@ public class FarmRestClientImpl implements FarmFacade {
         LOG.debug("getAllAnimals Called");
         List<Animal> animalList = null;
 
-        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        Client client = ClientBuilder.newClient(new ClientConfig().register(new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+				Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
         WebTarget webTarget = client.target(baseUrl).path("getAllAnimals");
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
@@ -61,7 +63,8 @@ public class FarmRestClientImpl implements FarmFacade {
     public Animal addAnimal(String animalType, String animalName) {
         LOG.debug("client addAnimal Called animalType=" + animalType + " animalName=" + animalName);
 
-        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        Client client = ClientBuilder.newClient(new ClientConfig().register(new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+				Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
         WebTarget webTarget = client.target(baseUrl).path("addAnimal");
 
         // this is how we construct html FORM variables
@@ -86,7 +89,8 @@ public class FarmRestClientImpl implements FarmFacade {
         LOG.debug("client getSupportedAnimalTypes called");
         List<String> supportedAnimalTypes = null;
 
-        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        Client client = ClientBuilder.newClient(new ClientConfig().register(new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+				Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
         WebTarget webTarget = client.target(baseUrl).path("getSupportedAnimalTypes");
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
@@ -104,7 +108,8 @@ public class FarmRestClientImpl implements FarmFacade {
     public List<Animal> getAnimalsOfType(String animalType) {
         LOG.debug("client getAnimalsOfType Called animalType=" + animalType);
 
-        Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
+        Client client = ClientBuilder.newClient(new ClientConfig().register(new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+				Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
         
         // note that this adds url params in a urlencoded safe way
         WebTarget webTarget = client.target(baseUrl).path("getAnimalsOfType").queryParam("animalType", animalType);
@@ -117,8 +122,7 @@ public class FarmRestClientImpl implements FarmFacade {
         return replyMessage.getAnimalList().getAnimals();
 
     }
-
-
+    
     @Override
     public Animal getAnimal(String animalName) {
         LOG.debug("client getAnimal Called  animalName=" + animalName);
