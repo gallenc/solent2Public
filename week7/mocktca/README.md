@@ -137,9 +137,15 @@ The ServiceFacadeImpl.java mostly proxies methods from the BookDAO which have al
 So there is no need to repeat tests of the proxied methods.
 
 ### library-web
-The web application is assembled in the ibrary-web project. To run this application build the main project and then run the tomcat server in netbeans
+The web application is assembled in the library-web project. 
+To run this application build the main project and then run the tomcat server in netbeans
 
-The application should be available at http://localhost:8084
+```
+cd library
+mvn clean install
+```
+
+The application should be available at http://localhost:8080
 
 Most of the web application has been implemented and it's behaviour can be used to help you complete the use case and robustness diagrams.
 
