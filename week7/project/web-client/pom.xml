@@ -4,13 +4,12 @@
     
     <parent>
         <groupId>solent.ac.uk.ood.examples</groupId>
-        <artifactId>webfacadeexample2</artifactId>
+        <artifactId>project</artifactId>
         <version>1.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webfacadeexample2-web</artifactId>
-    <name>webfacadeexample2-web</name>
-        
+    <artifactId>project-web-client</artifactId>
+    <name>project-web-client</name>
     <packaging>war</packaging>
     
     <properties>
@@ -22,26 +21,36 @@
 
     <dependencies>
 
-        <!-- project dependencies -->
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-dao-jpa</artifactId>
+            <artifactId>project-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
-            <artifactId>webfacadeexample2-service</artifactId>
+            <artifactId>crypto</artifactId>
             <version>${project.version}</version>
         </dependency>
-            
-        <!-- tomcat / jsp depencencies -->
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>crypto</artifactId>
+            <classifier>private-key</classifier>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>crypto</artifactId>
+            <classifier>public-key</classifier>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>project-client-rest</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
@@ -72,13 +81,6 @@
         </dependency>
         
         <!-- logging dependencies to be included in war so scope compile-->
-        <!-- SLF4J over Log4j needed for jpa-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        
         <!-- Log4j API and Core implementation  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -113,23 +115,17 @@
             <artifactId>jaxb-runtime</artifactId>
             <scope>compile</scope>
         </dependency>
-                
-        <dependency>
-            <groupId>org.glassfish.jersey.inject</groupId>
-            <artifactId>jersey-hk2</artifactId>
-            <scope>compile</scope>
-        </dependency>
         
-        <!-- needed by Hibernate for java 11 -->
+        <!-- junit dependencies -->
         <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <scope>compile</scope>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
-            <scope>compile</scope>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
