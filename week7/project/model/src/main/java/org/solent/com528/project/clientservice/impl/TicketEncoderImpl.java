@@ -59,6 +59,7 @@ public class TicketEncoderImpl {
             md.update(ticketXml.getBytes());
             byte[] digest = md.digest();
             String ticketXmlHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+            LOG.debug("Unencoded ticket MD5 hash: \n" + ticketXmlHash);
 
             // encode the hash using private key
             AsymmetricCryptography ac = new AsymmetricCryptography();
@@ -66,14 +67,14 @@ public class TicketEncoderImpl {
 
             String encodedTicketHash = ac.encryptText(ticketXmlHash, privateKey);
 
-            LOG.debug("encrypted ticket hash: " + encodedTicketHash);
+            LOG.debug("Encrypted ticket MD5 hash: " + encodedTicketHash);
 
             ticket.setEncryptedHash(encodedTicketHash);
 
             StringWriter ticketXmlEncoded = new StringWriter();
             jaxbMarshaller.marshal(ticket, ticketXmlEncoded);
 
-            LOG.debug("ticket with encrypted hash: " + encodedTicketHash);
+            LOG.debug("ticket with encrypted hash: " + ticketXmlEncoded.toString());
             return ticketXmlEncoded.toString();
 
         } catch (Exception ex) {
