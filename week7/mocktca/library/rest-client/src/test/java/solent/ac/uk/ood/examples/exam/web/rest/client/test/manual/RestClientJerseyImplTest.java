@@ -19,7 +19,7 @@ import solent.ac.uk.ood.examples.exam.web.rest.client.RestClientJerseyImpl;
  */
 public class RestClientJerseyImplTest {
 
-    String baseUrl = "http://localhost:8680/";
+    String baseUrl = "http://localhost:8080/";
 
     MediaType mediaType = MediaType.APPLICATION_XML_TYPE;
 

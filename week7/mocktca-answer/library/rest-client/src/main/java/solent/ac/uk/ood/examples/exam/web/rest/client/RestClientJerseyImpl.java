@@ -28,7 +28,7 @@ public class RestClientJerseyImpl implements RestInterface {
     private MediaType mediaType = null;
 
     /**
-     * @param baseUrl the url which will be targeted for the rest api e.g. "http://localhost:8680"
+     * @param baseUrl the url which will be targeted for the rest api e.g. "http://localhost:8080"
      * @param mediaType the messages expected either MediaType.APPLICATION_JSON_TYPE or MediaType.APPLICATION_XML_TYPE
      */
     public RestClientJerseyImpl(String baseUrl, MediaType mediaType) {
