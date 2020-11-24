@@ -11,6 +11,9 @@ I would suggest you get bit of your system working to test your ideas as you to.
 You can work on different bits in parallel to work out your design
 
 1. Modelling
+
+FOR NEXT WEEK 
+
 Create a UML class diagram to describe the principle objects in your project.
 
 Create a use case diagram WITH accompanying description of each use case to describe what the system will need to do
