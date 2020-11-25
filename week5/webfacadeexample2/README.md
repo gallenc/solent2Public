@@ -60,7 +60,7 @@ JSPs are translated into java servelets before being compiled and run.
 If you have run the application in Netbeans you can view the raw servelet code by right clickng on th JSP and selecting 'vew servelet' You will see a lot of java code surrounding the HTML from the page which is printed out using out.print(" html code ... ") statements.
 Normally you dont need to worry about the contents of the servelet but this shows you what is happing to your JSP page under the hood. 
 
-## Task 3 Extend example2.jsp
+## Task 3 Extend farm2.jsp
 
 (Note - this task is already done for you - we did this exercise earlier in the module :) )
 
@@ -74,7 +74,7 @@ note the lines
 ```
 These allow you to access url parameters or POST form parameters which are included in any page request
 
-The following URL http://localhost:8084/basicfacadeweb/example2.jsp?animalType=emue&animalName=Fred
+The following URL http://localhost:8084/basicfacadeweb/farm2.jsp?animalType=emue&animalName=Fred
 
 will add emue and fred to the page. You should be able to use this as a starting point for using the facade object to add animals to the farm.
 
