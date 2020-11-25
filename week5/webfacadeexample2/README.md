@@ -46,9 +46,9 @@ You can stop the browser using control c (ctrl-c).
 Please note that when you run the example this way you will need to rebuild the project and restart tomcat
 every time you make changes otherwise the changes will not be packaged in a war and run by tomcat.
 
-### To run the project using  in Netbeans embedded Jetty server
+### To run the project using  in Netbeans embeded tomcat server
 
-If you right click on the webfacade-example1 project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
+If you right click on the web project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
 
 If you are asked for username and password just use the default admin admin.
  
