@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="jpaExampleClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="ReplyMessage" package="org.solent.com528.project.model.dto" visibility="public" xPosition="7.0" yPosition="966.0">
+      <Fields>
+        <Field name="code" type="Integer" visibility="private"/>
+        <Field name="debugMessage" type="String" visibility="private"/>
+        <Field name="ticketMachineConfig" type="TicketMachineConfig" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Ticket" package="org.solent.com528.project.model.dto" visibility="public" xPosition="1926.0" yPosition="1059.0">
+      <Fields>
+        <Field name="startStation" type="String" visibility="private"/>
+        <Field name="rate" type="Rate" visibility="private"/>
+        <Field name="numberOfZones" type="Integer" visibility="private"/>
+        <Field name="issueTime" type="Date" visibility="private"/>
+        <Field name="cost" type="Double" visibility="private"/>
+        <Field name="encryptedHash" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketMachine" package="org.solent.com528.project.model.dto" visibility="public" xPosition="680.0" yPosition="966.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="uuid" type="String" visibility="private"/>
+        <Field name="station" type="Station" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Station" package="org.solent.com528.project.model.dto" visibility="public" xPosition="978.0" yPosition="1059.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="zone" type="Integer" visibility="private"/>
+        <Field name="ticketMachines" type="List&lt;TicketMachine&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PriceBand" package="org.solent.com528.project.model.dto" visibility="public" xPosition="1373.0" yPosition="1072.0">
+      <Fields>
+        <Field name="hour" type="Integer" visibility="private"/>
+        <Field name="minutes" type="Integer" visibility="private"/>
+        <Field name="rate" type="Rate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getTimeInMinutes" returnType="Integer" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PricingDetails" package="org.solent.com528.project.model.dto" visibility="public" xPosition="1554.0" yPosition="895.0">
+      <Fields>
+        <Field name="peakPricePerZone" type="Double" visibility="private"/>
+        <Field name="offpeakPricePerZone" type="Double" visibility="private"/>
+        <Field name="priceBandList" type="List&lt;PriceBand&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketMachineConfig" package="org.solent.com528.project.model.dto" visibility="public" xPosition="304.0" yPosition="966.0">
+      <Fields>
+        <Field name="uuid" type="String" visibility="private"/>
+        <Field name="stationName" type="String" visibility="private"/>
+        <Field name="stationList" type="List&lt;Station&gt;" visibility="private"/>
+        <Field name="pricingDetails" type="PricingDetails" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TicketEncoder" package="org.solent.com528.project.clientservice.impl" visibility="public" isAbstract="true" xPosition="1888.0" yPosition="638.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="encodeTicket" returnType="Ticket" visibility="public" isStatic="true">
+          <Argument type="Ticket" name="ticket"/>
+        </Method>
+        <Method name="validateTicket" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="encodedTicket"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="DAOFactory" package="org.solent.com528.project.model.dao" visibility="public" xPosition="1114.0" yPosition="404.0">
+      <Methods>
+        <Method name="getTicketMachineDAO" returnType="TicketMachineDAO" visibility="public"/>
+        <Method name="getStationDAO" returnType="StationDAO" visibility="public"/>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceFacade" package="org.solent.com528.project.model.service" visibility="public" xPosition="316.0" yPosition="323.0">
+      <Methods>
+        <Method name="getTicketMachineConfig" returnType="TicketMachineConfig" visibility="public">
+          <Argument type="String" name="ticketMachineUuid"/>
+        </Method>
+        <Method name="getTicketMachineDAO" returnType="TicketMachineDAO" visibility="public"/>
+        <Method name="getStationDAO" returnType="StationDAO" visibility="public"/>
+        <Method name="getPriceCalculator" returnType="PriceCalculatorDAO" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceObjectFactory" package="org.solent.com528.project.model.service" visibility="public" xPosition="1215.0" yPosition="242.0">
+      <Methods>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+        <Method name="getServiceFacade" returnType="ServiceFacade" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="JSP_Pages_do_not_generate" package="org.solent.com528.project.model.web" visibility="public" xPosition="715.0" yPosition="13.0">
+      <Methods/>
+    </Interface>
+    <Interface name="WebObjectFactory" package="org.solent.com528.project.model.web" visibility="public" xPosition="1218.0" yPosition="52.0">
+      <Methods>
+        <Method name="getServiceFacade" returnType="ServiceFacade" visibility="public"/>
+        <Method name="shutDown" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceFacadeRest" package="org.solent.com528.project.model.rest" visibility="public" xPosition="119.0" yPosition="121.0">
+      <Methods>
+        <Method name="getTicketMachineConfig" returnType="String" visibility="public">
+          <Argument type="String" name="ticketMachineUuid"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="RestClient" package="org.solent.com528.project.model.rest" visibility="public" xPosition="20.0" yPosition="280.0">
+      <Methods/>
+    </Interface>
+    <Interface name="PriceCalculatorDAO" package="org.solent.com528.project.model.dao" visibility="public" xPosition="1479.0" yPosition="638.0">
+      <Methods>
+        <Method name="getPricingDetails" returnType="PricingDetails" visibility="public"/>
+        <Method name="getPricePerZone" returnType="Date" visibility="public">
+          <Argument type="Date" name="startTime"/>
+        </Method>
+        <Method name="savePricingDetails" returnType="PricingDetails" visibility="public">
+          <Argument type="PricingDetails" name="pricingDetails"/>
+        </Method>
+        <Method name="getRate" returnType="Date" visibility="public">
+          <Argument type="Date" name="startTime"/>
+        </Method>
+        <Method name="addPriceBand" returnType="PriceBand" visibility="public">
+          <Argument type="PriceBand" name="priceBand"/>
+        </Method>
+        <Method name="deletePriceBand" returnType="PriceBand" visibility="public">
+          <Argument type="PriceBand" name="priceBand"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="TicketMachineDAO" package="org.solent.com528.project.model.dao" visibility="public" xPosition="526.0" yPosition="668.0">
+      <Methods>
+        <Method name="findById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findByUuid" returnType="String" visibility="public">
+          <Argument type="String" name="uuid"/>
+        </Method>
+        <Method name="save" returnType="TicketMachine" visibility="public">
+          <Argument type="TicketMachine" name="ticketMachine"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="deleteById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="delete" returnType="TicketMachine" visibility="public">
+          <Argument type="TicketMachine" name="ticketMachine"/>
+        </Method>
+        <Method name="findByStationName" returnType="String" visibility="public">
+          <Argument type="String" name="stationName"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="StationDAO" package="org.solent.com528.project.model.dao" visibility="public" xPosition="1010.0" yPosition="664.0">
+      <Methods>
+        <Method name="findById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findByName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="save" returnType="Station" visibility="public">
+          <Argument type="Station" name="station"/>
+        </Method>
+        <Method name="deleteById" returnType="Long" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="deleteAll" returnType="void" visibility="public"/>
+        <Method name="delete" returnType="Station" visibility="public">
+          <Argument type="Station" name="station"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;Station&gt;" visibility="public"/>
+        <Method name="findByZone" returnType="Integer" visibility="public">
+          <Argument type="Integer" name="zone"/>
+        </Method>
+        <Method name="findByTicketMachineUuid" returnType="String" visibility="public">
+          <Argument type="String" name="ticketMachineUUID"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="Rate" package="org.solent.com528.project.model.dto" visibility="public" xPosition="1650.0" yPosition="1096.0">
+      <Literals>
+        <Literal name="PEAK"/>
+        <Literal name="OFFPEAK"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="useDAO" source="org.solent.com528.project.model.service.ServiceFacade" target="org.solent.com528.project.model.dao.StationDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usePricingList" source="org.solent.com528.project.model.dao.PriceCalculatorDAO" target="org.solent.com528.project.model.dto.PricingDetails" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebobjectFactory" source="org.solent.com528.project.model.rest.ServiceFacadeRest" target="org.solent.com528.project.model.web.WebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesTicketMachineConfig" source="org.solent.com528.project.model.service.ServiceFacade" target="org.solent.com528.project.model.dto.TicketMachineConfig" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="createsServiceFacade" source="org.solent.com528.project.model.service.ServiceObjectFactory" target="org.solent.com528.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useDAO" source="org.solent.com528.project.model.service.ServiceFacade" target="org.solent.com528.project.model.dao.TicketMachineDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="uses" source="org.solent.com528.project.model.rest.RestClient" target="org.solent.com528.project.model.rest.ServiceFacadeRest" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesBand" source="org.solent.com528.project.model.dto.Ticket" target="org.solent.com528.project.model.dto.Rate" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebObjectFactory" source="org.solent.com528.project.model.web.JSP_Pages_do_not_generate" target="org.solent.com528.project.model.web.WebObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceFacade" source="org.solent.com528.project.model.rest.ServiceFacadeRest" target="org.solent.com528.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="hasTicketMachines" source="org.solent.com528.project.model.dto.Station" target="org.solent.com528.project.model.dto.TicketMachine" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="createsDAO" source="org.solent.com528.project.model.dao.DAOFactory" target="org.solent.com528.project.model.dao.StationDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useDAO" source="org.solent.com528.project.model.service.ServiceFacade" target="org.solent.com528.project.model.dao.PriceCalculatorDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useBand" source="org.solent.com528.project.model.dto.PriceBand" target="org.solent.com528.project.model.dto.Rate" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceObjectFactory" source="org.solent.com528.project.model.web.WebObjectFactory" target="org.solent.com528.project.model.service.ServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceFacade" source="org.solent.com528.project.model.web.JSP_Pages_do_not_generate" target="org.solent.com528.project.model.service.ServiceFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createDAO" source="org.solent.com528.project.model.dao.DAOFactory" target="org.solent.com528.project.model.dao.TicketMachineDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="restInteraceUsesReplyMessage" source="org.solent.com528.project.model.rest.ServiceFacadeRest" target="org.solent.com528.project.model.dto.ReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useStation" source="org.solent.com528.project.model.dao.StationDAO" target="org.solent.com528.project.model.dto.Station" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usePriceBand" source="org.solent.com528.project.model.dto.PricingDetails" target="org.solent.com528.project.model.dto.PriceBand" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useTicketMachine" source="org.solent.com528.project.model.dao.TicketMachineDAO" target="org.solent.com528.project.model.dto.TicketMachine" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="usesDAOFactory" source="org.solent.com528.project.model.service.ServiceObjectFactory" target="org.solent.com528.project.model.dao.DAOFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

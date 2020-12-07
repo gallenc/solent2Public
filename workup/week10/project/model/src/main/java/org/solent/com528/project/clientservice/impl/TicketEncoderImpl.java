@@ -29,7 +29,7 @@ import solent.ac.uk.com504.examples.ticketgate.crypto.GenerateKeys;
  *
  * @author cgallen
  */
-public class TicketEncoderImpl {
+public class TicketEncoderImpl extends TicketEncoder{
 
     private static final String PUBLIC_KEY_FILE = "publicKey";
     private static final String PRIVATE_KEY_FILE = "privateKey";
