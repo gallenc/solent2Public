@@ -1,5 +1,6 @@
 package org.solent.com528.project.model.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,13 +12,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PricingDetails {
 
-    private Double peakPricePerZone;
+    private Double peakPricePerZone = 0.0;
 
-    private Double offpeakPricePerZone;
+    private Double offpeakPricePerZone = 0.0;
 
     @XmlElementWrapper(name = "priceBandList")
     @XmlElement(name = "priceBand")
     private List<PriceBand> priceBandList;
+
+    public PricingDetails() {
+        // set default price band so always a band present
+        priceBandList = new ArrayList<PriceBand>();
+        PriceBand defaultPriceBand = new PriceBand();
+        defaultPriceBand.setRate(Rate.OFFPEAK);
+        defaultPriceBand.setHour(0);
+        defaultPriceBand.setMinutes(0);
+        priceBandList.add(defaultPriceBand);
+    }
 
     public Double getPeakPricePerZone() {
         return peakPricePerZone;
@@ -45,7 +56,16 @@ public class PricingDetails {
 
     @Override
     public String toString() {
-        return "PricingDetails{" + "peakPricePerZone=" + peakPricePerZone + ", offpeakPricePerZone=" + offpeakPricePerZone + ", priceBandList=" + priceBandList + '}';
+        StringBuffer sb = new StringBuffer("PricingDetails{" + "peakPricePerZone=" + peakPricePerZone + ", offpeakPricePerZone=" + offpeakPricePerZone + "\n priceBandList:\n");
+
+        for (PriceBand priceBand : priceBandList) {
+            sb.append("   " + priceBand.toString() + "\n");
+        }
+
+        sb.append("}");
+
+        return sb.toString();
+
     }
-    
+
 }

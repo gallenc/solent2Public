@@ -1,25 +1,26 @@
 package org.solent.com528.project.model.dto;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PriceBand {
+public class PriceBand  {
 
-    private Integer hour;
+    private Integer hour=0;
 
-    private Integer minutes;
+    private Integer minutes=0;
 
-    private Band band;
+    private Rate rate=Rate.OFFPEAK;
 
     public Integer getHour() {
         return hour;
     }
 
     public void setHour(Integer hour) {
-        if (hour == null || hour < 0 || hour > 12) {
+        if (hour == null || hour < 0 || hour > 24) {
             throw new IllegalArgumentException("hour out of bounds: " + hour);
         }
         this.hour = hour;
@@ -37,12 +38,12 @@ public class PriceBand {
         this.minutes = minutes;
     }
 
-    public Band getBand() {
-        return band;
+    public Rate getRate() {
+        return rate;
     }
 
-    public void setBand(Band band) {
-        this.band = band;
+    public void setRate(Rate band) {
+        this.rate = band;
     }
 
     public Integer getTimeInMinutes() {
@@ -53,7 +54,7 @@ public class PriceBand {
 
     @Override
     public String toString() {
-        return "PriceBand{" + "hour=" + hour + ", minutes=" + minutes + ", band=" + band + '}';
+        return "PriceBand{" + "hour=" + hour + ", minutes=" + minutes + ", rate=" + rate + '}';
     }
-    
+
 }

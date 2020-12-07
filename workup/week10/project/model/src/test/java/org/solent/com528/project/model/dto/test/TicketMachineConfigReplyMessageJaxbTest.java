@@ -18,7 +18,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.solent.com528.project.model.dto.Band;
+import org.solent.com528.project.model.dto.Rate;
 import org.solent.com528.project.model.dto.PriceBand;
 import org.solent.com528.project.model.dto.PricingDetails;
 import org.solent.com528.project.model.dto.ReplyMessage;
@@ -60,7 +60,7 @@ public class TicketMachineConfigReplyMessageJaxbTest {
             
             List<PriceBand> priceBandList = new ArrayList<PriceBand>();
             PriceBand pb1 = new PriceBand();
-            pb1.setBand(Band.PEAK);
+            pb1.setRate(Rate.PEAK);
             pb1.setHour(0);
             pb1.setMinutes(0);
             priceBandList.add(pb1);

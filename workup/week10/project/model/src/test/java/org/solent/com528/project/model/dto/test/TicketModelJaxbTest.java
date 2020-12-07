@@ -9,8 +9,6 @@ package org.solent.com528.project.model.dto.test;
 
 import java.io.File;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;

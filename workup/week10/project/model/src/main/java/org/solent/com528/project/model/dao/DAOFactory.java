@@ -5,6 +5,8 @@ public interface DAOFactory {
     public TicketMachineDAO getTicketMachineDAO();
 
     public StationDAO getStationDAO();
+    
+    public PriceCalculatorDAO getPriceCalculatorDAO();
 
     public void shutDown();
 }
