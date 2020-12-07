@@ -51,6 +51,7 @@ public class StationDAOJaxbImpl implements StationDAO {
     @Override
     public synchronized Station save(Station station) {
         stationTreeMap.put(station.getName(), station);
+        save();
         return station;
     }
 
@@ -62,11 +63,13 @@ public class StationDAOJaxbImpl implements StationDAO {
     @Override
     public synchronized void deleteAll() {
         stationTreeMap.clear();
+        save();
     }
 
     @Override
     public synchronized void delete(Station station) {
         stationTreeMap.remove(station.getName());
+        save();
     }
 
     @Override
@@ -95,6 +98,7 @@ public class StationDAOJaxbImpl implements StationDAO {
         for (Station station : stationList) {
             stationTreeMap.put(station.getName(), station);
         }
+        save();
     }
 
     private void load() {
