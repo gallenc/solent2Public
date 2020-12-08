@@ -19,7 +19,7 @@
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>crypto</artifactId>
             <version>${project.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>

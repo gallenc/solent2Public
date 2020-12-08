@@ -146,7 +146,7 @@ public class PriceCalculatorDAOJaxbImpl implements PriceCalculatorDAO {
 
         if (!file.exists()) {
             LOG.debug("pricingDetailsFile does not exist - creating new file ");
-            save();
+            deleteAll(); // this initialises with at least 0:00 time zone
         } else {
             try {
                 // this contains a list of Jaxb annotated classes for the context to parse

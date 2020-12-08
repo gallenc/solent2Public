@@ -35,6 +35,27 @@
             <artifactId>project-model</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>crypto</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>crypto</artifactId>
+            <classifier>private-key</classifier>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>crypto</artifactId>
+            <classifier>public-key</classifier>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Spring dependencies -->
         <dependency>

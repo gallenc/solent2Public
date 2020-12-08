@@ -108,6 +108,8 @@ public class StationDAOJaxbImpl implements StationDAO {
 
         if (!file.exists()) {
             LOG.debug("stationsFileName does not exist - creating new file ");
+            // make parent directories needed for this file
+            file.mkdirs();
             save();
         } else {
             try {
@@ -131,7 +133,7 @@ public class StationDAOJaxbImpl implements StationDAO {
     private void save() {
 
         File file = new File(stationsFileName);
-        LOG.debug("saving pricing details to " + file.getAbsolutePath());
+        LOG.debug("saving station list to " + file.getAbsolutePath());
 
         // first remove old file before writing new data
         if (file.exists()) {

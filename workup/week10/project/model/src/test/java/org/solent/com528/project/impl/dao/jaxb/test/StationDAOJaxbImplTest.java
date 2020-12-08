@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.solent.com528.project.impl.dao.jaxb.StationDAOJaxbImpl;
 import org.solent.com528.project.model.dao.StationDAO;
 import org.solent.com528.project.model.dto.Station;
@@ -45,5 +46,7 @@ public class StationDAOJaxbImplTest {
         stationList.add(station);
         stationDAOjaxb.saveAll(stationList);
 
+        Station foundStation = stationDAOjaxb.findByName("Waterloo");
+        assertTrue(station.toString().equals(foundStation.toString()));
     }
 }

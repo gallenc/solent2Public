@@ -14,6 +14,8 @@ public class TicketMachineConfig {
     private String uuid;
 
     private String stationName;
+    
+    private Integer stationZone;
 
     @XmlElementWrapper(name = "stationList")
     @XmlElement(name = "station")
@@ -53,12 +55,18 @@ public class TicketMachineConfig {
         this.pricingDetails = pricingDetails;
     }
 
-    @Override
-    public String toString() {
-        return "TicketMachineConfig{" + "uuid=" + uuid + ", stationName=" + stationName + ", stationList=" + stationList + ", pricingDetails=" + pricingDetails + '}';
+    public Integer getStationZone() {
+        return stationZone;
     }
 
+    public void setStationZone(Integer stationZone) {
+        this.stationZone = stationZone;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "TicketMachineConfig{" + "uuid=" + uuid + ", stationName=" + stationName + ", stationZone=" + stationZone + ", stationList=" + stationList + ", pricingDetails=" + pricingDetails + '}';
+    }
+   
 
 }
