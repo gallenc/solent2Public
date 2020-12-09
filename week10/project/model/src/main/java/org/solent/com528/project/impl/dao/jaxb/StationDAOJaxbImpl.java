@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -94,6 +96,19 @@ public class StationDAOJaxbImpl implements StationDAO {
             stationTreeMap.put(station.getName(), station);
         }
         save();
+    }
+
+    /**
+     * returns a set of all zones in list of stations    
+    */
+    @Override
+    public synchronized  Set<Integer> getAllZones() {
+        List<Station> stationList = this.findAll();
+        Set<Integer> zones = new TreeSet();
+        for (Station st : stationList) {
+            zones.add(st.getZone());
+        }
+        return zones;
     }
 
     private void load() {

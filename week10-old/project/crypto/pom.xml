@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>solent.ac.uk.ood.examples</groupId>
+        <artifactId>project</artifactId>
+        <version>1.3-SNAPSHOT</version>
+    </parent>
+    <artifactId>crypto</artifactId>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+
+            <!-- this generates new unique public and private -->
+            <!-- keys files placed in the classpath for the service -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <classpathScope>test</classpathScope>
+                    <mainClass>solent.ac.uk.com504.examples.ticketgate.crypto.GenerateKeys</mainClass>
+                    <arguments>
+                        <!-- note that for whatever reason this is relative -->
+                        <!-- to the base project not the service project -->
+                        <argument>${project.build.directory}/classes/privateKey</argument>
+                        <argument>${project.build.directory}/classes/publicKey</argument>
+                    </arguments>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                        <version>${log4j.version}</version>
+                        <type>jar</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-core</artifactId>
+                        <version>${log4j.version}</version>
+                        <type>jar</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+      
+            <!-- This packages separate jars with public and private keys in class path -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <!-- default-jar configuration excludes public and private keys -->
+                    <execution>
+                        <id>package-public-key</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <classifier>public-key</classifier>
+                            <includes>
+                                <include>publicKey</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-private-key</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <classifier>private-key</classifier>
+                            <includes>
+                                <include>privateKey</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-jar</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                 
+                        <configuration>
+                            <excludes>
+                                <exclude>publicKey</exclude>
+                                <exclude>privateKey</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+      
+        </plugins>
+    </build>
+  
+    <dependencies>
+
+        <!-- dependencies for java 11 -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- needed by Hibernate for java 11 -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Log4j API and Core implementation  -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
