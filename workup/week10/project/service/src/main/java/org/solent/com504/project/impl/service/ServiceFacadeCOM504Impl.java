@@ -8,7 +8,7 @@ import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dao.PersonDAO;
 import org.solent.com504.project.model.service.ServiceFacade;
 
-public class ServiceFacadeImpl implements ServiceFacade {
+public class ServiceFacadeCOM504Impl implements ServiceFacade {
 
     private PersonDAO personDao = null;
 

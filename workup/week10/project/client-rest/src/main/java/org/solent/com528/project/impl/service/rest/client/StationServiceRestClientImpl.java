@@ -108,7 +108,7 @@ public class StationServiceRestClientImpl implements ServiceFacade {
     }
 
     @Override
-    public PriceCalculatorDAO getPriceCalculator() {
+    public PriceCalculatorDAO getPriceCalculatorDAO() {
         if (priceCalculatorDAO == null) {
             LOG.debug("creating new priceCalculatorDAO ");
             synchronized (this) {

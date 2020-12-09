@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebListener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.com504.project.impl.service.ServiceObjectFactoryJpaImpl;
+import org.solent.com504.project.impl.service.ServiceObjectFactoryCOM504JpaImpl;
 import org.solent.com504.project.model.service.ServiceFacade;
 import org.solent.com504.project.model.service.ServiceObjectFactory;
 
@@ -53,7 +53,7 @@ public class WebObjectFactory implements ServletContextListener {
 
                     System.setProperty("derby.system.home", derbyHome);
                     
-                    serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
+                    serviceObjectFactory = new ServiceObjectFactoryCOM504JpaImpl();
                     serviceFacade = serviceObjectFactory.getServiceFacade();
                 }
             }

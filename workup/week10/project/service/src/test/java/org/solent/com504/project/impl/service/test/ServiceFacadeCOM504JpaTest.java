@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.project.impl.service.ServiceObjectFactoryJpaImpl;
+import org.solent.com504.project.impl.service.ServiceObjectFactoryCOM504JpaImpl;
 import org.solent.com504.project.model.service.ServiceFacade;
 import org.solent.com504.project.model.service.ServiceObjectFactory;
 
@@ -18,7 +18,7 @@ import org.solent.com504.project.model.service.ServiceObjectFactory;
  *
  * @author gallenc
  */
-public class ServiceFacadeJpaTest {
+public class ServiceFacadeCOM504JpaTest {
     
     ServiceObjectFactory serviceObjectFactory = null;
     ServiceFacade serviceFacade = null;
@@ -27,7 +27,7 @@ public class ServiceFacadeJpaTest {
     @Before
     public void loadFactory() {
 
-        serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
+        serviceObjectFactory = new ServiceObjectFactoryCOM504JpaImpl();
         
         serviceFacade = serviceObjectFactory.getServiceFacade();
 

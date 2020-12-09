@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.project.impl.dao.jpa.DAOFactoryJPAImpl;
+import org.solent.com504.project.impl.dao.jpa.DAOFactoryCom504JPAImpl;
 import org.solent.com504.project.model.dao.PersonDAO;
 import org.solent.com504.project.model.dto.Person;
 import org.solent.com504.project.model.dto.Role;
@@ -26,7 +26,7 @@ public class PersonDAOTest {
 
     private PersonDAO personDao = null;
 
-    private DAOFactoryJPAImpl daoFactory = new DAOFactoryJPAImpl();
+    private DAOFactoryCom504JPAImpl daoFactory = new DAOFactoryCom504JPAImpl();
 
     @Before
     public void before() {

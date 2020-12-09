@@ -13,5 +13,5 @@ public interface ServiceFacade {
 
     public StationDAO getStationDAO();
 
-    public PriceCalculatorDAO getPriceCalculator();
+    public PriceCalculatorDAO getPriceCalculatorDAO();
 }

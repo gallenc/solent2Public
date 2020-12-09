@@ -1,5 +1,6 @@
 package org.solent.com528.project.model.dao;
 
+import java.util.List;
 import org.solent.com528.project.model.dto.TicketMachine;
 
 public interface TicketMachineDAO {
@@ -14,7 +15,9 @@ public interface TicketMachineDAO {
 
     public void deleteById(Long id);
 
-    public TicketMachine delete(TicketMachine ticketMachine);
+    public void delete(TicketMachine ticketMachine);
 
-    public TicketMachine findByStationName(String stationName);
+    public List<TicketMachine> findByStationName(String stationName);
+    
+    public List<TicketMachine> findAll();
 }

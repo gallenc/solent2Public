@@ -11,25 +11,21 @@ import javax.persistence.Persistence;
 import org.solent.com504.project.model.dao.AppointmentDAO;
 import org.solent.com504.project.model.dao.DAOFactory;
 import org.solent.com504.project.model.dao.PersonDAO;
+import org.solent.com528.project.impl.dao.jpa.DAOFactoryJPAImpl;
 
 /**
- *
+ * THIS CLASS IS WRITTEN TO USE THE SAME ENTITY MANAGER
+ * THIS CAN BE REMOVED ONCE HE COM504 CLASSES NO LONGER NEEDED
  * @author cgallen
  */
-public class DAOFactoryJPAImpl implements DAOFactory {
+public class DAOFactoryCom504JPAImpl extends DAOFactoryJPAImpl implements DAOFactory {
 
-    // THIS HAS TO MATCH THE persistance.xml
-    private static final String PERSISTENCE_UNIT_NAME = "modelPersistence";
-    private static EntityManagerFactory factory;
-    private static EntityManager em;
+    // this class inherits the entity manager from DAOFactoryJPAImpl
     private static PersonDAO personDAO;
     private static AppointmentDAO appointmentDAO;
 
     static {
-        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        em = factory.createEntityManager();
-
-        // note it is important that all DAO's share same entity manafer
+        // note it is important that all DAO's share same entity manager
         personDAO = new PersonDAOJpaImpl(em);
         appointmentDAO = new AppointmentDAOJpaImpl(em);
     }
@@ -46,11 +42,13 @@ public class DAOFactoryJPAImpl implements DAOFactory {
 
     @Override
     public void shutDown() {
-        if (em!=null) synchronized (this){
-            if (em!=null){
-                em.close();
-            }
-        }
+        super.shutDown();
+        
+//        if (em!=null) synchronized (this){
+//            if (em!=null){
+//                em.close();
+//            }
+//        }
     }
 
 }

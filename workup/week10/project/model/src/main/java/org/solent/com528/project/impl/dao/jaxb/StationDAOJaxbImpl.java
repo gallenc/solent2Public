@@ -89,11 +89,6 @@ public class StationDAOJaxbImpl implements StationDAO {
     }
 
     @Override
-    public synchronized Station findByTicketMachineUuid(String ticketMachineUUID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public synchronized void saveAll(List<Station> stationList) {
         for (Station station : stationList) {
             stationTreeMap.put(station.getName(), station);

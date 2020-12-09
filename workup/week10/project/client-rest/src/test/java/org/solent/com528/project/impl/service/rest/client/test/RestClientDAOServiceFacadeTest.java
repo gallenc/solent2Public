@@ -72,7 +72,7 @@ public class RestClientDAOServiceFacadeTest {
         LOG.debug("start of priceCalculatorSimpleTest()");
 
         PricingDetails pricingDetails;
-        PriceCalculatorDAO priceCalculatorDAOJaxb = serviceFacade.getPriceCalculator();
+        PriceCalculatorDAO priceCalculatorDAOJaxb = serviceFacade.getPriceCalculatorDAO();
         assertNotNull(priceCalculatorDAOJaxb);
         priceCalculatorDAOJaxb.deleteAll();
 

@@ -20,8 +20,6 @@ public interface StationDAO {
     public List<Station> findAll();
 
     public List<Station> findByZone(Integer zone);
-
-    public Station findByTicketMachineUuid(String ticketMachineUUID);
     
     public void saveAll(List<Station> stationList);
     

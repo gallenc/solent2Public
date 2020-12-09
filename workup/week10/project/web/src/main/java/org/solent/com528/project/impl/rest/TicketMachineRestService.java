@@ -70,9 +70,11 @@ public class TicketMachineRestService {
 
             // ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
             ReplyMessage replyMessage = new ReplyMessage();
-            LOG.debug("/getTicketMachineConfig called  uuid="+uuid);
+            LOG.debug("/getTicketMachineConfig called  uuid=" + uuid);
 
-            if(uuid==null || uuid.isBlank()) throw new IllegalArgumentException("uuid query must be defined ?uuid=xxx");
+            if (uuid == null || uuid.isBlank()) {
+                throw new IllegalArgumentException("uuid query must be defined ?uuid=xxx");
+            }
             // get this from local properties
             String stationName = "Waterloo";
             Integer stationZone = 1;
@@ -83,11 +85,25 @@ public class TicketMachineRestService {
             pricingDetails.setPeakPricePerZone(5.00);
             List<PriceBand> priceBandList = new ArrayList();
             pricingDetails.setPriceBandList(priceBandList);
+
+            // adding 3 price bands
             PriceBand priceBand1 = new PriceBand();
             priceBand1.setRate(Rate.OFFPEAK);
             priceBand1.setHour(0);
             priceBand1.setMinutes(0);
             priceBandList.add(priceBand1);
+
+            PriceBand priceBand2 = new PriceBand();
+            priceBand2.setRate(Rate.PEAK);
+            priceBand2.setHour(9);
+            priceBand2.setMinutes(0);
+            priceBandList.add(priceBand2);
+            
+            PriceBand priceBand3 = new PriceBand();
+            priceBand3.setRate(Rate.OFFPEAK);
+            priceBand3.setHour(11);
+            priceBand3.setMinutes(30);
+            priceBandList.add(priceBand3);
 
             // STATION LIST
             List<Station> stationList = new ArrayList();
@@ -102,7 +118,7 @@ public class TicketMachineRestService {
             Station station3 = new Station();
             station3.setName("Acton Town");
             station3.setZone(3);
-            stationList.add(station2);
+            stationList.add(station3);
 
             // 200 CODE
             replyMessage.setCode(Response.Status.OK.getStatusCode());

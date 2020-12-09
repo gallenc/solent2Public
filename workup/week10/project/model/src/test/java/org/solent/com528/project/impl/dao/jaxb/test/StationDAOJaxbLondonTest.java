@@ -32,9 +32,10 @@ public class StationDAOJaxbLondonTest {
     @Before
     public void init() throws URISyntaxException {
 
+        // loads from model/src/main/resources on class path
         URL res = getClass().getClassLoader().getResource("londonStations.xml");
         String fileName = res.getPath();
-        System.out.println("london underground fileName:   " + fileName);
+        System.out.println("loading from london underground fileName:   " + fileName);
         stationDAOjaxb = new StationDAOJaxbImpl(fileName);
     }
 
