@@ -41,7 +41,7 @@ import org.solent.com528.project.model.service.ServiceFacade;
 public class TicketMachineRestService {
 
     // SETS UP LOGGING 
-    // note that log name will be org.solent.com504.factoryandfacade.impl.rest.TicketMachineRestService
+    // note that log name will be org.solent.com528.factoryandfacade.impl.rest.TicketMachineRestService
     final static Logger LOG = LogManager.getLogger(TicketMachineRestService.class);
 
     /**

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.project.impl.webclient;
+package org.solent.com528.project.impl.webclient;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.com504.factoryandfacade.impl.service.rest.client.ClientObjectFactoryImpl;
-import org.solent.com504.project.model.service.ServiceFacade;
-import org.solent.com504.project.model.service.ServiceObjectFactory;
+import org.solent.com528.project.impl.service.rest.client.ClientObjectFactoryImpl;
+import org.solent.com528.project.model.service.ServiceFacade;
+import org.solent.com528.project.model.service.ServiceObjectFactory;
 
 /**
  *
