@@ -5,10 +5,6 @@
 
 ![alt text](../UMLmodel/images/ticketExampleClassDiagram.png "Figure ticketExampleClassDiagram.png" )
 
-## Original JPA DAO Model in skeleton project
-THe JPA DAO model is derived from the following diagram
-
-![alt text](../UMLmodel/images/jpaExampleClassDiagram.png "Figure jpaExampleClassDiagram.png" )
 
 DTO classes are at the bottom of the diagram. 
 These are simple java beans which are used to pass information between layers.
