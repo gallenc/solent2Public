@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.project.impl.rest;
+package org.solent.com528.project.impl.rest;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,8 +17,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("/rest")
 public class RestApp extends ResourceConfig {
     public RestApp() {
-        packages("org.solent.com504.factoryandfacade.impl.rest,"
-                + "org.solent.com528.project.impl.rest");
+        packages("org.solent.com528.project.impl.rest");
     }
 }
 

@@ -6,6 +6,8 @@
 package org.solent.com528.project.impl.dao.jpa;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -100,6 +102,19 @@ public class StationDAOJpaImpl implements StationDAO {
             entityManager.persist(station);
         }
         entityManager.getTransaction().commit();
+    }
+
+    /**
+     * returns a set of all zones in list of stations    
+    */
+    @Override
+    public Set<Integer> getAllZones() {
+        List<Station> stationList = this.findAll();
+        Set<Integer> zones = new TreeSet();
+        for (Station st : stationList) {
+            zones.add(st.getZone());
+        }
+        return zones;
     }
 
 }

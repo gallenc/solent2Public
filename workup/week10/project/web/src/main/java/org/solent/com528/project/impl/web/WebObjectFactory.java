@@ -3,30 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.project.impl.web;
+package org.solent.com528.project.impl.web;
 
 import java.io.File;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.com504.project.impl.service.ServiceObjectFactoryCOM504JpaImpl;
-import org.solent.com504.project.model.service.ServiceFacade;
-import org.solent.com504.project.model.service.ServiceObjectFactory;
+import org.solent.com528.project.impl.dao.jaxb.StationDAOJaxbImpl;
+import org.solent.com528.project.impl.service.ServiceObjectFactoryJpaImpl;
+import org.solent.com528.project.model.dao.StationDAO;
+import org.solent.com528.project.model.dto.Station;
+import org.solent.com528.project.model.service.ServiceFacade;
+import org.solent.com528.project.model.service.ServiceObjectFactory;
 
 /**
  * ServletContextListeneer executes code on web app startup and shutdown
  * https://www.deadcoderising.com/execute-code-on-webapp-startup-and-shutdown-using-servletcontextlistener/
- * https://blog.georgovassilis.com/2014/01/15/tomcat-spring-and-memory-leaks-when-undeploying-or-redeploying-an-web-application/  
- * Tomcat, Spring and memory leaks when undeploying or redeploying an web application
+ * https://blog.georgovassilis.com/2014/01/15/tomcat-spring-and-memory-leaks-when-undeploying-or-redeploying-an-web-application/ Tomcat, Spring and memory leaks
+ * when undeploying or redeploying an web application
  *
  * @author gallenc
  */
@@ -52,13 +57,35 @@ public class WebObjectFactory implements ServletContextListener {
                     LOG.debug("setting derby.system.home=" + derbyHome);
 
                     System.setProperty("derby.system.home", derbyHome);
-                    
-                    serviceObjectFactory = new ServiceObjectFactoryCOM504JpaImpl();
+
+                    serviceObjectFactory = new ServiceObjectFactoryJpaImpl();
                     serviceFacade = serviceObjectFactory.getServiceFacade();
+
+                    StationDAO stationDAO = serviceFacade.getStationDAO();
+                    List<Station> stationList = loadDefaultStations();
+                    stationDAO.saveAll(stationList);
                 }
             }
         }
         return serviceFacade;
+    }
+
+    private static List<Station> loadDefaultStations() {
+        LOG.debug("LOADING DEFAULT STATIONS");
+        List<Station> defaultStationList = new ArrayList<Station>();
+        try {
+            // NOTE this should but does not load from a file saved in the model jar
+            URL res = WebObjectFactory.class.getClassLoader().getResource("londonStations.xml");
+            String fileName = res.getPath();
+            LOG.debug("loading from london underground fileName:   " + fileName);
+            StationDAOJaxbImpl stationDAOjaxb = new StationDAOJaxbImpl(fileName);
+            defaultStationList = stationDAOjaxb.findAll();
+
+        } catch (Exception ex) {
+            LOG.error("cannot load default stations", ex);
+        }
+
+        return defaultStationList;
     }
 
     @Override

@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -82,6 +83,12 @@ public class StationDAOJaxbLondonTest {
         System.out.println("zone8:" + stationList.size());
         assertEquals(1, stationList.size());
 
+        stationList = stationDAOjaxb.findByZone(9);
+        System.out.println("zone9:" + stationList.size());
+        assertEquals(2, stationList.size());
+
+        Set<Integer> zones = stationDAOjaxb.getAllZones();
+        assertEquals(9, zones.size());
     }
 
     @Test
