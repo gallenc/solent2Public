@@ -29,7 +29,8 @@ public class Station {
 
     private String name;
 
-    private Integer zone;
+    // default zone is zero
+    private Integer zone =0;
 
     // stops xml binding of ticket machines - not needed in messages
     @XmlTransient

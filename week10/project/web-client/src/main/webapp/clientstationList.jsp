@@ -32,7 +32,7 @@
     String zoneStr = request.getParameter("zone");
 
     // return station list for zone
-    if (zoneStr == null || zoneStr.isBlank()) {
+    if (zoneStr == null || zoneStr.isEmpty()) {
         stationList = stationDAO.findAll();
     } else {
         try {

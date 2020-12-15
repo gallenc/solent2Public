@@ -82,14 +82,14 @@ public class StationDAOJpaImpl implements StationDAO {
 
     @Override
     public List<Station> findAll() {
-        TypedQuery<Station> q = entityManager.createQuery("SELECT s FROM Station s", Station.class);
+        TypedQuery<Station> q = entityManager.createQuery("SELECT s FROM Station s ORDER BY s.name ASC", Station.class);
         List<Station> stationList = q.getResultList();
         return stationList;
     }
 
     @Override
     public List<Station> findByZone(Integer zone) {
-        TypedQuery<Station> q = entityManager.createQuery("SELECT s FROM Station s WHERE s.zone=:zone", Station.class);
+        TypedQuery<Station> q = entityManager.createQuery("SELECT s FROM Station s WHERE s.zone=:zone ORDER BY s.name ASC", Station.class);
         q.setParameter("zone", zone);
         List<Station> stationList = q.getResultList();
         return stationList;

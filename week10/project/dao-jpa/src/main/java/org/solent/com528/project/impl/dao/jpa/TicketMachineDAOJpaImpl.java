@@ -82,7 +82,7 @@ public class TicketMachineDAOJpaImpl implements TicketMachineDAO {
     @Override
     public List<TicketMachine> findByStationName(String stationName) {
         TypedQuery<TicketMachine> q
-                = entityManager.createQuery("SELECT t FROM TicketMachine t JOIN t.station s WHERE s.name=:stationName", TicketMachine.class);
+                = entityManager.createQuery("SELECT t FROM TicketMachine t JOIN t.station s WHERE s.name=:stationName ORDER BY t.uuid ASC", TicketMachine.class);
         q.setParameter("stationName", stationName);
         List<TicketMachine> ticketMachineList = q.getResultList();
         return ticketMachineList;
@@ -90,7 +90,7 @@ public class TicketMachineDAOJpaImpl implements TicketMachineDAO {
 
     @Override
     public List<TicketMachine> findAll() {
-        TypedQuery<TicketMachine> q = entityManager.createQuery("SELECT t FROM TicketMachine t", TicketMachine.class);
+        TypedQuery<TicketMachine> q = entityManager.createQuery("SELECT t FROM TicketMachine t ORDER BY t.uuid ASC", TicketMachine.class);
         List<TicketMachine> ticketMachineList = q.getResultList();
         return ticketMachineList;
     }

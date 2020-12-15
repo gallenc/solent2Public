@@ -76,7 +76,7 @@ public class TicketMachineRestService {
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getTicketMachineConfig called  uuid=" + uuid);
             // NOTE change this to uuid.isEmpty() if using java 8
-            if (uuid == null || uuid.isBlank()) {
+            if (uuid == null || uuid.isEmpty()) {
                 throw new IllegalArgumentException("uuid query must be defined ?uuid=xxx");
             }
             // get this from local properties

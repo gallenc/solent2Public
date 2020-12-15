@@ -29,14 +29,23 @@
 
     // accessing request parameters
     String actionStr = request.getParameter("action");
+    String stationName = request.getParameter("stationName");
     String zoneStr = request.getParameter("zone");
 
+    Integer zone = 0;
+    if (zoneStr != null) {
+        zone = Integer.parseInt(zoneStr);
+    } else {
+        if (!zones.isEmpty()) {
+            zone = zones.iterator().next();
+        }
+    }
+
     // return station list for zone
-    if (zoneStr == null || zoneStr.isBlank()) {
+    if (zoneStr == null || zoneStr.isEmpty()) {
         stationList = stationDAO.findAll();
     } else {
         try {
-            Integer zone = Integer.parseInt(zoneStr);
             stationList = stationDAO.findByZone(zone);
         } catch (Exception ex) {
             errorMessage = ex.getMessage();
@@ -45,10 +54,23 @@
 
     // basic error checking before making a call
     if (actionStr == null || actionStr.isEmpty()) {
-        // do nothing
+        // just display list
 
-    } else if ("XXX".equals(actionStr)) {
-        // put your actions here
+    } else if ("deleteAllStations".equals(actionStr)) {
+        stationDAO.deleteAll();
+        stationList = stationDAO.findAll();
+        message = "all stations deleted";
+
+    } else if ("deleteStation".equals(actionStr)) {
+        Station station = stationDAO.findByName(stationName);
+        if (station == null) {
+            errorMessage = "ERROR: cannot delete unknown station name: " + stationName;
+        } else {
+            stationDAO.delete(station);
+            zones = stationDAO.getAllZones();
+            stationList = stationDAO.findByZone(zone);
+            message = "station deleted: " + stationName;
+        }
     } else {
         errorMessage = "ERROR: page called for unknown action";
     }
@@ -69,27 +91,64 @@
 
         <p>The time is: <%= new Date().toString()%> (note page is auto refreshed every 20 seconds)</p>
 
-        <form action="./stationList.jsp" method="get">
-            <button type="submit" >Reset</button>
+        <form action="./station.jsp" method="get">
+            <input type="hidden" name="action" value="createStation">
+            <button type="submit" >Create New Station</button>
         </form> 
+        <br>
+        <form action="./stationList.jsp" method="get">
+            <input type="hidden" name="action" value="deleteAllStations">
+            <button type="submit" style="color:red;">Delete All Stations</button>
+        </form> 
+        <br>
+        <form action="./stationList.jsp" method="get">
+            <button type="submit" >Show All Zones</button>
+        </form> 
+
         <%
             for (Integer selectZone : zones) {
         %>
         <form action="./stationList.jsp" method="get">
-            <input type="hidden" name="zone" value="<%= selectZone %>">
-            <button type="submit" >Zone&nbsp;<%= selectZone %></button>
+            <input type="hidden" name="zone" value="<%= selectZone%>">
+            <button type="submit" >Zone&nbsp;<%= selectZone%></button>
         </form> 
         <%
             }
         %>
-        <p>Stations in <%= (zoneStr == null) ? "All Zones" : "Zone&nbsp;" + zoneStr%></p>
-        <%
-            for (Station station : stationList) {
-        %>
-        <p><%=station %></p>
-        <%
-            }
-        %>
 
+        <p>Stations in <%= (zoneStr == null) ? "All Zones" : "Zone&nbsp;" + zoneStr%></p>
+
+        <table border="1">
+            <tr>
+                <th>Station Name</th>
+                <th>Station Zone</th>
+            </tr>
+            <%
+                for (Station station : stationList) {
+            %>
+            <tr>
+                <td size="36" ><%=station.getName()%></td>
+                <td size="36" >Zone&nbsp;<%=station.getZone()%></td>
+                <td>
+                    <form action="./station.jsp" method="get">
+                        <input type="hidden" name="stationName" value="<%=station.getName()%>">
+                        <input type="hidden" name="zone" value="<%= zone%>">
+                        <input type="hidden" name="action" value="modifyStation">
+                        <button type="submit" >Modify Station</button>
+                    </form> 
+                </td>
+                <td>
+                    <form action="./stationList.jsp" method="get">
+                        <input type="hidden" name="stationName" value="<%=station.getName()%>">
+                        <input type="hidden" name="zone" value="<%= zone%>">
+                        <input type="hidden" name="action" value="deleteStation">
+                        <button type="submit" style="color:red;" >Delete Station</button>
+                    </form> 
+                </td>
+            </tr>
+            <%
+                }
+            %>
+        </table> 
     </body>
 </html>
