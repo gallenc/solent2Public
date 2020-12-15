@@ -10,7 +10,7 @@ import org.solent.com528.project.model.dao.TicketMachineDAO;
 import org.solent.com528.project.model.service.ServiceFacade;
 import org.solent.com528.project.model.service.ServiceObjectFactory;
 
-// This is a hard coded implementation of the factory using the jaxb DAO 
+// This is a hard coded implementation of the factory using the JPA DAO 
 // and could be replaced by Spring
 public class ServiceObjectFactoryJpaImpl implements ServiceObjectFactory {
 
