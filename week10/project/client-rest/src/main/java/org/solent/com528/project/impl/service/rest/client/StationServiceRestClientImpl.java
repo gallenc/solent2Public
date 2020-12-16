@@ -66,7 +66,7 @@ public class StationServiceRestClientImpl implements ServiceFacade {
      */
     @Override
     public TicketMachineConfig getTicketMachineConfig(String ticketMachineUuid) {
-        LOG.debug("getHeartbeat() Called");
+        LOG.debug("getTicketMachineConfig() Called ticketMachineUuid="+ticketMachineUuid);
 
         Client client = ClientBuilder.newClient(new ClientConfig().register(
                 new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),

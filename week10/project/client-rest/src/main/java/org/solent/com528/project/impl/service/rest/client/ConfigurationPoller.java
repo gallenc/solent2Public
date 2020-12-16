@@ -126,11 +126,11 @@ public class ConfigurationPoller {
                 scheduler.scheduleAtFixedRate(task, initialDelay, delay, TimeUnit.SECONDS);
 
                 // Belt and braces shutdown 
-                Runtime.getRuntime().addShutdownHook(new Thread() {
-                    public void run() {
-                        shutdown();
-                    }
-                });
+//                Runtime.getRuntime().addShutdownHook(new Thread() {
+//                    public void run() {
+//                        shutdown();
+//                    }
+//                });
             }
 
         }
@@ -139,6 +139,7 @@ public class ConfigurationPoller {
     public void shutdown() {
         LOG.debug("shutting down Configuration Poller");
         if (scheduler != null) {
+            LOG.debug("shutting down scheduller");
             scheduler.shutdownNow();
         }
 
