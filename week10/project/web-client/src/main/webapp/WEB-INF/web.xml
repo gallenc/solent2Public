@@ -6,5 +6,10 @@
             30
         </session-timeout>
     </session-config>
-
+    <!-- this should be picked up by @WebListner but doesn seem to work -->
+    <listener>
+        <listener-class>
+            org.solent.com528.project.impl.webclient.WebClientObjectFactory 
+        </listener-class>
+    </listener>
 </web-app>

@@ -119,7 +119,7 @@ public class StationDAOJaxbImpl implements StationDAO {
         if (!file.exists()) {
             LOG.debug("stationsFileName does not exist - creating new file ");
             // make parent directories needed for this file
-            file.mkdirs();
+            //file.mkdirs();
             save();
         } else {
             try {
@@ -152,6 +152,12 @@ public class StationDAOJaxbImpl implements StationDAO {
         }
 
         try {
+            // create parent directories if needed
+            File parent = new File(file.getParent());
+            LOG.debug("parent file: "+parent.getAbsolutePath());
+            if (!parent.exists()) {
+                parent.mkdirs();
+            }
             // this contains a list of Jaxb annotated classes for the context to parse
             // NOTE you must also have a jaxb.index or ObjectFactory in the same classpath
             JAXBContext jaxbContext = JAXBContext.newInstance("org.solent.com528.project.model.dto");

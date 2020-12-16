@@ -66,7 +66,7 @@ public class PriceCalculatorDAOJaxbImpl implements PriceCalculatorDAO {
     @Override
     public synchronized Double getPricePerZone(Date startTime) {
         Rate rate = getRate(startTime);
-        if(Rate.OFFPEAK == rate){
+        if (Rate.OFFPEAK == rate) {
             return this.offpeakPricePerZone;
         } else {
             return this.peakPricePerZone;
@@ -175,6 +175,13 @@ public class PriceCalculatorDAOJaxbImpl implements PriceCalculatorDAO {
         }
 
         try {
+            // create parent directories if needed
+            File parent = new File(file.getParent());
+            LOG.debug("parent file: "+parent.getAbsolutePath());
+            if (!parent.exists()) {
+                parent.mkdirs();
+            }
+
             // this contains a list of Jaxb annotated classes for the context to parse
             // NOTE you must also have a jaxb.index or ObjectFactory in the same classpath
             JAXBContext jaxbContext = JAXBContext.newInstance("org.solent.com528.project.model.dto");

@@ -5,25 +5,14 @@
  */
 package org.solent.com528.project.impl.service.rest.client.test.manual;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com528.project.impl.service.rest.client.ClientObjectFactoryImpl;
-import org.solent.com528.project.model.dao.PriceCalculatorDAO;
-import org.solent.com528.project.model.dao.StationDAO;
-import org.solent.com528.project.model.dto.PriceBand;
-import org.solent.com528.project.model.dto.PricingDetails;
-import org.solent.com528.project.model.dto.Rate;
-import org.solent.com528.project.model.dto.Station;
+import org.solent.com528.project.impl.service.rest.client.ClientObjectFactoryImpl;;
 import org.solent.com528.project.model.dto.TicketMachineConfig;
 import org.solent.com528.project.model.service.ServiceFacade;
 import org.solent.com528.project.model.service.ServiceObjectFactory;

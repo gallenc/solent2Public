@@ -18,13 +18,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com528.project.impl.service.rest.client.ClientObjectFactoryImpl;
-import org.solent.com528.project.model.dao.PriceCalculatorDAO;
-import org.solent.com528.project.model.dao.StationDAO;
-import org.solent.com528.project.model.dto.PriceBand;
-import org.solent.com528.project.model.dto.PricingDetails;
-import org.solent.com528.project.model.dto.Rate;
-import org.solent.com528.project.model.dto.Station;
-import org.solent.com528.project.model.dto.TicketMachineConfig;
+import org.solent.com528.project.impl.service.rest.client.ConfigurationPoller;
 import org.solent.com528.project.model.service.ServiceFacade;
 import org.solent.com528.project.model.service.ServiceObjectFactory;
 
@@ -32,9 +26,9 @@ import org.solent.com528.project.model.service.ServiceObjectFactory;
  *
  * @author gallenc
  */
-public class RestClientServiceFacadeTest {
+public class ConfigurationPollerTest {
 
-    final static Logger LOG = LogManager.getLogger(RestClientServiceFacadeTest.class);
+    final static Logger LOG = LogManager.getLogger(ConfigurationPollerTest.class);
 
     ServiceObjectFactory serviceObjectFactory = null;
     ServiceFacade serviceFacade = null;
@@ -48,16 +42,26 @@ public class RestClientServiceFacadeTest {
     }
 
     @Test
-    public void testRestClient() {
-        LOG.debug("start of testRestClient()");
-        String ticketMachineUuid = UUID.randomUUID().toString();
+    public void testConfigurationPollerTest() {
+        LOG.debug("start of ConfigurationPollerTest()");
 
-        TicketMachineConfig config = serviceFacade.getTicketMachineConfig(ticketMachineUuid);
+        String uuid = UUID.randomUUID().toString();
+        ConfigurationPoller configurationPoller = new ConfigurationPoller(serviceFacade);
+        configurationPoller.setTicketMachineUuid(uuid);
+        
+        long initialDelay=0;
+        long delay=5; // every 5 seconds
+        configurationPoller.init( initialDelay, delay);
 
-        System.out.println(config);
-        assertNotNull(config);
+        LOG.debug("ConfigurationPollerTest() sleeping ");
+        try {
+            Thread.sleep(20 * 1000);
+        } catch (InterruptedException e) {
+            configurationPoller.shutdown();
+        }
+        LOG.debug("ConfigurationPollerTest() sleep interrupted ");
 
-        LOG.debug("end of testRestClient()");
+        LOG.debug("end of ConfigurationPollerTest()");
     }
 
 }
