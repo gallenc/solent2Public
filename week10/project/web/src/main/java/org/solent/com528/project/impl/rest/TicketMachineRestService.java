@@ -23,6 +23,7 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com528.project.impl.web.WebObjectFactory;
+import org.solent.com528.project.model.dao.PriceCalculatorDAO;
 import org.solent.com528.project.model.dao.StationDAO;
 import org.solent.com528.project.model.dto.PriceBand;
 import org.solent.com528.project.model.dto.PricingDetails;
@@ -72,6 +73,7 @@ public class TicketMachineRestService {
 
             ServiceFacade serviceFacade = WebObjectFactory.getServiceFacade();
             StationDAO stationDAO = serviceFacade.getStationDAO();
+            PriceCalculatorDAO priceCalculatorDAO = serviceFacade.getPriceCalculatorDAO();
             
             ReplyMessage replyMessage = new ReplyMessage();
             LOG.debug("/getTicketMachineConfig called  uuid=" + uuid);
