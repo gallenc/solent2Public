@@ -2,7 +2,7 @@
 Git Repository of java examples for Solent Students for COM504 Object oriented design and development.
 
 ## Contents
-The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. Please read and follow the Getting Started instructions before doing anything else.
+The repository contains a number of example projects, weekly exercises and an area for you to create and store your work during the course 'myPracticeCourseWork'. Please read and follow the Getting Started instructions before doing anything else.
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
