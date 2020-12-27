@@ -62,8 +62,12 @@ public class WebObjectFactory implements ServletContextListener {
                     serviceFacade = serviceObjectFactory.getServiceFacade();
 
                     StationDAO stationDAO = serviceFacade.getStationDAO();
-                    List<Station> stationList = loadDefaultStations();
-                    stationDAO.saveAll(stationList);
+
+                    // if no stations in database, populated with london list
+                    if (stationDAO.findAll().isEmpty()) {
+                        List<Station> stationList = loadDefaultStations();
+                        stationDAO.saveAll(stationList);
+                    }
                 }
             }
         }
