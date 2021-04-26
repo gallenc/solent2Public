@@ -40,19 +40,29 @@ public class AnimalDaoJpaImpl implements AnimalDao {
     @Override
     public Animal updateOrSave(Animal animal) {
         entityManager.getTransaction().begin();
-        entityManager.persist(animal);  // NOTE merge(animal) differnt semantics
-        // entityManager.flush() could be used
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.persist(animal);  // NOTE merge(animal) differnt semantics
+            // entityManager.flush() could be used
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem updating or saving entity :", ex);
+            entityManager.getTransaction().rollback();
+        }
         return animal;
     }
 
     @Override
     public boolean delete(long id) {
         entityManager.getTransaction().begin();
-        Query q = entityManager.createQuery("DELETE FROM Animal a WHERE a.id=:id");
-        q.setParameter("id", id);
-        q.executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            Query q = entityManager.createQuery("DELETE FROM Animal a WHERE a.id=:id");
+            q.setParameter("id", id);
+            q.executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
 
         return true;
     }
@@ -60,9 +70,8 @@ public class AnimalDaoJpaImpl implements AnimalDao {
     @Override
     public List<Animal> retrieve(Animal animalTemplate) {
 
-        
         Map<String, String> paramMap = new HashMap<String, String>();
-   
+
         String queryString = "select a from Animal a WHERE TRUE=TRUE  "; // WHERE TRUE=TRUE masn WHERE always has a predicate ";
         if (animalTemplate.getName() != null) {
             queryString = queryString + "AND a.name LIKE :name "; //':name' ";
@@ -72,16 +81,16 @@ public class AnimalDaoJpaImpl implements AnimalDao {
             queryString = queryString + "AND a.address LIKE :address ";
             paramMap.put("address", animalTemplate.getAddress());
         }
-        if (animalTemplate.getAnimalType()!=null && animalTemplate.getAnimalType().getType() != null) {
+        if (animalTemplate.getAnimalType() != null && animalTemplate.getAnimalType().getType() != null) {
             queryString = queryString + "AND a.animalType.type LIKE :type ";
             paramMap.put("type", animalTemplate.getAnimalType().getType());
         }
-        
+
         // prevents running this section if not printing debug log
         if (LOG.isDebugEnabled()) {
             LOG.debug("queryString string built: " + queryString + "using parameters: ");
             for (String key : paramMap.keySet()) {
-                LOG.debug("key: "+key + " value:"+paramMap.get(key));
+                LOG.debug("key: " + key + " value:" + paramMap.get(key));
             }
         }
 
@@ -104,8 +113,13 @@ public class AnimalDaoJpaImpl implements AnimalDao {
     @Override
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM Animal ").executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.createQuery("DELETE FROM Animal ").executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entities:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     // no need to synchronize - same as simple dao

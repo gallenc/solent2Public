@@ -37,9 +37,14 @@ public class PersonDAOJpaImpl implements PersonDAO {
     @Override
     public Person save(Person person) {
         entityManager.getTransaction().begin();
-        entityManager.persist(person);  // NOTE merge(animal) differnt semantics
-        // entityManager.flush() could be used
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.persist(person);  // NOTE merge(animal) differnt semantics
+            // entityManager.flush() could be used
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem saving entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
         return person;
     }
 
@@ -63,8 +68,13 @@ public class PersonDAOJpaImpl implements PersonDAO {
     @Override
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM Person ").executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.createQuery("DELETE FROM Person ").executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting all entities:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
