@@ -51,32 +51,52 @@ public class TicketMachineDAOJpaImpl implements TicketMachineDAO {
     @Override
     public TicketMachine save(TicketMachine ticketMachine) {
         entityManager.getTransaction().begin();
-        entityManager.persist(ticketMachine);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.persist(ticketMachine);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem saving entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
         return ticketMachine;
     }
 
     @Override
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM TicketMachine ").executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.createQuery("DELETE FROM TicketMachine ").executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem creating entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
     public void deleteById(Long id) {
         entityManager.getTransaction().begin();
-        Query q = entityManager.createQuery("DELETE FROM TicketMachine t WHERE t.id=:id");
-        q.setParameter("id", id);
-        q.executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            Query q = entityManager.createQuery("DELETE FROM TicketMachine t WHERE t.id=:id");
+            q.setParameter("id", id);
+            q.executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entity by id:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
     public void delete(TicketMachine ticketMachine) {
         entityManager.getTransaction().begin();
-        entityManager.remove(ticketMachine);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.remove(ticketMachine);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override

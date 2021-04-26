@@ -52,32 +52,52 @@ public class StationDAOJpaImpl implements StationDAO {
     @Override
     public Station save(Station station) {
         entityManager.getTransaction().begin();
-        entityManager.persist(station);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.persist(station);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem persisting entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
         return station;
     }
 
     @Override
     public void deleteById(Long id) {
         entityManager.getTransaction().begin();
-        Query q = entityManager.createQuery("DELETE FROM Station s WHERE s.id=:id");
-        q.setParameter("id", id);
-        q.executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            Query q = entityManager.createQuery("DELETE FROM Station s WHERE s.id=:id");
+            q.setParameter("id", id);
+            q.executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entity by id:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM Station ").executeUpdate();
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.createQuery("DELETE FROM Station ").executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting all entities:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
     public void delete(Station station) {
         entityManager.getTransaction().begin();
-        entityManager.remove(station);
-        entityManager.getTransaction().commit();
+        try {
+            entityManager.remove(station);
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem deleting entity:", ex);
+            entityManager.getTransaction().rollback();
+        }
     }
 
     @Override
@@ -98,15 +118,20 @@ public class StationDAOJpaImpl implements StationDAO {
     @Override
     public void saveAll(List<Station> stationList) {
         entityManager.getTransaction().begin();
-        for (Station station : stationList) {
-            entityManager.persist(station);
+        try {
+            for (Station station : stationList) {
+                entityManager.persist(station);
+            }
+            entityManager.getTransaction().commit();
+        } catch (Exception ex) {
+            LOG.error("problem saving entity:", ex);
+            entityManager.getTransaction().rollback();
         }
-        entityManager.getTransaction().commit();
     }
 
     /**
-     * returns a set of all zones in list of stations    
-    */
+     * returns a set of all zones in list of stations
+     */
     @Override
     public Set<Integer> getAllZones() {
         List<Station> stationList = this.findAll();
