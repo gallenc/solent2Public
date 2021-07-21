@@ -1,0 +1,2 @@
+build using spring initalizr 
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.2.RELEASE&packaging=war&jvmVersion=11&groupId=org.solent.oodd.examples&artifactId=project&name=project&description=Base%20Demo%20Project&packageName=org.solent.oodd.examples.project&dependencies=web,security,data-jpa,hsql
