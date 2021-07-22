@@ -192,19 +192,22 @@ While your program is running, you can right click on the jsp and select view se
 
 ![alt text](../session2/images/webcreate7.png "Figure webcreate7.png" )
 
-You should see java code something like the example at the bottom of this page. 
+You should see java code something like the Example servlet generated from JSP at the bottom of this page . 
 
 We dont need to worry too much about the details of servelet code because it is generated for us but it is worth noticing a few things to help us understadn how JSPs work.
 
 The most important method begins with the line
+
 ```
  public void _jspService(final javax.servlet.http.HttpServletRequest request, final javax.servlet.http.HttpServletResponse response)
+```
 
 This method takes the request object which contains the information extracted from the http GET or POST request. 
 The method returns the response object which contains the HTTP html response which this jsp will return.
 
 If you look inside the method you will see many lines beginning with out.write().
 These lines contain the static web page content taken from the jsp.
+
 ```
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
@@ -229,7 +232,7 @@ is rendered
       out.write("        <p>the time is ");
       out.print( new Date() );
 ```
-We can see how tomcat turns the jsp into servlet code and includes any code which we have written between the <% %> escape characters
+We can see how tomcat turns the jsp into servlet code and includes any code which we have written between the <% %> escape characters.
 
 ## Example servlet generated from JSP
 ```
