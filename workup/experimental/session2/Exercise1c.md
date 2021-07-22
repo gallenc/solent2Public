@@ -1,6 +1,6 @@
-# Exercise 1b further examples
+# Exercise 1b further examples - request objects
 
-These exercises follow on from [Exercise 1](../session2/Exercise1.md) and use the same project you created.
+These exercises follow on from [Exercise 1b](../session2/Exercise1b.md) and use the same project you created.
 
 ## 5. Using forms to create requests
 
@@ -87,5 +87,5 @@ If you enter a value in the user name field and submit using the button, the val
 ## 6. Add some fields into the page
 As an exercise, try changing the page in order to add the user's address as an input field.
 
-Now try  [Exercise 1c](../session2/Exercise1c.md)
+
 
