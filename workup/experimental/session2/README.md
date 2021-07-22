@@ -20,11 +20,11 @@ In this exercise we will use Netbeans to create a new empty maven web applicatio
 
 a) select file > new Project > Java with Maven > Web Application
 
-![alt text](../Week2/images/webcreate1.png "Figure webcreate1.png" )
+![alt text](../session2/images/webcreate1.png "Figure webcreate1.png" )
 
 b) Select where you will created the project. 
 
-You need to make sure this is created in your forked repository under MyPracticeCourseWork\Week2
+You need to make sure this is created in your forked repository under MyPracticeCourseWork\session2
 
 c) Fill in the project details as shown in the diagram 
 
@@ -33,11 +33,11 @@ Usually the groupId contains a name space associated with your organisation or p
 You can see that Netbeans automatically creates a java package using the group id and artifact id.
 Use the names I have provided.  
 
-![alt text](../Week2/images/webcreate2.png "Figure webcreate2.png" )
+![alt text](../session2/images/webcreate2.png "Figure webcreate2.png" )
 
 d) click next and accept the default options for tomcat and javaEE
 
-![alt text](../Week2/images/webcreate3.png "Figure webcreate3.png" )
+![alt text](../session2/images/webcreate3.png "Figure webcreate3.png" )
 
 ## 2. Explore your project
 
@@ -50,11 +50,11 @@ Netbeans provides two views of projects; A project view and a files view
 
 The Files view shows you exactly where each part of the project is created and stored on your computer
 You can see that the java classes are stored in a nested tree of folders corresponding to the package name of each class.
-![alt text](../Week2/images/webcreate4.png "Figure webcreate4.png" )
+![alt text](../session2/images/webcreate4.png "Figure webcreate4.png" )
 
 The Project View can make it a bit easier to navigate around the logical layout of the project.
 You can see that the folder tree is collapsed into a package under Source Packages. 
-![alt text](../Week2/images/webcreate5.png "Figure webcreate5.png" )
+![alt text](../session2/images/webcreate5.png "Figure webcreate5.png" )
 
 However this can can also be confusing. 
 
@@ -132,7 +132,7 @@ We have seen how the application handles simple html now we will create a simple
 
 Right click on Web Pages and select add JSP and name the file newjsp
 
-![alt text](../Week2/images/webcreate6.png "Figure webcreate6.png" )
+![alt text](../session2/images/webcreate6.png "Figure webcreate6.png" )
 
 You should see a newjsp.jsp page with the following content.
 

@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.solent.oodd</groupId>
-    <artifactId>webExercise1</artifactId>
+    <artifactId>webExercise1-answer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>webExercise1</name>
+    <name>webExercise1-answer</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
