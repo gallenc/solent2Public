@@ -2,7 +2,8 @@
 Git Repository of java examples for Solent Students for COM504 Object oriented design and development.
 
 ## Contents
-The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. Please read and follow the Getting Started instructions before doing anything else.
+The repository contains a number of example projects, weekly exercises and an area for you to create and store your own work during the course 'myPracticeCourseWork'. 
+Please read and follow the Getting Started instructions before doing anything else.
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
@@ -46,6 +47,11 @@ git add --all (a command to stage all of the current changes ready for a commit)
 git commit -m 'my commit message' (a command to commit changes to your local repository)
 git push (a command to push your latest commits up to the remote repository)
 ```
+
+### IMPORTANT GitHub Security
+Github no longer accepts a simple username and password for accessing accounts. 
+Please see the page on [Github Security](../master/githubsecurity.md) to see how to set up certificates to access your github account from the university machines.
+
 ### Forking the solent2Public repo
 You could just clone the master solent2Public repo and work on the clone locally. 
 However you do not have write permissions to this repo and so you couldn't save (or push) any changes or work you have added.
