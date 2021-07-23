@@ -32,7 +32,17 @@ Github will decrypt and validate your authentication credentials using the publi
 The private certificate is stored on your local machine and the public certificate is pasted into your github account.
 If you take the precation of creating a passphrase when you create your certificate pair, even though your public certificate is potentialy accessable on a shared machine it cannot be used without the passphrase which only you know.
 
-on a windows machine with GIT installed, you can generate your certificates as follows
+Once you have your certificates installed, you can use the following commands to check out repositories
+```
+git clone git@github.com/username/repo.git
+```
+So to check out your repository you can use the SSH link found in the repository page.
+
+![alt text](../master/docs/images/git3.png "Figure git3.png" )
+
+### using ssh certificates
+
+On a windows machine with GIT installed, you can generate your certificates as follows
 
 1. Right click in an empty folder and select git bash to get a terminal window
 
@@ -64,36 +74,39 @@ C:/Users/your-user-id/.ssh/id_ed25519.pub
 3. Take a copy of these two files - perhaps on your U drive. 
 
 NOTE:  C: drives on the university machines are not persisted or shared between machines. 
-There is no way to easily keep the ssh keys associated with your account.
-So you will need to keep a personal copy of these two files and copy them into this folder
+There is no way to easily keep your ssh keys associated with your university account.
+So you will need to keep a personal copy of these two files and each time you work at the university, copy them into this folder:
 ``
 C:/Users/your-user-id/.ssh/
 ``
-Each time you work at the university.
 
-4. Copy your public key (id_ed25519.pub) to github
+4. Copy your public key (id_ed25519.pub) to github.
+
 Log into your github account and select user settings.
  
-There you can select the 'SSH and GPG' tab.
+There you can select the 'SSH and GPG Keys' tab.
 
 Select 'add new SSH key'
 
-You can open the id_ed25519.pub key file on your local machine using notepad and copy and past the contents into github
+You can then open the id_ed25519.pub key file on your local machine using notepad and copy and paste the contents into github
 
 ![alt text](../master/docs/images/git2.png "Figure git2.png" )
 
 3. Test your connection
+
 The following command will test your connection to github using your keys
 ```
 ssh -T git@github.com
 Enter passphrase for key '/c/Users/gallenc/.ssh/id_ed25519':
 Hi gallenc! You've successfully authenticated, but GitHub does not provide shell access.
 ```
-if this does not succeed, use the v (verbose) option to find out where things have gone wrong. 
+If this does not succeed, use the v (verbose) option to find out where things have gone wrong. 
 (e.g. Your key file may be in the wrong place or wrongly named)
 ```
 ssh -Tv git@github.com
 ```
+
+
 For mac or linux users, you can find further instructions here 
 https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
