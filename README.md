@@ -160,7 +160,12 @@ origin  git@github.com:{ your github id}/solent2Public.git (push)
 upstream        https://github.com/gallenc/solent2Public.git (fetch)
 upstream        https://github.com/gallenc/solent2Public.git (push)
 ```
-Now, you can keep your own fork of solent2Public synced with the upstream repository with a few Git commands.
+
+Note that git calls the github repository which your repository is linked to 'origin'.
+This is the respository on github where where push commands normally send the changes.
+The 'upstream' repository is an alternative repository from which you pull additional content for merging with your work.
+
+Having made these changes you can now keep your own fork of solent2Public synced with the class examples in the upstream repository using a few Git commands.
 
 1. Fetch the branches and their respective commits from the upstream repository. 
 Commits to master will be stored in a local branch, upstream/master.
@@ -199,7 +204,7 @@ Fast-forward
 ```
 Your local master branch should now contain all the changes from the upstream repository.
 
-4. You should check in these changes to your own repository
+4. You should push these changes to your own repository on github.
 
 ```
 git status
@@ -228,7 +233,7 @@ nothing to commit, working directory clean
 ## Summary
 To synchronise your repository with the upstream use the following commands
 
-if you have not set up the upstream repo
+If you have not set up the upstream repo
 ```
 git remote add upstream https://github.com/gallenc/solent2Public.git
 ```
