@@ -7,7 +7,7 @@ Please read and follow the Getting Started instructions before doing anything el
 
 [myPracticeCourseWork](../master/myPracticeCourseWork) This is where you should create and save your own practice projects.
 
-[week1](../master/week1/) Initial exercises for the course.
+[session1](../master/session1/) Initial exercises for the course.
 
 ## Prerequisites
 In order to complete these exercises you will need Java 8 or 11, Netbeans 8 or 12, Tomcat, Maven and git installed on your machine. Seperate installation instructions have been provided if you dont have this software installed already.
@@ -231,4 +231,3 @@ https://help.github.com/articles/syncing-a-fork/
 https://help.github.com/articles/configuring-a-remote-for-a-fork/
 
 
-# test file remove me
