@@ -20,7 +20,7 @@ Before doing anything else you will need to follow these getting started instruc
 This will teach you a little bit about git and how to fork a copy of this repository into your own github account.
 
 You will then be able to clone your fork locally and then follow the instructions in the [maven-setup](../master/week1/maven-setup) project to get javac and maven working. 
-After this you can then proceed to doing the exercises in [week1](../master/week1/).
+After this you can then proceed to doing the exercises in [week1](../master/session1/).
 
 ### Introduction to GIT
 To be a professional developer, you will need to become proficient at using version control systems.
@@ -93,9 +93,9 @@ git clone https://github.com/ {your github id }/solent2Public.git
 You should now have a clone of your fork in your gitrepos directory
 gitrepos/solent2Public
 
-You can see how to open projects in this repo using gthe Netbeans IDE in the exercises under
+You can see how to open projects in this repo using the Netbeans IDE in the exercises under
 
-[maven-test-exercise](../master/week1/maven-test-exercise)
+[maven-test-exercise](../master/session1/maven-test-exercise)
 
 ### hidden files .git and .gitignore
 You should set the view on your windows file explorer to show hidden files and file extensions. 

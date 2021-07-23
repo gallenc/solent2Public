@@ -36,7 +36,7 @@ Once you have your certificates installed, you can use the following commands to
 ```
 git clone git@github.com/username/repo.git
 ```
-So to check out your repository you can use the SSH link found in the repository page.
+To check out your repository you can use the SSH link found in your repository page.
 
 ![alt text](../master/docs/images/git3.png "Figure git3.png" )
 
