@@ -19,8 +19,8 @@ PLEASE NOTE that the university lab PC's should now have maven pre-installed so 
 Before doing anything else you will need to follow these getting started instructions.
 This will teach you a little bit about git and how to fork a copy of this repository into your own github account.
 
-You will then be able to clone your fork locally and then follow the instructions in the [maven-setup](../master/week1/maven-setup) project to get javac and maven working. 
-After this you can then proceed to doing the exercises in [week1](../master/session1/).
+You will then be able to clone your fork locally and then follow the instructions in the [maven-setup](../master/session1/maven-setup) project to get javac and maven working. 
+After this you can then proceed to doing the exercises in [session1](../master/session1/).
 
 ### Introduction to GIT
 To be a professional developer, you will need to become proficient at using version control systems.
@@ -89,6 +89,10 @@ mkdir gitrepos
 cd gitrepos
 git clone https://github.com/ {your github id }/solent2Public.git
 ```
+Important:  if using SSH keys use
+```
+git clone  git@github.com:{your github id }/solent2Public.git
+```
 
 You should now have a clone of your fork in your gitrepos directory
 gitrepos/solent2Public
@@ -127,17 +131,34 @@ $ git remote -v
 origin  https://github.com/{ your github id}/solent2Public.git (fetch)
 origin  https://github.com/{ your github id}/solent2Public.git (push)
 ```
+if you are using SSH keys this will be
+```
+$ git remote -v
+origin  git@github.com:{ your github id}/solent2Public.git (fetch)
+origin  git@github.com:{ your github id}/solent2Public.git (push)
+```
 
 To sync with the upstream repo you need to add another remote repository
 ```
 $ git remote add upstream https://github.com/gallenc/solent2Public.git
+```
+NOTE even if you are using SSH to acces your repo, use https to access the upstream repo because you do not need a password or certificates to pull a public repo.
 
+To see the upstream repositories use
+```
 $ git remote -v
 origin  https://github.com/{ your github id}/solent2Public.git (fetch)
 origin  https://github.com/{ your github id}/solent2Public.git (push)
 upstream        https://github.com/gallenc/solent2Public.git (fetch)
 upstream        https://github.com/gallenc/solent2Public.git (push)
-
+```
+if you are using SSH this will be
+```
+$ git remote -v
+origin  git@github.com:{ your github id}/solent2Public.git (fetch)
+origin  git@github.com:{ your github id}/solent2Public.git (push)
+upstream        https://github.com/gallenc/solent2Public.git (fetch)
+upstream        https://github.com/gallenc/solent2Public.git (push)
 ```
 Now, you can keep your own fork of solent2Public synced with the upstream repository with a few Git commands.
 
