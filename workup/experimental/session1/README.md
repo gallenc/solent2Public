@@ -5,9 +5,10 @@ See instruction powerpoint and example video
 
 ## Java build and test exercises and some Java revision
 
-These exercises will help you appreciate what maven does to help your build.
+These exercises will help you appreciate what maven does to help you build a java project.
 
-Before you do anything, you should ensure that you have maven installed and a windows command prompt with the correct class path. 
+Before you do anything, you should ensure that you have maven installed correctly and can open a windows command prompt with the correct class path. 
+
 
 Open a cmd.exe window and try
 ```

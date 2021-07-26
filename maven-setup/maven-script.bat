@@ -32,7 +32,8 @@ Call :UnZipFile "%cd%\maven\" "%cd%\%mavenZip%"
 )
 
 REM THIS IS VALUE SET BY SOLENT
-SET JAVA_HOME=C:\Program Files\Java\jdk1.8.0_202
+
+SET JAVA_HOME=C:\Program Files\AdoptOpenJDK\jdk-8.0.282.8-hotspot
 echo setting JAVA_HOME to %JAVA_HOME%  you may need to change this if wrong JDK referenced
 SET PATH=%JAVA_HOME%\bin;%PATH%;
 
