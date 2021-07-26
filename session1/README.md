@@ -29,7 +29,5 @@ If you use [maven-setup](../maven-setup). Keep the command prompt open and CD to
 2. Then look at the [maven-test-exercise](../session1/maven-test-exercise) to understand what maven does for you.
 
 3. Finally try the [revisionCOM405](../session1/revisionCOM405).
-This exercise will help you revise the final weeks of COM405 Introduction to OOD / Java and introduce UML, Testing and maven.
-
-The answer to this exercise is here [revisionCOM405Answer](../session/revisionCOM405Answer) but dont look at it until you have tried your own. 
+This exercise will help you revise the final weeks of COM405 Introduction to OOD / Java and introduce UML, Testing and maven. The answer to this exercise is here [revisionCOM405Answer](../session1/revisionCOM405Answer) but dont look at it until you have tried your own. 
 
