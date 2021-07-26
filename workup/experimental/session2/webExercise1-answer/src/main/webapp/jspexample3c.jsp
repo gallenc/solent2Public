@@ -10,15 +10,15 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.solent.oodd.webexercise1.User" %>
 <%
-    // retreive the dsdtored users list from the session
-    List<User> users = (List<User>) session.getAttribute("users");
+    // retreive the stored users list from the session
+    List<User> users = (List<User>) session.getAttribute("usersList");
     if (users == null) {
         users = new ArrayList<User>();
-        session.setAttribute("users", users);
+        session.setAttribute("usersList", users);
     }
 
     String name = request.getParameter("userName");
-    String address = request.getParameter("address");
+    String address = request.getParameter("userAddress");
     String index = request.getParameter("index");
 
     // find what action to perform on the page
