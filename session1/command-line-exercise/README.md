@@ -127,8 +127,52 @@ This is the expected output which shows that (ignore the no log4j config file fo
 ERROR StatusLogger No Log4j 2 configuration file found. Using default configuration (logging only errors to the console), or user programmatically provided configurations. Set system property 'log4j2.debug' to show Log4j 2 internal initialization logging. See https://logging.apache.org/log4j/2.x/manual/configuration.html for instructions on how to configure Log4j 2
 I am running the following java class: class MyTestClassLog4j
 14:12:18.597 [main] ERROR MyTestClassLog4j - I am logging this message
+
 ```
 The last line is the output from the logger
+
+The logger is configuraed by a log4j2.xml file found on the classpath.
+Create a log4j2.xml file and add the following content:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <!-- Logging Properties -->
+    <Properties>
+        <!-- this sets the output style properties for the log messages -->
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+ 
+    </Properties>
+    <Appenders>
+        
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+       
+    </Appenders>
+    <Loggers>
+        
+        <!-- The name org.solent specifies that log names beginning with this string are dealt with by the following appenders -->
+        <!-- i.e. in our config, classes in package names beginnign org.solent -->
+        <Logger name="org.solent"  additivity="false" level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <!-- this logs to  the Consol (System.out) -->
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+```
+Run the test again. 
+Log4j will not complain because it has its configuration file. 
+```
+java -classpath log4j-core-2.11.0.jar;log4j-api-2.11.0.jar;. MyTestClassLog4j
+I am running the following java class: class MyTestClassLog4j
+14:12:18.597 [main] ERROR MyTestClassLog4j - I am logging this message
+```
 
 NOTE if you are using power-shell instead of cmd to run the exercies, you may need to change the commands to have quotes around the class path:
 
@@ -143,11 +187,13 @@ If you are using linux and possibly on a Mac (I tested on centos 8) try using a 
 javac -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar" MyTestClassLog4j.java
 java -classpath "log4j-core-2.11.0.jar:log4j-api-2.11.0.jar:." MyTestClassLog4j
 ```
+
 The resulting directory structure is
 ```
 week1/command-line-exercise/src/java
 log4j-api-2.11.0.jar
 log4j-core-2.11.0.jar
+log4j2.xml
 MyTestClass.class
 MyTestClass.java
 MyTestClassLog4j.class
