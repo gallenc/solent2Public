@@ -1,8 +1,8 @@
 # Maven Test Exercise
-This is an exercise to help teach you what you need to know about maven
+This is an exercise to help teach you what you need to know about maven.
 Maven is a very powerfull tool to help you manage library dependencies, build and test your project.
 It simplifies greatly the problem of building, testing and packaging projects and placing library jars on java class paths.
-All of the major IDE's such as Eclipse, Netbeans and Intellij support maven.
+All of the major Integrated Development Environments (IDE's) such as Eclipse, Netbeans and Intellij support maven.
 This means that  
 Maven allows you to create projects which are completely independent of the IDE you choose to use.
 Nearly all modern open source java projects use Maven (or Gradel which also uses maven artefacts) as their build system. 
