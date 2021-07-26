@@ -45,11 +45,11 @@ mvn groupID:artifactID:version:goal
 When you run the command 
 You will be presented with a very large list of possible archetypes.
 
-Choose the default (1674) 1674: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
+Choose the default (1805) 1805: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
 When asked, enter the following values REPLACING gallenc with YOUR github username
 ```
-Choose a number: 1674: 1674
+Choose a number: 1805: 1805
 Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
 1: 1.0-alpha-1
 2: 1.0-alpha-2
@@ -60,7 +60,7 @@ Choose org.apache.maven.archetypes:maven-archetype-quickstart version:
 7: 1.3
 8: 1.4
 Choose a number: 8: 8
-Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc with your username)
+Define value for property 'groupId': : org.gallenc.com504.ood  (REPLACE gallenc with your username. No capitals or spaces)
 Define value for property 'artifactId': : example1  (call this example1)
 Define value for property 'version':  1.0-SNAPSHOT: :   (leave as 1.0-SNAPSHOT)
 Define value for property 'package':  org.gallenc.com504.ood: : (leave the suggested package)
@@ -72,7 +72,7 @@ package: org.gallenc.com504.ood
  Y: :
 ```
 
-You should now have an example1 project generated in your myPracticeCourseWork\week1\mavenTestExercises\example1 folder.
+You should now have an example1 project generated in your myPracticeCourseWork\session1\mavenTestExercises\example1 folder.
 
 4. Build your new project
 ```
@@ -104,15 +104,15 @@ src/main
 src/test 
 target
 ```
-target contains the built artefacts and is deleted by mvn clean and re created by mvn install
+The target contains the built artefacts and is deleted by mvn clean and re-created by mvn install
 
 IMPORTANT you MUST ensure that /target/ is included in your .gitignore file so that it is NEVER checked into your git repository with the src files.
 
-b) Look under the Projects tab
+b) Look under the Projects tab on netbeans
 
 Notice the generated packages
 
-c) Look at both App.java and AppTest.java
+c) Look at both App.java and AppTest.java. What do they do?
 
 d) Look at the test dependencies
 
@@ -124,26 +124,45 @@ f) Right click on App.java, select Run, what happens?
 
 open the example1 pom.xml file and notice the junit dependencies 
 
-maven stores all the dependencies it downloads in a file called .m2
+maven stores all the dependencies it downloads in a folder called .m2
 
-look in your C:\Users\ {your username} \ .m2 \repository folder and see if you can find the junit dependency
+Look in your C:\Users\ {your username} \ .m2 \repository folder and see if you can find the junit dependency
 
-this has been downloaded automatically by maven from the central maven repository
+This has been downloaded automatically by maven from the central maven repository
 
 see https://mvnrepository.com/artifact/junit/junit/4.11
 
 # Exercise
 
-a) can you move MyTestClassLog4j.java into your example1 project replacing App.java in the same location on the class path?
+a) Can you move MyTestClassLog4j.java into your example1 project beside App.java in the same location on the class path? Remember to add the package name to MyTestClassLog4j.java
 
-b) can you change the pom so that the 2 required log4j2 files are now downloaded and included in the build?
+b) can you change the pom so that the 2 required log4j2 jar files are now downloaded and included in the build? 
+The following URL's will help.
 
-c) can you write a test class MyTestClassLog4jTest.java which runs the writeAboutMe() method?
+Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.11.0
 
-# Finally
+Details: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.11.0
+
+c) can you place the log4j2.xml file in the test resources folder /src/test/resources
+
+d) can you write a test class MyTestClassLog4jTest.java which runs the MyTestClassLog4j.writeAboutMe() method?
+
+e) can you build and test your code automatically using 
+```
+mvn clean install
+```
+
+f) can you find the built example1-1.0-SNAPSHOT.jar file in the /target directory
+
+An answer to the above exercises is provided in ![example1-answer](../maven-test-exercise/example1-answer)
+
+Try the exercise first then look at the answer.
+
+# Finally Commit your work
+
 You have created a new project in  
 ```
-myPracticeCourseWork\week1\mavenTestExercises
+myPracticeCourseWork\session1\mavenTestExercises
 ```
 You should check this in to your local git repository and push to your github account.
 
