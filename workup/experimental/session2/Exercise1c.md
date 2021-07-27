@@ -2,7 +2,7 @@
 
 These exercises follow on from [Exercise 1b](../session2/Exercise1b.md) and use the same project you created.
 
-## 5. Session objects 
+## 7. Session objects 
 
 Up until now our examples have shown a 'stateless' application.
 By this we mean, the application has not stored any information and the response has been determined entirely by the input variables supplied by the calling form.
@@ -88,7 +88,7 @@ In your existing project, create a new JSP called jspexample2.jsp and paste in t
 </html>
 
 ```
-## Testing the page
+## 8. Testing the page
 
 Open a browser at http://localhost:8080/webExercise1/jspexample3.jsp
 
@@ -102,7 +102,7 @@ Try opening http://localhost:8080/webExercise1/jspexample3.jsp in a differnt bro
 You should see the same page but with no entries in the names list.
 This is because the differnt browser has extablished a new unique session with its own names list as if you are a differnt user.
 
-## The List Objects
+## 9. The List Objects
 
 At the top of the page in the java section deliminated by the <% %> escape characters, you will see the code which drives this page.
 
@@ -168,7 +168,7 @@ But if it doesn't already exist, we create a new one and save it in the session.
     }
 ```
 
-## Displaying a list of names
+## 10. Displaying a list of names
 
 The following code is used to display all of the strings in the user list.
 You will see that we are mixing pure java code with html by using the <% %> operators 

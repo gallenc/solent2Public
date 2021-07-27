@@ -48,4 +48,4 @@ The following exercises will introduce you to writing your own JSPs.
 
 [Exercise 1c](../session2/Exercise1c.md) takes the example exercise further looking at the session object.
 
-Try these exercises on your own first then look at the example code here [webExercise1-answer](../session2/webExercise1-answer)
+Try these exercises on your own first then look at the example answers here [webExercise1-answer](../session2/webExercise1-answer)
