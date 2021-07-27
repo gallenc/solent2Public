@@ -98,7 +98,7 @@ Now copy one of the names from the list into the 'remove user name' field and pr
 
 The user list is stored in the user session and the JSP adds or removes a name from the list depending on which button is pressed.
 
-Try opening http://localhost:8080/webExercise1/jspexample3.jsp in a differnt browser to the uone you are using by default. (Edge, Chrome or Firefox).
+Try opening http://localhost:8080/webExercise1/jspexample3.jsp in a differnt browser to the one you are using by default. (Edge, Chrome or Firefox).
 You should see the same page but with no entries in the names list.
 This is because the differnt browser has extablished a new unique session with its own names list as if you are a differnt user.
 
@@ -111,7 +111,7 @@ You will see we are importing a List interace and it's implementation ArrayList 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 ```
-If you ever want to know what a standard class does you can look for it's javadoc online
+If you ever want to know what a standard class does you can look for it's javadoc online.
 
 The List interface is described here
 
@@ -123,7 +123,7 @@ And we can see by looking at the javadoc that there are several differnt Known I
 An ArrayList is simply a List implemented using a java Array
 https://docs.oracle.com/javase/8/docs/api/index.html?java/util/ArrayList.html
 
-If you are intersted you can learn more about java arrays here https://www.w3schools.com/java/java_arrays.asp
+If you are interested you can learn more about java arrays here https://www.w3schools.com/java/java_arrays.asp
 
 and Java Lists here https://www.w3schools.com/java/java_arraylist.asp
 
@@ -137,6 +137,9 @@ We can use this by adding 'Generics' to our List definition as below.
 List<String> users = new ArrayList<String>();
 ```
 This tells the compiler that our users List will only ever contain String objects and will be implemented usign the ArrayList implementation.
+
+This is a very basic description of the complex topic of generics but all we need to know for now.
+You can learn more about generics here https://www.baeldung.com/java-generics
 
 ## Storing the list in the session Object
 
