@@ -1,5 +1,5 @@
 <%-- 
-    Document   : jspexample2
+    Document   : jspexample3
     Created on : 22-Jul-2021, 11:16:28
     Author     : admin
     THIS EXAMPLE SHOWS HOW OBJECTS CAN BE STORED IN THE SESSION
@@ -45,13 +45,13 @@
         %>
         <h2>commands</h2>
         <form action="./jspexample3.jsp" method="get">
-            <p>user name <input type="text" name="userName" value=""></p>
+            <p>add user name <input type="text" name="userName" value=""></p>
             <input type="hidden" name="action" value="addUser">
             <button type="submit" >add name to list</button>
         </form> 
         <br>
         <form action="./jspexample3.jsp" method="get">
-            <p>user name <input type="text" name="userName" value=""></p>
+            <p>remove user name <input type="text" name="userName" value=""></p>
             <input type="hidden" name="action" value="removeUser">
             <button type="submit" >remove name from list</button>
         </form> 

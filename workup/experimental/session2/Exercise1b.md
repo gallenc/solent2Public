@@ -52,7 +52,7 @@ You can view this page by browsing to http://localhost:8080/webExercise1/jspexam
 
 Try entering a name and pressing the 'add name using GET' button.
 
-You should see 'Hello I think your name is null' change to 'hello I think your name is <your name>'
+You should see 'Hello I think your name is null' change to 'hello I think your name is -your name-'
 
 The URL at the top of the page should also have changed to http://localhost:8080/webExercise1/jspexample2.jsp?userName=<your name>
 

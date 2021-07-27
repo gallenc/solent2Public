@@ -39,10 +39,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Example 3c</title>
+        <title>JSP Example 3d</title>
     </head>
     <body>
-        <h1>JSP Example 3c: Modify User table</h1>
+        <h1>JSP Example 3d: Modify User table</h1>
 
         <table style="width:20%">
             <tr>
@@ -59,10 +59,14 @@
                 <td><%=user.getName()%></td>
                 <td><%=user.getAddress()%></td>
                 <td>
-                    <form action="./jspexample3c.jsp" method="get">
+                    <form action="./jspexample3d.jsp" method="get">
                         <input type="hidden" name="index" value="<%=idx%>">
                         <input type="hidden" name="action" value="removeUser">
                         <button type="submit" >remove</button>
+                    </form>
+                    <form action="./jspexample3d-modify.jsp" method="get">
+                        <input type="hidden" name="index" value="<%=idx%>">
+                        <button type="submit" >modify</button>
                     </form>
                 </td>
             </tr>
@@ -76,7 +80,7 @@
             <p>user name <input type="text" name="userName" value=""></p>
             <p>user address <input type="text" name="userAddress" value=""></p>
             <input type="hidden" name="action" value="addUser">
-            <button type="submit" >add name to list</button>
+            <button type="submit" >add user to list</button>
         </form> 
 
     </body>
