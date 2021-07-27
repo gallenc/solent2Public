@@ -38,6 +38,7 @@
             <button type="submit" >add name using POST</button>
         </form> 
 
-
+        <br>
+        <a href="./" >back to index page</a>
     </body>
 </html>

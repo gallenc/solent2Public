@@ -44,7 +44,7 @@
     <body>
         <h1>JSP Example 3c: Modify User table</h1>
 
-        <table style="width:20%">
+        <table style="width:20%; border: 1px solid black;" > 
             <tr>
                 <th>No</th>
                 <th>Name</th>
@@ -79,5 +79,7 @@
             <button type="submit" >add name to list</button>
         </form> 
 
+        <br>
+        <a href="./" >back to index page</a>
     </body>
 </html>

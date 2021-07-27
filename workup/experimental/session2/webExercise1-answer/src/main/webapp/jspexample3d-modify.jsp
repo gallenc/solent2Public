@@ -52,6 +52,7 @@
         <form action="./jspexample3d.jsp" method="get">
             <button type="submit" >return to user list</button>
         </form> 
-
+        <br>
+        <a href="./" >back to index page</a>
     </body>
 </html>

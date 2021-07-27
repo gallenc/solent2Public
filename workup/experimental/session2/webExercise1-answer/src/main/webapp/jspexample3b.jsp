@@ -37,7 +37,7 @@
     <body>
         <h1>JSP Example 3b: User table</h1>
 
-        <table style="width:20%">
+        <table style="width:20%; border: 1px solid black;" > 
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -63,7 +63,9 @@
             <p>user name <input type="text" name="userName" value=""></p>
             <input type="hidden" name="action" value="addUser">
             <button type="submit" >add name to list</button>
-        </form> 
-
+        </form>
+        
+        <br>
+        <a href="./" >back to index page</a>
     </body>
 </html>

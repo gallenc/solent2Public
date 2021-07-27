@@ -56,6 +56,7 @@
             <button type="submit" >remove name from list</button>
         </form> 
 
-
+        <br>
+        <a href="./" >back to index page</a>
     </body>
 </html>
