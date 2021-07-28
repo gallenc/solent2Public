@@ -34,5 +34,8 @@
         <module>workup/webfacadeexample1</module>
         <module>workup/mavenproject1</module>
         <module>week2/mavenproject1</module>
+        <module>workup/experimental/session3/creditcardtest</module>
+        <module>workup/experimental/session3/creditcardtest/mavenproject1</module>
+        <module>workup/experimental/session3/creditcardtest/creditcardchecker</module>
     </modules>
 </project>

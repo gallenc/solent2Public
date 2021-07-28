@@ -5,7 +5,7 @@
 This example gives answers to last weeks class and  will take you through logging with log4j. 
 
 Look at the log4j2.xml file. 
-See  that as well as printing to the terminal it is creting a log file in the target directory
+See  that as well as printing to the terminal it is creating a log file in the target directory
 
 Look at the answers to last weeks exercise in the example1 project. 
 
