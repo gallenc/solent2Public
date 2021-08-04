@@ -103,11 +103,20 @@ http://localhost:8080/webExercise1 will be the same as http://localhost:8080/web
 
 a) To run the application, right click on the webExercise1 project and select 'run'.
 
-The log output will tell you that tomcat is starting up adn that thed application is being deployed. 
+![alt text](../session2/images/netbeansRun.png "Figure netbeansRun.png" )
+
+The log output will tell you that tomcat is starting up and that the application is being deployed to tomcat. 
+
 Once deployed, the application will be available at http://localhost:8080/webExercise1/index.html
 You should see 'hello world'.
 
-b) add a new web page
+If you look at the tomcat tab under services you will see your application is deployed.
+
+![alt text](../session2/images/netbeansTomcat.png "Figure netbeansTomcat.png" )
+
+Finally, you can undeploy your application by right clicking on the webExercise1 project and select 'clean'.
+
+b) Add a new web page
 You can add a new html page, simply be right clicking on Web Pages and select add Html. 
 call the new page newhtml.html
 
@@ -168,24 +177,25 @@ We mentioned that jsp's mix java code with html. Add the following lines so that
 
 You should now see the date and time printed out and every time you refresh the page, the seconds should increment.
 
-In JSPs  <% and %> are escape characters which indicate the intervening lines are JSP specific and are not included in the generated html
+In JSPs  <% and %> are escape characters which indicate the intervening lines are JSP specific and are not included in the generated html.
+Usually we write java code between these characters in a ISP page.
 
 The <%= %> directive tells the server that java code between the <%= %> will return a string to include in the page.
 
-the <%@ page import="java.util.Date" %> directive imports the class in a similar way to the java import directive in a java class file.
+the <%@ page import="java.util.Date" %> directive imports a class (in this case java.util.Date) in a similar way to the java import directive in a normal java class file.
 
 ## looking at the servelet
 We said earlier that JSP files are converted into java code by tomcat (actually the jasper library in tomcat). 
-This code is called a servelet and it is the generated servelet class which is then run by tomcat to render the page.
+This code is called a servelet and it is the generated servelet class which is then executed by tomcat to render the page.
 
 In Netbeans it is possible to see the servelet java code which has been generated. 
-While your program is running, you can right click on the jsp and select view servelet.
+While your program is running in tomcat, you can right click on the jsp and select 'view servelet'.
 
 ![alt text](../session2/images/webcreate7.png "Figure webcreate7.png" )
 
-You should see java code something like the Example servlet generated from JSP at the bottom of this page . 
+You should see java code something like the Example servlet generated from a JSP at the bottom of this page . 
 
-We dont need to worry too much about the details of servelet code because it is generated for us but it is worth noticing a few things to help us understadn how JSPs work.
+We dont need to worry too much about the details of servelet code because it is generated for us, but it is worth noticing a few things to help us understadn how JSPs work.
 
 The most important method begins with the line
 
@@ -197,7 +207,7 @@ This method takes the request object which contains the information extracted fr
 The method returns the response object which contains the HTTP html response which this jsp will return.
 
 If you look inside the method you will see many lines beginning with out.write().
-These lines contain the static web page content taken from the jsp.
+These lines contain the static web page content extracted from wihin the jsp.
 
 ```
       out.write("<!DOCTYPE html>\n");

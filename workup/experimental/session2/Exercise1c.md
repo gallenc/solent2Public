@@ -15,12 +15,12 @@ Sessions are maintained for as long as a user is interacting with a site.
 Usually sessions will time out after a few minutes if there is no user activity.
 
 Java Server Pages can access a 'session object' called 'session' which is unique to a particular browser/user accessing the page. 
-Session objects can be used to store session related information which only needs to exist for the duratino of the session. 
+Session objects can be used to store session related information which only needs to exist for the duration of the session. 
 For instance, if a user logs in to a site, the session object may contain the 'user permissions or roles' associated with the logged in user.
 That way we can control which parts of a page a user sees depending upon their permissions. 
 
 In our next example, we are going to store a list of names in the session object.
-Our JSP will add and remove names from the list but because the list is stored in the session, each user will have a unique list and will not be able to see anyone elses list.
+Our JSP will add and remove names from the list but because the list is stored in the session, each user will have a unique list and will not be able to see anyone else's list.
 
 In your existing project, create a new JSP called jspexample2.jsp and paste in the following content.
 
@@ -98,15 +98,15 @@ Now copy one of the names from the list into the 'remove user name' field and pr
 
 The user list is stored in the user session and the JSP adds or removes a name from the list depending on which button is pressed.
 
-Try opening http://localhost:8080/webExercise1/jspexample3.jsp in a differnt browser to the one you are using by default. (Edge, Chrome or Firefox).
+Try opening http://localhost:8080/webExercise1/jspexample3.jsp in a different browser to the one you are using by default. (Edge, Chrome or Firefox).
 You should see the same page but with no entries in the names list.
-This is because the differnt browser has extablished a new unique session with its own names list as if you are a differnt user.
+This is because the differnt browser has established a new unique session with its own names list as if you are a different user.
 
 ## The List Objects
 
-At the top of the page in the java section deliminated by the <% %> escape characters, you will see the code which drives this page.
+At the top of the page in the java section delimited by the <% %> escape characters, you will see the code which drives this page.
 
-You will see we are importing a List interace and it's implementation ArrayList from the standard jave colletions library
+You will see we are importing a List interface and its implementation ArrayList from the standard java collections library
 ```
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -119,7 +119,7 @@ https://docs.oracle.com/javase/8/docs/api/index.html?java/util/List.html
 
 A list is simply a store of objects ordered by the order in which they are inserted.
 
-And we can see by looking at the javadoc that there are several differnt Known Implementing Classes indluding the ArrayList which we are using. 
+And we can see by looking at the javadoc that there are several different Known Implementing Classes including the ArrayList which we are using. 
 An ArrayList is simply a List implemented using a java Array
 https://docs.oracle.com/javase/8/docs/api/index.html?java/util/ArrayList.html
 
@@ -136,7 +136,7 @@ We can use this by adding 'Generics' to our List definition as below.
 ```
 List<String> users = new ArrayList<String>();
 ```
-This tells the compiler that our users List will only ever contain String objects and will be implemented usign the ArrayList implementation.
+This tells the compiler that our users List will only ever contain String objects and will be implemented using the ArrayList implementation.
 
 This is a very basic description of the complex topic of generics but all we need to know for now.
 You can learn more about generics here https://www.baeldung.com/java-generics
@@ -144,12 +144,12 @@ You can learn more about generics here https://www.baeldung.com/java-generics
 ## Storing the list in the session Object
 
 Whenever a user first browses to our jspexample3.jsp page, we need to create a new list of names and store this in the session object.
-Every subsequent visit to the page should retreive the list from the session object.
+Every subsequent visit to the page should retrieve the list from the session object.
 
 Sessions store and retrieve objects using a name value pair. 
 The session object doesn't know or care what the object is, so we need to tell our program how to use the retrieved object. 
-When we retireve an object from a session, we need to 'cast' it to the correct object type before we can use it.
-The following segment tells the compiler that the Object retrieved from the session is actualy a List of Strings.
+When we retrieve an object from a session, we need to 'cast' it to the correct object type before we can use it.
+The following segment tells the compiler that the Object retrieved from the session is actually a List of Strings.
 This is called casting an object. 
 Note that an object can only be casted to another type if it implements the same interfaces as the casted type.
 ```
@@ -179,7 +179,7 @@ You will see that we are mixing pure java code with html by using the <% %> oper
             }
         %>
 ```
-You can see that we are using a for loop to interate through all of the strings in the users list.
+You can see that we are using a for loop to iterate through all of the strings in the users list.
 We are using html to format how the user is printed.
 
 ## The Action variable
@@ -219,7 +219,7 @@ Depending on which button is pressed, the jspexample3.jsp page is called with th
 
 ## Exercise 1: Adding multiple remove buttons
 It is a bit tedious having to cut and paste the name of an item to remove. 
-Can you create a page like the figure below which provides a seperate button to delete each item.
+Can you create a page like the figure below which provides a separate button to delete each item.
 Clue - create a table and make the remove button one cell in the table.
 
 ![alt text](../session2/images/jspexample3b.png "Figure jspexample3b.png" )
