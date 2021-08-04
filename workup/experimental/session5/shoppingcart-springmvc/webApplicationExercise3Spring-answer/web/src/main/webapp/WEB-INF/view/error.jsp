@@ -5,13 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Error Page</title>
-    </head>
-    <body>
+<jsp:include page="header.jsp" />
+<!-- Begin page content -->
+<main role="main" class="container">
         <h1>Error Page</h1>
         <p>Application has encountered an error.</p>
         <p>${error}</p>
@@ -20,6 +16,6 @@
         <p>Exception:  ${exception.message}</p>
         <p>Stack trace:</p>
         <p>${strStackTrace}</p>
-    
-</body>
-</html>
+</main>
+
+<jsp:include page="footer.jsp" />

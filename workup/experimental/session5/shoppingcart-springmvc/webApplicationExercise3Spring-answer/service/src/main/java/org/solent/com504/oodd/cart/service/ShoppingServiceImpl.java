@@ -6,9 +6,10 @@
 package org.solent.com504.oodd.cart.service;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import org.solent.com504.oodd.cart.model.service.ShoppingCart;
 import org.solent.com504.oodd.cart.model.dto.ShoppingItem;
 import org.solent.com504.oodd.cart.model.service.ShoppingService;
@@ -19,7 +20,8 @@ import org.solent.com504.oodd.cart.model.service.ShoppingService;
  */
 public class ShoppingServiceImpl implements ShoppingService {
 
-    private HashMap<String, ShoppingItem> itemMap = new HashMap<String, ShoppingItem>();
+    // note ConcurrentHashMap instead of HashMap if map can be altered while being read
+    private Map<String, ShoppingItem> itemMap = new ConcurrentHashMap<String, ShoppingItem>();
 
     private List<ShoppingItem> itemlist = Arrays.asList(new ShoppingItem("house", 20000.00),
             new ShoppingItem("hen", 5.00),

@@ -22,7 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MVCController {
 
     // this could be done with an autowired bean
-    private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
+    //private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
+    
+    @Autowired
+    ShoppingService shoppingService =null;
+    
+    // note that scope is session in configuration
+    // so the shopping cart is unique for each web session
+    @Autowired
+    ShoppingCart shoppingCart = null;
+
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String index(Model model) {
+        return "redirect:/index.html";
+    }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String viewCart(@RequestParam(name = "action", required = false) String action,
@@ -31,20 +44,25 @@ public class MVCController {
             Model model,
             HttpSession session) {
 
+        // used to set tab selected
+        model.addAttribute("selectedPage", "home");
+
         String message = "";
         String errorMessage = "";
 
         // note that the shopping cart is is stored in the user's session
-        // so ther is one cart per user
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
-        if (shoppingCart == null) synchronized (this) {
-            if (shoppingCart == null) {
-                shoppingCart = WebObjectFactory.getNewShoppingCart();
-                session.setAttribute("shoppingCart", shoppingCart);
-            }
-        }
+        // so there is one cart per user
+//        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+//        if (shoppingCart == null) synchronized (this) {
+//            if (shoppingCart == null) {
+//                shoppingCart = WebObjectFactory.getNewShoppingCart();
+//                session.setAttribute("shoppingCart", shoppingCart);
+//            }
+//        }
 
-        if ("addItemToCart".equals(action)) {
+        if(action == null ){
+            // do nothing but show page
+        } else if ("addItemToCart".equals(action)) {
             ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
             if (shoppingItem == null) {
                 message = "cannot add unknown " + itemName + " to cart";
@@ -77,11 +95,15 @@ public class MVCController {
 
     @RequestMapping(value = "/about", method = {RequestMethod.GET, RequestMethod.POST})
     public String aboutCart(Model model) {
+        // used to set tab selected
+        model.addAttribute("selectedPage", "about");
         return "about";
     }
 
     @RequestMapping(value = "/contact", method = {RequestMethod.GET, RequestMethod.POST})
     public String contactCart(Model model) {
+        // used to set tab selected
+        model.addAttribute("selectedPage", "contact");
         return "contact";
     }
 

@@ -7,7 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-    request.setAttribute("selectedPage", "home");
+// request set in controller
+//request.setAttribute("selectedPage", "home");
 %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->

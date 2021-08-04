@@ -6,7 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    request.setAttribute("selectedPage","contact");
+// request set in controller
+//    request.setAttribute("selectedPage","contact");
 %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->
