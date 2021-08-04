@@ -106,7 +106,7 @@ The page is essentially in 3 sections.
 In order to use this template, we need to embed it in the html code of our JSP's. 
 However it makes more sense to split the pages into a common header.jsp and footer.jsp and have separate body jsp's depending on the content; about.jsp, contact.jsp, main.jsp etc.
 
-To do this we make use of the jsp:include directive. See for instance [main.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/main.jsp).
+To do this we make use of the jsp:include directive. See for instance [home.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/home.jsp).
 ```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -141,10 +141,10 @@ we can see that a little bit of java code is selecting which header is active ba
 Having seen how the navigation bar works and how to use it with JSP's you should now be able to apply this style to the shopping cart application you previously made.
 
 1. Copy your previous application into this weeks folder and import it into netbeans
-2. Copy all the JSP's except main.jsp from the [main.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
+2. Copy all the JSP's except home.jsp from the[webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
 3. Check that the css and js resources are present.
-4. Now look at your main.jsp and consider how to change it to fit into the framework.
-5. if you have added extra pages for receipts etc you should also adapt them to use the framework
+4. Now look at your home.jsp and consider how to change it to fit into the framework.
+5. If you have added extra pages for receipts etc you should also adapt them to use the framework
 
 As always, an example answer is provided [webApplicationExercise3-answer](../shoppingcart-bootstrap/webApplicationExercise3-answer )
  but dont look at this until you have tried it yourself.
