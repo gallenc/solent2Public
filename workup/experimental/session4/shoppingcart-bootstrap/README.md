@@ -19,7 +19,7 @@ To this navbar style;
 
 Before we try and apply bootstrap to our shopping cart, lets look at how to implement a simple set of pages with a navbar.
 
-import the provided [webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap)
+Import the provided [webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap)
 project into netbeans. 
 
 Run the application as a web app in tomcat and browse to http://localhost:8080/webApplicationExercise/home.jsp
@@ -29,6 +29,7 @@ You will see the app has implemented the nav bar style and when a nav bar button
 Lets consider how this is achieved.
 
 The webapp has the following layout
+
 ![alt text](../shoppingcart-bootstrap/images/bootstrapLayout1.png "Figure bootstrapLayout1.png" ) 
 
 You will see that the webapp contains a number of jsp's css and js resources and a bootstrap-starter.html page.
