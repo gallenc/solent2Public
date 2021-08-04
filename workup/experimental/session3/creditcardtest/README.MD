@@ -1,3 +1,4 @@
+
 # Credit Card Test
 
 So far we have looked only at a simple maven project which contains a single module.
@@ -112,7 +113,6 @@ Note that the <version>${project.version}</version> makes sure we pull in the li
     </parent>
 
     <artifactId>creditcardchecker-web</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
  ...
@@ -141,7 +141,9 @@ An example JSP output is shown below
 ![alt text](../creditcardtest/images/validcard.png "Figure validcard.png" )
 
 ## Congratulations
+
 Once you have completed this exercise, you will understand the basics of multi module builds and how to use a library in your web application.
+You can now go on and try the  [shoppingcart](../../session3/shoppingcart ) exercise
 
 
 
