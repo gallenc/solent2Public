@@ -33,6 +33,8 @@ The webapp has the following layout
 ![alt text](../shoppingcart-bootstrap/images/bootstrapLayout1.png "Figure bootstrapLayout1.png" ) 
 
 You will see that the webapp contains a number of jsp's css and js resources and a bootstrap-starter.html page.
+This page is included just to get us started. 
+Once we have embedded the content in our jsp's should can be removed.
 
 Run the application as a web app in tomcat and browse to http://localhost:8080/webApplicationExercise/bootstrap-starter.html
 
