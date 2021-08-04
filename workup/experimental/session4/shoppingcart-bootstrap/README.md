@@ -62,7 +62,9 @@ The page is essentially in 3 sections.
             <!-- contains the nav bar elements -->
 
                       <ul class="nav navbar-nav">
+                            <!-- this is the active page - active needs to change depending on the selected page -->
                             <li class="active"><a href="#">Home</a></li>
+                            
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
                       </ul>
