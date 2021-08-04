@@ -271,7 +271,7 @@ You will need to add a new User import
 ```
 And modify the users List and JSP to use it.
 ```
-List<String> users = new ArrayList<String>();
+List<User> users = new ArrayList<User>();
 ```
 Instead of using the simple iterator you will need to use the list index explicitly in the page
 ```
@@ -290,7 +290,8 @@ Instead of using the simple iterator you will need to use the list index explici
 
 ```
 
-# Exercise 3: can you add a 'Modify User' action which allows you to modify user attributes in a new page.
+## Exercise 3: Add a 'Modify User' action.
+Can you add a 'Modify User' action which allows you to edit user attributes in a new page.
 
 ![alt text](../session2/images/jspexample3d.png "Figure jspexample3d.png" )
 
