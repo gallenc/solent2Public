@@ -14,7 +14,7 @@ This way, every time a new request comes from that browser, the web server knows
 Sessions are maintained for as long as a user is interacting with a site. 
 Usually sessions will time out after a few minutes if there is no user activity.
 
-Java Server Pages can access a 'session object' called 'session' which is unique to a particular browser/user accessing the page. 
+Java Server Pages can access a 'session object' called 'session' which is unique to the particular browser/user accessing the page. 
 Session objects can be used to store session related information which only needs to exist for the duration of the session. 
 For instance, if a user logs in to a site, the session object may contain the 'user permissions or roles' associated with the logged in user.
 That way we can control which parts of a page a user sees depending upon their permissions. 
@@ -129,7 +129,7 @@ and Java Lists here https://www.w3schools.com/java/java_arraylist.asp
 
 Looking at the List interface we can see it has a number of methods including add and remove which we will use in our example.
 
-Raw lists can store any java Object but we wat to make sure that only Strings are ever stored in our list.
+Raw lists can store any java Object but we want to make sure that only Strings are ever stored in our list.
 
 We can use this by adding 'Generics' to our List definition as below.
 
