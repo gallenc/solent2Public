@@ -1,7 +1,8 @@
 
-# New Project Layout
+# Shopping cart Exercise
 
-If you examine the project you will see that it now has additional modules. These are built in sequence in the pom.xml file in the modules section
+If you examine the project [pom.xml](../webApplicationExercise2/pom.xml) you will see that it now has three modules. 
+These are built in sequence in the pom.xml file in the modules section
 ```
     <modules>
         <module>model</module>
@@ -9,12 +10,29 @@ If you examine the project you will see that it now has additional modules. Thes
         <module>web</module>
     </modules>
 ```
+The model module has two packages containing the DTO data transfer object (ShoppingItem), and the service/facade interfaces (ShoppingCart and ShoppingService). 
+```
+org.solent.com504.oodd.cart.model.dto
+org.solent.com504.oodd.cart.model.service
+```
+The service module has one package containing the implementations of the model interfaces (ShoppingCartImpl and ShoppingServiceImpl)
+```
+org.solent.com504.oodd.cart.service
+```
+and a test package to unit test these services using junit (ShoppingCartTest and ShoppingServiceTest)
+```
+org.solent.com504.oodd.cart.service.test
+```
+The image below shows how these packages are displayed in netbeans.
 
-The model has been refactored into two packages corresponding to the DTO data transfer objects, and the service/facade interfaces. 
+![alt text](../webApplicationExercise2/images/ShoppingCartModel.png "Figure ShoppingCartModel.png" )
 
+You can also see that this corresponds to the objects described in the [UML model](../webApplicationExercise2/UMLmodel)
 
+The service module also has a ServiceObjectFactory which allows us to create single instances of the service objects without having to know what the implimentation class is.
+This provides a design pattern to get access to objects in our service library while at the same time allowing flexibility to swap a differnt implementation later if we want.
 
-# Building the project and doing exercises
+## Exercise
 
 ## Task 1 Build compile and import the project
 In order to work with this project, you should first build it using maven
@@ -62,4 +80,17 @@ If you are asked for username and password just use the default admin admin.
 (You must make sure you have stopped any maven started tomcat before you do this.)
 
 You will be able to see the application at http://localhost:8080/webApplicationExercise/
+
+## Task 3 Complete the methods which need completed in the application
+
+The application is not complete and you should complete the methods which are not yet implemented.
+
+1. See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
+
+2. See if you can calculate and display the total of all items in the shopping cart
+
+3. See if you can work out how to change the quantities of each item and calculate a total (needs a little thought);
+
+
+
 
