@@ -130,9 +130,7 @@ Note that the <version>${project.version}</version> makes sure we pull in the li
 
 ### 4. look carefully at the source code and the tests in the card-checker
 You dont need to know everything about how this code works but you do need to know how to use it.
-The tests should show you how to use the library in your own code to check a credit card number.
-
-[cardcheck tests](../creditcardtest//creditcardchecker/card-checker/src/test/java/solent/ac/uk/ood/examples/cardcheck/ )
+The [cardcheck tests](../creditcardtest//creditcardchecker/card-checker/src/test/java/solent/ac/uk/ood/examples/cardcheck/ ) should show you how to use the library in your own code to check a credit card number.
 
 ### 5. Now try to use this little library in a jsp which checks a credit card number. 
 You simply need to use a form for filling in the number, 
