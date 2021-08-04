@@ -63,7 +63,7 @@
             <tr>
                 <td><%=item.getName()%></td>
                 <td><%=item.getPrice()%></td>
-                <td><</td>
+                <td></td>
                 <td>
                     <!-- post avoids url encoded parameters -->
                     <form action="./home.jsp" method="get">

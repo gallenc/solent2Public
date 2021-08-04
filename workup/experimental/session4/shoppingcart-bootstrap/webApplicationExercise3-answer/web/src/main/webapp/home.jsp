@@ -27,7 +27,9 @@
     String itemName = (String) request.getParameter("itemName");
     String itemUuid = (String) request.getParameter("itemUUID");
 
-    if ("addItemToCart".equals(action)) {
+    if (action==null){
+        // do nothing
+    } else if ("addItemToCart".equals(action)) {
         ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
         if (shoppingItem == null) {
             message = "cannot add unknown " + itemName + " to cart";

@@ -56,8 +56,27 @@ If you do run into problems restart Netbeans.
 
 ### To run the project using maven
 
-Maven used the cargo plugin to start an embedded tomcat container.
-You must run the following command after your build in the web directory
+Maven can use the cargo plugin to start an embedded tomcat container.
+The configuration in the /web/pom.xml is;
+```
+        <plugin>
+          
+                <!-- run embedded tomcat with mvn org.codehaus.cargo:cargo-maven2-plugin:run -->
+                <!-- see https://stackoverflow.com/questions/41326911/maven-plugin-for-tomcat-9 -->
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.7.6</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
+                </configuration>
+            </plugin>
+      
+        </plugins>
+```
+You can run the sever after your build using the following command in the web directory
 
 ```
 cd web
@@ -85,12 +104,30 @@ You will be able to see the application at http://localhost:8080/webApplicationE
 
 The application is not complete and you should complete the methods which are not yet implemented.
 
-1. See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
+1. See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of methods in ShoppingCartImpl.java.
 
-2. See if you can calculate and display the total of all items in the shopping cart
+2. See if you can calculate and display the total of all items in the shopping cart. Again you need to add functionality into ShoppingCartImpl.java
 
-3. See if you can work out how to change the quantities of each item and calculate a total (needs a little thought);
+3. See if you can work out how to change the quantities of each item as a new one is added and calculate a total shopping cart value. (needs a little thought);
 
+When you are finished your completed JSP should look like this image.
 
+![alt text](../webApplicationExercise2/images/Exercise2jspimage1.png "Figure Exercise2jspimage1.png" )
 
+## Optional Tasks
+
+- See if you can add more comprehensive tests to the service layer
+
+- See if you can add log messages using log4j whenever items are added to the cart or a cart is purchased.
+
+- See if you can change the model so that the service (ShoppingService.java and ShoppingServiceImpl.java) can create an invoice. Can you display that invoice on another JSP invoice.jsp
+
+```
+public boolean purchaseItems(ShoppingCart shoppingCart);
+
+to
+
+public Invoice purchaseItems(ShoppingCart shoppingCart);
+
+```
 

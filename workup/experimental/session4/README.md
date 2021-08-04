@@ -1,43 +1,18 @@
-# Week 3 Exercises
+# Session 4
 
-## webApplicationExercise2
+These exercises follow on from [session3](../session3/) and use the same shopping cart project you created.
+If you had trouble completing the exercises yourself, 
+you can still use the session 3 answer project [webApplicationExercise2-answer](../session3/shoppingcart/webApplicationExercise2-answer)as your starting point here
 
-### getting started
-Follow the instructions on the main page of the repository to merge my new work with your repository
+In this session we are going to build on our existing shopping cart application to add extra pages and formatting using the bootstrap library.
+Then we are going to look at the SpringMVC framework to see how this improves the web design.
 
-### merge and refactor your new code from last weeks example
+REmemver you should first copy this folder into your own myPracticeCourseWork folder and do any work there.
 
-This week we are looking at a more complete version of the web application we looked at last week. 
+## Exercise 1 adding bootstrap
+You should complete the exercises in [shoppingcart-bootstrap](../session4/shoppingcart-bootstrap)
 
-You will see we have split the project into seperate modules; model, service and web and also have a supporting UML model UMLmodel
-
-Each layer has object actories which the higher layer can use to access the library.
-
-See if you can merge the changes you made to last weeks web application into this version.
-
-### You should have already found solutions to
-
-- See if you can remove an item from the shopping cart - at the moment this throws a notImplemented exception in one of the classes.
-
-- See if you can calculate a total and display the total of all items in the shopping cart
-
-- See if you can work out how to change the quantities  of each item and calculate a total (needs a little thought);
-
-### New work:
-
-- See if you can add comprehensive tests to the service layer
-
-- See if you can add log messages whenever items are added to the cart or a cart is purchased.
-
-- See if you can change the model so that the service (ShoppingService.java and ShoppingServiceImpl.java) can create an invoice
-```
-public boolean purchaseItems(ShoppingCart shoppingCart);
-
-to
-
-public Invoice purchaseItems(ShoppingCart shoppingCart);
-
-```
+## Exercise 2 adding spring mvc
 
 
 
