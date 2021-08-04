@@ -8,18 +8,18 @@ The primary purpose of adding it to a web project is to apply Bootstrap's choice
 The intention of this exercise is to apply the [Bootstrap 3.3 navbar example](https://getbootstrap.com/docs/3.3/examples/navbar/) to our project.
 This is in order to change the style of the application from a very basic funcionality only page;
 
-![alt text](../session4/shoppingcart-bootstrap/images/Exercise2jspimage1.png "Figure Exercise2jspimage1.png" )
+![alt text](../shoppingcart-bootstrap/images/Exercise2jspimage1.png "Figure Exercise2jspimage1.png" )
 
 To this navbar style;
 
-![alt text](../session4/shoppingcart-bootstrap/images/bootstrapjspimage1.png "Figure bootstrapjspimage1.png" )
+![alt text](../shoppingcart-bootstrap/images/bootstrapjspimage1.png "Figure bootstrapjspimage1.png" )
 
 
 ## simple Bootstrap enabled web app
 
 Before we try and apply bootstrap to our shopping cart, lets look at how to implement a simple set of pages with a navbar.
 
-import the provided [webApplicationExercise-bootstrap](../session4/shoppingcart-bootstrap/webApplicationExercise-bootstrap)
+import the provided [webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap)
 project into netbeans. 
 
 Run the application as a web app in tomcat and browse to http://localhost:8080/webApplicationExercise/home.jsp
@@ -29,7 +29,7 @@ You will see the app has implemented the nav bar style and when a nav bar button
 Lets consider how this is achieved.
 
 The webapp has the following layout
-![alt text](../session4/shoppingcart-bootstrap/images/bootstrapLayout1.png "Figure bootstrapLayout1.png" ) 
+![alt text](../shoppingcart-bootstrap/images/bootstrapLayout1.png "Figure bootstrapLayout1.png" ) 
 
 You will see that the webapp contains a number of jsp's css and js resources and a bootstrap-starter.html page.
 
@@ -39,7 +39,7 @@ This should render a sample page identical to that when you browse to the [Boots
 
 In fact, the first step to create this app was to download the navbar example content including the css and js links from getbootstrap.com and install it in the web app. 
 
-Look at the source of the [bootstrap-starter.html](../session4/shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/bootstrap-starter.html).
+Look at the source of the [bootstrap-starter.html](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/bootstrap-starter.html).
 
 The page is essentially in 3 sections. 
 (For simplicity, only the key html is shown). 
@@ -101,7 +101,7 @@ The page is essentially in 3 sections.
 In order to use this template, we need to embed it in the html code of our JSP's. 
 However it makes sense to split the pages into a common header.jsp and footer.jsp and have separate body jsp's depending on the content; about.jsp, contact.jsp, main.jsp etc.
 
-To do this we make use of the jsp:include directive. See for instance [main.jsp](../session4/shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/main.jsp).
+To do this we make use of the jsp:include directive. See for instance [main.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/main.jsp).
 ```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -117,7 +117,7 @@ To do this we make use of the jsp:include directive. See for instance [main.jsp]
 ```
 The request.setAttribute("selectedPage","home"); tells the header that it is being included in the home page and should set the home header tab active.
 
-If we look at the [header.jsp](../session4/shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/header.jsp )
+If we look at the [header.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/header.jsp )
 we can see that a little bit of java code is selecting which header is active based on the selectedPage attribute.
 ```
 <ul class="nav navbar-nav">
@@ -132,12 +132,12 @@ we can see that a little bit of java code is selecting which header is active ba
 Having seen how the navigation bar works and how to use it with JSP's you should now be able to apply this style to the shopping cart application you previously made.
 
 1. Copy your previous application into this weeks folder and import it into netbeans
-2. Copy all the JSP's except main.jsp from the [main.jsp](../session4/shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
+2. Copy all the JSP's except main.jsp from the [main.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
 3. Check that the css and js resources are present.
 4. Now look at your main.jsp and consider how to change it to fit into the framework.
 5. if you have added extra pages for receipts etc you should also adapt them to use the framework
 
-As always, an example answer is provided [webApplicationExercise3-answer](../session4/shoppingcart-bootstrap/webApplicationExercise3-answer )
+As always, an example answer is provided [webApplicationExercise3-answer](../shoppingcart-bootstrap/webApplicationExercise3-answer )
  but dont look at this until you have tried it yourself.
 
 ## Congratulations
