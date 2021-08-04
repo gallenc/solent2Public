@@ -104,7 +104,7 @@ The page is essentially in 3 sections.
 ```
 
 In order to use this template, we need to embed it in the html code of our JSP's. 
-However it makes sense to split the pages into a common header.jsp and footer.jsp and have separate body jsp's depending on the content; about.jsp, contact.jsp, main.jsp etc.
+However it makes more sense to split the pages into a common header.jsp and footer.jsp and have separate body jsp's depending on the content; about.jsp, contact.jsp, main.jsp etc.
 
 To do this we make use of the jsp:include directive. See for instance [main.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/main.jsp).
 ```
@@ -120,7 +120,11 @@ To do this we make use of the jsp:include directive. See for instance [main.jsp]
 <jsp:include page="footer.jsp" />
 
 ```
-The request.setAttribute("selectedPage","home"); tells the header that it is being included in the home page and should set the home header tab active.
+The line
+```
+request.setAttribute("selectedPage","home"); 
+```
+tells the header that it is being included in the home page and should set the home header tab active.
 
 If we look at the [header.jsp](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/src/main/webapp/header.jsp )
 we can see that a little bit of java code is selecting which header is active based on the selectedPage attribute.
