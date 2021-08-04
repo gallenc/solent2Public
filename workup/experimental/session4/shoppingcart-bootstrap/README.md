@@ -141,7 +141,7 @@ we can see that a little bit of java code is selecting which header is active ba
 Having seen how the navigation bar works and how to use it with JSP's you should now be able to apply this style to the shopping cart application you previously made.
 
 1. Copy your previous application into this weeks folder and import it into netbeans
-2. Copy all the JSP's except home.jsp from the[webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
+2. Copy all the JSP's except home.jsp from the [webApplicationExercise-bootstrap](../shoppingcart-bootstrap/webApplicationExercise-bootstrap/) project into your project. 
 3. Check that the css and js resources are present.
 4. Now look at your home.jsp and consider how to change it to fit into the framework.
 5. If you have added extra pages for receipts etc you should also adapt them to use the framework
