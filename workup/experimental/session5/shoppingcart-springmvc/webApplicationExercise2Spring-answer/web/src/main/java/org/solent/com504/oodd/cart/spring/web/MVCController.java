@@ -24,6 +24,12 @@ public class MVCController {
     // this could be done with an autowired bean
     private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
 
+    // this redirects calls to the root of our application to index.html 
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String index(Model model) {
+        return "redirect:/index.html";
+    }
+
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String viewCart(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "itemName", required = false) String itemName,
