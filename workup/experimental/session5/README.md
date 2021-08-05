@@ -12,6 +12,6 @@ You should complete the exercises in [simple-springmvc](../session5/simple-sprin
 
 ## Exercise 2 migrating the shopping cart to SpringMVC
 
-This exercise will llow you to migrate your earlier shopping cart work to use this MVC framework.
+This exercise will enble you to migrate your earlier shopping cart work to use this MVC framework.
 
 You should complete the exercises in [shoppingcart-springmvc](../session5/shoppingcart-springmvc)
