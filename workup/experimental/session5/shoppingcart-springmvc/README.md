@@ -37,17 +37,18 @@ In session 4 you enhanced the simple shopping cart application to have a navbar 
 see if you can migrate [session4 shopping cart bootstrap exercise](../../session4/shoppingcart-bootstrap) to use spring mvc
 
 In this case you need to 
-1. add the additional header.jsp and footer.jsp, about.jsp and contact.jsp to the view and change the home.jsp to use them
-2. add additional methods to he controller for the new pages. Note header.jsp and footer.jsp do not need methods as they are imported by the other JSPs
-3. You should be able to inject the 'selectedPage' in the model
+1. start with the changes you did to migrate the single home.jsp page in Part 1
+2. add the additional header.jsp and footer.jsp, about.jsp and contact.jsp to the view and change the home.jsp to use them
+3. add additional methods to the controller for the new pages. Note header.jsp and footer.jsp do not need methods as they are imported by the other JSPs
+4. You should be able to inject the 'selectedPage' using the model instead of code at the top of each jsp.
 
 Again an example answer is provided [webApplicationExercise3Spring-answer](../shoppingcart-springmvc/webApplicationExercise3Spring-answer/ )
  but dont look at this until you have tried it yourself.
  
  Note that in this example answer, there is one additional change which has been made. 
- Instead of usign a static WebObjectFactory, we can use Spring to inject the object that we need
+ Instead of usign a static WebObjectFactory, we can use Spring to inject the objects that we need in the controller.
  Rather than storing data directly in the session object, we can create a bean which is session scoped and use this to store our shopping cart.
- The @Autowired annotation will inject these automatically
+ The @Autowired annotation will inject these automatically.
  
  See [Answer MVCController.java](../shoppingcart-springmvc/webApplicationExercise3Spring-answer/web/src/main/java/org/solent/com504/oodd/cart/spring/web/MVCController.java )
  
@@ -60,7 +61,7 @@ Again an example answer is provided [webApplicationExercise3Spring-answer](../sh
     @Autowired
     ShoppingCart shoppingCart = null;
  ```
- in the configuration we then put the bean definitions.
+In the configuration we then put the bean definitions.
  
  See [Answer SpringBootJspConfiguration.java](../shoppingcart-springmvc/webApplicationExercise3Spring-answer/web/src/main/java/org/solent/com504/oodd/cart/spring/web/SpringBootJspConfiguration.java  )
 
