@@ -40,8 +40,8 @@ public class MVCController {
         String message = "";
         String errorMessage = "";
 
-        // note that the shopping cart is is stored in the user's session
-        // so ther is one cart per user
+        // note that the shopping cart is stored in the user's session
+        // so there is one cart per user
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
         if (shoppingCart == null) synchronized (this) {
             if (shoppingCart == null) {
@@ -78,22 +78,6 @@ public class MVCController {
         model.addAttribute("message", message);
         model.addAttribute("errorMessage", errorMessage);
 
-        return "home";
-    }
-
-    /**
-     * This just throws a runtime exception to show error handler working
-     */
-    @RequestMapping(value = "/xxxhome", method = {RequestMethod.GET, RequestMethod.POST})
-    public String xxxCart(@RequestParam(name = "action", required = false) String action,
-            @RequestParam(name = "itemName", required = false) String itemName,
-            @RequestParam(name = "itemUUID", required = false) String itemUuid,
-            Model model,
-            HttpSession session) {
-
-        if (true) {
-            throw new RuntimeException("error caused by request to /xxxhome");
-        }
         return "home";
     }
 
