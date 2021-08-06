@@ -1,7 +1,5 @@
 # Exercise simple SpringMVC - migrating to Spring MVC
 
-
-
 In this exercise we will be migrating a simple web app which we created in session2 to use springMVC.
 
 Our starting point will be [webExercise1-springmvc](../simple-springmvc/webExercise1-springmvc ) which starts with the final answer to the exercises in Session 2
@@ -114,7 +112,7 @@ This tells Spring which packages to look in for annotations and so where to find
 public class SpringBootJspApplication extends SpringBootServletInitializer {
 ```
 
-## Examine and exend the MVCController.java 
+## Examine and extend the MVCController.java 
 The class where all of the MVC work is done is [MVCController.java](../simple-springmvc/webExercise1-springmvc/src/main/java/org/solent/oodd/webexercise1/spring/web/MVCController.java )
 For now, just look at the top of the class
 ```
@@ -167,13 +165,13 @@ spring.mvc.view.suffix=.jsp
 ```
     // this simply calls the jspexample3d.jsp page (without any modifications) when /userlist is requested 
     @RequestMapping(value = "/userlist", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3d(Model model) {
+    public String jspexample3d(Model model, HttpSession session) {
         return "jspexample3d";
     }
 
     // this simply calls the jspexample3d-modify.jsp page (without any modifications) when /userlist-modify is requested 
     @RequestMapping(value = "/userlist-modify", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3dModify(Model model) {
+    public String jspexample3dModify(Model model, HttpSession session) {
         return "jspexample3d-modify";
     }
 ```
@@ -184,7 +182,7 @@ When we restart the application, we will find that our JSP's are no longer calle
 but by their respective request mapping 
 (e.g. http://localhost:8080/webExercise1/userlist)
 
-4. Modify the index.xml and all the forms in the JSP's so that they call the correct new URLs.
+4. Modify the index.xml and all the forms in the JSP's so that they now reference the correct new URLs.
 For example
 ```
         <form action="./jspexample3d.jsp" method="get">
@@ -204,7 +202,11 @@ becomes
 
 We should now have a working application with the entry point http://localhost:8080/webExercise1/userlist
 
+## Summary 
+
 So far we have changed the program so that the JSPs are controlled by the MVCController.java class.
 However we have not in any way removed the business logic from the JSPs themselves.
 We now need to think about how we will simplify the JSP's and move the code from them into the MVCController class.
+
+We will look at this next step in [Part2](../session5/simple-springmvc/PART2.md)
 

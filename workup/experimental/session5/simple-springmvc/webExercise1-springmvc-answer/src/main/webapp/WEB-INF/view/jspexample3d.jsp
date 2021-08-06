@@ -6,34 +6,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="org.solent.oodd.webexercise1.model.User" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-    // retreive the stored users list from the session
-    List<User> users = (List<User>) session.getAttribute("usersList");
-    if (users == null) {
-        users = new ArrayList<User>();
-        session.setAttribute("usersList", users);
-    }
-
-    String name = request.getParameter("userName");
-    String address = request.getParameter("userAddress");
-    String index = request.getParameter("index");
-
-    // find what action to perform on the page
-    String action = request.getParameter("action");
-
-    if ("removeUser".equals(action)) {
-        int i = Integer.parseInt(index);
-        users.remove(i);
-    } else if ("addUser".equals(action)) {
-        User user = new User();
-        user.setName(name);
-        user.setAddress(address);
-        users.add(user);
-    }
-
+// removed java code
 %>
 <!DOCTYPE html>
 <html>
@@ -51,28 +26,25 @@
                 <th>Address</th>
                 <th></th>
             </tr>
-            <% for (int idx = 0; idx < users.size(); idx++) {
-                    User user = users.get(idx);
-            %>
-            <tr>
-                <td><%=idx + 1%></td>
-                <td><%=user.getName()%></td>
-                <td><%=user.getAddress()%></td>
-                <td>
-                    <form action="./userlist" method="get">
-                        <input type="hidden" name="index" value="<%=idx%>">
-                        <input type="hidden" name="action" value="removeUser">
-                        <button type="submit" >remove</button>
-                    </form>
-                    <form action="./userlist-modify" method="get">
-                        <input type="hidden" name="index" value="<%=idx%>">
-                        <button type="submit" >modify</button>
-                    </form>
-                </td>
-            </tr>
-            <%
-                }
-            %>
+            <c:forEach items="${users}"  var="user" varStatus="status" >
+
+                <tr>
+                    <td>${status.count}</td>
+                    <td>${user.name}</td>
+                    <td>${user.address}</td>
+                    <td>
+                        <form action="./userlist" method="get">
+                            <input type="hidden" name="index" value="${status.index}">
+                            <input type="hidden" name="action" value="removeUser">
+                            <button type="submit" >remove</button>
+                        </form>
+                        <form action="./userlist-modify" method="get">
+                            <input type="hidden" name="index" value="${status.index}">
+                            <button type="submit" >modify</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
 
         <h2>add users</h2>

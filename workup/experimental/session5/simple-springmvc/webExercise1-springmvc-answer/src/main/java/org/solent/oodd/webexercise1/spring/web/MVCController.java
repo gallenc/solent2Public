@@ -2,10 +2,13 @@ package org.solent.oodd.webexercise1.spring.web;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
+import static org.eclipse.jdt.internal.compiler.parser.Parser.name;
+import static org.graalvm.compiler.nodes.memory.address.OffsetAddressNode.address;
+import org.solent.oodd.webexercise1.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,16 +25,41 @@ public class MVCController {
     public String index(Model model) {
         return "redirect:/index.html";
     }
-    
-    // this simply calls the jspexample3d.jsp page (without any modifications) when /userlist is requested 
+
+    // now provides the business logic and a model to the jspexample3d.jsp when /userlist is requested 
     @RequestMapping(value = "/userlist", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3d(Model model) {
+    public String jspexample3d(@RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "userName", required = false) String name,
+            @RequestParam(name = "userAddress", required = false) String address,
+            @RequestParam(name = "index", required = false) String index,
+            Model model,
+            HttpSession session) {
+
+        // retrieve the stored users list from the session
+        List<User> users = (List<User>) session.getAttribute("usersList");
+        if (users == null) {
+            users = new ArrayList<User>();
+            session.setAttribute("usersList", users);
+        }
+
+        if ("removeUser".equals(action)) {
+            int i = Integer.parseInt(index);
+            users.remove(i);
+        } else if ("addUser".equals(action)) {
+            User user = new User();
+            user.setName(name);
+            user.setAddress(address);
+            users.add(user);
+        }
+        
+        model.addAttribute("users", users);
+        
         return "jspexample3d";
     }
 
     // this simply calls the jspexample3d-modify.jsp page (without any modifications) when /userlist-modify is requested 
     @RequestMapping(value = "/userlist-modify", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3dModify(Model model) {
+    public String jspexample3dModify(Model model, HttpSession session) {
         return "jspexample3d-modify";
     }
 
@@ -39,9 +67,7 @@ public class MVCController {
      * This just throws a runtime exception to show error handler working
      */
     @RequestMapping(value = "/xxxhome", method = {RequestMethod.GET, RequestMethod.POST})
-    public String xxxCart(@RequestParam(name = "action", required = false) String action,
-            @RequestParam(name = "itemName", required = false) String itemName,
-            @RequestParam(name = "itemUUID", required = false) String itemUuid,
+    public String xxxCart(
             Model model,
             HttpSession session) {
 

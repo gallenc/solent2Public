@@ -27,9 +27,7 @@ public class MVCController {
      * This just throws a runtime exception to show error handler working
      */
     @RequestMapping(value = "/xxxhome", method = {RequestMethod.GET, RequestMethod.POST})
-    public String xxxCart(@RequestParam(name = "action", required = false) String action,
-            @RequestParam(name = "itemName", required = false) String itemName,
-            @RequestParam(name = "itemUUID", required = false) String itemUuid,
+    public String xxxCart(
             Model model,
             HttpSession session) {
 
