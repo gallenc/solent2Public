@@ -208,5 +208,5 @@ So far we have changed the program so that the JSPs are controlled by the MVCCon
 However we have not in any way removed the business logic from the JSPs themselves.
 We now need to think about how we will simplify the JSP's and move the code from them into the MVCController class.
 
-We will look at this next step in [Part2](../session5/simple-springmvc/PART2.md)
+We will look at this next step in [Part2](../simple-springmvc/PART2.md)
 
