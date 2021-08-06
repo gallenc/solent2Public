@@ -11,7 +11,7 @@ Migrate the simple shopping cart you created in the [session3 shopping cart exer
 
 In this case you only have to migrate one JSP
 
-An example answer is provided [webApplicationExercise2Spring-answer](../shoppingcart-springmvc/webApplicationExercise3-answer )
+An example answer is provided [webApplicationExercise2Spring-answer](../shoppingcart-springmvc/webApplicationExercise2Spring-answer/ )
  but dont look at this until you have tried it yourself.
 
 
@@ -20,5 +20,7 @@ In session 4 you enhanced the simple shopping cart application to have a navbar 
 
 see if you can migrate [session4 shopping cart bootstrap exercise](../../session4/shoppingcart-bootstrap) to use spring mvc
 
-Again an example answer is provided [webApplicationExercise2Spring-answer](../shoppingcart-springmvc/webApplicationExercise2Spring-answer )
+Again an example answer is provided [webApplicationExercise3Spring-answer](../shoppingcart-springmvc/webApplicationExercise3Spring-answer/ )
  but dont look at this until you have tried it yourself.
+ 
+ 
