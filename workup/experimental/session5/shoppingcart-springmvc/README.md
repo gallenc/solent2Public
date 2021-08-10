@@ -9,7 +9,7 @@ We will do this in two parts.
 ## Part 1
 Migrate the simple shopping cart you created in the [session3 shopping cart exercise](../../session3/shoppingcart) 
 
-In this case you only have to migrate one JSP.
+In this case you only have to migrate one JSP with no bootstrap.
 
 Following the steps in last [Exercise 1 simple-springmvc](../../session5/simple-springmvc) , you will need to
 

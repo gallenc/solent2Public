@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="jpadiagram">
+  <ClassDiagramComponents>
+    <Interface name="CrudRepository" package="org.springframework.data.repository" visibility="public" xPosition="267.0" yPosition="125.0">
+      <Methods/>
+    </Interface>
+    <Interface name="UserDAO" package="org.soton.ac" visibility="public" xPosition="164.0" yPosition="251.0">
+      <Methods/>
+    </Interface>
+    <Class name="User" package="" visibility="public" xPosition="45.0" yPosition="57.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="secondName" type="String" visibility="private"/>
+        <Field name="Id" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="org.soton.ac.UserDAO" target="org.springframework.data.repository.CrudRepository"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
