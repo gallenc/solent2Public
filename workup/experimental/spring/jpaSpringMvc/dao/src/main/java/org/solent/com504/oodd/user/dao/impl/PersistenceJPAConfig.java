@@ -82,9 +82,9 @@ public class PersistenceJPAConfig {
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
-        hibernateProperties.setProperty("hibernate.show_sql",  env.getProperty("hibernate.show_sql"));
-         hibernateProperties.setProperty("hibernate.generateDdl", env.getProperty("hibernate.generateDdl"));
-        
+        hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        hibernateProperties.setProperty("hibernate.generateDdl", env.getProperty("hibernate.generateDdl"));
+
         return hibernateProperties;
     }
 }

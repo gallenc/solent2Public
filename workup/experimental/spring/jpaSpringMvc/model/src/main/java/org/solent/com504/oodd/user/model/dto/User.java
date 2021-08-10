@@ -39,5 +39,12 @@ public class User {
     public void setId(Long Id) {
         this.Id = Id;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "firstName=" + firstName + ", secondName=" + secondName + ", Id=" + Id + '}';
+    }
+    
+    
     
 }

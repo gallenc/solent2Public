@@ -5,15 +5,20 @@
  */
 package org.solent.com504.oodd.user.dao.test;
 
+import com.sun.tools.sjavac.Log;
+import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
 import org.solent.com504.oodd.user.dao.impl.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import org.solent.com504.oodd.user.model.dto.User;
 
 /**
  *
@@ -29,9 +34,24 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    public void testTransferService() {
+    public void testUser() {
         LOG.debug("****************** starting test");
-        // test the transferService
+        
+        userRepository.deleteAll();
+        
+        User user1 = new User();
+        user1.setFirstName("craig");
+        user1.setSecondName("gallen");
+        user1 = userRepository.save(user1);
+        
+        assertEquals(1, userRepository.count());
+        
+        Optional<User> optional = userRepository.findById(user1.getId());
+        User foundUser = optional.get();
+        
+        LOG.debug("found user: "+foundUser);
+        
+        LOG.debug("****************** test complete");
     }
     
 }
