@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.solent.com504.oodd.bank.model.dto.BankAccount;
 import org.solent.com504.oodd.bank.model.dto.BankTransaction;
 import org.solent.com504.oodd.bank.model.dto.CreditCard;
-import org.solent.com504.oodd.bank.model.dto.TransactionStatus;
+import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.bank.model.dto.User;
 import org.solent.com504.oodd.dao.impl.BankAccountRepository;
 import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
@@ -95,7 +95,7 @@ public class BankTransactionRepositoryTest {
         transaction1.setAmount(100.00);
         transaction1.setFromAccount(acctList.get(0));
         transaction1.setToAccount(acctList.get(1));
-        transaction1.setStatus(TransactionStatus.SUCCESS);
+        transaction1.setStatus(BankTransactionStatus.SUCCESS);
         transaction1.setTransactionDate(new Date());
 
         transaction1 = bankTransactionRepository.save(transaction1);
@@ -106,7 +106,14 @@ public class BankTransactionRepositoryTest {
         for (BankTransaction bt : transactions) {
             LOG.debug("found transaction: " + bt);
         }
-
+        
+        // test find by credit card number
+        String testCardNumber = acctList.get(0).getCreditcard().getCardnumber();
+        transactions = bankTransactionRepository.findBankTransactionsFromCreditCardNumber(testCardNumber);
+        assertEquals(1, transactions.size());
+        LOG.debug("found transaction ny creditcard: "+testCardNumber+ " " + transactions.get(0));
+        
+        
         LOG.debug("****************** test complete");
     }
 

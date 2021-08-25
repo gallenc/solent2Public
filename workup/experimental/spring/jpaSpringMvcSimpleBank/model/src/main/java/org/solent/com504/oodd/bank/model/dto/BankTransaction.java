@@ -22,7 +22,7 @@ public class BankTransaction {
 
     private Double amount;
 
-    private TransactionStatus status;
+    private BankTransactionStatus status;
 
     private String message;
 
@@ -70,11 +70,11 @@ public class BankTransaction {
         this.amount = amount;
     }
 
-    public TransactionStatus getStatus() {
+    public BankTransactionStatus getStatus() {
         return status;
     }
 
-    public void setStatus(TransactionStatus status) {
+    public void setStatus(BankTransactionStatus status) {
         this.status = status;
     }
 

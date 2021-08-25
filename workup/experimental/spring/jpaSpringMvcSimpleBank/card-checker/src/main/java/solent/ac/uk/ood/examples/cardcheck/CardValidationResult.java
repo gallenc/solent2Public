@@ -28,6 +28,7 @@ public class CardValidationResult {
     public CardValidationResult(String cardNo, String error) {
         this.cardNo = cardNo;
         this.error = error;
+        this.valid = false;
     }
     public CardValidationResult(String cardNo, CardCompany cardType) {
         this.cardNo = cardNo;

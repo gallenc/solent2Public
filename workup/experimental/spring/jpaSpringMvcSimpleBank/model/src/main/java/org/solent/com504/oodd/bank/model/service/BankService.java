@@ -13,15 +13,22 @@ public interface BankService {
     // methods reflecting service
     public BankAccount createBankAccount(User user, String supportedIssuerBank);
 
-    public Double transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount);
+    public BankTransaction  transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount);
 
-    public Double transferMoney(CreditCard fromCard, CreditCard toCard, Double amount);
+    public BankTransaction  transferMoney(CreditCard fromCard, CreditCard toCard, Double amount);
 
     public List<String> getSupportedIssuerBanks();
 
     public boolean activateAccount(BankAccount account, boolean active);
+    
+    public void deleteAllData();
 
    // methods reflecting bankaccountDAO
+    
+    public BankAccount findBankAccountByNumber(String sortcode, String accountNo);
+
+    public BankAccount findBankAccountByCreditCardNo(String cardnumber);
+    
     public List<BankAccount> findAllBankAccounts();
 
     public Optional<BankAccount> findByBankAccountById(Long id);
@@ -29,12 +36,12 @@ public interface BankService {
     public <S extends BankAccount> S saveBankAccount(S s);
     
     // methods reflecting banktransactionDAO
+    
+    public List<BankTransaction> findBankTransactionsFromCreditCardNumber(String cardnumber);
 
     public List<BankTransaction> findAllBankTransactions();
 
     public Optional<BankTransaction> findByBankTransactionById(Long id);
-    
-    public List<BankTransaction> findByBankTransactionsByAccount(BankAccount account);
     
     public <S extends BankTransaction> S saveBankTransaction(S s);
 

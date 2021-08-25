@@ -1,6 +1,6 @@
 package org.solent.com504.oodd.bank.model.dto;
 
-public enum TransactionStatus {
+public enum BankTransactionStatus {
 
     SUCCESS, FAIL
 }

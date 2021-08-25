@@ -20,9 +20,12 @@ import org.springframework.stereotype.Component;
 import solent.ac.uk.ood.examples.cardcheck.CalculateLunnDigit;
 import solent.ac.uk.ood.examples.cardvalidator.impl.SupportedCardIssuerIdentificationNumbers;
 import java.util.concurrent.ThreadLocalRandom;
+import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.dao.impl.BankAccountRepository;
 import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import solent.ac.uk.ood.examples.cardcheck.CardValidationResult;
+import solent.ac.uk.ood.examples.cardcheck.RegexCardValidator;
 
 /**
  *
@@ -30,25 +33,32 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Component
 public class BankServiceImpl implements BankService {
-
+    
     @Autowired
     private BankAccountRepository bankAccountRepository;
-
+    
     @Autowired
     private BankTransactionRepository bankTransactionRepository;
-
+    
     private List<String> supportedIssuerBanks
             = Collections.unmodifiableList(
                     new ArrayList(SupportedCardIssuerIdentificationNumbers.ISSUER_IDENTIFICATION_MAP.keySet()));
-
+    
+    @Override
+    @Transactional
+    public void deleteAllData() {
+        bankTransactionRepository.deleteAll();
+        bankAccountRepository.deleteAll();
+    }
+    
     @Override
     public BankAccount createBankAccount(User user, String supportedIssuerBank) {
-
+        
         String iin = SupportedCardIssuerIdentificationNumbers.ISSUER_IDENTIFICATION_MAP.get(supportedIssuerBank);
         if (iin == null) {
             throw new IllegalArgumentException("unknown issuer " + supportedIssuerBank);
         }
-
+        
         BankAccount account = new BankAccount();
         account.setSortcode(iin);
         account.setOwner(user);
@@ -57,82 +67,153 @@ public class BankServiceImpl implements BankService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 99999999);
         String individualAccountIdentifier = String.format("%08d", randomNum);; // 8 digits) 
         account.setAccountNo(individualAccountIdentifier);
-
+        
         CreditCard card = new CreditCard();
-
+        
         String pan = iin + individualAccountIdentifier;
-
+        
         String check = CalculateLunnDigit.calculateCheckDigit(pan);
-
+        
         String ccNumber = pan + check;
-
+        
         card.setCardnumber(ccNumber);
         card.setName(user.getFirstName() + " " + user.getSecondName());
         card.setCvv("123"); // use algorythm here
         card.setEndDate("11/21");
-
+        
         account.setCreditcard(card);
         
         account = bankAccountRepository.saveAndFlush(account);
-
+        
         return account;
     }
-
+    
     @Override
-    public Double transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Transactional
+    public BankTransaction transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount) {
+        BankTransaction bankTransaction = new BankTransaction();
+        bankTransaction.setAmount(amount);
+        BankAccount fromAcct = bankAccountRepository.findBankAccountByNumber(fromAccount.getSortcode(), fromAccount.getAccountNo());
+        BankAccount toAcct = bankAccountRepository.findBankAccountByNumber(toAccount.getSortcode(), toAccount.getAccountNo());
+        if (fromAcct == null) {
+            bankTransaction.setStatus(BankTransactionStatus.FAIL);
+            bankTransaction.setMessage("unknown from account " + fromAccount.getSortcode() + " " + fromAccount.getAccountNo());
+            return bankTransaction;
+        } else if (toAcct == null) {
+            bankTransaction.setStatus(BankTransactionStatus.FAIL);
+            bankTransaction.setMessage("unknown to account " + toAccount.getSortcode() + " " + toAccount.getAccountNo());
+            return bankTransaction;
+        } else if (fromAcct.getBalance() - amount < 0) {
+            bankTransaction.setFromAccount(fromAcct);
+            bankTransaction.setFromAccount(toAcct);
+            bankTransaction.setStatus(BankTransactionStatus.FAIL);
+            bankTransaction.setMessage("insufficient balance in account " + fromAccount.getSortcode() + " " + fromAccount.getAccountNo());
+            return bankTransaction;
+        } else {
+            double newFromBalance = fromAcct.getBalance() - amount;
+            fromAcct.setBalance(newFromBalance);
+            bankAccountRepository.save(fromAcct);
+            
+            double newToBalance = toAcct.getBalance() + amount;
+            toAcct.setBalance(newToBalance);
+            bankAccountRepository.save(toAcct);
+            
+            bankTransaction.setFromAccount(fromAcct);
+            bankTransaction.setFromAccount(toAcct);
+            bankTransaction.setStatus(BankTransactionStatus.SUCCESS);
+            bankTransactionRepository.saveAndFlush(bankTransaction);
+            return bankTransaction;
+        }
+        
     }
-
+    
     @Override
-    public Double transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public BankTransaction transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
+        //check creditccdlunn etc first
+        // some problem with card validation check
+        /*
+        CardValidationResult cardValidationResult = RegexCardValidator.isValid(fromCard.getCardnumber());        
+        if (!cardValidationResult.isValid()) {
+            BankTransaction bankTransaction = new BankTransaction();
+            bankTransaction.setStatus(BankTransactionStatus.FAIL);
+            bankTransaction.setMessage("invalid from card number :" + fromCard.getCardnumber()+" "+ cardValidationResult.getMessage());
+            return bankTransaction;
+        }
+        
+        cardValidationResult = RegexCardValidator.isValid(toCard.getCardnumber());        
+        if (!cardValidationResult.isValid()) {
+            BankTransaction bankTransaction = new BankTransaction();
+            bankTransaction.setStatus(BankTransactionStatus.FAIL);
+            bankTransaction.setMessage("invalid to card number :" + fromCard.getCardnumber());
+            return bankTransaction;
+        }
+        */
 
+        // now do transfer
+        BankAccount fromAccount = bankAccountRepository.findBankAccountByCreditCardNo(fromCard.getCardnumber());
+        BankAccount toAccount = bankAccountRepository.findBankAccountByCreditCardNo(toCard.getCardnumber());
+        return transferMoney(fromAccount, toAccount, amount);
+    }
+    
     @Override
     public List<String> getSupportedIssuerBanks() {
         return supportedIssuerBanks;
     }
-
+    
     @Override
     @Transactional
     public boolean activateAccount(BankAccount account, boolean active) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BankAccount fromAcct = bankAccountRepository.findBankAccountByNumber(account.getSortcode(), account.getAccountNo());
+        fromAcct.setActive(active);
+        bankAccountRepository.saveAndFlush(fromAcct);
+        return active;
     }
 
     // methods reflecting the DAOs
     @Override
+    public BankAccount findBankAccountByNumber(String sortcode, String accountNo) {
+        return bankAccountRepository.findBankAccountByNumber(sortcode, accountNo);
+    }
+    
+    @Override
+    public BankAccount findBankAccountByCreditCardNo(String cardnumber) {
+        return bankAccountRepository.findBankAccountByCreditCardNo(cardnumber);
+    }
+    
+    @Override
     public List<BankAccount> findAllBankAccounts() {
         return bankAccountRepository.findAll();
     }
-
+    
     @Override
     public Optional<BankAccount> findByBankAccountById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankAccountRepository.findById(id);
     }
-
+    
     @Override
     public <S extends BankAccount> S saveBankAccount(S s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankAccountRepository.saveAndFlush(s);
     }
-
+    
     @Override
     public List<BankTransaction> findAllBankTransactions() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankTransactionRepository.findAll();
     }
-
+    
     @Override
     public Optional<BankTransaction> findByBankTransactionById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankTransactionRepository.findById(id);
+        
     }
-
-    @Override
-    public List<BankTransaction> findByBankTransactionsByAccount(BankAccount account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public <S extends BankTransaction> S saveBankTransaction(S s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bankTransactionRepository.save(s);
     }
-
+    
+    @Override
+    public List<BankTransaction> findBankTransactionsFromCreditCardNumber(String cardnumber) {
+        return bankTransactionRepository.findBankTransactionsFromCreditCardNumber(cardnumber);
+    }
+    
 }

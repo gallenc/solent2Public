@@ -16,6 +16,8 @@ public class BankAccount {
     private String sortcode;
 
     private String accountNo;
+    
+    private Double balance = 0.0;
 
     private CreditCard creditcard;
 
@@ -73,10 +75,20 @@ public class BankAccount {
         this.active = active;
     }
 
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
-        return "BankAccount{" + "id=" + id + ", owner=" + owner + ", sortcode=" + sortcode + ", accountNo=" + accountNo + ", creditcard=" + creditcard + ", active=" + active + '}';
+        return "BankAccount{" + "id=" + id + ", owner=" + owner + ", sortcode=" + sortcode + ", accountNo=" + accountNo + ", balance=" + balance + ", creditcard=" + creditcard + ", active=" + active + '}';
     }
+
+
     
     
     

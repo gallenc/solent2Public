@@ -7,6 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BankTransactionDAO  extends CrudRepository<BankTransaction,Long> {
     
+    List<BankTransaction> findBankTransactionsFromCreditCardNumber(String cardnumber);
+    
+    // from crud repository
     long count();
     
     void delete(BankTransaction t);
@@ -25,5 +28,4 @@ public interface BankTransactionDAO  extends CrudRepository<BankTransaction,Long
     
     <S extends BankTransaction> S save(S s);
     
-   // public String findBankTransactionsByCreditCard(String creditcardnumber);
 }
