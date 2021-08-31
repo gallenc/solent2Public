@@ -20,6 +20,8 @@ package solent.ac.uk.ood.examples.cardcheck;
  * Validator for credit card numbers
  * Checks validity and returns card type
  * 
+ * see https://gist.github.com/icchan/47d83bacc5113db59fbc
+ * 
  * @author ian.chen
  */
 public class RegexCardValidator {

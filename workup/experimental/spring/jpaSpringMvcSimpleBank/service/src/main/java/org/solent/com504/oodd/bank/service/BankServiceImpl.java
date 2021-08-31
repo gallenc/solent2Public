@@ -65,7 +65,7 @@ public class BankServiceImpl implements BankService {
 
         // nextInt is normally exclusive of the top value, so add 1 to make it inclusive
         int randomNum = ThreadLocalRandom.current().nextInt(0, 99999999);
-        String individualAccountIdentifier = String.format("%08d", randomNum);; // 8 digits) 
+        String individualAccountIdentifier = String.format("%09d", randomNum);; // 8 digits) 
         account.setAccountNo(individualAccountIdentifier);
         
         CreditCard card = new CreditCard();
@@ -130,8 +130,9 @@ public class BankServiceImpl implements BankService {
     @Override
     public BankTransaction transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
         //check creditccdlunn etc first
-        // some problem with card validation check
-        /*
+        
+        
+        //some problem with card validation check for amex
         CardValidationResult cardValidationResult = RegexCardValidator.isValid(fromCard.getCardnumber());        
         if (!cardValidationResult.isValid()) {
             BankTransaction bankTransaction = new BankTransaction();
@@ -147,7 +148,7 @@ public class BankServiceImpl implements BankService {
             bankTransaction.setMessage("invalid to card number :" + fromCard.getCardnumber());
             return bankTransaction;
         }
-        */
+
 
         // now do transfer
         BankAccount fromAccount = bankAccountRepository.findBankAccountByCreditCardNo(fromCard.getCardnumber());

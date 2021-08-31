@@ -35,7 +35,8 @@ public interface SupportedCardIssuerIdentificationNumbers {
                     put("VISA_NAT_WEST", VISA_NAT_WEST);
                     put("MASTERCARD_TSB_BANK", MASTERCARD_TSB_BANK);
                     put("MASTERCARD_LLOYDS_BANK_PLC", MASTERCARD_LLOYDS_BANK_PLC);
-                    put("AMERICAN_EXPRESS_LLOYDS_BANK_PLC", AMERICAN_EXPRESS_LLOYDS_BANK_PLC);
+                   // bug - not validating - left out  
+                   // put("AMERICAN_EXPRESS_LLOYDS_BANK_PLC", AMERICAN_EXPRESS_LLOYDS_BANK_PLC);
                 }
             });
 }
