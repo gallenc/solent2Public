@@ -21,7 +21,7 @@ public class BankAccount {
 
     private CreditCard creditcard = new CreditCard();
 
-    private boolean active;
+    private boolean active = true;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

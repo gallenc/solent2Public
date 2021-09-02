@@ -34,7 +34,20 @@
         <!-- i.e. in our config, classes in package names beginnign org.solent -->
         <Logger name="org.solent"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="appLog"/>
+            <!-- <AppenderRef ref="appLog"/> -->
+        </Logger>
+
+        <!-- DEBUG -->
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <!-- TRACE -->
+        <Logger name="org.hibernate.type.descriptor.sql" level="INFO" additivity="false"> 
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <Logger name="org.springframework.boot" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
         </Logger>
 
         <!-- this logs to  the Consol (System.out) -->

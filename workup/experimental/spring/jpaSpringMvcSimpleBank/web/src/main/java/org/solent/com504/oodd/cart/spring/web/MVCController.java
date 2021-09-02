@@ -5,10 +5,14 @@ import java.io.StringWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankAccount;
 import org.solent.com504.oodd.bank.model.dto.BankTransaction;
+import org.solent.com504.oodd.bank.model.dto.CreditCard;
 import org.solent.com504.oodd.bank.model.dto.User;
 import org.solent.com504.oodd.bank.model.service.BankService;
+import org.solent.com504.oodd.bank.service.BankServiceImpl;
 import org.solent.com504.oodd.dao.impl.BankAccountRepository;
 import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/")
 public class MVCController {
+
+    private static final Logger LOG = LogManager.getLogger(MVCController.class);
 
     @Autowired
     private BankService bankService;
@@ -39,7 +45,14 @@ public class MVCController {
     }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
-    public String viewCart(@RequestParam(name = "action", required = false) String action,
+    public String home(@RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "sortCode", required = false) String sortCode, // used to select account from bankaccounts page
+            @RequestParam(name = "accountNo", required = false) String accountNo, // used to select account from bankaccounts page
+            @RequestParam(name = "fromSortCode", required = false) String fromSortCode,
+            @RequestParam(name = "fromAccountNo", required = false) String fromAccountNo,
+            @RequestParam(name = "toSortCode", required = false) String toSortCode,
+            @RequestParam(name = "toAccountNo", required = false) String toAccountNo,
+            @RequestParam(name = "amount", required = false) String amountStr,
             Model model,
             HttpSession session) {
 
@@ -48,15 +61,76 @@ public class MVCController {
         String message = "";
         String errorMessage = "";
 
+        // persist to and from values in session so that persist between page pulls
+        if (fromSortCode == null || fromSortCode.trim().isEmpty()) {
+            fromSortCode = (session.getAttribute("fromSortCode") == null) ? "" : (String) session.getAttribute("fromSortCode");
+        }
+        session.setAttribute("fromSortCode", fromSortCode);
+
+        if (toSortCode == null || toSortCode.trim().isEmpty()) {
+            toSortCode = (session.getAttribute("toSortCode") == null) ? "" : (String) session.getAttribute("toSortCode");
+        }
+        session.setAttribute("toSortCode", toSortCode);
+
+        if (fromAccountNo == null || fromAccountNo.trim().isEmpty()) {
+            fromAccountNo = (session.getAttribute("fromAccountNo") == null) ? "" : (String) session.getAttribute("fromAccountNo");
+        }
+        session.setAttribute("fromAccountNo", fromAccountNo);
+
+        if (toAccountNo == null || toAccountNo.trim().isEmpty()) {
+            toAccountNo = (session.getAttribute("toAccountNo") == null) ? "" : (String) session.getAttribute("toAccountNo");
+        }
+        session.setAttribute("toAccountNo", toAccountNo);
+
+        Double amount = 0.0;
+        BankTransaction bankTransactionResult = null;
+        try {
+            amount = (amountStr == null) ? 0.0 : Double.valueOf(amountStr);
+        } catch (NumberFormatException ex) {
+            errorMessage = "invalid amont value: " + amountStr;
+        }
+
         if (action == null) {
             // do nothing but show page
-        } else if ("xxx".equals(action)) {
+        } else if ("selectFromAccount".equals(action)) {
+            fromSortCode = sortCode;
+            session.setAttribute("fromSortCode", fromSortCode);
+            fromAccountNo = accountNo;
+            session.setAttribute("fromAccountNo", fromAccountNo);
+        } else if ("selectToAccount".equals(action)) {
+            toSortCode = sortCode;
+            session.setAttribute("toSortCode", fromSortCode);
+            toAccountNo = accountNo;
+            session.setAttribute("toAccountNo", fromAccountNo);
+        } else if ("transferMoneyBetweenAccounts".equals(action)) {
+
+            BankAccount fromAccount = bankAccountRepository.findBankAccountByNumber(fromSortCode, fromAccountNo);
+            boolean error = false;
+            if (fromAccount == null) {
+                errorMessage = "unknown FROM bank account: " + fromSortCode + " " + fromAccountNo;
+                error = true;
+            }
+            BankAccount toAccount = bankAccountRepository.findBankAccountByNumber(toSortCode, toAccountNo);
+            if (toAccount == null) {
+                errorMessage = errorMessage + " unknown TO bank account: " + toSortCode + " " + toAccountNo;
+                error = true;
+            }
+            if (!error) {
+                bankTransactionResult = bankService.transferMoney(fromAccount, toAccount, amount);
+                model.addAttribute("bankTransactionResult", bankTransactionResult);
+            }
 
         } else {
             message = "unknown action=" + action;
         }
 
         // populate model with values
+        model.addAttribute("fromSortCode", fromSortCode);
+        model.addAttribute("fromAccountNo", fromAccountNo);
+        model.addAttribute("toSortCode", toSortCode);
+        model.addAttribute("toAccountNo", toAccountNo);
+        model.addAttribute("amount", amount);
+
         model.addAttribute("message", message);
         model.addAttribute("errorMessage", errorMessage);
 
@@ -79,18 +153,36 @@ public class MVCController {
     public String bankAccountView(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "sortCode", required = false) String sortCode,
             @RequestParam(name = "accountNo", required = false) String accountNo,
-            @RequestParam(name = "firstName ", required = false) String firstName,
+            @RequestParam(name = "firstName", required = false) String firstName,
             @RequestParam(name = "secondName", required = false) String secondName,
             @RequestParam(name = "address", required = false) String address,
+            @RequestParam(name = "accountactive", required = false) String accountactive,
             @RequestParam(name = "supportedIssuerBank", required = false) String supportedIssuerBank,
+            @RequestParam(name = "balance", required = false) String balanceStr,
             Model model) {
         // used to set tab selected
         model.addAttribute("selectedPage", "bankaccounts");
         String message = "";
         String errorMessage = "";
-        // list all
-        // add bank account
-        // deactivate / activate account
+
+        Double balance = 0.0;
+        try {
+            balance = (balanceStr == null) ? 0.0 : Double.valueOf(balanceStr);
+        } catch (NumberFormatException ex) {
+            errorMessage = "invalid balance value: " + balanceStr;
+        }
+
+        // todo replace with log
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxx bankaccountview called: action=" + action
+                + " sortCode=" + sortCode
+                + " accountNo=" + accountNo
+                + " firstName=" + firstName
+                + " secondName=" + secondName
+                + " address=" + address
+                + " accountactive=" + accountactive
+                + " supportedIssuerBank=" + supportedIssuerBank
+                + "balanceStr=" + balanceStr);
+
         BankAccount bankAccount = new BankAccount();
 
         if ("view".equals(action)) {
@@ -104,21 +196,32 @@ public class MVCController {
             if (bankAccount == null) {
                 throw new IllegalArgumentException("unknown bank account: " + sortCode + " " + accountNo);
             }
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXX bankAccount.getOwner()"+bankAccount.getOwner());
-            bankAccount.getOwner().setAddress(address);
-            bankAccount.getOwner().setFirstName(firstName);
-            bankAccount.getOwner().setSecondName(secondName);
-            
-            bankAccount = bankAccountRepository.save(bankAccount);
-            
-        } else if ("create".equals(action)) {
-           User user = new User();
-           user.setFirstName(firstName);
-           user.setAddress(address);
-           user.setSecondName(secondName);
-           bankAccount = bankService.createBankAccount(user, supportedIssuerBank);
+            bankAccount.setBalance(balance);
+            User owner = new User();
+            owner.setAddress(address);
+            owner.setFirstName(firstName);
+            owner.setSecondName(secondName);
+            bankAccount.setOwner(owner);
+            if (accountactive != null) {
+                bankAccount.setActive(true);
+            } else {
+                bankAccount.setActive(false);
+            }
+            CreditCard cc = bankAccount.getCreditcard();
+            cc.setName(firstName + " " + secondName);
+            bankAccount.setCreditcard(cc);
 
-           message = "fill in user details for new account: sort code: "+bankAccount.getSortcode()+" account no: "+bankAccount.getAccountNo()+ "owner: "+bankAccount.getOwner();
+            bankAccount = bankAccountRepository.save(bankAccount);
+            message = "updated account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
+
+        } else if ("create".equals(action)) {
+            User user = new User();
+            user.setFirstName(firstName);
+            user.setAddress(address);
+            user.setSecondName(secondName);
+            bankAccount = bankService.createBankAccount(user, supportedIssuerBank);
+
+            message = "fill in user details for new account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
         } else {
             throw new IllegalArgumentException("unknown action=" + action);
         }

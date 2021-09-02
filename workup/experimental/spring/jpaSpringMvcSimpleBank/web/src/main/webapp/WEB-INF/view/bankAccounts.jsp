@@ -18,14 +18,13 @@
     <!-- print message / error message if there is one -->
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
-
-
-    <form action="./bankaccountview" method="post">
-        <input type="hidden" name="action" value="create">
-        <input type="hidden" name="supportedIssuerBank" value="VISA_BANK_OF_IRELAND_UK">
-        <button type="submit" >Create New Account</button>
-    </form>
-
+    <div class="btn-group">
+        <form action="./bankaccountview" method="post">
+            <input type="hidden" name="action" value="create">
+            <input type="hidden" name="supportedIssuerBank" value="VISA_BANK_OF_IRELAND_UK">
+            <button class="btn ml-2 rounded" type="submit" >Create New Account</button>
+        </form>
+    </div>
 
     <table class="table">
 
@@ -41,19 +40,39 @@
         <c:forEach var="bankAccount" items="${bankAccounts}">
             <form action="./bankaccountview" method="post">
                 <tr>
-                    <td><input type="text" size="36" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
                     <td><input type="text" size="36" name="sortCode" value="${bankAccount.sortcode}" readonly ></td>
+                    <td><input type="text" size="36" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
                     <td>${bankAccount.owner.firstName} ${bankAccount.owner.secondName}</td>
                     <td>${bankAccount.balance}</td>
-                    <td>${bankAccount.active}</td>
                     <td>
-                        <input type="hidden" name="action" value="view">
-                        <button type="submit" >View Account</button>
+                        <c:if test="${bankAccount.active}"><div style="color:green;">Active</div></c:if>
+                        <c:if test="${! bankAccount.active}"><div style="color:red;">Deactivated</div></c:if>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="./bankaccountview" method="post">
+                                    <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                                <input type="hidden" name="action" value="view">
+                                <button class="btn ml-2 rounded" type="submit" >View Account</button>
+                            </form>
+                            <form action="./home" method="post">
+                                <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                                <input type="hidden" name="action" value="selectFromAccount">
+                                <button class="btn ml-2 rounded" type="submit" >Select From Account</button>
+                            </form>
+                            <form action="./home" method="post">
+                                <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                                <input type="hidden" name="action" value="selectToAccount">
+                                <button class="btn ml-2 rounded" type="submit" >Select To Account</button>
+                            </form>
+                        </div> <!-- button group -->
                     </td>
                 </tr>
-            </form>
 
-        </c:forEach>
+            </c:forEach>
     </table>
 
 </main>

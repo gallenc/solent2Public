@@ -17,7 +17,7 @@
         <link rel="icon" href="../../favicon.ico">
         <!--<link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/navbar/">-->
 
-        <title>Navbar Template for Bootstrap</title>
+        <title>Bank Simulator</title>
 
         <!-- Bootstrap core CSS -->
         <link href="./resources/css/bootstrap.min.css" rel="stylesheet">

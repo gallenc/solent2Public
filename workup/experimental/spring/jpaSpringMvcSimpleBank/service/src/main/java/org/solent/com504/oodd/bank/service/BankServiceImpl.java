@@ -20,6 +20,8 @@ import org.springframework.stereotype.Component;
 import solent.ac.uk.ood.examples.cardcheck.CalculateLunnDigit;
 import solent.ac.uk.ood.examples.cardvalidator.impl.SupportedCardIssuerIdentificationNumbers;
 import java.util.concurrent.ThreadLocalRandom;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.dao.impl.BankAccountRepository;
 import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
@@ -33,6 +35,8 @@ import solent.ac.uk.ood.examples.cardcheck.RegexCardValidator;
  */
 @Component
 public class BankServiceImpl implements BankService {
+    
+    private static final Logger LOG = LogManager.getLogger(BankServiceImpl.class);
     
     @Autowired
     private BankAccountRepository bankAccountRepository;
@@ -84,6 +88,7 @@ public class BankServiceImpl implements BankService {
         account.setCreditcard(card);
         
         account = bankAccountRepository.saveAndFlush(account);
+        LOG.debug("created account " + account);
         
         return account;
     }
@@ -130,25 +135,23 @@ public class BankServiceImpl implements BankService {
     @Override
     public BankTransaction transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
         //check creditccdlunn etc first
-        
-        
+
         //some problem with card validation check for amex
-        CardValidationResult cardValidationResult = RegexCardValidator.isValid(fromCard.getCardnumber());        
+        CardValidationResult cardValidationResult = RegexCardValidator.isValid(fromCard.getCardnumber());
         if (!cardValidationResult.isValid()) {
             BankTransaction bankTransaction = new BankTransaction();
             bankTransaction.setStatus(BankTransactionStatus.FAIL);
-            bankTransaction.setMessage("invalid from card number :" + fromCard.getCardnumber()+" "+ cardValidationResult.getMessage());
+            bankTransaction.setMessage("invalid from card number :" + fromCard.getCardnumber() + " " + cardValidationResult.getMessage());
             return bankTransaction;
         }
         
-        cardValidationResult = RegexCardValidator.isValid(toCard.getCardnumber());        
+        cardValidationResult = RegexCardValidator.isValid(toCard.getCardnumber());
         if (!cardValidationResult.isValid()) {
             BankTransaction bankTransaction = new BankTransaction();
             bankTransaction.setStatus(BankTransactionStatus.FAIL);
             bankTransaction.setMessage("invalid to card number :" + fromCard.getCardnumber());
             return bankTransaction;
         }
-
 
         // now do transfer
         BankAccount fromAccount = bankAccountRepository.findBankAccountByCreditCardNo(fromCard.getCardnumber());

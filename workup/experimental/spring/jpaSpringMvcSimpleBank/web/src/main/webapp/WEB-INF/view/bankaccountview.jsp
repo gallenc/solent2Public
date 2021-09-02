@@ -13,20 +13,23 @@
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>Bank Accounts</H1>
+    <H1>Bank Account</H1>
     <!-- print message / error message if there is one -->
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
 
-    <H1>Bank Account</H1>
-
     <form action="./bankaccountview" method="post">
         <input type="hidden" name="action" value="update">
-        <button type="submit" >update account</button>
-
+        <div class="btn-group">
+            <button class="btn ml-2 rounded" type="submit" >update account</button>
+            <a href="./bankaccounts" class="btn ml-2 rounded">Return to account list</a>
+        </div>
         <table class="table">
             <tr>
-                <td></td><td>${bankAccount.active}</td> <td></td>
+                <td>Account Active</td><td><input type="checkbox" name="accountactive" value="active" <c:if test="${bankAccount.active}">checked</c:if> ></td> <td></td>
+            </tr>
+            <tr>
+                <td>Balance £GBP</td><td><input type="text" size="36" name="balance" value="${bankAccount.balance}" ></td> <td></td>
             </tr>
             <tr>
                 <td>First Name</td><td><input type="text" size="36" name="firstName" value="${bankAccount.owner.firstName}" ></td> <td></td>

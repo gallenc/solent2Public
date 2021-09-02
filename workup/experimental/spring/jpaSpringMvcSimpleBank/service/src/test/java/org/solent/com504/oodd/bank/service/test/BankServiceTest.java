@@ -77,6 +77,8 @@ public class BankServiceTest {
         List<BankAccount> bankAccounts = bankService.findAllBankAccounts();
         BankAccount ba1 = bankAccounts.get(0);
         BankAccount ba2 = bankAccounts.get(1);
+        
+        assertNotNull(ba1.getOwner());
 
         ba1.setBalance(100.00);
         ba2.setBalance(0.00);
