@@ -5,11 +5,11 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class User {
 
-    private String firstName;
+    private String firstName="";
 
-    private String secondName;
+    private String secondName="";
 
-    private String Address;
+    private String address="";
 
     public String getFirstName() {
         return firstName;
@@ -28,16 +28,16 @@ public class User {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "User{" + "firstName=" + firstName + ", secondName=" + secondName + ", Address=" + Address + '}';
+        return "User{" + "firstName=" + firstName + ", secondName=" + secondName + ", address=" + address + '}';
     }
     
     

@@ -11,15 +11,15 @@ public class BankAccount {
 
     private Long id;
     
-    private User owner;
+    private User owner = new User();
 
-    private String sortcode;
+    private String sortcode="";
 
-    private String accountNo;
+    private String accountNo="";
     
     private Double balance = 0.0;
 
-    private CreditCard creditcard;
+    private CreditCard creditcard = new CreditCard();
 
     private boolean active;
 

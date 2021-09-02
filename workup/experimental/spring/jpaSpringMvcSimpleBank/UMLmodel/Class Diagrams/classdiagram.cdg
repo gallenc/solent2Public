@@ -34,7 +34,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="BankTransaction" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="190.0" yPosition="406.0">
+    <Class name="BankTransaction" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="246.0" yPosition="406.0">
       <Fields>
         <Field name="fromAccount" type="BankAccount" visibility="private"/>
         <Field name="toAccount" type="BankAccount" visibility="private"/>
@@ -43,6 +43,7 @@
         <Field name="status" type="BankTransactionStatus" visibility="private"/>
         <Field name="message" type="String" visibility="private"/>
         <Field name="id" type="Long" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
@@ -84,7 +85,7 @@
         </Method>
       </Methods>
     </Interface>
-    <Interface name="BankTransactionDAO" package="org.solent.com504.oodd.bank.model.dao" visibility="public" xPosition="-107.0" yPosition="233.0">
+    <Interface name="BankTransactionDAO" package="org.solent.com504.oodd.bank.model.dao" visibility="public" xPosition="25.0" yPosition="226.0">
       <Methods>
         <Method name="findBankTransactionsFromCreditCardNumber" returnType="String" visibility="public">
           <Argument type="String" name="cardnumber"/>
@@ -94,7 +95,7 @@
     <Interface name="BankRestService" package="org.solent.com504.oodd.bank.model.web" visibility="public" xPosition="-11.0" yPosition="19.0">
       <Methods/>
     </Interface>
-    <Enum name="BankTransactionStatus" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="-24.0" yPosition="406.0">
+    <Enum name="BankTransactionStatus" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="25.0" yPosition="383.0">
       <Literals>
         <Literal name="SUCCESS"/>
         <Literal name="FAIL"/>
@@ -102,17 +103,17 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="useTransactionDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="hasStatus" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="persistsTranasactions" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.solent.com504.oodd.bank.model.dto.BankTransaction" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.springframework.data.repository.CrudRepository"/>
     <HasRelation name="fromAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="hasCreditCard" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.CreditCard" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.springframework.data.repository.CrudRepository"/>
     <HasRelation name="toAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="hasUser" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.User" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="useTransactionDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsBankAccounts" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.solent.com504.oodd.bank.model.dto.BankAccount" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="hasStatus" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsTransactions" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.solent.com504.oodd.bank.model.dto.BankTransaction" sourceCardinality="1..1" targetCardinality="0..*"/>
     <UseRelation name="useBankAccountDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="usesbankservice" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.service.BankService" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="persistsBankAccounts" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.solent.com504.oodd.bank.model.dto.BankAccount" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.springframework.data.repository.CrudRepository"/>
+    <HasRelation name="hasUser" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.User" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="hasCreditCard" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.CreditCard" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

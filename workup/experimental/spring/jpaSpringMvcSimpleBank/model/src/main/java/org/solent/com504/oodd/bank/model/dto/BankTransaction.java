@@ -1,6 +1,7 @@
 package org.solent.com504.oodd.bank.model.dto;
 
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ import javax.persistence.OneToOne;
 public class BankTransaction {
 
     private Long id;
+    
+    private String transactionId = UUID.randomUUID().toString();
 
     private BankAccount fromAccount;
 
@@ -86,10 +89,20 @@ public class BankTransaction {
         this.message = message;
     }
 
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
     @Override
     public String toString() {
-        return "BankTransaction{" + "id=" + id + ", fromAccount=" + fromAccount + ", toAccount=" + toAccount + ", transactionDate=" + transactionDate + ", amount=" + amount + ", status=" + status + ", message=" + message + '}';
+        return "BankTransaction{" + "id=" + id + ", transactionId=" + transactionId + ", fromAccount=" + fromAccount + ", toAccount=" + toAccount + ", transactionDate=" + transactionDate + ", amount=" + amount + ", status=" + status + ", message=" + message + '}';
     }
+
+
     
     
 

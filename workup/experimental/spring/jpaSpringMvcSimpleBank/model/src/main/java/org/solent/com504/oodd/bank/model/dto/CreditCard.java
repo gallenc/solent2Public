@@ -5,15 +5,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CreditCard {
 
-    private String name;
+    private String name="";
 
-    private String endDate;
+    private String endDate="";
 
-    private String cardnumber;
+    private String cardnumber="";
 
-    private String cvv;
+    private String cvv="111";
 
-    private String issueNumber;
+    private String issueNumber="01";
 
     public String getName() {
         return name;

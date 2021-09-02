@@ -14,7 +14,9 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <H1>Home</H1>
-    <p>${message}<p>
+    <!-- print message / error message if there is one -->
+    <div style="color:red;">${errorMessage}</div>
+    <div style="color:green;">${message}</div>
 
     <H1>Available Items</H1>
     <table class="table">

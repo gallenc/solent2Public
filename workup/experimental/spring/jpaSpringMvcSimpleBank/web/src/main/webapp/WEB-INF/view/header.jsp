@@ -46,8 +46,14 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="./home">Home</a></li> 
+
+                            <!-- Add your tabs here -->
+                            <li <% if ("bankaccounts".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./bankaccounts">Bank Accounts</a></li>                          
+                            <li <% if ("banktransactions".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./banktransactions">Transactions</a></li>                          
+
                             <li <% if ("about".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="./about">About</a></li> 
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./contact">Contact</a></li>                          
+
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 

@@ -5,10 +5,12 @@ import java.io.StringWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.solent.com504.oodd.cart.model.dto.ShoppingItem;
-import org.solent.com504.oodd.cart.model.service.ShoppingCart;
-import org.solent.com504.oodd.cart.model.service.ShoppingService;
-import org.solent.com504.oodd.cart.web.WebObjectFactory;
+import org.solent.com504.oodd.bank.model.dto.BankAccount;
+import org.solent.com504.oodd.bank.model.dto.BankTransaction;
+import org.solent.com504.oodd.bank.model.dto.User;
+import org.solent.com504.oodd.bank.model.service.BankService;
+import org.solent.com504.oodd.dao.impl.BankAccountRepository;
+import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,16 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class MVCController {
 
-    // this could be done with an autowired bean
-    //private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
-    
     @Autowired
-    ShoppingService shoppingService =null;
-    
-    // note that scope is session in configuration
-    // so the shopping cart is unique for each web session
+    private BankService bankService;
+
     @Autowired
-    ShoppingCart shoppingCart = null;
+    private BankAccountRepository bankAccountRepository;
+
+    @Autowired
+    private BankTransactionRepository bankTransactionRepository;
 
     // this redirects calls to the root of our application to index.html
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
@@ -40,65 +40,105 @@ public class MVCController {
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String viewCart(@RequestParam(name = "action", required = false) String action,
-            @RequestParam(name = "itemName", required = false) String itemName,
-            @RequestParam(name = "itemUUID", required = false) String itemUuid,
             Model model,
             HttpSession session) {
 
         // used to set tab selected
         model.addAttribute("selectedPage", "home");
-
         String message = "";
         String errorMessage = "";
 
-        // note that the shopping cart is is stored in the user's session
-        // so there is one cart per user
-//        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
-//        if (shoppingCart == null) synchronized (this) {
-//            if (shoppingCart == null) {
-//                shoppingCart = WebObjectFactory.getNewShoppingCart();
-//                session.setAttribute("shoppingCart", shoppingCart);
-//            }
-//        }
-
-        if(action == null ){
+        if (action == null) {
             // do nothing but show page
-        } else if ("addItemToCart".equals(action)) {
-            ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
-            if (shoppingItem == null) {
-                message = "cannot add unknown " + itemName + " to cart";
-            } else {
-                message = "adding " + itemName + " to cart price= " + shoppingItem.getPrice();
-                shoppingCart.addItemToCart(shoppingItem);
-            }
-        } else if ("removeItemFromCart".equals(action)) {
-            message = "removed " + itemName + " from cart";
-            shoppingCart.removeItemFromCart(itemUuid);
+        } else if ("xxx".equals(action)) {
+
         } else {
             message = "unknown action=" + action;
         }
 
-        List<ShoppingItem> availableItems = shoppingService.getAvailableItems();
-
-        List<ShoppingItem> shoppingCartItems = shoppingCart.getShoppingCartItems();
-
-        Double shoppingcartTotal = shoppingCart.getTotal();
-
         // populate model with values
-        model.addAttribute("availableItems", availableItems);
-        model.addAttribute("shoppingCartItems", shoppingCartItems);
-        model.addAttribute("shoppingcartTotal", shoppingcartTotal);
         model.addAttribute("message", message);
         model.addAttribute("errorMessage", errorMessage);
 
         return "home";
     }
 
-    @RequestMapping(value = "/about", method = {RequestMethod.GET, RequestMethod.POST})
-    public String aboutCart(Model model) {
+    @RequestMapping(value = "/bankaccounts", method = {RequestMethod.GET, RequestMethod.POST})
+    public String bankAccounts(@RequestParam(name = "action", required = false) String action,
+            Model model) {
         // used to set tab selected
-        model.addAttribute("selectedPage", "about");
-        return "about";
+        model.addAttribute("selectedPage", "bankaccounts");
+
+        List<BankAccount> bankAccounts = bankAccountRepository.findAll();
+        model.addAttribute("bankAccounts", bankAccounts);
+
+        return "bankaccounts";
+    }
+
+    @RequestMapping(value = "/bankaccountview", method = {RequestMethod.GET, RequestMethod.POST})
+    public String bankAccountView(@RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "sortCode", required = false) String sortCode,
+            @RequestParam(name = "accountNo", required = false) String accountNo,
+            @RequestParam(name = "firstName ", required = false) String firstName,
+            @RequestParam(name = "secondName", required = false) String secondName,
+            @RequestParam(name = "address", required = false) String address,
+            @RequestParam(name = "supportedIssuerBank", required = false) String supportedIssuerBank,
+            Model model) {
+        // used to set tab selected
+        model.addAttribute("selectedPage", "bankaccounts");
+        String message = "";
+        String errorMessage = "";
+        // list all
+        // add bank account
+        // deactivate / activate account
+        BankAccount bankAccount = new BankAccount();
+
+        if ("view".equals(action)) {
+            // do nothing but show page
+            bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);
+            if (bankAccount == null) {
+                throw new IllegalArgumentException("unknown bank account: " + sortCode + " " + accountNo);
+            }
+        } else if ("update".equals(action)) {
+            bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);
+            if (bankAccount == null) {
+                throw new IllegalArgumentException("unknown bank account: " + sortCode + " " + accountNo);
+            }
+            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXX bankAccount.getOwner()"+bankAccount.getOwner());
+            bankAccount.getOwner().setAddress(address);
+            bankAccount.getOwner().setFirstName(firstName);
+            bankAccount.getOwner().setSecondName(secondName);
+            
+            bankAccount = bankAccountRepository.save(bankAccount);
+            
+        } else if ("create".equals(action)) {
+           User user = new User();
+           user.setFirstName(firstName);
+           user.setAddress(address);
+           user.setSecondName(secondName);
+           bankAccount = bankService.createBankAccount(user, supportedIssuerBank);
+
+           message = "fill in user details for new account: sort code: "+bankAccount.getSortcode()+" account no: "+bankAccount.getAccountNo()+ "owner: "+bankAccount.getOwner();
+        } else {
+            throw new IllegalArgumentException("unknown action=" + action);
+        }
+
+        model.addAttribute("bankAccount", bankAccount);
+        // populate model with values
+        model.addAttribute("message", message);
+        model.addAttribute("errorMessage", errorMessage);
+
+        return "bankaccountview";
+    }
+
+    @RequestMapping(value = "/banktransactions", method = {RequestMethod.GET, RequestMethod.POST})
+    public String bankTransactions(Model model) {
+        // used to set tab selected
+        List<BankTransaction> bankTransactions = bankTransactionRepository.findAll();
+        model.addAttribute("bankTransactions", bankTransactions);
+
+        model.addAttribute("selectedPage", "banktransactions");
+        return "banktransactions";
     }
 
     @RequestMapping(value = "/contact", method = {RequestMethod.GET, RequestMethod.POST})
@@ -106,6 +146,13 @@ public class MVCController {
         // used to set tab selected
         model.addAttribute("selectedPage", "contact");
         return "contact";
+    }
+
+    @RequestMapping(value = "/about", method = {RequestMethod.GET, RequestMethod.POST})
+    public String abount(Model model) {
+        // used to set tab selected
+        model.addAttribute("selectedPage", "about");
+        return "about";
     }
 
 
