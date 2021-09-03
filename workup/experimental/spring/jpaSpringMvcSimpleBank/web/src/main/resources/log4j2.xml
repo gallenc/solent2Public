@@ -1,6 +1,5 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<Configuration status="DEBUG"> <!-- shows log4j logging -->
     <!-- Logging Properties -->
     <Properties>
         <!-- this sets the output style properties for the log messages -->

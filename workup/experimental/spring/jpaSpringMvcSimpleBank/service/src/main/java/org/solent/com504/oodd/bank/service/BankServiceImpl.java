@@ -7,6 +7,7 @@ package org.solent.com504.oodd.bank.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -102,11 +103,11 @@ public class BankServiceImpl implements BankService {
         BankAccount toAcct = bankAccountRepository.findBankAccountByNumber(toAccount.getSortcode(), toAccount.getAccountNo());
         if (fromAcct == null) {
             bankTransaction.setStatus(BankTransactionStatus.FAIL);
-            bankTransaction.setMessage("unknown from account " + fromAccount.getSortcode() + " " + fromAccount.getAccountNo());
+            bankTransaction.setMessage("unknown FROM account " + fromAccount.getSortcode() + " " + fromAccount.getAccountNo());
             return bankTransaction;
         } else if (toAcct == null) {
             bankTransaction.setStatus(BankTransactionStatus.FAIL);
-            bankTransaction.setMessage("unknown to account " + toAccount.getSortcode() + " " + toAccount.getAccountNo());
+            bankTransaction.setMessage("unknown TO account " + toAccount.getSortcode() + " " + toAccount.getAccountNo());
             return bankTransaction;
         } else if (fromAcct.getBalance() - amount < 0) {
             bankTransaction.setFromAccount(fromAcct);
@@ -124,7 +125,8 @@ public class BankServiceImpl implements BankService {
             bankAccountRepository.save(toAcct);
             
             bankTransaction.setFromAccount(fromAcct);
-            bankTransaction.setFromAccount(toAcct);
+            bankTransaction.setToAccount(toAcct);
+            bankTransaction.setTransactionDate(new Date());
             bankTransaction.setStatus(BankTransactionStatus.SUCCESS);
             bankTransactionRepository.saveAndFlush(bankTransaction);
             return bankTransaction;

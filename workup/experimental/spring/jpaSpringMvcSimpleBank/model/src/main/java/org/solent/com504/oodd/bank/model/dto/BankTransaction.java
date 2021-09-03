@@ -19,7 +19,7 @@ public class BankTransaction {
 
     private BankAccount toAccount;
 
-    private Date transactionDate;
+    private Date transactionDate = new Date();
 
     private Double amount;
 
@@ -100,8 +100,5 @@ public class BankTransaction {
         return "BankTransaction{" + "id=" + id + ", transactionId=" + transactionId + ", fromAccount=" + fromAccount + ", toAccount=" + toAccount + ", transactionDate=" + transactionDate + ", amount=" + amount + ", status=" + status + ", message=" + message + '}';
     }
 
-
-    
-    
 
 }
