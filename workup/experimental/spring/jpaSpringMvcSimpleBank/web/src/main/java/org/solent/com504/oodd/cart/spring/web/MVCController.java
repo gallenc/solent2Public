@@ -1,8 +1,12 @@
 package org.solent.com504.oodd.cart.spring.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankAccount;
 import org.solent.com504.oodd.bank.model.dto.BankTransaction;
 import org.solent.com504.oodd.bank.model.dto.CreditCard;
+import org.solent.com504.oodd.bank.model.dto.TransactionRequestMessage;
 import org.solent.com504.oodd.bank.model.dto.User;
 import org.solent.com504.oodd.bank.model.service.BankService;
 import org.solent.com504.oodd.bank.service.BankServiceImpl;
@@ -135,6 +140,66 @@ public class MVCController {
         model.addAttribute("errorMessage", errorMessage);
 
         return "home";
+    }
+
+    @RequestMapping(value = "/showjsonrequest", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showjson(@RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "fromSortCode", required = false) String fromSortCode,
+            @RequestParam(name = "fromAccountNo", required = false) String fromAccountNo,
+            @RequestParam(name = "toSortCode", required = false) String toSortCode,
+            @RequestParam(name = "toAccountNo", required = false) String toAccountNo,
+            @RequestParam(name = "amount", required = false) String amountStr,
+            Model model,
+            HttpSession session) {
+
+        // used to set tab selected
+        model.addAttribute("selectedPage", "home");
+        String message = "";
+        String errorMessage = "";
+
+        Double amount = 0.0;
+        try {
+            amount = (amountStr == null) ? 0.0 : Double.valueOf(amountStr);
+        } catch (NumberFormatException ex) {
+            errorMessage = "invalid amount value: " + amountStr;
+        }
+
+        TransactionRequestMessage transactionRequest = new TransactionRequestMessage();
+        transactionRequest.setAmount(amount);
+
+        BankAccount toAccount = bankService.findBankAccountByNumber(toSortCode, toAccountNo);
+        BankAccount fromAccount = bankService.findBankAccountByNumber(fromSortCode, fromAccountNo);
+        if(toAccount ==null ) {
+            errorMessage = "unable to find toAccount="+toSortCode+" "+toAccountNo+" ";
+        }
+        if(fromAccount ==null ) {
+            errorMessage = errorMessage+"unable to find fromAccount="+fromSortCode+" "+fromAccountNo;
+        }
+        
+        CreditCard fromCard = (fromAccount!=null) ? fromAccount.getCreditcard() : new CreditCard();
+        transactionRequest.setFromCard(fromCard);
+        CreditCard toCard = (fromAccount!=null) ? fromAccount.getCreditcard() : new CreditCard();
+        transactionRequest.setToCard(toCard);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.findAndRegisterModules()
+                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
+        String transactionRequestJson = "";
+        try {
+            transactionRequestJson = objectMapper.writeValueAsString(transactionRequest);
+        } catch (JsonProcessingException ex) {
+            LOG.debug("could not marshal json request as json ", ex);
+            errorMessage = "could not marshal json request as json. See logs for details.";
+        }
+
+        // populate model with values
+        model.addAttribute("transactionRequestJson", transactionRequestJson);
+        model.addAttribute("message", message);
+        model.addAttribute("errorMessage", errorMessage);
+
+        return "showjson";
     }
 
     @RequestMapping(value = "/bankaccounts", method = {RequestMethod.GET, RequestMethod.POST})

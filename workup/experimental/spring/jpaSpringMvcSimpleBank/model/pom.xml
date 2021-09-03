@@ -19,6 +19,7 @@
             <version>${project.version}</version>
         </dependency>
         
+        <!-- dependencies for jpa annotations -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -31,7 +32,21 @@
             </exclusions>
         </dependency>
         
-        <!-- dependencies for java 11 -->
+        <!-- dependencies for jackson  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        
+        <!-- dependencies for java 11 Jaxb / annotation -->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>

@@ -19,6 +19,7 @@
     <div style="color:green;">${message}</div>
 
     <H1>Transfer Money Between Accounts</H1>
+
     <form action="./home" method="post">
         <button class="btn ml-2 rounded" type="submit" >Submit Transaction</button>
         <input type="hidden" name="action" value="transferMoneyBetweenAccounts">
@@ -47,6 +48,15 @@
             </tr>
         </table>
 
+    </form>
+
+    <form action="./showjsonrequest" method="post">
+        <button class="btn ml-2 rounded" type="submit" >Show Json Transaction Request</button>
+        <input type="hidden" name="fromSortCode" value="${fromSortCode}" >
+        <input type="hidden" name="fromAccountNo" value="${fromAccountNo}" >
+        <input type="hidden" name="toSortCode" value="${toSortCode}" >
+        <input type="hidden" name="toAccountNo" value="${toAccountNo}" >
+        <input type="hidden" name="amount" value="${amount}" >
     </form>
 
     <c:if test="${bankTransactionResult!=null}">

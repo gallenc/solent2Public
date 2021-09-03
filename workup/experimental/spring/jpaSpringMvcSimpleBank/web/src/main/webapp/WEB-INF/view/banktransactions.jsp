@@ -33,8 +33,9 @@
             <tr>
                 <td>${transaction.transactionDate}</td>
                 <td>${transaction.transactionId}</td>
-                <td>${transaction.fromAccount.sortcode} ${transaction.fromAccount.accountNo} ${transaction.fromAccount.creditcard.cardnumber}</td>
-                <td>${transaction.toAccount.sortcode} ${transaction.toAccount.accountNo} ${transaction.toAccount.creditcard.cardnumber}</td>
+                <td>Sort Code: ${transaction.fromAccount.sortcode} Account No: ${transaction.fromAccount.accountNo}<br>Card No: ${transaction.fromAccount.creditcard.cardnumber}</td>
+                <td>Sort Code: ${transaction.toAccount.sortcode} Account No: ${transaction.toAccount.accountNo}<br>Card No: ${transaction.toAccount.creditcard.cardnumber}</td>
+                <td>${transaction.amount}</td>
             </tr>
 
         </c:forEach>
