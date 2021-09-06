@@ -37,7 +37,6 @@
                 <td>Sort Code: ${transaction.toAccount.sortcode} Account No: ${transaction.toAccount.accountNo}<br>Card No: ${transaction.toAccount.creditcard.cardnumber}</td>
                 <td>${transaction.amount}</td>
             </tr>
-
         </c:forEach>
     </table>
 

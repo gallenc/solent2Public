@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankTransaction;
+import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.bank.model.dto.CreditCard;
 import org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage;
 import org.solent.com504.oodd.bank.model.dto.TransactionRequestMessage;
@@ -70,9 +71,24 @@ public class ReSTController {
         BankTransaction result = bankService.transferMoney(fromCard, toCard, amount);
 
         TransactionReplyMessage replyMessage = new TransactionReplyMessage();
-        replyMessage.setResult(result);
 
-        return ResponseEntity.status(HttpStatus.OK).body(replyMessage);
+        replyMessage.setFromCardNo(fromCard.getCardnumber());
+        replyMessage.setToCardNo(toCard.getCardnumber());
+        replyMessage.setTransactionDate(result.getTransactionDate());
+        replyMessage.setTransactionId(result.getTransactionId());
+        replyMessage.setMessage(result.getMessage());
+        replyMessage.setStatus(result.getStatus());
+        replyMessage.setAmount(result.getAmount());
+
+        // differnt reply code depending on result
+        if (BankTransactionStatus.SUCCESS == result.getStatus()) {
+            replyMessage.setCode(HttpStatus.OK.value());
+            return ResponseEntity.status(HttpStatus.OK).body(replyMessage);
+        } else {
+            replyMessage.setCode(HttpStatus.BAD_REQUEST.value());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(replyMessage);
+        }
+
     }
 
     @ExceptionHandler(Exception.class)

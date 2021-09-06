@@ -52,7 +52,12 @@
       <Fields>
         <Field name="code" type="Integer" visibility="private"/>
         <Field name="message" type="String" visibility="private"/>
-        <Field name="result" type="BankTransaction" visibility="private"/>
+        <Field name="status" type="BankTransactionStatus" visibility="private"/>
+        <Field name="fromCardNo" type="String" visibility="private"/>
+        <Field name="toCardNo" type="String" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
+        <Field name="transactionDate" type="Date" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
@@ -125,19 +130,19 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="hasStatus" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="useBankAccountDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.springframework.data.repository.CrudRepository"/>
-    <UseRelation name="persistsBankAccounts" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.solent.com504.oodd.bank.model.dto.BankAccount" sourceCardinality="1..1" targetCardinality="0..*"/>
-    <HasRelation name="fromAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="hasCreditCard" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.CreditCard" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="persistsTransactions" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.solent.com504.oodd.bank.model.dto.BankTransaction" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="hasStatus" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="usesbankservice" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.service.BankService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useTransactionDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.springframework.data.repository.CrudRepository"/>
+    <HasRelation name="toAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsBankAccounts" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.solent.com504.oodd.bank.model.dto.BankAccount" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="useBankAccountDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation name="uses RequestMessage" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.dto.TransactionRequestMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsTransactions" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.solent.com504.oodd.bank.model.dto.BankTransaction" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="fromAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="hasUser" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.User" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.springframework.data.repository.CrudRepository"/>
     <UseRelation name="use reply message" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="useTransactionDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="toAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="hasUser" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.User" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
