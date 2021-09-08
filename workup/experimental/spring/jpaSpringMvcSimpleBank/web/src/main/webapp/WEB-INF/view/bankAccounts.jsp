@@ -38,41 +38,40 @@
 
 
         <c:forEach var="bankAccount" items="${bankAccounts}">
-            <form action="./bankaccountview" method="post">
-                <tr>
-                    <td><input type="text" size="36" name="sortCode" value="${bankAccount.sortcode}" readonly ></td>
-                    <td><input type="text" size="36" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
-                    <td>${bankAccount.owner.firstName} ${bankAccount.owner.secondName}</td>
-                    <td>${bankAccount.balance}</td>
-                    <td>
-                        <c:if test="${bankAccount.active}"><div style="color:green;">Active</div></c:if>
-                        <c:if test="${! bankAccount.active}"><div style="color:red;">Deactivated</div></c:if>
-                        </td>
-                        <td>
-                            <div class="btn-group">
-                                <form action="./bankaccountview" method="post">
-                                    <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
-                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
-                                <input type="hidden" name="action" value="view">
-                                <button class="btn ml-2 rounded" type="submit" >View Account</button>
-                            </form>
-                            <form action="./home" method="post">
-                                <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
-                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
-                                <input type="hidden" name="action" value="selectFromAccount">
-                                <button class="btn ml-2 rounded" type="submit" >Select From Account</button>
-                            </form>
-                            <form action="./home" method="post">
-                                <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
-                                <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
-                                <input type="hidden" name="action" value="selectToAccount">
-                                <button class="btn ml-2 rounded" type="submit" >Select To Account</button>
-                            </form>
-                        </div> <!-- button group -->
+            <tr>
+                <td><input type="text" size="36" name="sortCode" value="${bankAccount.sortcode}" readonly ></td>
+                <td><input type="text" size="36" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
+                <td>${bankAccount.owner.firstName} ${bankAccount.owner.secondName}</td>
+                <td>${bankAccount.balance}</td>
+                <td>
+                    <c:if test="${bankAccount.active}"><div style="color:green;">Active</div></c:if>
+                    <c:if test="${! bankAccount.active}"><div style="color:red;">Deactivated</div></c:if>
                     </td>
-                </tr>
+                    <td>
+                        <div class="btn-group">
+                            <form action="./bankaccountview" method="post">
+                                <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                            <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                            <input type="hidden" name="action" value="view">
+                            <button class="btn ml-2 rounded" type="submit" >View Account</button>
+                        </form>
+                        <form action="./home" method="post">
+                            <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                            <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                            <input type="hidden" name="action" value="selectFromAccount">
+                            <button class="btn ml-2 rounded" type="submit" >Select From Account</button>
+                        </form>
+                        <form action="./home" method="post">
+                            <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}" >
+                            <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}">
+                            <input type="hidden" name="action" value="selectToAccount">
+                            <button class="btn ml-2 rounded" type="submit" >Select To Account</button>
+                        </form>
+                    </div> <!-- button group -->
+                </td>
+            </tr>
 
-            </c:forEach>
+        </c:forEach>
     </table>
 
 </main>

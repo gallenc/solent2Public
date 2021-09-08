@@ -178,7 +178,7 @@ public class MVCController {
         
         CreditCard fromCard = (fromAccount!=null) ? fromAccount.getCreditcard() : new CreditCard();
         transactionRequest.setFromCard(fromCard);
-        CreditCard toCard = (fromAccount!=null) ? fromAccount.getCreditcard() : new CreditCard();
+        CreditCard toCard = (toAccount!=null) ? toAccount.getCreditcard() : new CreditCard();
         transactionRequest.setToCard(toCard);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -237,8 +237,7 @@ public class MVCController {
             errorMessage = "invalid balance value: " + balanceStr;
         }
 
-        // todo replace with log
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxx bankaccountview called: action=" + action
+        LOG.debug("xxxxxxxxxxxxxxxxxxxxxxxxxx bankaccountview called: action=" + action
                 + " sortCode=" + sortCode
                 + " accountNo=" + accountNo
                 + " firstName=" + firstName
@@ -254,7 +253,7 @@ public class MVCController {
             // do nothing but show page
             bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);
             if (bankAccount == null) {
-                throw new IllegalArgumentException("unknown bank account: " + sortCode + " " + accountNo);
+                throw new IllegalArgumentException("unknown bank account: sort code:" + sortCode + " account no:" + accountNo);
             }
         } else if ("update".equals(action)) {
             bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);

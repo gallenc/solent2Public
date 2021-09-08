@@ -14,18 +14,19 @@
 <script>
     function sendTestData() {
         // construct an HTTP request
+        // note .textContent or value used instead of innerHTML because of security risk
         var xhr = new XMLHttpRequest();
         xhr.open('POST', './rest/transactionRequest', true);
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xhr.setRequestHeader('Accept', 'application/json; charset=UTF-8');
         // send the collected data as JSON
-        let data = document.getElementById('transactionRequestJson').innerHTML;
-        document.getElementById('message').innerHTML = 'POSTing to rest service';
+        var data = document.getElementById('transactionRequestJson').value;
+        document.getElementById('message').textContent = 'POSTing to rest service';
         xhr.send(data);
         xhr.onloadend = function () {
-            document.getElementById('message').innerHTML = 'POSTing response received';
+            document.getElementById('message').textContent = 'POSTing response received';
             var rxJsonObject = JSON.parse(xhr.responseText);
-            document.getElementById('transactionResponseJson').innerHTML = JSON.stringify(rxJsonObject, null, 2);
+            document.getElementById('transactionResponseJson').textContent = JSON.stringify(rxJsonObject, null, 2);
         };
     }
 </script>

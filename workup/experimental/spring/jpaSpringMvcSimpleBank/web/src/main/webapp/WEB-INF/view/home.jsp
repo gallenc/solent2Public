@@ -78,6 +78,9 @@
                 <td>To Account</td><td>${bankTransactionResult.toAccount.sortcode} ${bankTransactionResult.toAccount.accountNo} ${bankTransactionResult.toAccount.creditcard.cardnumber}</td>
             </tr>
             <tr>
+                <td>Amount</td><td>${bankTransactionResult.amount}</td>
+            </tr>
+            <tr>
                 <td>Message</td><td>${bankTransactionResult.message}</td>
             </tr>
         </table>
