@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankAccount;
@@ -37,6 +38,9 @@ public class MVCController {
 
     @Autowired
     private BankService bankService;
+    
+    @Autowired
+    private PopulateDatabaseOnStart populateDatabaseOnStart;
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
@@ -48,6 +52,21 @@ public class MVCController {
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model) {
         return "redirect:/index.html";
+    }
+    
+    // this clears all data
+    @RequestMapping(value = "/reset", method = {RequestMethod.GET})
+    @Transactional
+    public String reset(Model model,HttpSession session) {
+        bankTransactionRepository.deleteAll();
+        bankAccountRepository.deleteAll();
+        populateDatabaseOnStart.initDatabase();
+        session.removeAttribute("fromSortCode");
+        session.removeAttribute("toSortCode");
+        session.removeAttribute("fromAccountNo");
+        session.removeAttribute("toAccountNo");
+        
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})

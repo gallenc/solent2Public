@@ -79,7 +79,7 @@
     </Interface>
     <Interface name="BankService" package="org.solent.com504.oodd.bank.model.service" visibility="public" xPosition="761.0" yPosition="237.0">
       <Methods>
-        <Method name="createBankAccount" returnType="String" visibility="public">
+        <Method name="createBankAccount" returnType="BankAccount" visibility="public">
           <Argument type="User" name="user"/>
           <Argument type="String" name="supportedIssuerBank"/>
         </Method>
@@ -104,6 +104,11 @@
           <Argument type="Double" name="amount"/>
           <Argument type="String" name="toUsername"/>
           <Argument type="String" name="toPassword"/>
+        </Method>
+        <Method name="createBankAccount" returnType="BankAccount" visibility="public">
+          <Argument type="User" name="user"/>
+          <Argument type="String" name="supportedIssuerBank"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
         </Method>
       </Methods>
     </Interface>

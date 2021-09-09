@@ -12,6 +12,8 @@ public interface BankService {
 
     // methods reflecting service
     public BankAccount createBankAccount(User user, String supportedIssuerBank);
+    
+    BankAccount createBankAccount(User user, String supportedIssuerBank, String individualAccountIdentifier);
 
     public BankTransaction  transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount);
 

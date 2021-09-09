@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.oodd.bank.client.impl.BankRestClientImpl;
 import org.solent.com504.oodd.bank.model.client.BankRestClient;
+import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.bank.model.dto.CreditCard;
 import org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage;
 
@@ -33,21 +34,21 @@ public class BankClientTest {
     @Before
     public void before() {
         fromCard = new CreditCard();
-        fromCard.setCardnumber("5133880341916850");
+        fromCard.setCardnumber("5133880000000012");
         fromCard.setCvv("123");
         fromCard.setEndDate("11/21");
-        fromCard.setIssueNumber("01");
+        fromCard.setIssueNumber("01"); 
         fromCard.setName("test user1");
 
         toCard = new CreditCard();
-        toCard.setCardnumber("5133880352113025");
+        toCard.setCardnumber("4285860000000021");
         toCard.setCvv("123");
         toCard.setEndDate("11/21");
         toCard.setIssueNumber("01");
         toCard.setName("test user2");
         
         toUsername = "testuser2";
-        toPassword = "testUserPassword";
+        toPassword = "defaulttestpass";
     }
 
     @Test
@@ -59,6 +60,8 @@ public class BankClientTest {
 
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
         LOG.debug("transaction reply:" + reply);
+
+        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
 
     }
 
@@ -73,6 +76,8 @@ public class BankClientTest {
  
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
         LOG.debug("transaction with auth reply:" + reply);
+        
+        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
 
     }
 }

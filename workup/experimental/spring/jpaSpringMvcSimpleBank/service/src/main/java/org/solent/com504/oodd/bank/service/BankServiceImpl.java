@@ -37,64 +37,71 @@ import solent.ac.uk.ood.examples.cardcheck.RegexCardValidator;
  */
 @Component
 public class BankServiceImpl implements BankService {
-    
+
     private static final Logger LOG = LogManager.getLogger(BankServiceImpl.class);
-    
+
     @Autowired
     private BankAccountRepository bankAccountRepository;
-    
+
     @Autowired
     private BankTransactionRepository bankTransactionRepository;
-    
+
     private List<String> supportedIssuerBanks
             = Collections.unmodifiableList(
                     new ArrayList(SupportedCardIssuerIdentificationNumbers.ISSUER_IDENTIFICATION_MAP.keySet()));
-    
+
     @Override
     @Transactional
     public void deleteAllData() {
         bankTransactionRepository.deleteAll();
         bankAccountRepository.deleteAll();
     }
-    
+
     @Override
     public BankAccount createBankAccount(User user, String supportedIssuerBank) {
-        
+
+        // nextInt is normally exclusive of the top value, so add 1 to make it inclusive
+        // reserving 10 numbers for test
+        int randomNum = ThreadLocalRandom.current().nextInt(10, 99999999);
+        String individualAccountIdentifier = String.format("%09d", randomNum);; // 8 digits) 
+
+        return createBankAccount(user, supportedIssuerBank, individualAccountIdentifier);
+    }
+
+    @Override
+    public BankAccount createBankAccount(User user, String supportedIssuerBank, String individualAccountIdentifier) {
+
         String iin = SupportedCardIssuerIdentificationNumbers.ISSUER_IDENTIFICATION_MAP.get(supportedIssuerBank);
         if (iin == null) {
             throw new IllegalArgumentException("unknown issuer " + supportedIssuerBank);
         }
-        
+
         BankAccount account = new BankAccount();
         account.setSortcode(iin);
         account.setOwner(user);
-
-        // nextInt is normally exclusive of the top value, so add 1 to make it inclusive
-        int randomNum = ThreadLocalRandom.current().nextInt(0, 99999999);
-        String individualAccountIdentifier = String.format("%09d", randomNum);; // 8 digits) 
         account.setAccountNo(individualAccountIdentifier);
-        
+
         CreditCard card = new CreditCard();
-        
+
         String pan = iin + individualAccountIdentifier;
-        
+
         String check = CalculateLunnDigit.calculateCheckDigit(pan);
-        
+
         String ccNumber = pan + check;
-        
+
         card.setCardnumber(ccNumber);
         card.setName(user.getFirstName() + " " + user.getSecondName());
         card.setCvv("123"); // use algorythm here
         card.setEndDate("11/21");
-        
+
         account.setCreditcard(card);
-        
+
         account = bankAccountRepository.saveAndFlush(account);
         LOG.debug("created account " + account);
-        
+
         return account;
     }
-    
+
     @Override
     @Transactional
     public BankTransaction transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount) {
@@ -120,11 +127,11 @@ public class BankServiceImpl implements BankService {
             double newFromBalance = fromAcct.getBalance() - amount;
             fromAcct.setBalance(newFromBalance);
             bankAccountRepository.save(fromAcct);
-            
+
             double newToBalance = toAcct.getBalance() + amount;
             toAcct.setBalance(newToBalance);
             bankAccountRepository.save(toAcct);
-            
+
             bankTransaction.setFromAccount(fromAcct);
             bankTransaction.setToAccount(toAcct);
             bankTransaction.setTransactionDate(new Date());
@@ -132,23 +139,23 @@ public class BankServiceImpl implements BankService {
             bankTransactionRepository.saveAndFlush(bankTransaction);
             return bankTransaction;
         }
-        
+
     }
-    
+
     @Override
-    public BankTransaction transferMoneyAuth(CreditCard fromCard, CreditCard toCard, Double amount, String toUsername, String toPassword) throws SecurityException{
+    public BankTransaction transferMoneyAuth(CreditCard fromCard, CreditCard toCard, Double amount, String toUsername, String toPassword) throws SecurityException {
         // check password and user are allowed to make transaction - note this is TO account as they own cash machine
         BankAccount toAccount = bankAccountRepository.findBankAccountByCreditCardNo(toCard.getCardnumber());
-        if(! toUsername.equals(toAccount.getOwner().getUsername())){
-            throw new SecurityException("Unauthorised user "+toUsername);
+        if (!toUsername.equals(toAccount.getOwner().getUsername())) {
+            throw new SecurityException("Unauthorised user " + toUsername);
         }
-        
-        if (! PasswordUtils.checkPassword(toPassword, toAccount.getOwner().getHashedPassword())){
-            throw new SecurityException("Unauthorised password for user "+toUsername);
+
+        if (!PasswordUtils.checkPassword(toPassword, toAccount.getOwner().getHashedPassword())) {
+            throw new SecurityException("Unauthorised password for user " + toUsername);
         }
         return transferMoney(fromCard, toCard, amount);
     }
-    
+
     @Override
     public BankTransaction transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
         //check creditccdlunn etc first
@@ -161,7 +168,7 @@ public class BankServiceImpl implements BankService {
             bankTransaction.setMessage("invalid from card number :" + fromCard.getCardnumber() + " " + cardValidationResult.getMessage());
             return bankTransaction;
         }
-        
+
         cardValidationResult = RegexCardValidator.isValid(toCard.getCardnumber());
         if (!cardValidationResult.isValid()) {
             BankTransaction bankTransaction = new BankTransaction();
@@ -175,12 +182,12 @@ public class BankServiceImpl implements BankService {
         BankAccount toAccount = bankAccountRepository.findBankAccountByCreditCardNo(toCard.getCardnumber());
         return transferMoney(fromAccount, toAccount, amount);
     }
-    
+
     @Override
     public List<String> getSupportedIssuerBanks() {
         return supportedIssuerBanks;
     }
-    
+
     @Override
     @Transactional
     public boolean activateAccount(BankAccount account, boolean active) {
@@ -195,46 +202,46 @@ public class BankServiceImpl implements BankService {
     public BankAccount findBankAccountByNumber(String sortcode, String accountNo) {
         return bankAccountRepository.findBankAccountByNumber(sortcode, accountNo);
     }
-    
+
     @Override
     public BankAccount findBankAccountByCreditCardNo(String cardnumber) {
         return bankAccountRepository.findBankAccountByCreditCardNo(cardnumber);
     }
-    
+
     @Override
     public List<BankAccount> findAllBankAccounts() {
         return bankAccountRepository.findAll();
     }
-    
+
     @Override
     public Optional<BankAccount> findByBankAccountById(Long id) {
         return bankAccountRepository.findById(id);
     }
-    
+
     @Override
     public <S extends BankAccount> S saveBankAccount(S s) {
         return bankAccountRepository.saveAndFlush(s);
     }
-    
+
     @Override
     public List<BankTransaction> findAllBankTransactions() {
         return bankTransactionRepository.findAll();
     }
-    
+
     @Override
     public Optional<BankTransaction> findByBankTransactionById(Long id) {
         return bankTransactionRepository.findById(id);
-        
+
     }
-    
+
     @Override
     public <S extends BankTransaction> S saveBankTransaction(S s) {
         return bankTransactionRepository.save(s);
     }
-    
+
     @Override
     public List<BankTransaction> findBankTransactionsFromCreditCardNumber(String cardnumber) {
         return bankTransactionRepository.findBankTransactionsFromCreditCardNumber(cardnumber);
     }
-    
+
 }
