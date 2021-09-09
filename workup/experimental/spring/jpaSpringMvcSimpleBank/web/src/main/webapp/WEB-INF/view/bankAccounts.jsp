@@ -22,6 +22,7 @@
         <form action="./bankaccountview" method="post">
             <input type="hidden" name="action" value="create">
             <input type="hidden" name="supportedIssuerBank" value="VISA_BANK_OF_IRELAND_UK">
+            First Name <input type="text" size="36" name="firstName" value="" >&nbsp;Second Name <input type="text" size="36" name="secondName" value="" >
             <button class="btn ml-2 rounded" type="submit" >Create New Account</button>
         </form>
     </div>
@@ -31,6 +32,7 @@
         <tr>
             <th>Sort Code</th>
             <th>Account Number</th>
+            <th>Card Number</th>
             <th>Owner</th>
             <th>Balance</th>
             <th>Status</th>
@@ -39,8 +41,9 @@
 
         <c:forEach var="bankAccount" items="${bankAccounts}">
             <tr>
-                <td><input type="text" size="36" name="sortCode" value="${bankAccount.sortcode}" readonly ></td>
-                <td><input type="text" size="36" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
+                <td><input type="text" size="20" name="sortCode" value="${bankAccount.sortcode}" readonly ></td>
+                <td><input type="text" size="20" name="accountNo" value="${bankAccount.accountNo}" readonly ></td>
+                <td><input type="text" size="20" name="cardNo" value="${bankAccount.creditcard.cardnumber}" readonly ></td>
                 <td>${bankAccount.owner.firstName} ${bankAccount.owner.secondName}</td>
                 <td>${bankAccount.balance}</td>
                 <td>

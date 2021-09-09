@@ -45,6 +45,14 @@
             </exclusions>
         </dependency>
         
+        <!-- hashing library for password -->
+        <!-- https://www.mindrot.org/projects/jBCrypt/   https://github.com/djmdjm/jBCrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+        
         
         <!-- dependencies for java 11 Jaxb / annotation -->
         <dependency>

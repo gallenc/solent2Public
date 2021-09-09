@@ -26,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
 import org.solent.com504.oodd.dao.impl.BankAccountRepository;
 import org.solent.com504.oodd.dao.impl.BankTransactionRepository;
+import org.solent.com504.oodd.password.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import solent.ac.uk.ood.examples.cardcheck.CardValidationResult;
 import solent.ac.uk.ood.examples.cardcheck.RegexCardValidator;
@@ -132,6 +133,20 @@ public class BankServiceImpl implements BankService {
             return bankTransaction;
         }
         
+    }
+    
+    @Override
+    public BankTransaction transferMoneyAuth(CreditCard fromCard, CreditCard toCard, Double amount, String toUsername, String toPassword) throws SecurityException{
+        // check password and user are allowed to make transaction - note this is TO account as they own cash machine
+        BankAccount toAccount = bankAccountRepository.findBankAccountByCreditCardNo(toCard.getCardnumber());
+        if(! toUsername.equals(toAccount.getOwner().getUsername())){
+            throw new SecurityException("Unauthorised user "+toUsername);
+        }
+        
+        if (! PasswordUtils.checkPassword(toPassword, toAccount.getOwner().getHashedPassword())){
+            throw new SecurityException("Unauthorised password for user "+toUsername);
+        }
+        return transferMoney(fromCard, toCard, amount);
     }
     
     @Override

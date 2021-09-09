@@ -27,9 +27,9 @@
         <table class="table">
             <tr>
                 <td>Account Active</td><td><input type="checkbox" name="accountactive" value="active" <c:if test="${bankAccount.active}">checked</c:if> ></td> <td></td>
-            </tr>
-            <tr>
-                <td>Balance £GBP</td><td><input type="text" size="36" name="balance" value="${bankAccount.balance}" ></td> <td></td>
+                </tr>
+                <tr>
+                    <td>Balance £GBP</td><td><input type="text" size="36" name="balance" value="${bankAccount.balance}" ></td> <td></td>
             </tr>
             <tr>
                 <td>First Name</td><td><input type="text" size="36" name="firstName" value="${bankAccount.owner.firstName}" ></td> <td></td>
@@ -39,6 +39,9 @@
             </tr>
             <tr>
                 <td>Address </td><td><input type="text" size="36" name="address" value="${bankAccount.owner.address}" ></td> <td></td>
+            </tr>
+            <tr>
+                <td>Username </td><td><input type="text" size="36" name="username" value="${bankAccount.owner.username}" readonly ></td> <td></td>
             </tr>
 
             <tr>
@@ -65,7 +68,15 @@
         </table>
     </form> 
 
-
+    <form action="./bankaccountview" method="post">
+        <input type="hidden" name="action" value="updatePassword">
+        <input type="hidden"  name="sortCode" value="${bankAccount.sortcode}">
+        <input type="hidden"  name="accountNo" value="${bankAccount.accountNo}" >
+        <div class="btn-group">
+            <button class="btn ml-2 rounded" type="submit" >Update Password</button><br>
+            Input new password <input type="text" size="36" name="password1" value="" ></p>&nbsp;Repeat new password<input type="text" size="36" name="password2" value="" >
+        </div>
+    </form>
 
 </main>
 <jsp:include page="footer.jsp" />

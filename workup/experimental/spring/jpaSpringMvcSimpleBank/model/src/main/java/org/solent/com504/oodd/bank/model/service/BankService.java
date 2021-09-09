@@ -16,6 +16,8 @@ public interface BankService {
     public BankTransaction  transferMoney(BankAccount fromAccount, BankAccount toAccount, Double amount);
 
     public BankTransaction  transferMoney(CreditCard fromCard, CreditCard toCard, Double amount);
+    
+    public BankTransaction transferMoneyAuth(CreditCard fromCard, CreditCard toCard, Double amount, String toUsername, String toPassword);
 
     public List<String> getSupportedIssuerBanks();
 

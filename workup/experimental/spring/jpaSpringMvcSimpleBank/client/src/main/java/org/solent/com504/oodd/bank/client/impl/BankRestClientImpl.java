@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.logging.LoggingFeature;
 import org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage;
@@ -42,12 +43,12 @@ public class BankRestClientImpl implements BankRestClient {
     @Override
     public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
         LOG.debug("transferMoney called: ");
-                
+
         // sets up logging for the client       
         Client client = ClientBuilder.newClient(new ClientConfig().register(
                 new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
                         Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
-        
+
         // allows client to decode json
         client.register(JacksonJsonProvider.class);
 
@@ -72,7 +73,38 @@ public class BankRestClientImpl implements BankRestClient {
 
     @Override
     public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount, String userName, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.debug("transferMoney called: ");
+
+        // sets up logging for the client       
+        Client client = ClientBuilder.newClient(new ClientConfig().register(
+                new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+                        Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
+
+        // basic authentication
+        HttpAuthenticationFeature basicAuthfeature = HttpAuthenticationFeature.basic(userName, password);
+        client.register(basicAuthfeature);
+        
+        
+        // allows client to decode json
+        client.register(JacksonJsonProvider.class);
+        WebTarget webTarget = client.target(urlStr).path("/transactionRequest");
+
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+
+        TransactionRequestMessage transactionRequestMessage = new TransactionRequestMessage();
+        transactionRequestMessage.setAmount(amount);
+        transactionRequestMessage.setFromCard(fromCard);
+        transactionRequestMessage.setToCard(toCard);
+
+        Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
+
+        TransactionReplyMessage transactionReplyMessage = response.readEntity(TransactionReplyMessage.class);
+
+        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
+
+        return transactionReplyMessage;
+
     }
+
 
 }

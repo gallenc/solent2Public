@@ -57,20 +57,38 @@ public class ReSTController {
      */
     @RequestMapping(value = "/transactionRequest", method = {RequestMethod.POST},
             consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> transactionRequest(@RequestBody(required = false) TransactionRequestMessage transactionRequestMessage,
+    public ResponseEntity<Object> transactionRequest(@RequestBody(required = true) TransactionRequestMessage transactionRequestMessage,
             @RequestHeader Map<String, String> headers) {
-
-        String authString = headers.get("authorization");
-
-        LOG.debug("message received:" + transactionRequestMessage);
 
         Double amount = transactionRequestMessage.getAmount();
         CreditCard fromCard = transactionRequestMessage.getFromCard();
         CreditCard toCard = transactionRequestMessage.getToCard();
 
-        BankTransaction result = bankService.transferMoney(fromCard, toCard, amount);
+        String authString = headers.get("authorization");
+
+        BankTransaction result;
 
         TransactionReplyMessage replyMessage = new TransactionReplyMessage();
+
+        if (authString == null) {
+            LOG.debug("message received without basic auth :" + transactionRequestMessage);
+            result = bankService.transferMoney(fromCard, toCard, amount);
+        } else {
+            //decode auth string and use
+            String[] userPass = BasicAuthCoder.decode(authString);
+            String toUserName = userPass[0];
+            String toUserPassword = userPass[1];
+            LOG.debug("message received with basic auth toUserName: " + toUserName
+                    + " request: " + transactionRequestMessage);
+            try {
+                result = bankService.transferMoneyAuth(fromCard, toCard, amount, toUserName, toUserPassword);
+            } catch (SecurityException ex) {
+                replyMessage.setCode(HttpStatus.UNAUTHORIZED.value());
+                replyMessage.setMessage(ex.getMessage());
+                LOG.error("security exception toUserName" + toUserName+ " "+ex.getMessage());
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(replyMessage);
+            }
+        }
 
         replyMessage.setFromCardNo(fromCard.getCardnumber());
         replyMessage.setToCardNo(toCard.getCardnumber());

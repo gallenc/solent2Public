@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
@@ -169,16 +170,16 @@ public class MVCController {
 
         BankAccount toAccount = bankService.findBankAccountByNumber(toSortCode, toAccountNo);
         BankAccount fromAccount = bankService.findBankAccountByNumber(fromSortCode, fromAccountNo);
-        if(toAccount ==null ) {
-            errorMessage = "unable to find toAccount="+toSortCode+" "+toAccountNo+" ";
+        if (toAccount == null) {
+            errorMessage = "unable to find toAccount=" + toSortCode + " " + toAccountNo + " ";
         }
-        if(fromAccount ==null ) {
-            errorMessage = errorMessage+"unable to find fromAccount="+fromSortCode+" "+fromAccountNo;
+        if (fromAccount == null) {
+            errorMessage = errorMessage + "unable to find fromAccount=" + fromSortCode + " " + fromAccountNo;
         }
-        
-        CreditCard fromCard = (fromAccount!=null) ? fromAccount.getCreditcard() : new CreditCard();
+
+        CreditCard fromCard = (fromAccount != null) ? fromAccount.getCreditcard() : new CreditCard();
         transactionRequest.setFromCard(fromCard);
-        CreditCard toCard = (toAccount!=null) ? toAccount.getCreditcard() : new CreditCard();
+        CreditCard toCard = (toAccount != null) ? toAccount.getCreditcard() : new CreditCard();
         transactionRequest.setToCard(toCard);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -224,6 +225,8 @@ public class MVCController {
             @RequestParam(name = "accountactive", required = false) String accountactive,
             @RequestParam(name = "supportedIssuerBank", required = false) String supportedIssuerBank,
             @RequestParam(name = "balance", required = false) String balanceStr,
+            @RequestParam(name = "password1", required = false) String password1,
+            @RequestParam(name = "password2", required = false) String password2,
             Model model) {
         // used to set tab selected
         model.addAttribute("selectedPage", "bankaccounts");
@@ -237,7 +240,7 @@ public class MVCController {
             errorMessage = "invalid balance value: " + balanceStr;
         }
 
-        LOG.debug("xxxxxxxxxxxxxxxxxxxxxxxxxx bankaccountview called: action=" + action
+        LOG.debug("bankaccountview called: action=" + action
                 + " sortCode=" + sortCode
                 + " accountNo=" + accountNo
                 + " firstName=" + firstName
@@ -245,7 +248,7 @@ public class MVCController {
                 + " address=" + address
                 + " accountactive=" + accountactive
                 + " supportedIssuerBank=" + supportedIssuerBank
-                + "balanceStr=" + balanceStr);
+                + " balanceStr=" + balanceStr);
 
         BankAccount bankAccount = new BankAccount();
 
@@ -261,7 +264,7 @@ public class MVCController {
                 throw new IllegalArgumentException("unknown bank account: " + sortCode + " " + accountNo);
             }
             bankAccount.setBalance(balance);
-            User owner = new User();
+            User owner = bankAccount.getOwner();
             owner.setAddress(address);
             owner.setFirstName(firstName);
             owner.setSecondName(secondName);
@@ -279,13 +282,41 @@ public class MVCController {
             message = "updated account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
 
         } else if ("create".equals(action)) {
+            
+            // check if firstName and secondName populated
+            if(firstName.trim().length() <1 || secondName.trim().length() <5 ){
+                errorMessage = "create account with first name and second name > 5 characters";
+                model.addAttribute("errorMessage", errorMessage);
+                return "bankaccounts";
+            }
+            
             User user = new User();
             user.setFirstName(firstName);
-            user.setAddress(address);
             user.setSecondName(secondName);
+            // creates second name plus random number
+            String username = ( (secondName.length() < 5) ? secondName : secondName.trim().substring(0, 5))
+                    + ((firstName.length() < 1 ) ? firstName : firstName.trim().substring(0, 1) )
+                    +Long.toString(new Date().getTime()).substring(7);
+            user.setUsername(username);
             bankAccount = bankService.createBankAccount(user, supportedIssuerBank);
 
-            message = "fill in user details for new account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
+            message = "fill in user details for new account: username:"+username + " sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
+            
+        } else if (("updatePassword").equals(action)) {
+            bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);
+            if (bankAccount == null) {
+                throw new IllegalArgumentException("unknown bank account: sort code:" + sortCode + " account no:" + accountNo);
+            }
+            if(password1==null || !password1.equals(password2) || password1.length()<8){
+                errorMessage = "updated passwords dont match or password less than 8 characters. No changes have been made";
+            } else {
+                User owner = bankAccount.getOwner();
+                owner.setPassword(password1);
+                bankAccount.setOwner(owner);
+                bankAccountRepository.save(bankAccount);
+                message = "updated PASSWORD for account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
+            }
+
         } else {
             throw new IllegalArgumentException("unknown action=" + action);
         }

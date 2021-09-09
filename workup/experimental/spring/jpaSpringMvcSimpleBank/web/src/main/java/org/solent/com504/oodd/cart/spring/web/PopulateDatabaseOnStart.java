@@ -37,6 +37,8 @@ public class PopulateDatabaseOnStart {
         user1.setFirstName("test");
         user1.setSecondName("user1");
         user1.setAddress("Solent University");
+        user1.setPassword("defaulttestpass");
+        user1.setUsername("testuser1");
         String supportedIssuerBank1 = issuerBanks.get(0);
         BankAccount account1 = bankService.createBankAccount(user1, supportedIssuerBank1);
         account1.setBalance(1000.00);
@@ -46,6 +48,8 @@ public class PopulateDatabaseOnStart {
         user2.setFirstName("test");
         user2.setSecondName("user2");
         user2.setAddress("Solent University");
+        user2.setPassword("defaulttestpass");
+        user2.setUsername("testuser2");
         String supportedIssuerBank2 = issuerBanks.get(0);
         BankAccount account2 = bankService.createBankAccount(user2, supportedIssuerBank2);
         LOG.debug("created 2 test accounts: account1 = " + account1
