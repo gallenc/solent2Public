@@ -28,11 +28,11 @@
         </form>
 
         <% if (result.isValid()) {%>
-        <p>"<%= result.cardNo()%>" is a valid card number issued by  <%= result.getCardType()%> </p>
+        <p>"<%= result.getCardNo()%>" is a valid card number issued by  <%= result.getCardType()%> </p>
         <%
         } else {
         %>
-        <p>"<%= result.cardNo()%>" is an invalid card : <%= result.getError()%> </p>
+        <p>"<%= result.getCardNo()%>" is an invalid card : <%= result.getError()%> </p>
         <%
             }
         %>

@@ -7,8 +7,6 @@ package solent.ac.uk.ood.examples.cardcheck;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import solent.ac.uk.ood.examples.cardcheck.CalculateLunnDigit;
-import static solent.ac.uk.ood.examples.cardcheck.TestRegexCardValidator.VALID_VISA_1;
 
 /**
  *
