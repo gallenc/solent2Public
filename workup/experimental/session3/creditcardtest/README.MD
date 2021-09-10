@@ -143,7 +143,8 @@ An example JSP output is shown below
 ## Congratulations
 
 Once you have completed this exercise, you will understand the basics of multi module builds and how to use a library in your web application.
-You can now go on and try the  [shoppingcart](../../session3/shoppingcart ) exercise
+
+Now you can go on and try the [ReST API Exercises based on this project](../creditcardtest/ReST_Exercise1.MD ) exercise
 
 
 
