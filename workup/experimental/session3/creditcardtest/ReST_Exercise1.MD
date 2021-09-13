@@ -6,12 +6,13 @@ You have created a simple JSP which responds to a request to validate a credit c
 Now we are going to extend this to create an Application Programming Interface which will allow another program to ask for a credit card validation.
 
 The [ReST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) was first proposed in  2000 by Roy Fielding in his Phd thesis.
-ReST stands for Representational State Transfer and it essentially requires that the http verbs GET, POST, PUT, DELETE etc are applied to change the state of resources on ReST end point.
-A ReST end point is simply a url but instead of pointing to a html web page, it points to a set of resources which are usually represented as XML or Json.
+ReST stands for Representational State Transfer and it essentially requires that the http verbs GET, POST, PUT, DELETE etc are applied to change the state of resources on a ReST end point.
+A ReST end point is simply a url but instead of pointing to a html web page, it points to a set of resources which represent a resource in your program. 
+These are usually rendered as an XML or Json document.
 
 Although most API's dont strictly follow the ReST model, the use of GET and POST to send XML or Json messages is very widely used.
-HTTP and its varients are the protocols most widely used on the internet. 
-This means that any interface based on http is likely to be able to traverse a firewall cleanly. 
+HTTP and its varients are the protocols most widely found on the internet. 
+This means that any interface based on HTTP is likely to be able to traverse a company firewall cleanly. 
 For this reason interfaces designed using ReST principles and which use http as the transport protocol have become very popular.
 
 In this exercise we will be using the [Jersey 2.0 library](https://eclipse-ee4j.github.io/jersey/) which is an implementation of the java [JAX-RS JSR370](https://jcp.org/en/jsr/detail?id=370) standard for coding ReST interfaces. 
