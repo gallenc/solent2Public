@@ -91,9 +91,10 @@ In this example, when the RestApp class is discovered by Tomcat, Tomcat reads th
 
 In this example, when the RestApp class is started, jersey scans all of the classes found in the package "org.solent.ood.creditcardchecker.rest" for Rest Service implementation classes. 
 
-Now look at the RestService.java within the "org.solent.ood.creditcardchecker.rest" package. 
 
-This class is nnotated with @Path("/api-v1") which tells jersey the next segment of the url
+Now look at the [RestService.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/RestService.java) class which is scanned within the "org.solent.ood.creditcardchecker.rest" package. 
+
+This class is annotated with @Path("/api-v1") which tells jersey the next segment of the url.
 
 The first method will simply return a text message "Hello, rest! in response to the url http://localhost:8080/creditcardchecker-web/rest/api-v1
 
@@ -104,22 +105,21 @@ public class RestService {
 
     @GET
     public String test() {
-
         LOG.debug("rest test called");
         return "Hello, rest!";
     }
 ```
 
-The second method is more realistic and implements the GET request discussed above.
+The second method is more useful and implements the GET request discussed above.
 Here we are going to validate a card number supplied as a url paramater.
 
 Note the annotations in the start of the method
 
-@GET tells jersey that this method should only respond to a GET request
+@GET tells jersey that this method should only respond to a GET request.
 
 @Path("/validateCard") gives the next url segment which will call this method i.e. http://localhost:8080/creditcardchecker-web/rest/api-v1/validateCard
 
-@Produces({MediaType.APPLICATION_JSON}) sets the html reply headers to tell the client that the response is json
+@Produces({MediaType.APPLICATION_JSON}) sets the html reply headers to tell the client that the response is json.
 
 @QueryParam("cardNo") String cardNo will extract the url paramater ?cardNo=4444444444444448 into the String cardNo
 
@@ -159,10 +159,10 @@ The ReST method always replies with a Response object which contains the HTTP re
 You can see the possible http response codes here
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
-And their Response.Status constants are documented here
+And their corresponding Response.Status constants are documented here
 https://docs.oracle.com/javaee/7/api/index.html?javax/ws/rs/core/Response.Status.html
 
-Within this example method you will see that a number of responses are possible all of which will be sent back in the ReplyMessage class as a data transfer object.
+Within this example method you will see that a number of responses are possible all of which will be sent back with the ReplyMessage class as a data transfer object.
 ```
 public class ReplyMessage {
     
@@ -182,7 +182,7 @@ Within the try block we check the card using the RegexCardValidator and dependin
 and also a ReplyMessage containing a CardValidationResult json object. 
 
 You can run the web web application and use the url http://localhost:8080/creditcardchecker-web/rest/api-v1/validateCard?cardNo=4444444444444448 to test the app.
-Try putting in incorrect card numbers and see what you get.
+Try also putting in incorrect card numbers and see what you get.
 
 ## ReSTER app.
 You can easily test GET operations using a browser url (which always uses GET).
@@ -192,17 +192,19 @@ See the [example Rester configurations](../creditcardtest/creditcardchecker/rest
 ## Exercise 1 Complete the POST service .
 You have a partly completed method which implements the POST action.
  
-Can you complete this method and test it?
+Can you complete this method so that it validates the card and can you test it using Rester ?
 
 Remember you will be sending the JSON credit card representation to the service in the body of the HTML request.
 
 ## Jersey ReST Client
 
-Having created a ResT application, we now need to be able to access it programatically using a ReST client. 
-In this case we are using the Jersey Client library to impliment the client for Jersey. 
+Having created a ResT application, we now need to be able to access it programatically using a java ReST client. 
+In this case we are using the Jersey Client library to impliment the client. 
 You have been provided an example client but there are many tutorials on line to learn more if you wish.
 
-The example code is in CardCheckerClient.java
+The example code is in [CardCheckerClient.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/client/CardCheckerClient.java)
+
+Tests for this code are in [CardCheckerClientTest.java](../creditcardtest/creditcardchecker/web/src/test/java/org/solent/ood/creditcardchecker/client/test/manual/CardCheckerClientTest.java)
 
 ### Jersey Client GET call
 The GET method from this class corresponding to 
@@ -236,18 +238,19 @@ public boolean getCheckCard(String cardNo) {
     }
 ```
 You will see some code to set up the logging in the client. 
-This allows us to see the requests and responses received by the client.
+This allows us to see the requests and responses received by the client as it is used.
 ```
 // sets up logging for the client       
         Client client = ClientBuilder.newClient(new ClientConfig().register(
                 new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
                         Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
 ```
-Jersey is using the [Jackson library](https://github.com/FasterXML/jackson) to serialise json and we tell the client to use jackson in the line
+Jersey is using the [Jackson library](https://github.com/FasterXML/jackson) to serialise json and we tell the client to use jackson with the line
 ```
 client.register(JacksonJsonProvider.class);
 ```
-The following line sets up a webTarget which reperesents the URL you are sending the ReST request to.
+The following line sets up a WebTarget which reperesents the URL you are sending the ReST request to.
+Note how we can use this client with differnt servers running this interface by changing the base urlStr 
 ```
  WebTarget webTarget = client.target(urlStr).path("/rest/api-v1/validateCard").queryParam("cardNo", cardNo);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
@@ -262,23 +265,28 @@ Now we can make the GET call using
 ```
         Response response = invocationBuilder.get();
 ```
-The call is synchronous, which means that we wait for the reply.
+This call is synchronous, which means that we wait for the reply.
 
 Finally, when we get a reply, we can de-serialise the response into the expected class i.e. ReplyMessage.
 ```
         ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
 ```
-If the response is not serialisable into ReplyMessage.class, this will throw an exception.
+If the response is not serialisable into ReplyMessage.class, the call will throw an exception which you will need to handle in your code.
 
 ### Jersey Client POST call
 
-If you look at the second method, postCheckCard(CreditCard creditCard) you will see that in this case you actually post the json representation of the card using
+If you look at the second method, postCheckCard(CreditCard creditCard) you will see that in this case you actually post the json representation of the CreditCard using
 ```
         Response response = invocationBuilder.post(Entity.entity(creditCard, MediaType.APPLICATION_JSON));
 ```
-There is a test class to test this client CardCheckerClientTest.java
 
-Note that in the pom.xml, we have configured surefire so that the CardCheckerClientTest.java is manually because the test will only pass if the tomcat server is running.
+## Exercise 1. Adding to POST test.
+There is a test class to test this client 
+[CardCheckerClientTest.java](../creditcardtest/creditcardchecker/web/src/test/java/org/solent/ood/creditcardchecker/client/test/manual/CardCheckerClientTest.java)
+
+Note that in the [pom.xml](../creditcardtest/creditcardchecker/web/pom.xml)
+, we have configured surefire so that the CardCheckerClientTest.java is not run as part of the build but only manually. 
+This is because the test will only pass if the tomcat server is running.
 ```
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -292,12 +300,13 @@ Note that in the pom.xml, we have configured surefire so that the CardCheckerCli
                 </configuration>
             </plugin>
 ```
+Start the web application and run this test manually. 
+Only the first test method which tests the GET service will do anything.
 
-## Exercise 1. Adding to POST test.
-Add to the POST test in CardCheckerClientTest.java so that you can test the client posting requests to the server. 
+Add code to the POST test in CardCheckerClientTest.java so that you can test the client posting requests to the server. 
 
 ## Congratulations
 
 Once you have completed this exercise, you will understand the basics of multi module builds and how to use a library in your web application.
 
-You will also understadn how to create a client which makes calls against a ReST API
+You will also understand how to create a client which makes calls against a ReST API
