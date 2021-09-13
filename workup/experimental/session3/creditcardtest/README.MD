@@ -39,7 +39,8 @@ Two projects have been provided,
 [creditcardchecker-answer](../creditcardtest/creditcardchecker-answer ) contains an answer. 
 Try the exercises before you look at the answer package. 
 
-### 1. copy this session3 into your myPracticeCourseWork folder and build the project using the maven command line.
+### 1. copy this session3 and build the project
+copy this session3 into your myPracticeCourseWork folder and build the project using the maven command line.
 ```
 cd myPracticeCourseWork/session3/creditcardtest/creditcardchecker
 
@@ -52,7 +53,8 @@ After a few minutes, you should see
 [INFO] ------------------------------------------------------------------------
 ```
 
-### 2. Now import [creditcardchecker](../creditcardtest/creditcardchecker ) into Netbeans
+### 2. Import into Netbeans
+Now import [creditcardchecker](../creditcardtest/creditcardchecker ) into Netbeans
 
 To do this 
 1. Select File > Import Project which will open the import project dialog. 
@@ -66,7 +68,7 @@ The image below shows the projects and the files view of the project.
 
 ![alt text](../creditcardtest/images/multimodule1.png "Figure multimodule1.png" )
 
-### 3. look at the project you have imported
+### 3. Study at the project you have imported
 
 Maven multi module projects are organised hierarchically with a parent project and nested sub projects. 
 
@@ -86,7 +88,9 @@ Because this project simply calls the build of its children and has no output it
 ```
 The sub modules inherit but can override the settings from the parent project
 
-card-checker is a library for checking the Luhn code of cards.
+card-checker is a simple library for checking the Luhn code of cards.
+It was mostly written by a third party on Github and packaged in this project by your tutor. 
+
 It's pom describes it's parent and also that the output is a jar.
 ```
     <parent>
@@ -101,10 +105,10 @@ It's pom describes it's parent and also that the output is a jar.
 
 ```
 
-cardchecker-web is a simple web app which is package as a war
+cardchecker-web is a simple web app which is packaged as a war
 
 One of it's dependencies is the card-checker library which must be built before the web app is built.
-Note that the <version>${project.version}</version> makes sure we pull in the library with the same 0.1-SNAPSHOT version
+Note that the <version>${project.version}</version> makes sure we pull in the library with the same 0.1-SNAPSHOT project version
 ```
     <parent>
         <groupId>org.solent.ood</groupId>
@@ -128,11 +132,13 @@ Note that the <version>${project.version}</version> makes sure we pull in the li
      <dependencies>
 ```
 
-### 4. look carefully at the source code and the tests in the card-checker
+### 4. examine the card-checker
+Look carefully at the source code and the tests in the card-checker.
 You dont need to know everything about how this code works but you do need to know how to use it.
 The [cardcheck tests](../creditcardtest//creditcardchecker/card-checker/src/test/java/solent/ac/uk/ood/examples/cardcheck/ ) should show you how to use the library in your own code to check a credit card number.
 
-### 5. Now try to use this little library in a jsp which checks a credit card number. 
+### 5. Create a JSP to check a card
+Now try to use this little library in a jsp which checks a credit card number. 
 You simply need to use a form for filling in the number, 
 a button to submit and provide user feedback on the validity of the card number.
 
