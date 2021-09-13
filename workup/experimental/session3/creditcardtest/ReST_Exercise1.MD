@@ -186,7 +186,7 @@ Try putting in incorrect card numbers and see what you get.
 ## ReSTER app.
 You can easily test GET opertions usign a browser url (which always uses GET).
 To test POST operations, you will need to use a tool such as the Rester application which runs in firefox or crome. 
-See the [example Rester configurations](../creditcardchecker/rest)
+See the [example Rester configurations](../creditcardtest/creditcardchecker/rester/) 
 
 ## Exercise 1 Complete the POST service .
 You have a partly completed method which implements the POST action.
