@@ -70,7 +70,7 @@ Some code has been provided as a starting point which you need to extend to comp
 When a Jersey ReST application is run in a web container like tomcat, it automatically registers itself as a servelet within the container.
 
 The starting point for a jersey application is a class extending ResourceConfig which implements javax.ws.rs.core.Application interface. 
-This is as illustrated in RestApp.java class below.
+This is as illustrated in the [RestApp.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/RestApp.java) class below.
 
 ```
 package org.solent.ood.creditcardchecker.rest;
