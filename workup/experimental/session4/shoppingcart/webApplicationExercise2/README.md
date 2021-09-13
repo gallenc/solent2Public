@@ -131,3 +131,9 @@ public Invoice purchaseItems(ShoppingCart shoppingCart);
 
 ```
 
+# Congratulations
+
+You are making progress in your understanding of java web technologies. 
+
+You can now go on and try the  [shoppingcart](../../session4/shoppingcart-bootstap ) exercise
+

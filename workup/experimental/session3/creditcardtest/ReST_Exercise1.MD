@@ -184,7 +184,7 @@ You can run the web web application and use the url http://localhost:8080/credit
 Try putting in incorrect card numbers and see what you get.
 
 ## ReSTER app.
-You can easily test GET opertions usign a browser url (which always uses GET).
+You can easily test GET operations using a browser url (which always uses GET).
 To test POST operations, you will need to use a tool such as the Rester application which runs in firefox or crome. 
 See the [example Rester configurations](../creditcardtest/creditcardchecker/rester/) 
 
@@ -193,7 +193,7 @@ You have a partly completed method which implements the POST action.
  
 Can you complete this method and test it?
 
-Remember you will be sending the JSON credit card representation the to service in the body of the HTML request.
+Remember you will be sending the JSON credit card representation to the service in the body of the HTML request.
 
 ## Jersey ReST Client
 
@@ -201,7 +201,14 @@ Having created a ResT application, we now need to be able to access it programat
 In this case we are using the Jersey Client library to impliment the client for Jersey. 
 You have been provided an example client but there are many tutorials on line to learn more if you wish.
 
-The example code is in CardCheckerClient.java and an one method from this class is is given below
+The example code is in CardCheckerClient.java
+
+### Jersey Client GET call
+The GET method from this class corresponding to 
+
+GET http://localhost:8080/creditcardchecker-web/rest/api-v1/validateCard?cardNo=4444444444444448
+
+is is given below 
 
 ```
 public boolean getCheckCard(String cardNo) {
@@ -250,7 +257,7 @@ The invocationBuilder allows us to set the request headers to tell the server we
 ```
        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 ```
-Finally, we can make the GET call using
+Now we can make the GET call using
 ```
         Response response = invocationBuilder.get();
 ```
@@ -260,7 +267,9 @@ Finally, when we get a reply, we can de-serialise the response into the expected
 ```
         ReplyMessage replyMessage = response.readEntity(ReplyMessage.class);
 ```
-If the response is not serialisable, this will throw an exception.
+If the response is not serialisable into ReplyMessage.class, this will throw an exception.
+
+### Jersey Client POST call
 
 If you look at the second method, postCheckCard(CreditCard creditCard) you will see that in this case you actually post the json representation of the card using
 ```
@@ -283,13 +292,11 @@ Note that in the pom.xml, we have configured surefire so that the CardCheckerCli
             </plugin>
 ```
 
-## Exercise 2. Adding to POST test.
+## Exercise 1. Adding to POST test.
 Add to the POST test in CardCheckerClientTest.java so that you can test the client posting requests to the server. 
-
 
 ## Congratulations
 
 Once you have completed this exercise, you will understand the basics of multi module builds and how to use a library in your web application.
 
-Now you can go on and try the ReST API Exercises based on this project
-You can now go on and try the  [shoppingcart](../../session3/shoppingcart ) exercise
+You will also understadn how to create a client which makes calls against a ReST API
