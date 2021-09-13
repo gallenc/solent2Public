@@ -130,21 +130,31 @@
                 <version>3.3.1</version>
             </plugin>
 
-      
+            <!-- allows us to run with mvn spring-boot:run -->
             <plugin>
-          
-                <!-- run embedded tomcat with mvn org.codehaus.cargo:cargo-maven2-plugin:run -->
-                <!-- see https://stackoverflow.com/questions/41326911/maven-plugin-for-tomcat-9 -->
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.7.6</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat9x</containerId>
-                        <type>embedded</type>
-                    </container>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
+  
+            <!-- this might need a little more configuration -->
+            <!-- run embedded tomcat with mvn org.codehaus.cargo:cargo-maven2-plugin:run -->
+            <!-- or mvn cargo:run -->
+            <!-- see https://stackoverflow.com/questions/41326911/maven-plugin-for-tomcat-9 -->
+            <!--
+<plugin>
+
+    <groupId>org.codehaus.cargo</groupId>
+    <artifactId>cargo-maven2-plugin</artifactId>
+    <version>1.7.6</version>
+    <configuration>
+        <container>
+            <containerId>tomcat9x</containerId>
+            <type>embedded</type>
+        </container>
+    </configuration>
+</plugin>
+            -->
       
         </plugins>
     </build>
