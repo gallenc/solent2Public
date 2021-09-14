@@ -1,6 +1,6 @@
 # Bank Simulator
 
-The project [jpaSpringMvcSimpleBank](../Bank-Simulator/jpaSpringMvcSimpleBank) contains a simple web application which simulates a bank.
+The project [jpaSpringMvcSimpleBank](../bank-bimulator/jpaSpringMvcSimpleBank) contains a simple web application which simulates a bank.
 This provides the Credit Card transaction ReST interface to be used in your group and individual projects.
 
 You can run this program locally in netbeans or you can access it on line at the url 
