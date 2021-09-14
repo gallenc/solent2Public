@@ -19,6 +19,12 @@
             <version>${project.version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>animal-dao-examples-dao-simple</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
         <!-- Spring 3 dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>

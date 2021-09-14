@@ -8,6 +8,7 @@ package org.solent.com504.factoryandfacade.impl.dao.simple.tests;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.solent.com504.factoryandfacade.impl.dao.simple.AnimalDaoImpl;
 import org.solent.com504.factoryandfacade.impl.dao.simple.AnimalTypeDaoImpl;
 import org.solent.com504.factoryandfacade.model.dao.AnimalDao;
@@ -21,11 +22,26 @@ import org.solent.com504.factoryandfacade.model.dto.AnimalType;
  */
 public class AnimalDaoTest {
 
+    AnimalDao animalDao = null;
+    AnimalTypeDao animalTypeDao = null;
+
+    public void setAnimalDao(AnimalDao animalDao) {
+        this.animalDao = animalDao;
+    }
+
+    public void setAnimalTypeDao(AnimalTypeDao animalTypeDao) {
+        this.animalTypeDao = animalTypeDao;
+    }
+
+    @Before
+    public void init() {
+        animalDao = new AnimalDaoImpl();
+        animalTypeDao = new AnimalTypeDaoImpl();
+    }
+
     @Test
     public void testDao() {
         System.out.println("start of testAnimalDao");
-        AnimalDao animalDao = new AnimalDaoImpl();
-        AnimalTypeDao animalTypeDao = new AnimalTypeDaoImpl();
 
         // create one of each animal type and test you can retreive same
         for (AnimalType type : animalTypeDao.getSupportedAnimalTypes()) {
@@ -67,6 +83,7 @@ public class AnimalDaoTest {
         for (Animal animal : animallist) {
             System.out.println("list animal=" + animal);
         }
-
+        System.out.println("end of testAnimalDao");
     }
+
 }
