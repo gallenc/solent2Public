@@ -65,6 +65,13 @@
                 <version>3.3.1</version>
             </plugin>
 
+            <!-- allows us to run with mvn spring-boot:run -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+
       
             <plugin>
           
