@@ -7,6 +7,7 @@ package org.solent.com504.oodd.cart.spring.web;
 
 import java.util.Date;
 import java.util.Map;
+import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.bank.model.dto.BankTransaction;
@@ -55,6 +56,7 @@ public class ReSTController {
     /*
     TransactionReplyMessage transactionRequest(TransactionRequestMessage transactionRequestMessage);
      */
+    @Transactional
     @RequestMapping(value = "/transactionRequest", method = {RequestMethod.POST},
             consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> transactionRequest(@RequestBody(required = true) TransactionRequestMessage transactionRequestMessage,
@@ -85,7 +87,7 @@ public class ReSTController {
             } catch (SecurityException ex) {
                 replyMessage.setCode(HttpStatus.UNAUTHORIZED.value());
                 replyMessage.setMessage(ex.getMessage());
-                LOG.error("security exception toUserName" + toUserName+ " "+ex.getMessage());
+                LOG.error("security exception toUserName" + toUserName + " " + ex.getMessage());
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(replyMessage);
             }
         }

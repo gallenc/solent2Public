@@ -38,7 +38,7 @@ public class MVCController {
 
     @Autowired
     private BankService bankService;
-    
+
     @Autowired
     private PopulateDatabaseOnStart populateDatabaseOnStart;
 
@@ -53,11 +53,11 @@ public class MVCController {
     public String index(Model model) {
         return "redirect:/index.html";
     }
-    
+
     // this clears all data
-    @RequestMapping(value = "/reset", method = {RequestMethod.GET})
     @Transactional
-    public String reset(Model model,HttpSession session) {
+    @RequestMapping(value = "/reset", method = {RequestMethod.GET})
+    public String reset(Model model, HttpSession session) {
         bankTransactionRepository.deleteAll();
         bankAccountRepository.deleteAll();
         populateDatabaseOnStart.initDatabase();
@@ -65,10 +65,11 @@ public class MVCController {
         session.removeAttribute("toSortCode");
         session.removeAttribute("fromAccountNo");
         session.removeAttribute("toAccountNo");
-        
+
         return "redirect:/home";
     }
 
+    @Transactional
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String home(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "sortCode", required = false) String sortCode, // used to select account from bankaccounts page
@@ -234,6 +235,7 @@ public class MVCController {
         return "bankaccounts";
     }
 
+    @Transactional
     @RequestMapping(value = "/bankaccountview", method = {RequestMethod.GET, RequestMethod.POST})
     public String bankAccountView(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "sortCode", required = false) String sortCode,
@@ -301,32 +303,32 @@ public class MVCController {
             message = "updated account: sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
 
         } else if ("create".equals(action)) {
-            
+
             // check if firstName and secondName populated
-            if(firstName.trim().length() <1 || secondName.trim().length() <5 ){
+            if (firstName.trim().length() < 1 || secondName.trim().length() < 5) {
                 errorMessage = "create account with first name and second name > 5 characters";
                 model.addAttribute("errorMessage", errorMessage);
                 return "bankaccounts";
             }
-            
+
             User user = new User();
             user.setFirstName(firstName);
             user.setSecondName(secondName);
             // creates second name plus random number
-            String username = ( (secondName.length() < 5) ? secondName : secondName.trim().substring(0, 5))
-                    + ((firstName.length() < 1 ) ? firstName : firstName.trim().substring(0, 1) )
-                    +Long.toString(new Date().getTime()).substring(7);
+            String username = ((secondName.length() < 5) ? secondName : secondName.trim().substring(0, 5))
+                    + ((firstName.length() < 1) ? firstName : firstName.trim().substring(0, 1))
+                    + Long.toString(new Date().getTime()).substring(7);
             user.setUsername(username);
             bankAccount = bankService.createBankAccount(user, supportedIssuerBank);
 
-            message = "fill in user details for new account: username:"+username + " sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
-            
+            message = "fill in user details for new account: username:" + username + " sort code: " + bankAccount.getSortcode() + " account no: " + bankAccount.getAccountNo();
+
         } else if (("updatePassword").equals(action)) {
             bankAccount = bankAccountRepository.findBankAccountByNumber(sortCode, accountNo);
             if (bankAccount == null) {
                 throw new IllegalArgumentException("unknown bank account: sort code:" + sortCode + " account no:" + accountNo);
             }
-            if(password1==null || !password1.equals(password2) || password1.length()<8){
+            if (password1 == null || !password1.equals(password2) || password1.length() < 8) {
                 errorMessage = "updated passwords dont match or password less than 8 characters. No changes have been made";
             } else {
                 User owner = bankAccount.getOwner();
