@@ -135,11 +135,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
-                <configuration>
-                <systemPropertyVariables>
-                    <server.contextPath>/bank</server.contextPath>
-                </systemPropertyVariables>
-                </configuration>
             </plugin>
   
             <!-- this might need a little more configuration -->
