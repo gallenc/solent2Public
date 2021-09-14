@@ -1,5 +1,7 @@
 
-# Shopping Cart Using Spring
+# Simple Shopping Cart Using Spring
+
+This example just uses a single JSP controlled by spring-mvc.
 
 ### To run using stand alone spring boot maven plugin
 
