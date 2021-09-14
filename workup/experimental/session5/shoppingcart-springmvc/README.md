@@ -7,7 +7,7 @@ In this exercise you will migrate the code from your shopping cart application t
 We will do this in two parts.
 
 ## Part 1
-Migrate the simple shopping cart you created in the [session3 shopping cart exercise](../../session3/shoppingcart) 
+Migrate the simple shopping cart you created in the [session4 shopping cart exercise](../../session4/shoppingcart) 
 
 In this case you only have to migrate one JSP with no bootstrap.
 
