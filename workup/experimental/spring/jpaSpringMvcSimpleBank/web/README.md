@@ -4,10 +4,10 @@
 To run Tomcat as an embedded service using Tomcat
 
 ```
-mvn cargo:run
+mvn spring-boot:run
 ```
 
-then navigate to http://localhost:8080/webApplicationExercise/
+then navigate to http://localhost:8080/
 
 
 
