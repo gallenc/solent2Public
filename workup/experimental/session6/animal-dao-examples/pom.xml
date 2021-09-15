@@ -33,6 +33,7 @@
     <modules>
         <module>model</module>
         <module>dao-simple</module>
+        <module>dao-json</module>
         <module>dao-jaxb</module>
         <module>dao-jdbc</module>
         <module>dao-jpa</module>
