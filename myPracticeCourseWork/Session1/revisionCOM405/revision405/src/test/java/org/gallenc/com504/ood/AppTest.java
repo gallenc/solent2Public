@@ -57,8 +57,10 @@ public class AppTest
         Bridge bridge = new Bridge();
         addInitialVehicles(10, bridge);
         
-        bridge.removeVehicle("reg1");
-        bridge.removeVehicle("reg2");
+        assertTrue(bridge.removeVehicle("reg1"));
+        assertTrue(bridge.removeVehicle("reg2"));
+        
+        addInitialVehicles(12, bridge);
     }
     
     private void addInitialVehicles(int number, Bridge bridge){

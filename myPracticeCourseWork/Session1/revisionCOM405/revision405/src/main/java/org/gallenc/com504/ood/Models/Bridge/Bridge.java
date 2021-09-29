@@ -45,7 +45,8 @@ public class Bridge {
     
     public boolean removeVehicle(String registration){
         for(int i = 0; i < currentVehicles.length; i++){
-            if(currentVehicles[i].getRegNumber() == registration){
+            if(currentVehicles[i] != null && 
+                    currentVehicles[i].getRegNumber().equals(registration)){
                 currentVehicles[i] = null;
                 return true;
             }
