@@ -2,6 +2,8 @@ package org.gallenc.com504.ood;
 
 import org.gallenc.com504.ood.Models.Bridge.Bridge;
 import org.gallenc.com504.ood.Models.Vehicle.Car;
+import org.gallenc.com504.ood.Models.Vehicle.Lorry;
+import org.gallenc.com504.ood.Models.Vehicle.Motorbike;
 import org.gallenc.com504.ood.Models.Vehicle.Vehicle;
  import static org.junit.Assert.*;
 
@@ -70,5 +72,62 @@ public class AppTest
             vehicle.setWeight(Double.valueOf(i * 100));
             assertTrue(bridge.requestAddVehicle(vehicle));
         }
+    }
+    
+    //Vehicle Tests:
+    //Test Reg - Get & Set
+    //Test Get Weight
+    //Test Calculate Fee
+    @Test
+    public void testCarAndReg(){
+        Car car = new Car();
+        car.setRegNumber("ABC123");
+        assertEquals("ABC123", car.getRegNumber());
+        
+        car.setWeight(1590.0);
+        assertEquals(5.00, car.calculateFee(), 0.00);
+        
+        car.setWeight(1680.0);
+        assertEquals(5.00, car.calculateFee(), 0.00);
+        
+        car.setWeight(1690.0);
+        assertEquals(5.10, car.calculateFee(), 0.00);
+        
+        car.setWeight(2590.0);
+        assertEquals(6.0, car.calculateFee(), 0.00);
+    }
+    
+    @Test
+    public void testLorry(){
+        Lorry lorry = new Lorry();
+        
+        lorry.setWeight(7500.0);
+        assertEquals(10.00, lorry.calculateFee(), 0.00);
+        
+        lorry.setWeight(8000.0);
+        assertEquals(10.00, lorry.calculateFee(), 0.00);
+        
+        lorry.setWeight(8001.0);
+        assertEquals(15, lorry.calculateFee(), 0.00);
+        
+        lorry.setWeight(9000.0);
+        assertEquals(15, lorry.calculateFee(), 0.00);
+    }
+    
+        @Test
+    public void testBike(){
+        Motorbike bike = new Motorbike();
+        
+        bike.setWeight(0.0);
+        assertEquals(3.00, bike.calculateFee(), 0.00);
+        
+        bike.setWeight(8000.0);
+        assertEquals(3.00, bike.calculateFee(), 0.00);
+        
+        bike.setWeight(8001.0);
+        assertEquals(3, bike.calculateFee(), 0.00);
+        
+        bike.setWeight(9000.0);
+        assertEquals(3, bike.calculateFee(), 0.00);
     }
 }
