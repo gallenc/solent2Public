@@ -45,6 +45,8 @@ mvn groupID:artifactID:version:goal
 When you run the command 
 You will be presented with a very large list of possible archetypes.
 
+NOTE!!! THE ARTIFACT HAS CHANGED USE 1825 OR THE DEFAULT NOT 1805
+
 Choose the default (1805) 1805: remote -> org.apache.maven.archetypes:maven-archetype-quickstart (An archetype which contains a sample Maven project.)
 
 When asked, enter the following values REPLACING gallenc with YOUR github username
