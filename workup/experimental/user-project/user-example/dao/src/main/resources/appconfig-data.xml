@@ -23,15 +23,12 @@
     <context:component-scan base-package="org.solent.com504.project.impl.service,
                 org.solent.com504.project.impl.user.service, 
                 org.solent.com504.project.impl.dao,
-                org.solent.com504.project.impl.party.service,
-                org.solent.com504.project.impl.dao.chargingrecord.dao,
-                org.solent.com504.project.impl.dao.chargingrecord.service" />
+                org.solent.com504.project.impl.party.service" />
 
     <!-- Scans for repositories that will be auto-registered -->
     <jpa:repositories base-package="org.solent.com504.project.impl.dao.user.springdata,
                  org.solent.com504.project.impl.dao.party.springdata,
-                 org.solent.com504.project.impl.dao.springdata,
-                 org.solent.com504.project.impl.dao.chargingrecord.springdata" />
+                 org.solent.com504.project.impl.dao.springdata" />
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config />
 

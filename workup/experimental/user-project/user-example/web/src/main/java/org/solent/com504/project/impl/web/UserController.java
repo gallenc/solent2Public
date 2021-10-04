@@ -102,8 +102,14 @@ public class UserController {
 
         return "login";
     }
+    
+    // this redirects calls to the root of our application to index.html
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+    public String index(Model model) {
+        return "redirect:/index.html";
+    }
 
-    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public String home(Model model) {
         return "home";
     }

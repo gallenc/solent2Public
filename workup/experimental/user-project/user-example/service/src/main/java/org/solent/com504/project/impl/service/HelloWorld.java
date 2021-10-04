@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class HelloWorld {
 
     private Properties properties;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("appProperties")
     public void setProperties(Properties properties) {
         this.properties = properties;
@@ -45,6 +46,7 @@ public class HelloWorld {
         this.message = message;
     }
 
+    @PostConstruct
     public void init() {
         LOG.debug("init() Application context started HelloWorld " + message);
 

@@ -9,6 +9,7 @@ package org.solent.com504.project.impl.user.service;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
+import javax.annotation.PostConstruct;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,12 +23,14 @@ import org.solent.com504.project.model.user.dto.User;
 import org.solent.com504.project.model.user.dto.UserRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 
 /**
  *
  * @author cgallen
  */
+@Component
 public class DBInitialise {
 
     final static Logger LOG = LogManager.getLogger(DBInitialise.class);
@@ -48,6 +51,7 @@ public class DBInitialise {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @PostConstruct
     public void init() {
 
         // add all roles in model to database

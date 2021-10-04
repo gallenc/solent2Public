@@ -29,7 +29,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
  * @author cgallen
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-// ApplicationContext will be loaded from the OrderServiceConfig class
+// ApplicationContext will be loaded from the DAOTestConfiguration class
 @ContextConfiguration(classes = DAOTestConfiguration.class, loader = AnnotationConfigContextLoader.class)
 public class BankAccountRepositoryTest {
 

@@ -25,6 +25,7 @@ import org.solent.com504.project.model.party.dto.Address;
 import org.solent.com504.project.model.user.dao.RoleDAO;
 import org.solent.com504.project.model.user.dao.UserDAO;
 import org.solent.com504.project.model.user.dto.User;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
  * NOTE tests cannot be @transactional if you are using the id of an entity which has not been saveAndFlush'ed this could be an eclipselink problem or a
@@ -33,7 +34,8 @@ import org.solent.com504.project.model.user.dto.User;
  * @author cgallen
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/spring.xml"})
+// ApplicationContext will be loaded from the DAOTestConfiguration class
+@ContextConfiguration(classes = DAOTestConfiguration.class, loader = AnnotationConfigContextLoader.class)
 @Transactional
 public class PartyDAOTest {
 

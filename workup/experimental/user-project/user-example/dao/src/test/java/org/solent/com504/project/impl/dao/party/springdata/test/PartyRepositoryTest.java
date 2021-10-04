@@ -17,13 +17,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.solent.com504.project.impl.dao.party.springdata.PartyRepository;
+import org.solent.com504.project.impl.dao.spring.test.DAOTestConfiguration;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
  *
  * @author cgallen
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/spring.xml"})
+// ApplicationContext will be loaded from the DAOTestConfiguration class
+@ContextConfiguration(classes = DAOTestConfiguration.class, loader = AnnotationConfigContextLoader.class)
 public class PartyRepositoryTest {
 
     final static Logger LOG = LogManager.getLogger(PartyRepositoryTest.class);
