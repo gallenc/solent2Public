@@ -3,6 +3,7 @@
     Created on : 6 Oct 2021, 10:38:30
     Author     : rgaud
 --%>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
@@ -52,7 +53,7 @@
         <h1>JSP Example 3</h1>
         
         <h2> user list</h2>
-        <table>
+        <table class="table">
         <tr>
             <th>No</th>
             <th>Name</th>
@@ -71,11 +72,11 @@
                     <input type="hidden" name="userName" value="<%=user.getName()%>">
                     <input type="hidden" name="address" value="<%=user.getAddress()%>">
                     <input type="hidden" name="action" value="removeUser">
-                    <button type="submit" >Remove</button>
+                    <button class="btn btn-primary" type="submit" >Remove</button>
                 </form>
                 <form action="./jspexample2c-modify.jsp" method="get">
                     <input type="hidden" name="userID" value="<%=idx%>">
-                    <button type="submit" >Modify</button>
+                    <button class="btn btn-primary" type="submit" >Modify</button>
                 </form>
             </td>
         </tr>
@@ -88,14 +89,14 @@
             <p> user name <input type="text" name="userName" value=""></p>
             <p> address <input type="text" name="address" value=""></p>
             <input type="hidden" name="action" value="addUser">
-            <button type="submit"> add name to list</button>
+            <button class="btn btn-primary" type="submit"> add name to list</button>
         </form>
         <br>
         <form action="./jspexample2c.jsp" method="post">
             <p> user name <input type="text" name="userName" value=""></p>
             <p> address <input type="text" name="address" value=""></p>
             <input type="hidden" name="action" value="removeUser">
-            <button type="submit"> remove name to list</button>
+            <button class="btn btn-primary" type="submit"> remove name to list</button>
         </form>
     </body>
 </html>

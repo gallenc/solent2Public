@@ -3,6 +3,7 @@
     Created on : 6 Oct 2021, 11:22:22
     Author     : rgaud
 --%>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
@@ -28,7 +29,7 @@
         users.get(userID).setAddress(address);
         users.get(userID).setName(name);
         
-        session.setAttribute("users2", users);
+        //session.setAttribute("users2", users);
     }
 
 %>
