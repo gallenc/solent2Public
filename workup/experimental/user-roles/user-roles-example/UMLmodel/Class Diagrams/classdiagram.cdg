@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="jpadiagram">
+  <ClassDiagramComponents>
+    <Class name="User" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="1708.0" yPosition="558.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="secondName" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="hashedPassword" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="BankAccount" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="1416.0" yPosition="700.0">
+      <Fields>
+        <Field name="owner" type="User" visibility="private"/>
+        <Field name="sortcode" type="String" visibility="private"/>
+        <Field name="accountNo" type="String" visibility="private"/>
+        <Field name="creditcard" type="CreditCard" visibility="private"/>
+        <Field name="active" type="boolean" visibility="private"/>
+        <Field name="id" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CreditCard" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="1732.0" yPosition="780.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="endDate" type="String" visibility="private"/>
+        <Field name="cardnumber" type="String" visibility="private"/>
+        <Field name="cvv" type="String" visibility="private"/>
+        <Field name="issueNumber" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="BankTransaction" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="877.0" yPosition="681.0">
+      <Fields>
+        <Field name="fromAccount" type="BankAccount" visibility="private"/>
+        <Field name="toAccount" type="BankAccount" visibility="private"/>
+        <Field name="transactionDate" type="Date" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+        <Field name="status" type="BankTransactionStatus" visibility="private"/>
+        <Field name="message" type="String" visibility="private"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TransactionReplyMessage" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="53.0" yPosition="627.0">
+      <Fields>
+        <Field name="code" type="Integer" visibility="private"/>
+        <Field name="message" type="String" visibility="private"/>
+        <Field name="status" type="BankTransactionStatus" visibility="private"/>
+        <Field name="fromCardNo" type="String" visibility="private"/>
+        <Field name="toCardNo" type="String" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
+        <Field name="transactionDate" type="Date" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TransactionRequestMessage" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="315.0" yPosition="689.0">
+      <Fields>
+        <Field name="fromCard" type="CreditCard" visibility="private"/>
+        <Field name="toCard" type="CreditCard" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="CrudRepository" package="org.springframework.data.repository" visibility="public" xPosition="1708.0" yPosition="391.0">
+      <Methods/>
+    </Interface>
+    <Interface name="BankService" package="org.solent.com504.oodd.bank.model.service" visibility="public" xPosition="761.0" yPosition="237.0">
+      <Methods>
+        <Method name="createBankAccount" returnType="BankAccount" visibility="public">
+          <Argument type="User" name="user"/>
+          <Argument type="String" name="supportedIssuerBank"/>
+        </Method>
+        <Method name="transferMoney" returnType="BankTransaction" visibility="public">
+          <Argument type="BankAccount" name="fromAccount"/>
+          <Argument type="BankAccount" name="toAccount"/>
+          <Argument type="Double" name="amount"/>
+        </Method>
+        <Method name="transferMoney" returnType="BankTransaction" visibility="public">
+          <Argument type="CreditCard" name="fromCard"/>
+          <Argument type="CreditCard" name="toCard"/>
+          <Argument type="Double" name="amount"/>
+        </Method>
+        <Method name="getSupportedIssuerBanks" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="activateAccount" returnType="boolean" visibility="public">
+          <Argument type="BankAccount" name="account"/>
+          <Argument type="boolean" name="active"/>
+        </Method>
+        <Method name="transferMoneyAuth" returnType="BankTransaction" visibility="public">
+          <Argument type="CreditCard" name="fromCard"/>
+          <Argument type="CreditCard" name="toCard"/>
+          <Argument type="Double" name="amount"/>
+          <Argument type="String" name="toUsername"/>
+          <Argument type="String" name="toPassword"/>
+        </Method>
+        <Method name="createBankAccount" returnType="BankAccount" visibility="public">
+          <Argument type="User" name="user"/>
+          <Argument type="String" name="supportedIssuerBank"/>
+          <Argument type="String" name="individualAccountIdentifier"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="BankAccountDAO" package="org.solent.com504.oodd.bank.model.dao" visibility="public" xPosition="1165.0" yPosition="517.0">
+      <Methods>
+        <Method name="findBankAccountByNumber" returnType="String" visibility="public">
+          <Argument type="String" name="sortcode"/>
+          <Argument type="String" name="accountNo"/>
+        </Method>
+        <Method name="findBankAccountByCreditCardNo" returnType="String" visibility="public">
+          <Argument type="String" name="creditcardNo"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="BankTransactionDAO" package="org.solent.com504.oodd.bank.model.dao" visibility="public" xPosition="685.0" yPosition="517.0">
+      <Methods>
+        <Method name="findBankTransactionsFromCreditCardNumber" returnType="String" visibility="public">
+          <Argument type="String" name="cardnumber"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="BankRestService" package="org.solent.com504.oodd.bank.model.web" visibility="public" xPosition="81.0" yPosition="162.0">
+      <Methods>
+        <Method name="transactionRequest" returnType="TransactionRequestMessage" visibility="public">
+          <Argument type="TransactionRequestMessage" name="transactionRequestMessage"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="BankRestClient" package="org.solent.com504.oodd.bank.model.client" visibility="public" xPosition="81.0" yPosition="-24.0">
+      <Methods>
+        <Method name="transferMoney" returnType="TransactionReplyMessage" visibility="public">
+          <Argument type="CreditCard" name="fromCard"/>
+          <Argument type="CreditCard" name="toCard"/>
+          <Argument type="Double" name="amount"/>
+        </Method>
+        <Method name="transferMoney" returnType="TransactionReplyMessage" visibility="public">
+          <Argument type="CreditCard" name="fromCard"/>
+          <Argument type="CreditCard" name="toCard"/>
+          <Argument type="Double" name="amount"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="BankTransactionStatus" package="org.solent.com504.oodd.bank.model.dto" visibility="public" xPosition="577.0" yPosition="719.0">
+      <Literals>
+        <Literal name="SUCCESS"/>
+        <Literal name="FAIL"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="fromAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.springframework.data.repository.CrudRepository"/>
+    <UseRelation name="use reply message" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.springframework.data.repository.CrudRepository"/>
+    <UseRelation name="usesbankservice" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.service.BankService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="uses rest service" source="org.solent.com504.oodd.bank.model.client.BankRestClient" target="org.solent.com504.oodd.bank.model.web.BankRestService" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <HasRelation name="hasUser" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.User" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="hasStatus" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="toAccount" source="org.solent.com504.oodd.bank.model.dto.BankTransaction" target="org.solent.com504.oodd.bank.model.dto.BankAccount" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsTransactions" source="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" target="org.solent.com504.oodd.bank.model.dto.BankTransaction" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="hasCreditCard" source="org.solent.com504.oodd.bank.model.dto.BankAccount" target="org.solent.com504.oodd.bank.model.dto.CreditCard" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="uses RequestMessage" source="org.solent.com504.oodd.bank.model.web.BankRestService" target="org.solent.com504.oodd.bank.model.dto.TransactionRequestMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useBankAccountDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useTransactionDAO" source="org.solent.com504.oodd.bank.model.service.BankService" target="org.solent.com504.oodd.bank.model.dao.BankTransactionDAO" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="persistsBankAccounts" source="org.solent.com504.oodd.bank.model.dao.BankAccountDAO" target="org.solent.com504.oodd.bank.model.dto.BankAccount" sourceCardinality="1..1" targetCardinality="0..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

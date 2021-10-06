@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/security
+	https://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <security:http auto-config="true" >
+        <security:access-denied-handler error-page="/denied"/>
+        <security:intercept-url pattern="/mvc/**" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/resources/**" access="permitAll" />
+        <security:intercept-url pattern="/swagger-ui/**" access="permitAll" />
+        <security:intercept-url pattern="/registration" access="permitAll" />
+        <security:intercept-url pattern="/home" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/contact" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/about" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/viewModifyUser" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/users" access="hasRole('ROLE_GLOBAL_ADMIN')"/>
+        <security:intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
+        <security:form-login login-page="/login" default-target-url="/home" 
+                             authentication-failure-url="/login?error" 
+                             username-parameter="username" 
+                             password-parameter="password"/>
+        <security:logout logout-success-url="/login?logout" />
+    </security:http>
+
+</beans>
+
