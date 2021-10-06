@@ -39,9 +39,25 @@
         <h1>JSP Example 3</h1>
         
         <h2> user list</h2>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
         <% for (String user : users){%>
-        <p><%=user%></p>
+        <tr>
+            <td><%=user%></td>
+            <td>
+                <form action="./jspexample2.jsp" method="get">
+                    <input type="hidden" name="userName" value="<%=user%>">
+                    <input type="hidden" name="action" value="removeUser">
+                    <button type="submit" >Remove</button>
+                </form>
+            </td>
+        </tr>
         <%}%>
+        </table>
+
         
         <h2>commands</h2>
         <form action="./jspexample2.jsp" method="post">
