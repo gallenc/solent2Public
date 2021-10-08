@@ -71,6 +71,9 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                                <li><a href="${contextPath}/login">Login or create a new Account</a></li>
+                            </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
                                 <form id="logoutForm" method="POST" action="${contextPath}/logout">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
