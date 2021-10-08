@@ -1,5 +1,7 @@
 
-# base project with Party and User objects - Spring Java @Config
+# base project with Party and User objects  - Spring XML config
+
+This example uses Spring XML config with spring boot dependencies
 
 updated for java 11 dependencies
 
