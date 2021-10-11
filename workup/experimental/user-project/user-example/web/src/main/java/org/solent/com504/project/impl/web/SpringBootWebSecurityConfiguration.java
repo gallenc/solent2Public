@@ -29,11 +29,13 @@ public class SpringBootWebSecurityConfiguration extends WebSecurityConfigurerAda
                         "/resources/**",
                         "/images/**",
                         "/swagger-ui/**",
-                        "/registration"
+                        "/registration",
+                        "/rest/openapi.json"
                 ).permitAll()
                 .antMatchers("/mvc/**"
                 ).hasRole("USER") // ROLE_USER 
                 .antMatchers("/users").hasRole("GLOBAL_ADMIN") // ROLE_GLOBAL_ADMIN
+                .antMatchers("/rest/**").hasAnyRole("REST_USER","GLOBAL_ADMIN") // ROLE_GLOBAL_ADMIN
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
