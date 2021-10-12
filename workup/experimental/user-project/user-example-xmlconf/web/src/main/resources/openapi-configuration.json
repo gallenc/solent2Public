@@ -1,0 +1,41 @@
+{
+    "resourcePackages": [
+        "org.solent.com504.project.impl.rest"
+    ],
+    "prettyPrint": true,
+
+    "openAPI": {
+
+        "info": {
+            "version": "1.0",
+            "title": "Swagger Sample app",
+            "description": "TODO put your API description here.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) ",
+            "termsOfService": "TBD1",
+            "contact": {
+                "email": "craig.gallen@solent.ac.uk"
+            },
+            "license": {
+                "name": "Apache 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            }
+        },
+
+        "servers": [
+            {
+                "url": "http://localhost:{port}/{basePath}",
+                "description": "Localhost test api server",
+                "variables": {
+                    "basePath": {
+                        "default": "project-web"
+                    },
+                    "port": {
+                        "enum": [
+                            "8080"
+                        ],
+                        "default": "8080"
+                    }
+                }
+            }
+        ]
+    }
+}

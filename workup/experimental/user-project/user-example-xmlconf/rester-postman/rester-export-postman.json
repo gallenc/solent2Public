@@ -1,0 +1,167 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "appointment",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/appointmentService",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-78",
+                    "name": "appointmentService"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/appointmentService/getHeartbeat",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-81",
+                    "name": "getHeartbeat"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/appointmentService/getHeartbeat",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ]
+                    },
+                    "id": "rester-82",
+                    "name": "getHeartbeat"
+                }
+            ]
+        },
+        {
+            "name": "Store",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/rest/example/retrieve?id=1",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            }
+                        ]
+                    },
+                    "id": "rester-79",
+                    "name": "Retrieve"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/rest/example/retrievematching",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/xml"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<item>\n <sku>abcd</sku>\n</item>"
+                        }
+                    },
+                    "id": "rester-80",
+                    "name": "RetrieveMatchine"
+                }
+            ]
+        },
+        {
+            "name": "traffic",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/traffic/chargingRecordList?numberPlate=asd&page=0&size=20",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "\n"
+                        }
+                    },
+                    "id": "rester-84",
+                    "name": "getChargingRecordList"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/traffic/chargingRecord/72fa5aa2-256b-4451-aec1-35684c170581",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<chargingRecord>\n    <entryPhotoId>72fa5aa2-256b-4451-aec1-35684c170581</entryPhotoId>\n    <exitPhotoId>eed493af-5d8c-4921-ae90-0223f2e88378</exitPhotoId>\n    <entryLocation>Southampton</entryLocation>\n    <exitLocation>London</exitLocation>\n    <numberPlate>HAZ604</numberPlate>\n    <charge>1.1</charge>\n    <chargeRate>10.5</chargeRate>\n</chargingRecord>\n"
+                        }
+                    },
+                    "id": "rester-85",
+                    "name": "getTrafficRecord"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/project-web/rest/traffic/chargingRecord",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/xml"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<chargingRecord>\n    <entryPhotoId>72fa5aa2-256b-4451-aec1-35684c170581</entryPhotoId>\n    <exitPhotoId>eed493af-5d8c-4921-ae90-0223f2e88378</exitPhotoId>\n    <entryLocation>Southampton</entryLocation>\n    <exitLocation>London</exitLocation>\n    <numberPlate>HAZ604</numberPlate>\n    <charge>1.1</charge>\n    <chargeRate>10.5</chargeRate>\n</chargingRecord>\n"
+                        }
+                    },
+                    "id": "rester-83",
+                    "name": "postTrafficRecord"
+                }
+            ]
+        }
+    ]
+}
