@@ -45,7 +45,6 @@ public class RestService {
      * @return String simple message
      */
     @GET
-    @Path("/hello")
     public String test() {
 
         LOG.debug("rest test called");
@@ -94,8 +93,17 @@ public class RestService {
     public Response postValidateFullCard(CreditCard creditCard) {
         try {
             LOG.debug("/validateCard called creditCArd:" + creditCard);
-                
-            throw new UnsupportedOperationException("post /validateCard NOT IMPLEMENTED - TODO IMPLEMENT THIS METHOD");
+            ReplyMessage replyMessage = new ReplyMessage();
+            CardValidationResult result = RegexCardValidator.isValid(creditCard.getCardnumber());
+            replyMessage.setCardValidationResult(result);
+            if (result.isValid()) {
+                replyMessage.setCode(Response.Status.OK.getStatusCode());
+                return Response.status(Response.Status.OK).entity(replyMessage).build();
+            } else {
+                replyMessage.setCode(Response.Status.BAD_REQUEST.getStatusCode());
+                return Response.status(Response.Status.BAD_REQUEST).entity(replyMessage).build();
+            }
+            //throw new UnsupportedOperationException("post /validateCard NOT IMPLEMENTED - TODO IMPLEMENT THIS METHOD");
 
         } catch (Exception ex) {
             LOG.error("error calling POST /validateCard ", ex);

@@ -36,6 +36,20 @@ public class CardCheckerClientTest {
         CardCheckerClient cardCheckerClient = new CardCheckerClient("http://localhost:8080/creditcardchecker-web");
 
         // TODO WRITE A TEST TO CHECK THE POST CLIENT
+        CreditCard card = new CreditCard();
+        card.setCardnumber("4444444444444448");
+        card.setCvv("123");
+        card.setEndDate("11/21");
+        card.setIssueNumber("01");
+        card.setName("test user1");
+        
+        CardValidationResult result = cardCheckerClient.postCheckCard(card);
+        assertTrue(result.isValid());
+        
+        card.setCardnumber("4444444444444449");
+        
+        CardValidationResult result2 = cardCheckerClient.postCheckCard(card);
+        assertFalse(result2.isValid());
 
     }
 
