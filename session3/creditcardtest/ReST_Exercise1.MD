@@ -20,7 +20,7 @@ In this exercise we will be using the [Jersey 2.0 library](https://eclipse-ee4j.
 Jersey can run within a web container as a servelet and can easily sit along side the JSPs in the war file we have already created in Tomcat.
 
 ## Simple ReST example
-Lets start with a simple ReST example. This code is in  [SimpleRestExample.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestExample.java)
+Lets start with a simple ReST example. This code is in  [SimpleRestService.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestService.java)
 
 This example is using JAX-RS annotations from the Jersey library to turn methods into ReST calls. 
 You can see there are three methods corresponding to three differnt URL's which can be accessd using an HTTP GET command.
@@ -28,7 +28,7 @@ You can see there are three methods corresponding to three differnt URL's which 
 The index.html page contains the URLs which can be used to access the app. 
 
 The ReST code in 
-[SimpleRestExample.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestExample.java)
+[SimpleRestService.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestService.java)
  is activated by the [RestApp.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/RestApp.java) (which I describe further below). 
 When Tomcat starts up, it automatically finds this RestApp class which then looks for all of the other classes with JAX-RS annotations.
 
