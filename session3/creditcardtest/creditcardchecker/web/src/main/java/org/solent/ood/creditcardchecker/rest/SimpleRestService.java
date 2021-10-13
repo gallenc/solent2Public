@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import solent.ac.uk.ood.examples.cardcheck.CardValidationResult;
 import solent.ac.uk.ood.examples.cardcheck.RegexCardValidator;
@@ -33,9 +34,23 @@ public class SimpleRestService {
         return sdf.format(new Date().getTime());
     }
 
+    
+    // http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/validateCard?cardNo=4444444444444448
     @GET
     @Path("/validateCard")
     public String validateCard(@QueryParam("cardNo") String card) {
+        CardValidationResult result = RegexCardValidator.isValid(card);
+        if (result.isValid()) {
+            return result.getCardType().getIssuerName();
+        } else {
+            return result.getError();
+        }
+    }
+    // using path parameter
+    // http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/4444444444444448
+    @GET
+    @Path("/validateCard/{cardNo}")
+    public String validateCardPathParam(@PathParam("cardNo") String card) {
         CardValidationResult result = RegexCardValidator.isValid(card);
         if (result.isValid()) {
             return result.getCardType().getIssuerName();
