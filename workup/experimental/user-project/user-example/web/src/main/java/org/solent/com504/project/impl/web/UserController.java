@@ -1,5 +1,7 @@
 package org.solent.com504.project.impl.web;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.com504.project.impl.validator.UserValidator;
@@ -29,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -90,7 +94,7 @@ public class UserController {
         return "denied";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public String login(Model model, String error, String logout) {
         if (error != null) {
             model.addAttribute("error", "Your username and password is invalid.");
@@ -109,7 +113,7 @@ public class UserController {
         return "redirect:/index.html";
     }
 
-    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String home(Model model) {
         return "home";
     }
@@ -543,6 +547,29 @@ public class UserController {
         model.addAttribute("partyuuid", partyuuid);
 
         return "addUsersToParty";
+    }
+    
+    
+    /*
+     * Default exception handler, catches all exceptions, redirects to friendly
+     * error page. Does not catch request mapping errors
+     */
+    @ExceptionHandler(Exception.class)
+    public String myExceptionHandler(final Exception e, Model model, HttpServletRequest request) {
+        final StringWriter sw = new StringWriter();
+        final PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        final String strStackTrace = sw.toString(); // stack trace as a string
+        String urlStr = "not defined";
+        if (request != null) {
+            StringBuffer url = request.getRequestURL();
+            urlStr = url.toString();
+        }
+        model.addAttribute("requestUrl", urlStr);
+        model.addAttribute("strStackTrace", strStackTrace);
+        model.addAttribute("exception", e);
+        //logger.error(strStackTrace); // send to logger first
+        return "error"; // default friendly exception message for user
     }
 
 }

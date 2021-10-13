@@ -8,8 +8,8 @@
 
         "info": {
             "version": "1.0",
-            "title": "Swagger Sample app",
-            "description": "TODO put your API description here.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) ",
+            "title": "Swagger Example Party Manager",
+            "description": "This is a swagger definition of a simple party registry.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) ",
             "termsOfService": "TBD1",
             "contact": {
                 "email": "craig.gallen@solent.ac.uk"

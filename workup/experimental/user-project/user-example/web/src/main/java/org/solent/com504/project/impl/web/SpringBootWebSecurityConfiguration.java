@@ -23,23 +23,26 @@ public class SpringBootWebSecurityConfiguration extends WebSecurityConfigurerAda
                 .authorizeRequests()
                 .antMatchers("/",
                         "/home",
-                        "/resources/**",
-                        "/swagger-ui/**",
-                        "/registration"
-                ).permitAll()
-                .antMatchers("/mvc/**",
-                        "/home",
                         "/contact",
-                        "/about"
-                ).hasRole("USER")  // ROLE_USER 
+                        "/about",
+                        "/index.html",
+                        "/resources/**",
+                        "/images/**",
+                        "/swagger-ui/**",
+                        "/registration",
+                        "/rest/openapi.json"
+                ).permitAll()
+                .antMatchers("/mvc/**"
+                ).hasRole("USER") // ROLE_USER 
                 .antMatchers("/users").hasRole("GLOBAL_ADMIN") // ROLE_GLOBAL_ADMIN
+                .antMatchers("/rest/**").hasAnyRole("REST_USER","GLOBAL_ADMIN") // ROLE_GLOBAL_ADMIN
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .successForwardUrl("/home")
+                .defaultSuccessUrl("/home", true)
                 .permitAll()
                 .and()
                 .logout()

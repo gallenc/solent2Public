@@ -1,5 +1,5 @@
 
-# base project with Party and User objects
+# base project with Party and User objects - Spring Java @Config
 
 updated for java 11 dependencies
 

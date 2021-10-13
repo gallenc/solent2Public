@@ -58,7 +58,7 @@
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="${contextPath}/home">Home</a></li> 
                             <li <% if ("about".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="${contextPath}/about">About</a></li> 
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="${contextPath}/contact">Contact</a></li>                          
-
+                            <li><a href="${contextPath}/swagger-ui/index.html" target="_blank" >ReST API</a></li>                          
                             <sec:authorize access="hasRole('ROLE_GLOBAL_ADMIN')">
                                 <li class="dropdown" >
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Admin <span class="caret"></span></a>
@@ -71,6 +71,9 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                                <li><a href="${contextPath}/login">Login or create a new Account</a></li>
+                            </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
                                 <form id="logoutForm" method="POST" action="${contextPath}/logout">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
