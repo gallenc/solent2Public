@@ -52,11 +52,11 @@ This returns a simple string 'Hello, REST!!!!' to the browser
 The note below shows how each segment of the url is used by the rest appliation.
 ```
 http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/hello
-&#8593;set by host tomcat
-.....................&#8593;set in war META-INF/context.xml
-...........................................&#8593;set using @ApplicationPath("/rest")
-................................................&#8593;set using @Path("/simple-api-v1") at top of SimpleRestService 
-..............................................................&#8593;set using @Path("/hello") on Rest method test()
+↑ set by host tomcat
+.....................↑ set in war META-INF/context.xml
+...........................................↑ set using @ApplicationPath("/rest")
+................................................↑ set using @Path("/simple-api-v1") at top of SimpleRestService 
+..............................................................↑ set using @Path("/hello") on Rest method test()
 ```
 
 The other methods in this class should be self explanatory. 
