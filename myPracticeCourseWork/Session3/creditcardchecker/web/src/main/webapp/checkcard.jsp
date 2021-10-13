@@ -19,14 +19,11 @@
     
     if ("validate".equals(action)) {
         CardValidationResult result = RegexCardValidator.isValid(creditcardno);
-        System.out.println(result.isValid());
-        System.out.println(action);
         isValid = result.isValid();       
         cardType = result.getCardType();
     }
     
     if(isValid & "validate".equals(action)){
-        System.out.println("hi");
         validationString = "This card number is valid and the card type is: " + cardType.name();
     }
     else if(!isValid & "validate".equals(action)){

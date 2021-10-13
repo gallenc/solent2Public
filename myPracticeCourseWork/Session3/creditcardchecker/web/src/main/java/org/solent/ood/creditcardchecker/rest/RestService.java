@@ -45,6 +45,7 @@ public class RestService {
      * @return String simple message
      */
     @GET
+    @Path("/hello")
     public String test() {
 
         LOG.debug("rest test called");
@@ -93,7 +94,7 @@ public class RestService {
     public Response postValidateFullCard(CreditCard creditCard) {
         try {
             LOG.debug("/validateCard called creditCArd:" + creditCard);
-
+                
             throw new UnsupportedOperationException("post /validateCard NOT IMPLEMENTED - TODO IMPLEMENT THIS METHOD");
 
         } catch (Exception ex) {
