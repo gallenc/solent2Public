@@ -94,6 +94,7 @@ public class RestService {
         try {
             LOG.debug("/validateCard called creditCArd:" + creditCard);
 
+            //TODO add code here to validate the card
             throw new UnsupportedOperationException("post /validateCard NOT IMPLEMENTED - TODO IMPLEMENT THIS METHOD");
 
         } catch (Exception ex) {

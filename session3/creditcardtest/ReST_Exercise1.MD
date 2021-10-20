@@ -19,6 +19,75 @@ In this exercise we will be using the [Jersey 2.0 library](https://eclipse-ee4j.
 
 Jersey can run within a web container as a servelet and can easily sit along side the JSPs in the war file we have already created in Tomcat.
 
+## Simple ReST example
+Lets start with a simple ReST example. This code is in  [SimpleRestService.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestService.java)
+
+This example is using JAX-RS annotations from the Jersey library to turn methods into ReST calls. 
+You can see there are three methods corresponding to three differnt URL's which can be accessd using an HTTP GET command.
+
+The index.html page contains the URLs which can be used to access the app. 
+
+The ReST code in 
+[SimpleRestService.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/SimpleRestService.java)
+ is activated by the [RestApp.java](../creditcardtest/creditcardchecker/web/src/main/java/org/solent/ood/creditcardchecker/rest/RestApp.java) (which I describe further below). 
+When Tomcat starts up, it automatically finds this RestApp class which then looks for all of the other classes with JAX-RS annotations.
+
+The SimpleRestService starts with a simple set of annotations which determine that the test() method will be called when 
+http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/hello 
+is entered.
+```
+@Path("/simple-api-v1")
+public class SimpleRestService {
+
+    @GET
+    @Path("/hello")
+    public String test() {
+        return "Hello, REST!!!!";
+    }
+     ...
+}
+```
+This returns a simple string 'Hello, REST!!!!' to the browser
+
+The note below shows how each segment of the url is used by the rest appliation.
+```
+http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/hello
+↑ set by host tomcat
+.....................↑ set in war META-INF/context.xml
+...........................................↑ set using @ApplicationPath("/rest")
+................................................↑ set using @Path("/simple-api-v1") at top of SimpleRestService 
+..............................................................↑ set using @Path("/hello") on Rest method test()
+```
+
+The other methods in this class should be self explanatory. 
+One returns the time and the ther validates the card.
+
+Note how the query parameter is passed into the validateCard method using the @QueryParam annotation
+```
+ // http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/validateCard?cardNo=4444444444444448
+ @GET
+ @Path("/validateCard")
+ public String validateCard(@QueryParam("cardNo") String card) {
+ ...
+ }
+```
+
+You could alternatively append a value to the path and pick it up using a @PathPram annotation
+```
+    // http://localhost:8080/creditcardchecker-web/rest/simple-api-v1/4444444444444448
+    @GET
+    @Path("/validateCard/{cardNo}")
+    public String validateCardPathParam(@PathParam("cardNo") String card) {
+    '''
+    }
+```
+
+All of these examples return a simple string.
+ 
+In the next example we will return a more complex JSON object. 
+
+## more complex example returning JSON
+
 We are going to create two end points one using GET and one using POST. 
 
 ## GET example

@@ -120,7 +120,9 @@ When you are finished your completed JSP should look like this image.
 
 - See if you can add log messages using log4j whenever items are added to the cart or a cart is purchased.
 
-- See if you can change the model so that the service (ShoppingService.java and ShoppingServiceImpl.java) can create an invoice. Can you display that invoice on another JSP invoice.jsp
+- See if you can change the model so that the service (ShoppingService.java and ShoppingServiceImpl.java) can create an invoice. Can you display that invoice on another JSP invoice.jsp. 
+
+Hint: change the service so that purchaseItems returs an Invoice object.
 
 ```
 public boolean purchaseItems(ShoppingCart shoppingCart);
@@ -135,5 +137,5 @@ public Invoice purchaseItems(ShoppingCart shoppingCart);
 
 You are making progress in your understanding of java web technologies. 
 
-You can now go on and try the  [shoppingcart](../../session4/shoppingcart-bootstap ) exercise
+You can now go on and try the  [shoppingcart-bootstrap](../session4/shoppingcart-bootstap) exercise
 

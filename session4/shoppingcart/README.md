@@ -1,6 +1,6 @@
 # Shopping Cart example
 
-This exercise shows you have you can start building a shopping cart application.
+This exercise shows you how you can start building a shopping cart application.
 
 In a previous example, we looked at how a list of names could be held in the session object.
 This meant that each user accessing the application through a different web browser had access to a different list of names in their own session.

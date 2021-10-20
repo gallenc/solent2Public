@@ -17,7 +17,6 @@ public class ReplyMessage {
     
     int code;
     
-    
     CardValidationResult cardValidationResult;
 
     public String getMessage() {
