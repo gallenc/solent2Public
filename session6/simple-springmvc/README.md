@@ -14,7 +14,7 @@ As always, an example answer is provided [webExercise1-springmvc-answer](../simp
 Up until this point we have been using simple JSP pages to implement our web site. 
 As you know, JSP's allow you to mix html with java code in order to make a dynamic web site. 
 In theory this allows us to separate the concerns of web design from the concerns of programming. 
-Stubbed html templace pages created by designers can be turned into JSP pages and the additional code added by programmers.
+Stubbed html template pages created by designers can be turned into JSP pages and the additional code added by programmers.
 
 The objective of an MVC framework should be to separate the View which is primarily about style from the Model and Controller which are where the programming should be done.
 Unfortunately as we have seen, even with a back end service to provide business functionality, there is still a lot of Java code required in the JSP. 
