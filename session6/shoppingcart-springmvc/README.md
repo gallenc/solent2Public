@@ -1,6 +1,6 @@
 # Exercise 2 shoppingcart-springmvc
 
-This exercise follows on from the work you did in  [Exercise 1 simple-springmvc](../../session5/simple-springmvc) 
+This exercise follows on from the work you did in  [Exercise 1 simple-springmvc](../../session6/simple-springmvc) 
 
 In this exercise you will migrate the code from your shopping cart application to use SpringMVC
 
@@ -11,7 +11,7 @@ Migrate the simple shopping cart you created in the [session4 shopping cart exer
 
 In this case you only have to migrate one JSP with no bootstrap.
 
-Following the steps in last [Exercise 1 simple-springmvc](../../session5/simple-springmvc) , you will need to
+Following the steps in last [Exercise 1 simple-springmvc](../../session6/simple-springmvc) , you will need to
 
 1. add an application.properties file to tell SpringMVC where the views are
 2. move the home.jsp under WEB-INF/views
