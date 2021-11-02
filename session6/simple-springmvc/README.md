@@ -23,7 +23,7 @@ Effectively this means that some of the Controller logic is mixed up with the Vi
 SpringMVC achieves a better separation of View and Controller by introducing Controller classes which essentially wrap in separate methods the code which we have previously put at the top of our JSP.
 The JSPs then become much simpler to maintain although this is at the expense of creating a Controller method for each JSP. 
 Although making our design slightly more complex, this approach also future proof's our design by allowing us, if we wish, to replace JSP's with alternative view technologies such as Thymeleaf without needing to significantly modify our business logic.
-(If you are interested see [Introduction to Thymeleaf in Spring ](https://www.baeldung.com/thymeleaf-in-spring-mvc).
+(If you are interested see [Introduction to Thymeleaf in Spring ](https://www.baeldung.com/thymeleaf-in-spring-mvc) ).
 
 ## Examining our initial program
 
