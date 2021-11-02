@@ -20,7 +20,7 @@ The objective of an MVC framework should be to separate the View which is primar
 Unfortunately as we have seen, even with a back end service to provide business functionality, there is still a lot of Java code required in the JSP. 
 Effectively this means that some of the Controller logic is mixed up with the View which makes our program difficult to maintain particularly if we want to update the styling on an existing page.
 
-SpringMVC achieves separation of View and Controller this by introducing Controller classes which essentially wrap in separate methods the code which we have previously put at the top of our JSP.
+SpringMVC achieves a better separation of View and Controller by introducing Controller classes which essentially wrap in separate methods the code which we have previously put at the top of our JSP.
 The JSPs then become much simpler to maintain although this is at the expense of creating a Controller method for each JSP. 
 Although making our design slightly more complex, this approach also future proof's our design by allowing us, if we wish, to replace JSP's with alternative view technologies such as Thymeleaf without needing to significantly modify our business logic.
 (If you are interested see [Introduction to Thymeleaf in Spring ](https://www.baeldung.com/thymeleaf-in-spring-mvc).
