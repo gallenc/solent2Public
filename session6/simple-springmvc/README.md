@@ -118,6 +118,9 @@ public class Myclass {
 Spring defines a large number of Spring annotations which invoke features of spring whenever they are encountered in our program.
 On start up Spring can scan the class path to find all the spring annotations in a program.
 
+As an aside, this is a very good example of the 'Decorator Pattern' where the annotations tell Spring to 'decorate' the class with lots of additional functionality which isn't explicitly written in the class.
+n addition you will see the 'constructor pattern', where Spring is injecting additional classes into a class in order to return a fully functional program.
+
 The following two classes use annotations to configure and start spring in a very typical fashion.
 
 [SpringBootJspApplication.java](../simple-springmvc/webExercise1-springmvc/src/main/java/org/solent/oodd/webexercise1/spring/web/SpringBootJspApplication.java ), 
