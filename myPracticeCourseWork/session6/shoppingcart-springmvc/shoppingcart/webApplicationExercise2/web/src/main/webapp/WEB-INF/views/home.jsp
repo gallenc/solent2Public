@@ -11,48 +11,7 @@
 <%@ page import="org.solent.com504.oodd.cart.model.service.ShoppingCart" %>
 <%@ page import="org.solent.com504.oodd.cart.model.dto.ShoppingItem" %>
 <%@ page import="org.solent.com504.oodd.cart.web.WebObjectFactory"%>
-<%
-    request.setAttribute("selectedPage","home"); 
-    String message="";
-
-    ShoppingService shoppingService = WebObjectFactory.getShoppingService();
-
-    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
-    if (shoppingCart == null) {
-        shoppingCart = WebObjectFactory.getNewShoppingCart();
-        session.setAttribute("shoppingCart", shoppingCart);
-    }
-
-    String action = (String) request.getParameter("action");
-    String itemName = (String) request.getParameter("itemName");
-    String itemUuid = (String) request.getParameter("itemUUID");
-
-    if ("addItemToCart".equals(action)) {
-        message = "adding "+itemName + " to cart";
-        ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
-        try {
-           shoppingItem.setQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
-        }
-        catch (NumberFormatException e)
-        {
-           shoppingItem.setQuantity(1);
-        }
-        message = "adding "+itemName + " to cart : "+shoppingItem;
-        shoppingCart.addItemToCart(shoppingItem);
-    }
-    if ("removeItemFromCart".equals(action)) {
-        message = "removing "+itemName + " from cart";
-        shoppingCart.removeItemFromCart(itemUuid);
-    } 
-    if("purchaseItems".equals(action)){
-        Invoice invoice = shoppingService.purchaseItems(shoppingCart);
-        message = invoice.GetInvoiceAsString();
-    }else {
-        message = "action="+action;
-    }
-    
-    double totalValue = shoppingCart.getTotal();
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,7 +25,7 @@
 
         <jsp:include page="header.jsp" />
         
-        <p><%=message%><p>
+        <p>${message}<p>
 
             <!-- The .table class adds basic styling (light padding and only horizontal dividers) to a table: -->     
         <H1>Available Items</H1>
@@ -77,23 +36,22 @@
                 <th>Price</th>                
                 <th></th>
             </tr>
-
-            <% for (ShoppingItem item : shoppingService.getAvailableItems()) {%>
-            <tr>
-                <td><%=item.getName()%></td>
-                <td><%=item.getPrice()%></td>
+            <c:forEach items="${items}"  var="item" varStatus="status" >
+                <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
                 <td></td>
                 <td>
                     <!-- post avoids url encoded parameters -->
-                    <form action="./home.jsp" method="get">
-                        <input type="hidden" name="itemName" value="<%=item.getName()%>">
+                    <form action="./home" method="get">
+                        <input type="hidden" name="itemName" value="${item.name}">
                         <input type="hidden" name="action" value="addItemToCart">
                         <input type="hidden" name="itemQuantity" value="1">
                         <button type="submit" >Add Item</button>
                     </form> 
                 </td>
             </tr>
-            <% }%>
+            </c:forEach>
 
         </table>
 
@@ -105,32 +63,33 @@
                 <th>Price</th>
                 <th>Quantity</th>
             </tr>
-
-            <% for (ShoppingItem item : shoppingCart.getShoppingCartItems()) {%>
+            
+            <c:forEach items="${cartItems}"  var="item" varStatus="status" >
             <tr>
-                <td><%=item.getName()%></td>
-                <td><%=item.getPrice()%></td>
-                <td><%=item.getQuantity()%></td>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td>${item.quantity}</td>
                 <td>
                     <!-- post avoids url encoded parameters -->
-                    <form action="./home.jsp" method="get">
-                        <input type="hidden" name="itemUUID" value="<%=item.getUuid()%>">
+                    <form action="./home" method="get">
+                        <input type="hidden" name="itemUUID" value="${item.uuid}">
                         <input type="hidden" name="action" value="removeItemFromCart">
                         <button type="submit" >Remove Item</button>
                     </form> 
                 </td>
             </tr>
-            <% }%>
+            </c:forEach>
+            
             
             <tr>
                 <th>Total</th>
-                <th><%=totalValue%></th>
+                <th>${totalValue}</th>
                 <th></th>
             </tr>
 
         </table>
         <!-- post avoids url encoded parameters -->
-        <form action="./home.jsp" method="get">
+        <form action="./home" method="get">
             <input type="hidden" name="action" value="purchaseItems">
             <button type="submit" >Purchase Items</button>
         </form> 
