@@ -13,18 +13,19 @@ In this case you only have to migrate one JSP with no bootstrap.
 
 Following the steps in last [Exercise 1 simple-springmvc](../../session6/simple-springmvc) , you will need to
 
-1. add an application.properties file to tell SpringMVC where the views are
-2. move the home.jsp under WEB-INF/views
-2. add a MVCController class and add a request method which calls the home.jsp (you can copy and modify the class from the previous example)
-3. change the web references in the home.jsp forms to match the @RequestMapping(value in the request method
+1. check that the pom.xml has the correct dependencies.
+2. add an application.properties file to tell SpringMVC where the views are
+3. move the home.jsp under WEB-INF/views
+4. add a MVCController class and add a request method which calls the home.jsp (you can copy and modify the class from the previous example)
+5. change the web references in the home.jsp forms to match the @RequestMapping(value in the request method
 This should now give you a working app with the home.jsp as a view. 
 
 You still have to migrate the code in the jsp:
 
-4. add the @RequestParameter annotations to the requesting method
-5. move the business logic out of the JSP and into the request method in the controller
-6. make sure the return values needed by the page are now injected into the model
-7. change the java code in the JSP to use JSTL and the model variables
+6. add the @RequestParameter annotations to the requesting method
+7. move the business logic out of the JSP and into the request method in the controller
+8. make sure the return values needed by the page are now injected into the model
+9. change the java code in the JSP to use JSTL and the model variables
 
 
 An example answer is provided [webApplicationExercise2Spring-answer](../shoppingcart-springmvc/webApplicationExercise2Spring-answer/ )
@@ -94,6 +95,9 @@ public class SpringBootJspConfiguration {
     }
 }
 
+## Part 3 Try doing the same with the properties app in session 5
+You should be able to migrate the properties application from session 5 to use springMVC. 
+This would be great for your group development exercise.
  
  ```
  
