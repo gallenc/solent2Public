@@ -12,6 +12,8 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         
         <!-- You can copy and paste the single properties, into the pom.xml file and the Netbeans will pick them up. -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.6-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
@@ -39,7 +41,7 @@
             <scope>provided</scope>
         </dependency>
         
-                <!-- Log4j API and Core implementation  -->
+        <!-- Log4j API and Core implementation  -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>

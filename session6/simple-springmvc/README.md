@@ -14,16 +14,16 @@ As always, an example answer is provided [webExercise1-springmvc-answer](../simp
 Up until this point we have been using simple JSP pages to implement our web site. 
 As you know, JSP's allow you to mix html with java code in order to make a dynamic web site. 
 In theory this allows us to separate the concerns of web design from the concerns of programming. 
-Stubbed html templace pages created by designers can be turned into JSP pages and the additional code added by programmers.
+Stubbed html template pages created by designers can be turned into JSP pages and the additional code added by programmers.
 
 The objective of an MVC framework should be to separate the View which is primarily about style from the Model and Controller which are where the programming should be done.
 Unfortunately as we have seen, even with a back end service to provide business functionality, there is still a lot of Java code required in the JSP. 
 Effectively this means that some of the Controller logic is mixed up with the View which makes our program difficult to maintain particularly if we want to update the styling on an existing page.
 
-SpringMVC achieves separation of View and Controller this by introducing Controller classes which essentially wrap in separate methods the code which we have previously put at the top of our JSP.
+SpringMVC achieves a better separation of View and Controller by introducing Controller classes which essentially wrap in separate methods the code which we have previously put at the top of our JSP.
 The JSPs then become much simpler to maintain although this is at the expense of creating a Controller method for each JSP. 
 Although making our design slightly more complex, this approach also future proof's our design by allowing us, if we wish, to replace JSP's with alternative view technologies such as Thymeleaf without needing to significantly modify our business logic.
-(If you are interested see [Introduction to Thymeleaf in Spring ](https://www.baeldung.com/thymeleaf-in-spring-mvc).
+(If you are interested see [Introduction to Thymeleaf in Spring ](https://www.baeldung.com/thymeleaf-in-spring-mvc) ).
 
 ## Examining our initial program
 
@@ -117,6 +117,9 @@ public class Myclass {
 
 Spring defines a large number of Spring annotations which invoke features of spring whenever they are encountered in our program.
 On start up Spring can scan the class path to find all the spring annotations in a program.
+
+As an aside, this is a very good example of the 'Decorator Pattern' where the annotations tell Spring to 'decorate' the class with lots of additional functionality which isn't explicitly written in the class.
+n addition you will see the 'constructor pattern', where Spring is injecting additional classes into a class in order to return a fully functional program.
 
 The following two classes use annotations to configure and start spring in a very typical fashion.
 
