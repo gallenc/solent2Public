@@ -2,7 +2,8 @@
 
 In this exercise we will be migrating a simple web app which we created in session2 to use springMVC.
 
-Our starting point will be [webExercise1-springmvc](../simple-springmvc/webExercise1-springmvc ) which starts with the final answer to the exercises in Session 2
+Our starting point will be [webExercise1-springmvc](../simple-springmvc/webExercise1-springmvc ) which starts with the final answer to the exercises in Session 2.
+(NB - please dont use the actual Session 2 version - use this starting point because there is some extra starting code)
 
 You should make sure you are working with a copy of this project in myPracticeCourseWork
 
@@ -30,6 +31,8 @@ Although making our design slightly more complex, this approach also future proo
 Start by opening the [webExercise1-springmvc](../simple-springmvc/webExercise1-springmvc ) project in netbeans and run the web module.
 
 You should be able to open the simple application at http://localhost:8080/webExercise1/jspexample3d.jsp
+
+(Note that a problem which can occur is that tomcat or your browser cashes the old index.html file which may not have the correct links. If this happens you will get a 404 not found error if you try to open the app from the index page. Use the link above).
 
 This is the answer to Session2/Exercise 3: Add a 'Modify User' action. 
 Where we asked you to add a 'Modify User' action which allows you to edit user attributes in a new page.
