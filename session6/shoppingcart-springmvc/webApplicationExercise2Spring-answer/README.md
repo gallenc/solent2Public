@@ -1,5 +1,5 @@
 
-# Simple Shopping Cart Using Spring
+# Simple Shopping Cart Using Spring (no bootstrap)
 
 This example just uses a single JSP controlled by spring-mvc.
 
