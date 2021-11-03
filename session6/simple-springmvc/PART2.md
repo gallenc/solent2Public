@@ -288,10 +288,10 @@ myExceptionHandler  is annotated with  @ExceptionHandler(Exception.class) which 
 You could narrow this to a specific exception and have a differnt page for differnt errors. This gives you a lot of flexibility as to how you report exceptions to users or log them internally.
 
 A simple request mapping method @RequestMapping(value = "/xxxhome" is defined to allow you to generate an exception and see the result. 
-browse to http://localhost:8080/webExercise1/xxxhome adn you will see this throws an exception which is printed out using the error.jsp page.
+browse to http://localhost:8080/webExercise1/xxxhome and you will see this throws an exception which is printed out using the error.jsp page.
 
 ## Congratulations
 You have managed to migrate your simple applicatio to using springMVC. 
 Hopefully you can see that this gives mugh greater separatino between the programming and the design of a web site.
 
-Now proceed to [Exercise 2 shoppingcart-springmvc](../../session5/shoppingcart-springmvc) in which you will migrate your shopping cart code into springMVC 
+Now proceed to [Exercise 2 shoppingcart-springmvc](../../session6/shoppingcart-springmvc) in which you will migrate your shopping cart code into springMVC 
