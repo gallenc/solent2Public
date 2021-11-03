@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="classDiagram">
+  <ClassDiagramComponents>
+    <Class name="ShoppingItem" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="699.0" yPosition="803.0">
+      <Fields>
+        <Field name="uuid" type="String" visibility="private"/>
+        <Field name="name" type="Sring" visibility="private"/>
+        <Field name="quantity" type="Integer" visibility="private"/>
+        <Field name="price" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="JSPs_doNotGenerate" package="" visibility="public" xPosition="465.0" yPosition="58.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ShoppingServiceImpl" package="org.solent.com504.oodd.cart.service" visibility="public" xPosition="1152.0" yPosition="753.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ShoppingCartImpl" package="org.solent.com504.oodd.cart.service" visibility="public" xPosition="994.0" yPosition="585.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="WebObjectFactory" package="org.solent.com504.oodd.cart.web" visibility="public" xPosition="1095.0" yPosition="153.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getShoppingService" returnType="ShoppingService" visibility="public"/>
+        <Method name="getNewShoppingCart" returnType="ShoppingCart" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="HttpSession" package="javax.servlet.http" visibility="public" xPosition="699.0" yPosition="227.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ServiceObjectFactory" package="org.solent.com504.oodd.cart.service" visibility="public" xPosition="1095.0" yPosition="329.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getNewShoppingCart" returnType="ShoppingCart" visibility="public"/>
+        <Method name="getShoppingService" returnType="ShoppingService" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ShoppingCart" package="org.solent.com504.oodd.cart.model.service" visibility="public" xPosition="511.0" yPosition="552.0">
+      <Methods>
+        <Method name="getShoppingCartItems" returnType="List&lt;ShoppingItem&gt;" visibility="public"/>
+        <Method name="addItemToCart" returnType="ShoppingItem" visibility="public">
+          <Argument type="ShoppingItem" name="shoppingItem"/>
+        </Method>
+        <Method name="removeItemFromCart" returnType="void" visibility="public">
+          <Argument type="String" name="itemUuid"/>
+        </Method>
+        <Method name="getTotal" returnType="double" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ShoppingService" package="org.solent.com504.oodd.cart.model.service" visibility="public" xPosition="134.0" yPosition="730.0">
+      <Methods>
+        <Method name="getAvailableItems" returnType="List&lt;ShoppingItem&gt;" visibility="public"/>
+        <Method name="purchaseItems" returnType="ShoppingCart" visibility="public">
+          <Argument type="ShoppingCart" name="shoppingCart"/>
+        </Method>
+        <Method name="getNewItemByName" returnType="String" visibility="public">
+          <Argument type="String" name="uuid"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="HttpServelet" package="javax.servlet.http" visibility="public" xPosition="179.0" yPosition="238.0">
+      <Methods/>
+    </Interface>
+    <Interface name="HttpServeletRequest" package="javax.servlet.http" visibility="public" xPosition="40.0" yPosition="20.0">
+      <Methods/>
+    </Interface>
+    <Interface name="HttpServeletResponse" package="javax.servlet.http" visibility="public" xPosition="255.0" yPosition="20.0">
+      <Methods/>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="supportsJSPs" source="javax.servlet.http.HttpSession" target="JSPs_doNotGenerate" sourceCardinality="0..*" targetCardinality="1..*"/>
+    <UseRelation name="useShoppingCart" source="JSPs_doNotGenerate" target="org.solent.com504.oodd.cart.model.service.ShoppingCart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="JSPcompilesToServelet" source="JSPs_doNotGenerate" target="javax.servlet.http.HttpServelet" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.oodd.cart.service.ShoppingCartImpl" target="org.solent.com504.oodd.cart.model.service.ShoppingCart"/>
+    <UseRelation name="usesShoppingService" source="JSPs_doNotGenerate" target="org.solent.com504.oodd.cart.model.service.ShoppingService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="hasShoppingCart" source="javax.servlet.http.HttpSession" target="org.solent.com504.oodd.cart.model.service.ShoppingCart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsShoppingServiceImpl" source="org.solent.com504.oodd.cart.service.ServiceObjectFactory" target="org.solent.com504.oodd.cart.service.ShoppingServiceImpl" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="usesWebObjectFactory" source="javax.servlet.http.HttpSession" target="org.solent.com504.oodd.cart.web.WebObjectFactory" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="usesServiceObjectFactory" source="org.solent.com504.oodd.cart.web.WebObjectFactory" target="org.solent.com504.oodd.cart.service.ServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.oodd.cart.service.ShoppingServiceImpl" target="org.solent.com504.oodd.cart.model.service.ShoppingService"/>
+    <UseRelation name="shoppingCartUses" source="org.solent.com504.oodd.cart.model.service.ShoppingCart" target="org.solent.com504.oodd.cart.model.dto.ShoppingItem" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="requestToServlet" source="javax.servlet.http.HttpServeletRequest" target="javax.servlet.http.HttpServelet" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="shoppingServiceUses" source="org.solent.com504.oodd.cart.model.service.ShoppingService" target="org.solent.com504.oodd.cart.model.dto.ShoppingItem" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="useSession" source="javax.servlet.http.HttpServelet" target="javax.servlet.http.HttpSession" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <UseRelation name="responseFromServelet" source="javax.servlet.http.HttpServeletResponse" target="javax.servlet.http.HttpServelet" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="createsShoppingCartImpl" source="org.solent.com504.oodd.cart.service.ServiceObjectFactory" target="org.solent.com504.oodd.cart.service.ShoppingCartImpl" sourceCardinality="1..1" targetCardinality="0..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
