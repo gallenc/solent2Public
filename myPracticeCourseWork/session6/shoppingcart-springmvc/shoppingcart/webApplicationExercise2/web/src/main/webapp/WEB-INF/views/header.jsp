@@ -20,13 +20,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item <% if ("home".equals(request.getAttribute("selectedPage"))) {%> active  <% } %> ">
-                  <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item <% if ("about".equals(request.getAttribute("selectedPage"))) {%> active  <% } %>">
-                  <a class="nav-link" href="about.jsp">About</a>
+                  <a class="nav-link" href="about">About</a>
                 </li>
-                <li class="nav-item <% if ("about".equals(request.getAttribute("selectedPage"))) {%> active  <% } %>">
-                  <a class="nav-link" href="contact.jsp">Contact</a>
+                <li class="nav-item <% if ("contact".equals(request.getAttribute("selectedPage"))) {%> active  <% } %>">
+                  <a class="nav-link" href="contact">Contact</a>
                 </li>
               </ul>
             </div>

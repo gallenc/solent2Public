@@ -27,11 +27,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class MVCController {
     
+    @Autowired
+    ShoppingService shoppingService = null;
+    
+    @Autowired
+    ShoppingCart shoppingCart = null;
+    
     
     // this redirects calls to the root of our application to index.html 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model) {
         return "redirect:/index.html";
+    }
+    
+    // this redirects calls to the root of our application to index.html 
+    @RequestMapping(value = "/about", method = {RequestMethod.GET, RequestMethod.POST})
+    public String about(Model model) {
+        model.addAttribute("selectedPage","about");     
+        return "about";
+    }
+    
+    // this redirects calls to the root of our application to index.html 
+    @RequestMapping(value = "/contact", method = {RequestMethod.GET, RequestMethod.POST})
+    public String contact(Model model) {
+        model.addAttribute("selectedPage","contact");     
+        return "contact";
     }
 
     
@@ -48,9 +68,6 @@ public class MVCController {
         
         String message="";
 
-        ShoppingService shoppingService = WebObjectFactory.getShoppingService();
-
-        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
         if (shoppingCart == null) {
             shoppingCart = WebObjectFactory.getNewShoppingCart();
             session.setAttribute("shoppingCart", shoppingCart);
