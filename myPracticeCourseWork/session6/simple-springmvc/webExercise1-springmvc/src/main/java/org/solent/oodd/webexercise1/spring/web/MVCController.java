@@ -2,9 +2,11 @@ package org.solent.oodd.webexercise1.spring.web;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.solent.oodd.webexercise1.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +27,64 @@ public class MVCController {
 
     // this simply calls the jspexample3d.jsp page (without any modifications) when /userlist is requested
     @RequestMapping(value = "/userlist", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3d(Model model, HttpSession session) {
+    public String jspexample3d(
+            @RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "userName", required = false) String name,
+            @RequestParam(name = "userAddress", required = false) String address,
+            @RequestParam(name = "index", required = false) String index,
+            Model model,
+            HttpSession session) {
+        
+        // retreive the stored users list from the session
+        List<User> users = (List<User>) session.getAttribute("usersList");
+        if (users == null) {
+            users = new ArrayList<User>();
+            session.setAttribute("usersList", users);
+        }
+
+        if ("removeUser".equals(action)) {
+            int i = Integer.parseInt(index);
+            users.remove(i);
+        } else if ("addUser".equals(action)) {
+            User user = new User();
+            user.setName(name);
+            user.setAddress(address);
+            users.add(user);
+        }
+        
+        model.addAttribute("users", users);
         return "jspexample3d";
     }
     
     // this simply calls the jspexample3d-modify.jsp page (without any modifications) when /userlist-modify is requested 
     @RequestMapping(value = "/userlist-modify", method = {RequestMethod.GET, RequestMethod.POST})
-    public String jspexample3dModify(Model model, HttpSession session) {
+    public String jspexample3dModify(
+            @RequestParam(name = "action", required = false) String action,
+            @RequestParam(name = "userName", required = false) String name,
+            @RequestParam(name = "userAddress", required = false) String address,
+            @RequestParam(name = "index", required = false) String index,
+            Model model,
+            HttpSession session) {
+        
+        // retreive the stored users list from the session
+        List<User> users = (List<User>) session.getAttribute("usersList");
+        if (users == null) {
+            users = new ArrayList<User>();
+            session.setAttribute("usersList", users);
+        }
+
+        int i = Integer.parseInt(index);
+        User user = users.get(i);
+
+        if ("modifyUser".equals(action)) {
+            user.setAddress(address);
+            user.setName(name);
+        }
+        
+        model.addAttribute("user", user);        
+        model.addAttribute("index", index);
+
+        
         return "jspexample3d-modify";
     }
     
