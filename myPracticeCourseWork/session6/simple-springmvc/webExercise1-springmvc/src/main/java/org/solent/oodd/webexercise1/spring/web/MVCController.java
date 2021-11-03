@@ -23,6 +23,19 @@ public class MVCController {
         return "redirect:/index.html";
     }
 
+    // this simply calls the jspexample3d.jsp page (without any modifications) when /userlist is requested
+    @RequestMapping(value = "/userlist", method = {RequestMethod.GET, RequestMethod.POST})
+    public String jspexample3d(Model model, HttpSession session) {
+        return "jspexample3d";
+    }
+    
+    // this simply calls the jspexample3d-modify.jsp page (without any modifications) when /userlist-modify is requested 
+    @RequestMapping(value = "/userlist-modify", method = {RequestMethod.GET, RequestMethod.POST})
+    public String jspexample3dModify(Model model, HttpSession session) {
+        return "jspexample3d-modify";
+    }
+    
+    
     /**
      * This just throws a runtime exception to show error handler working
      */

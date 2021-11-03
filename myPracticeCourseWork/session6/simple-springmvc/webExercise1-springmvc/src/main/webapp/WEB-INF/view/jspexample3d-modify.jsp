@@ -41,7 +41,7 @@
         <h1>JSP Example 3d: Modify User table</h1>
 
         <h2>Modify user</h2>
-        <form action="./jspexample3d-modify.jsp" method="get">
+        <form action="./userlist-modify" method="get">
             <p>user name <input type="text" name="userName" value="<%= user.getName()%>"></p>
             <p>user address <input type="text" name="userAddress" value="<%= user.getAddress()%>"></p>
             <input type="hidden" name="action" value="modifyUser">
@@ -49,7 +49,7 @@
             <button type="submit" >modify user</button>
         </form> 
         <br>
-        <form action="./jspexample3d.jsp" method="get">
+        <form action="./userlist" method="get">
             <button type="submit" >return to user list</button>
         </form> 
         <br>

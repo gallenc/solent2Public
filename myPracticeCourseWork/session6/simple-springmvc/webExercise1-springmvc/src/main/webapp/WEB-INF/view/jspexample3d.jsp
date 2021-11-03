@@ -59,12 +59,12 @@
                 <td><%=user.getName()%></td>
                 <td><%=user.getAddress()%></td>
                 <td>
-                    <form action="./jspexample3d.jsp" method="get">
+                    <form action="./userlist" method="get">
                         <input type="hidden" name="index" value="<%=idx%>">
                         <input type="hidden" name="action" value="removeUser">
                         <button type="submit" >remove</button>
                     </form>
-                    <form action="./jspexample3d-modify.jsp" method="get">
+                    <form action="./userlist-modify" method="get">
                         <input type="hidden" name="index" value="<%=idx%>">
                         <button type="submit" >modify</button>
                     </form>
@@ -76,7 +76,7 @@
         </table>
 
         <h2>add users</h2>
-        <form action="./jspexample3d.jsp" method="get">
+        <form action="./userlist" method="get">
             <p>user name <input type="text" name="userName" value=""></p>
             <p>user address <input type="text" name="userAddress" value=""></p>
             <input type="hidden" name="action" value="addUser">
