@@ -25,7 +25,6 @@ Usually a model doesn't need to go into this detail if we know the supporting cl
 
 ## Use Cases and Robustness Diagrams
 
-
 We can use draw.io https://www.draw.io/ to draw other UML diagrams such as Use Cases, Robustness diagrams and Sequence diagrams. 
 
 The draw.io ,drawio files and their related .png images are in the drawio folder. 
@@ -44,13 +43,22 @@ https://www.lucidchart.com/pages/uml-use-case-diagram
 For a fuller description of use cases see  [Schaum's outline of UML
 Bennett, Simon.2nd ed.; c2005 in Solent library](https://catalogue.solent.ac.uk/permalink/44SSU_INST/bslj9g/alma990096667340204796) 
 
-Template
+#### Template
 
 ![alt text](../UMLmodel/drawio/template-usecase-drawio.png "Figure template-usecase-drawio.png")
 
-Answer
+#### Answer (simple case)
+
+This example shows a version of the simple usecase for a shopping cart implemented in class
+
+![alt text](../UMLmodel/drawio/cart_simple_usecase-draw_io.png "Figure cart_simple_usecase-draw_io.png")
+
+#### Answer (full case)
+
+This example shows a version of a completed usecase for a shopping cart
 
 ![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
+
 
 ### Robustness Diagram
 
@@ -59,11 +67,11 @@ They are used as part of the ICONIX process.
 
 See [A practical Tutorial on Robustness Analysis] (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/)
 
-Template
+#### Template
 
-![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure template-robustness-diagram-drawio.png")
+![alt text](../UMLmodel/drawio/template-robustness-diagram-drawio.png "Figure template-robustness-diagram-drawio.png")
 
-Answer
+#### Answer (simple use case)
 
 ![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure cart-robustness-diagram-drawio.png")
 
