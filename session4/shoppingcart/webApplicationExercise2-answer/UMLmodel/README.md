@@ -44,6 +44,11 @@ https://www.lucidchart.com/pages/uml-use-case-diagram
 For a fuller description of use cases see  [Schaum's outline of UML
 Bennett, Simon.2nd ed.; c2005 in Solent library](https://catalogue.solent.ac.uk/permalink/44SSU_INST/bslj9g/alma990096667340204796) 
 
+Template
+
+![alt text](../UMLmodel/drawio/template-usecase-drawio.png "Figure template-usecase-drawio.png")
+
+Answer
 
 ![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
 
@@ -53,6 +58,12 @@ Robustness diagrams are an optional 'stereotype' applied to standard UML and not
 They are used as part of the ICONIX process.  
 
 See [A practical Tutorial on Robustness Analysis] (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/)
+
+Template
+
+![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure template-robustness-diagram-drawio.png")
+
+Answer
 
 ![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure cart-robustness-diagram-drawio.png")
 
