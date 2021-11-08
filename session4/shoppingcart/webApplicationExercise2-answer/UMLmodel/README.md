@@ -78,5 +78,9 @@ This gives an answer to the simple use case which has been implemented in class.
 ![alt text](../UMLmodel/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
 
 
+### Sequence Diagram Answer (simple use case)
 
+Sequence diagrams act as a more standard UML alternative to Robustness Diagrams.
+This diagam shows two simple usecases
 
+![alt text](../UMLmodel/drawio/cart-sequence-drawio.png "Figure cart-sequence-drawio.png")
