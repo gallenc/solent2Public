@@ -57,7 +57,7 @@ This example shows a version of the simple usecase for a shopping cart implement
 
 This example shows a version of a completed usecase for a shopping cart
 
-![alt text](../UMLmodel/drawio/cart-usecase-drawio.png "Figure cart-usecase-drawio.png")
+![alt text](../UMLmodel/drawio/cart_usecase-draw_io.pn "Figure cart_usecase-draw_io.png")
 
 
 ### Robustness Diagram
@@ -73,7 +73,9 @@ See [A practical Tutorial on Robustness Analysis] (https://www.visual-paradigm.c
 
 #### Answer (simple use case)
 
-![alt text](../UMLmodel/drawio/cart-robustness-diagram-drawio.png "Figure cart-robustness-diagram-drawio.png")
+This gives an answer to the simple use case which has been implemented in class.
+
+![alt text](../UMLmodel/drawio/cart-robustness-drawio.png "Figure cart-robustness-drawio.png")
 
 
 
