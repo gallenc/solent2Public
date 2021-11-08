@@ -57,7 +57,7 @@ This example shows a version of the simple usecase for a shopping cart implement
 
 This example shows a version of a completed usecase for a shopping cart
 
-![alt text](../UMLmodel/drawio/cart_usecase-draw_io.pn "Figure cart_usecase-draw_io.png")
+![alt text](../UMLmodel/drawio/cart_usecase-draw_io.png "Figure cart_usecase-draw_io.png")
 
 
 ### Robustness Diagram
