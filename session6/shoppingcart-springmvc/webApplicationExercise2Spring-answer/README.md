@@ -1,4 +1,7 @@
-# Shopping Cart Using Spring
+
+# Simple Shopping Cart Using Spring (no bootstrap)
+
+This example just uses a single JSP controlled by spring-mvc.
 
 ### To run using stand alone spring boot maven plugin
 
@@ -22,3 +25,4 @@ If you are asked for username and password just use the default admin admin.
 (You must make sure you have stopped any maven started tomcat before you do this.)
 
 You will be able to see the application at http://localhost:8080/webApplicationExercise/
+
