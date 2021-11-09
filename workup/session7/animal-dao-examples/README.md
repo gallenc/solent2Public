@@ -88,6 +88,16 @@ dao-jpa
 dao-springdata-jpa
 ```
 
+dao-simple doesn't persist any data but simply keeps the objects in memory.
+
+dao-json persists the animals as json files using the Jackson library
+
+dao-jaxb persists the animals as XML files using the jaxb library
+
+dao-jdbc saves the animal objects in a database but all of he mapping of objects to tables in the database is manual
+
+dao-jpa uses the java persistance architecture (JPA) standard to map objects to database tables. 
+
 Eclipselink is the JPA provider and Derby is used as the embedded database.
 
 dao-springdata-jpa introduces SpringData as a framework on top of JPA which greatly simplifies database interactions.
@@ -98,9 +108,8 @@ As usual, build the whole project using
 ```
 mvn clean install
 ```
-Then open the project and all its subprojects in Netbeans and run both the webfacadeexample2-web and webfacadeexample2-web-client projects in the embedded tomcat server.
 
-## exercise
+and then try running the tests in each of the sub projects
 
 
 
