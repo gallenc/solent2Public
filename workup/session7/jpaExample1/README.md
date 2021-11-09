@@ -9,7 +9,7 @@ This simple project shows two JPA DAO's, one for a Person object and one for an 
 
 1. complete the DAO implementations and tests (if they are not already completed).
 
-You should be able to see how to do this by looking at the [JPA dao code](../week6/webfacadeexample2/dao-jpa) in the [webfacadeexample2](../week6/webfacadeexample2) project.
+You should be able to see how to do this by looking at the [JPA dao code](../session7/webfacadeexample2/dao-jpa) in the [webfacadeexample2](../session7/webfacadeexample2) project.
 
 2. complete a use case and robustness diagram for the following scenario. 
 
@@ -21,6 +21,9 @@ Given the two Patient and Appointment DAO's you now have, what methods should a 
 
 3. The model classes have some JAXB annotations.
 Write a test class for the model to ensure objects can be marshalled and unmarshalled using JAXB
+
+You can see an example of this here
+[ModelJaxbTest.java](../session7/animal-dao-examples/model/src/test/java/org/solent/com504/factoryandfacade/test/dto/jaxb/ModelJaxbTest.java]
 
 Remember you will need a jaxb.index file in each package.
 
