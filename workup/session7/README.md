@@ -18,6 +18,7 @@ Finally, you will look at a more complex example which completely separates the 
 
 Try the  [factoryandfacade](../session7/factoryandfacade) exercises.
 
+
 ## Exercise 2 Java persistence
 
 We looked briefly at the concept of a Data Access Object (DAO) in session 5 when we looked at how properties could be persisted in a properties file.
