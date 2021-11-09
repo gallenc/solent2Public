@@ -23,7 +23,7 @@ Given the two Patient and Appointment DAO's you now have, what methods should a 
 Write a test class for the model to ensure objects can be marshalled and unmarshalled using JAXB
 
 You can see an example of this here
-[ModelJaxbTest.java](../session7/animal-dao-examples/model/src/test/java/org/solent/com504/factoryandfacade/test/dto/jaxb/ModelJaxbTest.java]
+[ModelJaxbTest.java](../session7/animal-dao-examples/model/src/test/java/org/solent/com504/factoryandfacade/test/dto/jaxb/ModelJaxbTest.java)
 
 Remember you will need a jaxb.index file in each package.
 
