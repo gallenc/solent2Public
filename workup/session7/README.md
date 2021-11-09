@@ -8,7 +8,7 @@ We will also begin looking seriously at java persistence
 2. create a new 'session7' folder under your myPracticeCouseWork folder.
 3. copy the contents of session7 into this folder and modify or add to the code here as needed. (NB only change any code in myPracticeCouseWork).
 
-## Exercise 1 factoryAndFacade
+## Exercise 1 Interfaces, Collections and Factory And Facade patterns
 
 In this exercise you will look at Java Collections and Generics, complete a simple factory method and implement and create tests for a simple facade interface. 
 
@@ -24,5 +24,5 @@ We looked briefly at the concept of a Data Access Object (DAO) in session 5 when
 
 In this exercise we will look at how data could be saved using a DAO implemented in several different ways. 
 
-Try the  [javaPersistence](../session7/javaPersistence) exercises.
+Try the  [animal-dao-examples](../session7/animal-dao-examples) exercises.
 
