@@ -27,9 +27,15 @@ In this exercise we will look at how data could be saved using a DAO implemented
 
 Try the  [animal-dao-examples](../session7/animal-dao-examples) exercises.
 
+## Exercise 3 More JPA examples
+
+In this exercise we will look at using JPA to persist users and appointments for a doctors surgery.
+
+[jpaExample1](../session7/jpaExample1) 
+
 
 ## Exercise 3 Java persistence and a web application
 
-This example brings together the JPA DAO with a web application so you can see how they work together to save items in a database.
+This example brings together the JPA DAO with a web application so you can see how they work together to save animal items in a database.
 
 Try the  [webfacadeexample2](../session7/webfacadeexample2) exercises.
