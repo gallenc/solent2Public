@@ -13,7 +13,7 @@ The example contains the answer to
 
 - calculate a total and display the total of all items in the shopping cart
 
-- change the quantities  of each item and calculate a total (needs a little thought);
+- change the quantities of each item and calculate a total (needs a little thought);
 
 The following have not been done in the example - still for you to do :)
 
@@ -40,7 +40,7 @@ In this exercise you will look at Java Collections and Generics, complete a simp
 
 You will then look at how to generate skeleton code from UML class diagrams in Netbeans.
 
-Finally you will look at a more complex example which completely seperates the client from the implementation classes.
+Finally, you will look at a more complex example which completely separates the client from the implementation classes.
 
 Try the  [factoryandfacade](../week4/factoryandfacade) exercises.
 

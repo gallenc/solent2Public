@@ -20,7 +20,7 @@ application uses the ResT API to comunicate with the first web application.
 Run both web applications and make sure you understand the flow of information in the app.
 
 ### JDBC and JPA Data Access layers
-Both a JDBC based adn JPA based data access layer have been included.
+Both a JDBC based and JPA based data access layer have been included.
 Only the JPA layer is wired into the app but the JDBC layer is provded to show you the differnce JPA makes
 
 ## Exercise 2 jpaExample1
