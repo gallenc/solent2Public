@@ -1,5 +1,5 @@
 
-# Project demonstrating various differnt DAO implementations
+# Project demonstrating various different DAO implementations
 
 The model defines an interface which gives the basic Create Retrieve Update Delete (CRUD) methods implemented by a DAO.
 
