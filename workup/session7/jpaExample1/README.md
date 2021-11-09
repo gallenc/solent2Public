@@ -1,11 +1,13 @@
 
 # Simple JPA Project
 
+This model for this JPA project can be seen in the [UML Model](../jpaExample1/UMLmodel) 
+
 ## Exercise  jpaExample1
 
 This simple project shows two JPA DAO's, one for a Person object and one for an Appointment object.
 
-1. complete the DAO implementations and tests.
+1. complete the DAO implementations and tests (if they are not already completed).
 
 You should be able to see how to do this by looking at the [JPA dao code](../week6/webfacadeexample2/dao-jpa) in the [webfacadeexample2](../week6/webfacadeexample2) project.
 
