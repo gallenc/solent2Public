@@ -2,6 +2,47 @@
 
 This module implements the AnimalDao using the JAXB api to serialise java objects as XML files.
 
+If you build the dao-jaxb module, you will see that the tests persist the list of animals as a file in the target directory
+
+```
+/target/testDaoFile.xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<animalList>
+    <alist>
+        <animal>
+            <id>1</id>
+            <name>name_1</name>
+            <address>address_1</address>
+            <animalType>
+                <sound>woof</sound>
+                <type>Dog</type>
+            </animalType>
+        </animal>
+        <animal>
+            <id>2</id>
+            <name>name_2</name>
+            <address>address_2</address>
+            <animalType>
+                <sound>meow</sound>
+                <type>Cat</type>
+            </animalType>
+        </animal>
+        <animal>
+            <id>3</id>
+            <name>name_3</name>
+            <address>address_3</address>
+            <animalType>
+                <sound>moo</sound>
+                <type>Cow</type>
+            </animalType>
+        </animal>
+    </alist>
+    <currentMaxId>3</currentMaxId>
+</animalList>
+
+```
+
 For a tutorial on Jaxb see https://www.baeldung.com/jaxb
 
 Note that Jaxb requires model classes to be annotated with Jaxb annotations as described below.
