@@ -11,10 +11,10 @@ You can see a tutorial on JDBC here https://www.baeldung.com/java-jdbc
 
 In this example 
 
-[ConnectionFactory.java](../session7/animal-dao-examples/dao-jdbc/src/main/java/org/solent/com504/factoryandfacade/impl/dao/jdbc/ConnectionFactory.java)
+[ConnectionFactory.java](../animal-dao-examples/dao-jdbc/src/main/java/org/solent/com504/factoryandfacade/impl/dao/jdbc/ConnectionFactory.java)
 Creates a connection to the database.
 
-[AnimalDaoJdbcImpl.java](../session7/animal-dao-examples/dao-jdbc/src/main/java/org/solent/com504/factoryandfacade/impl/dao/jdbc/AnimalDaoJdbcImpl.java)
+[AnimalDaoJdbcImpl.java](../animal-dao-examples/dao-jdbc/src/main/java/org/solent/com504/factoryandfacade/impl/dao/jdbc/AnimalDaoJdbcImpl.java)
  implements the DAO.
  
 It first creates the database tables and then provides methods to access them.
