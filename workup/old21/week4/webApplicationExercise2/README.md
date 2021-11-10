@@ -1,7 +1,7 @@
 
-# New Project Layout
+# New Project Layout 
 
-If you examine the project you will see that it now has additional modules. These are built in sequence in the pom.xml file in the modules section
+If you examine the project, you will see that it now has additional modules. These are built in sequence in the pom.xml file in the modules section
 ```
     <modules>
         <module>model</module>
@@ -22,9 +22,9 @@ In order to work with this project, you should first build it using maven
 cd webfacadeexample2
 mvn clean install
 ```
-We are doing the build first so that netbeans has the dependencies already downloaded when it opens the project.
+We are doing the build first so that NetBeans has the dependencies already downloaded when it opens the project.
 
-Now you will need to import the poject into Netbeans using 'open existing project'
+Now you will need to import the project into NetBeans using 'open existing project'
 
 ![alt text](../webfacadeexample2/images/NetbeansOpenProject.png "Figure NetbeansOpenProject.png" )
 
@@ -32,9 +32,9 @@ Remember to click 'open required projects' so that the parent project and its su
 
 ##  Task 2 Running the project
 
-You can run the project using maven or directly in the Netbeans IDE.
+You can run the project using maven or directly in the NetBeans IDE.
 Please note that you can't do both at the same time due to port clashes.
-If you do run into problems restart Netbeans.
+If you do run into problems restart NetBeans.
 
 ### To run the project using maven
 
@@ -53,9 +53,9 @@ You can stop the browser using control c (ctrl-c).
 Please note that when you run the example this way you will need to rebuild the project and restart tomcat
 every time you make changes otherwise the changes will not be packaged in a war and run by tomcat.
 
-### To run the project using  in Netbeans embedded Tomcat server
+### To run the project using  in NetBeans embedded Tomcat server
 
-If you right click on the webfacade-example1 project in netbeans and select 'run' netbeans will spin up a tomcat instance and launch your application.
+If you right click on the webfacade-example1 project in NetBeans and select 'run' NetBeans will spin up a tomcat instance and launch your application.
 
 If you are asked for username and password just use the default admin admin.
  

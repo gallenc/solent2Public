@@ -11,20 +11,21 @@ Migrate the simple shopping cart you created in the [session4 shopping cart exer
 
 In this case you only have to migrate one JSP with no bootstrap.
 
-Following the steps in last [Exercise 1 simple-springmvc](../../session6/simple-springmvc) , you will need to
+Following the steps in the last [Exercise 1 simple-springmvc](../../session6/simple-springmvc) , you will need to
 
-1. add an application.properties file to tell SpringMVC where the views are
-2. move the home.jsp under WEB-INF/views
-2. add a MVCController class and add a request method which calls the home.jsp (you can copy and modify the class from the previous example)
-3. change the web references in the home.jsp forms to match the @RequestMapping(value in the request method
-This should now give you a working app with the home.jsp as a view. 
+1. check that the pom.xml has the correct dependencies.
+2. add an application.properties file to tell SpringMVC where the views are
+3. move the home.jsp under WEB-INF/views
+4. add a MVCController class and add a request method which calls the home.jsp (you can copy and modify the class from the previous example)
+5. change the web references in the home.jsp forms to match the @RequestMapping value in the request method
+6. This should now give you a working app with the home.jsp as a view. 
 
 You still have to migrate the code in the jsp:
 
-4. add the @RequestParameter annotations to the requesting method
-5. move the business logic out of the JSP and into the request method in the controller
-6. make sure the return values needed by the page are now injected into the model
-7. change the java code in the JSP to use JSTL and the model variables
+6. add the @RequestParameter annotations to the requesting method
+7. move the business logic out of the JSP and into the request method in the controller
+8. make sure the return values needed by the page are now injected into the model
+9. change the java code in the JSP to use JSTL and the model variables
 
 
 An example answer is provided [webApplicationExercise2Spring-answer](../shoppingcart-springmvc/webApplicationExercise2Spring-answer/ )
@@ -36,11 +37,14 @@ In session 4 you enhanced the simple shopping cart application to have a navbar 
 
 see if you can migrate [session4 shopping cart bootstrap exercise](../../session4/shoppingcart-bootstrap) to use spring mvc
 
-In this case you need to 
-1. start with the changes you did to migrate the single home.jsp page in Part 1
-2. add the additional header.jsp and footer.jsp, about.jsp and contact.jsp to the view and change the home.jsp to use them
-3. add additional methods to the controller for the new pages. Note header.jsp and footer.jsp do not need methods as they are imported by the other JSPs
-4. You should be able to inject the 'selectedPage' using the model instead of code at the top of each jsp.
+In this case you need to start with either your own answer to adding bootstrap to your shopping cart in session4 or copy the given answer 
+[session4 shopping cart bootstrap answer webApplicationExercise3-answer](../../session4/shoppingcart-bootstrap/webApplicationExercise3-answer).
+
+1. add the new depencencies on spring into your pom.xml
+2. start with the changes you did to migrate the single home.jsp page in Part 1
+3. add the additional header.jsp and footer.jsp, about.jsp and contact.jsp to the view and change the home.jsp to use them
+4. add additional methods to the controller for the new pages. Note header.jsp and footer.jsp do not need methods as they are imported by the other JSPs
+5. You should be able to inject the 'selectedPage' using the model instead of code at the top of each jsp.
 
 Again an example answer is provided [webApplicationExercise3Spring-answer](../shoppingcart-springmvc/webApplicationExercise3Spring-answer/ )
  but dont look at this until you have tried it yourself.
@@ -94,6 +98,9 @@ public class SpringBootJspConfiguration {
     }
 }
 
+## Part 3 Try doing the same with the properties app in session 5
+You should be able to migrate the properties application from session 5 to use springMVC. 
+This would be great for your group development exercise.
  
  ```
  

@@ -15,4 +15,6 @@ You have been provided with a partially complete project which you should use as
 
 An answer is also provided but please try and complete the exercise before you are tempted to look at the answer [webApplicationExercise2-answer](../shoppingcart/webApplicationExercise2-answer )
 
+Note that the answer also contains [Example Use Case and Robustness diagrams](../shoppingcart/webApplicationExercise2-answer/UMLmodel/README.md )
+
 
