@@ -9,7 +9,8 @@
    
     <!-- Any call to the context to get a cat, cow or dog will create a NEW object of that type -->
     <bean id="Cat" class="org.solent.com504.factoryandfacade.impl.CatImpl" scope="prototype"/>
-    <bean id="Cow" class="org.solent.com504.factoryandfacade.impl.CowImpl" scope="prototype"/>
+    <bean id="Cow" class="org.solent.com504.factoryandfacade.impl.CowImpl" scope="prototype"/>    
+    <bean id="Duck" class="org.solent.com504.factoryandfacade.impl.DuckImpl" scope="prototype"/>
     <bean id="Dog" class="org.solent.com504.factoryandfacade.impl.DogImpl" scope="prototype"/>
            
     <!-- singleton beans -->
@@ -24,7 +25,8 @@
             <list>
                 <value>Cat</value>
                 <value>Cow</value>
-                <value>Dog</value>              
+                <value>Dog</value>                   
+                <value>Duck</value>              
             </list>
         </constructor-arg>
     </bean>

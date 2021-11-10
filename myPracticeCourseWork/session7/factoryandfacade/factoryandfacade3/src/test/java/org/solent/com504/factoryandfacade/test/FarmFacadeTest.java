@@ -6,6 +6,7 @@
 package org.solent.com504.factoryandfacade.test;
 
 import java.util.List;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -14,6 +15,7 @@ import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.Cat;
 import org.solent.com504.factoryandfacade.model.Cow;
 import org.solent.com504.factoryandfacade.model.Dog;
+import org.solent.com504.factoryandfacade.model.Duck;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
 
@@ -45,11 +47,13 @@ public class FarmFacadeTest {
 
         supportedAnimalTypes = farmObjectFactory.getSupportedAnimalTypes();
         assertNotNull(supportedAnimalTypes);
-        assertEquals(3, supportedAnimalTypes.size());
+        assertEquals(4, supportedAnimalTypes.size());
 
         assertTrue(supportedAnimalTypes.contains(Cat.ANIMAL_TYPE));
         assertTrue(supportedAnimalTypes.contains(Dog.ANIMAL_TYPE));
-        assertTrue(supportedAnimalTypes.contains(Cow.ANIMAL_TYPE));
+        assertTrue(supportedAnimalTypes.contains(Cow.ANIMAL_TYPE));        
+        assertTrue(supportedAnimalTypes.contains(Duck.ANIMAL_TYPE));
+
 
         System.out.println("testing supported animal types:");
         for (String animalType : supportedAnimalTypes) {
@@ -78,7 +82,7 @@ public class FarmFacadeTest {
         }
 
         List<Animal> allAnimals = farmFacade.getAllAnimals();
-        assertEquals(9, allAnimals.size());
+        assertEquals(12, allAnimals.size());
         for (Animal animal : allAnimals) {
             System.out.println("facade Animal:" + animal);
         }
@@ -94,7 +98,7 @@ public class FarmFacadeTest {
         assertEquals(0, farmFacade.getAnimalsOfType(Cat.ANIMAL_TYPE).size());
 
         allAnimals = farmFacade.getAllAnimals();
-        assertEquals(6, allAnimals.size());
+        assertEquals(9, allAnimals.size());
 
         Animal animal = allAnimals.get(4);
         System.out.println(animal);

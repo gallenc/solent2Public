@@ -5,9 +5,10 @@
  */
 package org.solent.com504.factoryandfacade.springimpl.test;
 
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Before;
+import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.springimpl.impl.FarmObjectFactorySpringImpl;
 import org.solent.com504.factoryandfacade.model.FarmObjectFactory;
 import org.solent.com504.factoryandfacade.test.FarmFacadeTest;
@@ -40,5 +41,11 @@ public class FarmFacadeSpringTest {
     public void testFarmFacade() {
         System.out.println("FarmFacadeSpringTest testFarmFacade");
         farmFacadeTest.testFarmFacade();
+    }
+    
+    @Test
+    public void testDuck(){
+        Animal duck = farmObjectFactory.createAnimal("Duck");
+        Assert.assertEquals("Duck", duck.getAnimalType());
     }
 }
