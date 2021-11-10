@@ -37,5 +37,6 @@
         <module>workup/experimental/session3/creditcardtest</module>
         <module>workup/experimental/session3/creditcardtest/mavenproject1</module>
         <module>workup/experimental/session3/creditcardtest/creditcardchecker</module>
+        <module>myPracticeCourseWork/session7/model-generated/modelGenerated</module>
     </modules>
 </project>

@@ -51,5 +51,12 @@ public class FarmFacadeTest {
         assertEquals(3, animals.size());
         
         assertEquals(cowName, animals.get(2).getName());
+        
+        String duckName = "quackers";
+        farmFacade.addDuck(duckName);
+        animals = farmFacade.getAllAnimals();
+        assertEquals(4, animals.size());
+        
+        assertEquals(duckName, animals.get(3).getName());
     }
 }

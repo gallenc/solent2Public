@@ -46,4 +46,11 @@ public class FarmFacadeImpl implements FarmFacade {
         animalList.add(cow);
     }
 
+    @Override
+    public void addDuck(String name) {
+        Animal duck = AnimalObjectFactory.createDuck();
+        duck.setName(name);
+        animalList.add(duck);
+    }
+
 }
