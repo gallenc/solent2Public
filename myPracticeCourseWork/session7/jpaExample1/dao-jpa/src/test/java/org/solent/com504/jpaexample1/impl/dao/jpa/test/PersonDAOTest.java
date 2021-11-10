@@ -81,7 +81,7 @@ public class PersonDAOTest {
         assertNotNull(personList);
         
         // init should insert 5 people
-        assertEquals(5, personList.size());
+        assertEquals(12, personList.size());
 
         // print out result
         String msg = "";
