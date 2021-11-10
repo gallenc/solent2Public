@@ -2,6 +2,10 @@
 
 This module implements the AnimalDao using Java Persistence Architecture JPA
 
+JPA builds on JDBC to create an 'Object Relational Mapper' which simplifies the process of mapping Java objects to relational database tables
+
+Many tutorials on JPA are on line. For example https://www.baeldung.com/learn-jpa-hibernate
+
 ## standalone jpa archetype
 
 The DAO described here is quite complex.
