@@ -15,6 +15,19 @@ public interface FarmFacade {
      * Creates an Animal of a given AnimalType with a name and adds the animal to the list of animals stored by this farm.
      * Note that more than one animal can be added with the same name
      * @param animalType type of animal ( which must have been created by the AnimalTypeDao)
+     * @param name name to give this     
+     * @param address of the animal
+     * animal - does not have to be unique
+     * @return an animal of a given type with the supplied name which has been stored. 
+     * Animal will also have been given an id.
+     * @ throws IllegalArgumentException if animal name is duplicated. All animal names must be unique.
+     */
+    public Animal addAnimal(String animalType, String name, String address);    
+    
+        /**
+     * Creates an Animal of a given AnimalType with a name and adds the animal to the list of animals stored by this farm.
+     * Note that more than one animal can be added with the same name
+     * @param animalType type of animal ( which must have been created by the AnimalTypeDao)
      * @param name name to give this
      * animal - does not have to be unique
      * @return an animal of a given type with the supplied name which has been stored. 
@@ -22,6 +35,7 @@ public interface FarmFacade {
      * @ throws IllegalArgumentException if animal name is duplicated. All animal names must be unique.
      */
     public Animal addAnimal(String animalType, String name);
+
 
     /**
      * 

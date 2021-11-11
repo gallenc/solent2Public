@@ -30,7 +30,7 @@ public class FarmFacadeImpl implements FarmFacade {
     }
 
     @Override
-    public Animal addAnimal(String animalTypeStr, String name) {
+    public Animal addAnimal(String animalTypeStr, String name, String address) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("name cannot be null or empty ");
         }
@@ -45,8 +45,15 @@ public class FarmFacadeImpl implements FarmFacade {
         AnimalType animalType = animalTypeDao.getAnimalType(animalTypeStr);
         Animal animal = animalDao.create(animalType);
         animal.setName(name);
+        if(address != null && !(address.isEmpty()))
+        animal.setAddress(address);
         animalDao.updateOrSave(animal);
         return animal;
+    }
+    
+        @Override
+    public Animal addAnimal(String animalTypeStr, String name) {
+        return addAnimal(animalTypeStr, name, "");
     }
 
     @Override

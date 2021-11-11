@@ -19,7 +19,9 @@
 
     // accessing request parameters
     String actionStr = request.getParameter("action");
-    String animalNameStr = request.getParameter("animalName");
+    String animalNameStr = request.getParameter("animalName");    
+    String animalAddressStr = request.getParameter("animalAddress");
+
     String animalTypeStr = request.getParameter("animalType");
 
     // basic error checking before making a call
@@ -27,13 +29,14 @@
         // redirect back to home page
         response.sendRedirect("./farm2.jsp");
     } else if ("addAnimal".equals(actionStr)) {
-        if (animalNameStr == null || animalNameStr.isEmpty() || animalTypeStr == null || animalTypeStr.isEmpty()) {
-            errorMessage = "ERROR: animalType and animalName must both be set when adding animal.";
-        } else {
+        if (animalNameStr == null || animalNameStr.isEmpty() || animalTypeStr == null || animalTypeStr.isEmpty() || animalAddressStr == null || animalAddressStr.isEmpty()) {
+            errorMessage = "ERROR: animalType, animalName and animalAddress must both be set when adding animal.";
+        } 
+        else {
             if (farmFacade.getAnimal(animalNameStr) != null) {
                 errorMessage = "ERROR: you cannot have dupicate animal names (" + animalNameStr + ")";
             } else {
-                farmFacade.addAnimal(animalTypeStr, animalNameStr);
+                farmFacade.addAnimal(animalTypeStr, animalNameStr, animalAddressStr);
                 response.sendRedirect("./farm2.jsp");
             }
         }
@@ -61,6 +64,7 @@
             <input type="hidden" name="animalType" value="<%=animalTypeStr%>">
             <input type="hidden" name="action" value="addAnimal">
             Enter new Animal Name:  <input type="text" name="animalName">
+            Enter new Animal Address  <input type="text" name="animalAddress">
             <button type="submit" >Create <%=animalTypeStr%></button>
         </form> 
         <BR>
