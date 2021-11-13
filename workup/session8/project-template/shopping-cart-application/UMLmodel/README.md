@@ -23,6 +23,10 @@ Usually a model doesn't need to go into this detail if we know the supporting cl
 
 ![alt text](../UMLmodel/images/classDiagram_3.png "Figure classDiagram_3.png" )
 
+### UML model including DAOs
+
+![alt text](../UMLmodel/images/classDiagram_4.png "Figure classDiagram_4.png" )
+
 ## Use Cases and Robustness Diagrams
 
 We can use draw.io https://www.draw.io/ to draw other UML diagrams such as Use Cases, Robustness diagrams and Sequence diagrams. 
