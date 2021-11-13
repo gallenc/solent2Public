@@ -3,8 +3,8 @@
     Created on : Jan 4, 2020, 11:19:01 AM
     Author     : cgallen
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,7 +50,20 @@
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./contact">Contact</a></li>                          
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-
+                             <!-- user role:  ${user.userRole}-->
+                            <c:if test="${UserRole.ANONYMOUS == user.userRole }">
+                                <li><a href="./login">Login or create a new Account</a></li>
+                            </c:if>
+                            <c:if test="${UserRole.ANONYMOUS != user.userRole }">
+                                <form id="logoutForm" method="POST" action="./logout">
+                                </form>
+                                <form id="profile" method="GET" action="./viewModifyUser">
+                                    <input type="hidden" name="username" value="${user.username}"/>
+                                </form>
+                                <p class="text-muted"> Welcome ${user.username}&nbsp;&nbsp;
+                                    <a onclick="document.forms['logoutForm'].submit()">Logout</a><BR>
+                                    <a onclick="document.forms['profile'].submit()">User Profile</a></p>
+                            </c:if>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.solent.com504.oodd.cart.model.dto.ShoppingItem;
+import org.solent.com504.oodd.cart.model.dto.User;
+import org.solent.com504.oodd.cart.model.dto.UserRole;
 import org.solent.com504.oodd.cart.model.service.ShoppingCart;
 import org.solent.com504.oodd.cart.model.service.ShoppingService;
 import org.solent.com504.oodd.cart.web.WebObjectFactory;
@@ -23,10 +25,9 @@ public class MVCController {
 
     // this could be done with an autowired bean
     //private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
-    
     @Autowired
-    ShoppingService shoppingService =null;
-    
+    ShoppingService shoppingService = null;
+
     // note that scope is session in configuration
     // so the shopping cart is unique for each web session
     @Autowired
@@ -38,12 +39,43 @@ public class MVCController {
         return "redirect:/index.html";
     }
 
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    public String logout(Model model,
+            HttpSession session) {
+        // logout of session and clear
+        session.invalidate();
+        // used to set tab selected
+        model.addAttribute("selectedPage", "home");
+        return "home";
+    }
+
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    public String aboutCart(Model model,
+            HttpSession session) {
+
+        User user = user = new User();
+                user.setUserRole(UserRole.CUSTOMER);
+        session.setAttribute("loggedInUser",user);
+        model.addAttribute("user", user);
+
+        // used to set tab selected
+        model.addAttribute("selectedPage", "home");
+        return "login";
+    }
+
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String viewCart(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "itemName", required = false) String itemName,
             @RequestParam(name = "itemUUID", required = false) String itemUuid,
             Model model,
             HttpSession session) {
+
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user == null) {
+            user = new User();
+            user.setUserRole(UserRole.ANONYMOUS);
+        }
+        model.addAttribute("user", user);
 
         // used to set tab selected
         model.addAttribute("selectedPage", "home");
@@ -60,8 +92,7 @@ public class MVCController {
 //                session.setAttribute("shoppingCart", shoppingCart);
 //            }
 //        }
-
-        if(action == null ){
+        if (action == null) {
             // do nothing but show page
         } else if ("addItemToCart".equals(action)) {
             ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
