@@ -5,12 +5,19 @@
  */
 package org.solent.com504.oodd.cart.model.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author cgallen
  */
+@Entity
 public class ShoppingItem {
     
+    private Long id;
     private String uuid=null;
     private String name=null;
     private Integer quantity=0;
@@ -25,6 +32,15 @@ public class ShoppingItem {
         this.price = price;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUuid() {
         return uuid;

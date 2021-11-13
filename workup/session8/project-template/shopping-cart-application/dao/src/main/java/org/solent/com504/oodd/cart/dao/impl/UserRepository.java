@@ -5,10 +5,8 @@
  */
 package org.solent.com504.oodd.cart.dao.impl;
 
-import org.solent.com504.oodd.cart.model.dao.UserDAO;
 import org.solent.com504.oodd.cart.model.dto.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author cgallen
  */
 @Repository
-public interface UserRepository extends UserDAO,  JpaRepository<User,Long>{
+public interface UserRepository extends JpaRepository<User,Long>{
     
 }

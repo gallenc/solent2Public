@@ -18,6 +18,7 @@ import org.solent.com504.oodd.cart.model.service.ShoppingService;
  *
  * @author cgallen
  */
+
 public class ShoppingServiceImpl implements ShoppingService {
 
     // note ConcurrentHashMap instead of HashMap if map can be altered while being read
