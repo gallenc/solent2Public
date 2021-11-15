@@ -27,6 +27,8 @@ public class User {
 
     private UserRole userRole;
 
+    private Boolean enabled = true;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
@@ -78,6 +80,14 @@ public class User {
         this.secondName = secondName;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     // passwords not saved in database only passwordhash is saved
     @Transient
     public String getPassword() {
@@ -88,6 +98,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
         setHashedPassword(PasswordUtils.hashPassword(password));
+    }
+
+    public boolean isValidPassword(String checkPassword) {
+        if (checkPassword == null || getHashedPassword() == null) {
+            return false;
+        }
+        return PasswordUtils.checkPassword(checkPassword, getHashedPassword());
     }
 
     public String getHashedPassword() {

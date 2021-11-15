@@ -29,7 +29,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="User" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="668.0" yPosition="581.0">
+    <Class name="User" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="638.0" yPosition="572.0">
       <Fields>
         <Field name="userRole" type="UserRole" visibility="private"/>
         <Field name="username" type="String" visibility="private"/>
@@ -40,7 +40,11 @@
         <Field name="password" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="isValidPassword" returnType="void" visibility="public">
+          <Argument type="String" name="checkPassword"/>
+        </Method>
+      </Methods>
     </Class>
     <Class name="Address" package="org.solent.com504.oodd.cart.model.dto" visibility="public" xPosition="960.0" yPosition="738.0">
       <Fields>

@@ -5,6 +5,7 @@
  */
 package org.solent.com504.oodd.cart.dao.test;
 
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
@@ -49,6 +50,7 @@ public class UserRepositoryTest {
         userRepository.deleteAll();
 
         User user1 = new User();
+        user1.setUsername("cg101");
         user1.setFirstName("craig");
         user1.setSecondName("gallen");
         user1 = userRepository.save(user1);
@@ -59,6 +61,13 @@ public class UserRepositoryTest {
         User foundUser = optional.get();
 
         LOG.debug("found user: " + foundUser);
+        
+        List<User> foundUsers1 = userRepository.findByUsername("cg101");
+        LOG.debug("found user21: " + foundUsers1);
+        
+        List<User> foundUsers = userRepository.findByNames("craig", "gallen");
+        LOG.debug("found user3: " + foundUsers);
+        
 
         LOG.debug("****************** test complete");
     }

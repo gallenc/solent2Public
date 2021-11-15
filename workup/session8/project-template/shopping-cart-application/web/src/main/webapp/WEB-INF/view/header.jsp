@@ -48,13 +48,22 @@
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="./home">Home</a></li> 
                             <li <% if ("about".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="./about">About</a></li> 
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./contact">Contact</a></li>                          
+                                <c:if test="${user.userRole =='ADMINISTRATOR'}">
+                                <li class="dropdown" >
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Admin <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="${contextPath}/users">Manage Users</a></li>
+                                        <li><a href="${contextPath}/catalog">Manage Catalogue</a></li>
+                                    </ul>
+                                </li>
+                            </c:if>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                             <!-- user role:  ${user.userRole}-->
-                            <c:if test="${UserRole.ANONYMOUS == user.userRole }">
+                            <!-- user role:  ${user.userRole}-->
+                            <c:if test="${user.userRole =='ANONYMOUS'}">
                                 <li><a href="./login">Login or create a new Account</a></li>
-                            </c:if>
-                            <c:if test="${UserRole.ANONYMOUS != user.userRole }">
+                                </c:if>
+                                <c:if test="${user.userRole !='ANONYMOUS'}">
                                 <form id="logoutForm" method="POST" action="./logout">
                                 </form>
                                 <form id="profile" method="GET" action="./viewModifyUser">
@@ -63,7 +72,7 @@
                                 <p class="text-muted"> Welcome ${user.username}&nbsp;&nbsp;
                                     <a onclick="document.forms['logoutForm'].submit()">Logout</a><BR>
                                     <a onclick="document.forms['profile'].submit()">User Profile</a></p>
-                            </c:if>
+                                </c:if>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->

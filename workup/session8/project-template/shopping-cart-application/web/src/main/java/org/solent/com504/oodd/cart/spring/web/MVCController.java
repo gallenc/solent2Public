@@ -5,6 +5,8 @@ import java.io.StringWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.com504.oodd.cart.model.dto.ShoppingItem;
 import org.solent.com504.oodd.cart.model.dto.User;
 import org.solent.com504.oodd.cart.model.dto.UserRole;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class MVCController {
 
+    final static Logger LOG = LogManager.getLogger(MVCController.class);
+
     // this could be done with an autowired bean
     //private ShoppingService shoppingService = WebObjectFactory.getShoppingService();
     @Autowired
@@ -33,34 +37,21 @@ public class MVCController {
     @Autowired
     ShoppingCart shoppingCart = null;
 
+    private User getSessionUser(HttpSession session) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) {
+            sessionUser = new User();
+            sessionUser.setUsername("anonymous");
+            sessionUser.setUserRole(UserRole.ANONYMOUS);
+            session.setAttribute("sessionUser",sessionUser);
+        }
+        return sessionUser;
+    }
+
     // this redirects calls to the root of our application to index.html
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model) {
         return "redirect:/index.html";
-    }
-
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
-    public String logout(Model model,
-            HttpSession session) {
-        // logout of session and clear
-        session.invalidate();
-        // used to set tab selected
-        model.addAttribute("selectedPage", "home");
-        return "home";
-    }
-
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
-    public String aboutCart(Model model,
-            HttpSession session) {
-
-        User user = user = new User();
-                user.setUserRole(UserRole.CUSTOMER);
-        session.setAttribute("loggedInUser",user);
-        model.addAttribute("user", user);
-
-        // used to set tab selected
-        model.addAttribute("selectedPage", "home");
-        return "login";
     }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
@@ -70,11 +61,8 @@ public class MVCController {
             Model model,
             HttpSession session) {
 
-        User user = (User) session.getAttribute("loggedInUser");
-        if (user == null) {
-            user = new User();
-            user.setUserRole(UserRole.ANONYMOUS);
-        }
+        // get sessionUser from session
+        User user = getSessionUser(session);
         model.addAttribute("user", user);
 
         // used to set tab selected
@@ -83,8 +71,8 @@ public class MVCController {
         String message = "";
         String errorMessage = "";
 
-        // note that the shopping cart is is stored in the user's session
-        // so there is one cart per user
+        // note that the shopping cart is is stored in the sessionUser's session
+        // so there is one cart per sessionUser
 //        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
 //        if (shoppingCart == null) synchronized (this) {
 //            if (shoppingCart == null) {
@@ -126,14 +114,24 @@ public class MVCController {
     }
 
     @RequestMapping(value = "/about", method = {RequestMethod.GET, RequestMethod.POST})
-    public String aboutCart(Model model) {
+    public String aboutCart(Model model, HttpSession session) {
+
+        // get sessionUser from session
+        User user = getSessionUser(session);
+        model.addAttribute("user", user);
+        
         // used to set tab selected
         model.addAttribute("selectedPage", "about");
         return "about";
     }
 
     @RequestMapping(value = "/contact", method = {RequestMethod.GET, RequestMethod.POST})
-    public String contactCart(Model model) {
+    public String contactCart(Model model, HttpSession session) {
+
+        // get sessionUser from session
+        User user = getSessionUser(session);
+        model.addAttribute("user", user);
+        
         // used to set tab selected
         model.addAttribute("selectedPage", "contact");
         return "contact";
@@ -159,7 +157,7 @@ public class MVCController {
         model.addAttribute("strStackTrace", strStackTrace);
         model.addAttribute("exception", e);
         //logger.error(strStackTrace); // send to logger first
-        return "error"; // default friendly exception message for user
+        return "error"; // default friendly exception message for sessionUser
     }
 
 }
