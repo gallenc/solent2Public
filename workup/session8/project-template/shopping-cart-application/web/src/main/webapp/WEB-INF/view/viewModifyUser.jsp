@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td>House Number</td>
-                        <td><input type="text" name="number" value="${user.address.houseNumber}" /></td>
+                        <td><input type="text" name="houseNumber" value="${user.address.houseNumber}" /></td>
                     </tr>
                     <tr>
                         <td>Address Line 1</td>
@@ -81,7 +81,7 @@
                 </tbody>
 
             </table>
-                    
+
             <c:if test="${user.userRole !='ADMINISTRATOR'}">
                 <p>User Status and role </p>
                 <table class="table">
@@ -130,14 +130,22 @@
             </c:if>
 
             <input type="hidden" name="username" value="${user.username}"/>
-            <button class="btn" type="submit" >Update ${user.username}</button>
+            <button class="btn" type="submit" >Update User ${user.username}</button>
+        </form>
+        <p>Update Password</p>
+        <form action="./viewModifyUser" method="post">
+            <input type="hidden" name="username" value="${user.username}"/>
+            <input type="hidden" name="action" value="updatePassword"/>
+            <p>Password <input type="password" name="password" ></input></p>
+            <p>Re Enter Password <input type="password" name="password2" ></input></p>
+            <button class="btn" type="submit" >Update ${user.username} Password</button>
         </form>
         <c:if test="${user.userRole =='ADMINISTRATOR'}">
             <BR>
             <form action="./users">
                 <button class="btn" type="submit" >Return To Users</button>
             </form> 
-            </sec:authorize></c:if> 
+        </c:if> 
 
         </div>
 

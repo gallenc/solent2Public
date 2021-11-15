@@ -61,10 +61,10 @@ public class PopulateDatabaseOnStart {
 
         users = userRepository.findByUsername(DEFAULT_USER_USERNAME);
         if (users.isEmpty()) {
-            userRepository.save(adminUser);
-            LOG.info("creating new default user:" + adminUser);
+            userRepository.save(defaultUser);
+            LOG.info("creating new default user:" + defaultUser);
         } else {
-            LOG.info("defaultuser already exists. Not creating new :" + adminUser);
+            LOG.info("defaultuser already exists. Not creating new :" + defaultUser);
         }
 
         LOG.debug("database initialised");
