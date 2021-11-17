@@ -62,8 +62,8 @@ public class MVCController {
             HttpSession session) {
 
         // get sessionUser from session
-        User user = getSessionUser(session);
-        model.addAttribute("user", user);
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
 
         // used to set tab selected
         model.addAttribute("selectedPage", "home");
@@ -117,8 +117,8 @@ public class MVCController {
     public String aboutCart(Model model, HttpSession session) {
 
         // get sessionUser from session
-        User user = getSessionUser(session);
-        model.addAttribute("user", user);
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
         
         // used to set tab selected
         model.addAttribute("selectedPage", "about");
@@ -129,8 +129,8 @@ public class MVCController {
     public String contactCart(Model model, HttpSession session) {
 
         // get sessionUser from session
-        User user = getSessionUser(session);
-        model.addAttribute("user", user);
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
         
         // used to set tab selected
         model.addAttribute("selectedPage", "contact");

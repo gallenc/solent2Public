@@ -41,7 +41,7 @@
                         <td><c:if test="${user.enabled}">ENABLED</c:if><c:if test="${!user.enabled}">DISABLED</c:if></td>
                         <td>${user.userRole}</td>
                         <td>
-                            <form action="./viewModifyUser" method="get">
+                            <form action="./viewModifyUser" method="GET">
                                 <input type="hidden" name="username" value="${user.username}">
                                 <button class="btn" type="submit" >Modify User</button>
                             </form> 
@@ -51,7 +51,7 @@
 
             </tbody>
         </table>
-        <form action="./register" method="post">
+        <form action="./register" method="GET">
             <button class="btn" type="submit" >Add User</button>
         </form> 
     </div>
