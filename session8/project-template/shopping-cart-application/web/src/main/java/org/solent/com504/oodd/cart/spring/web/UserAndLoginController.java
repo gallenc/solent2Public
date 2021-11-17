@@ -220,6 +220,7 @@ public class UserAndLoginController {
 
         List<User> userList = userRepository.findAll();
 
+        model.addAttribute("user", sessionUser);
         model.addAttribute("userListSize", userList.size());
         model.addAttribute("userList", userList);
         model.addAttribute("selectedPage", "users");
@@ -259,8 +260,9 @@ public class UserAndLoginController {
                 return ("home");
             }
         }
-        User user = userList.get(0);
-        model.addAttribute("user", user);
+        User modifyUser = userList.get(0);
+        model.addAttribute("user", sessionUser);
+        model.addAttribute("modifyUser", modifyUser);
         model.addAttribute("message", message);
         model.addAttribute("errorMessage", errorMessage);
         return "viewModifyUser";
