@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="factoryandfacadeClassDiagram">
+  <ClassDiagramComponents>
+    <Class name="ServiceObjectFactoryImpl" package="org.solent.com504.factoryandfacade.impl.service" visibility="public" xPosition="1022.0" yPosition="121.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getFarmFacade" returnType="FarmFacade" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Animal" package="org.solent.com504.factoryandfacade.model.dto" visibility="public" xPosition="246.0" yPosition="874.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="animalType" type="AnimalType" visibility="private"/>
+        <Field name="id" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AnimalDaoImpl" package="org.solent.com504.factoryandfacade.impl.dao.simple" visibility="public" xPosition="1066.0" yPosition="541.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AnimalType" package="org.solent.com504.factoryandfacade.model.dto" visibility="public" xPosition="648.0" yPosition="893.0">
+      <Fields>
+        <Field name="sound" type="String" visibility="private"/>
+        <Field name="type" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AnimalTypeDaoImpl" package="org.solent.com504.factoryandfacade.impl.dao.simple" visibility="public" xPosition="1066.0" yPosition="658.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="setSupportedAnimalTypes" returnType="List&lt;AnimalType&gt;" visibility="public">
+          <Argument type="List&lt;AnimalType&gt;" name="animalTypes"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FarmFacadeImpl" package="org.solent.com504.factoryandfacade.impl.service" visibility="public" xPosition="1066.0" yPosition="347.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RestInterface" package="org.solent.com504.factoryandfacade.model.rest" visibility="public" xPosition="112.0" yPosition="129.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="JSPPages" package="org.solent.com504.factoryandfacade.model.jsp" visibility="public" xPosition="244.0" yPosition="18.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AnimalList" package="org.solent.com504.factoryandfacade.model.dto" visibility="public" xPosition="42.0" yPosition="874.0">
+      <Fields>
+        <Field name="animals" type="List&lt;Animal&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="FarmFacade" package="org.solent.com504.factoryandfacade.model.service" visibility="public" xPosition="218.0" yPosition="261.0">
+      <Methods>
+        <Method name="getAllAnimals" returnType="List&lt;Animal&gt;" visibility="public"/>
+        <Method name="addAnimal" returnType="String" visibility="public">
+          <Argument type="String" name="animalType"/>
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAnimalsOfType" returnType="String" visibility="public">
+          <Argument type="String" name="animalType"/>
+        </Method>
+        <Method name="getAnimal" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="removeAnimal" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getSupportedAnimalTypes" returnType="List&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="ServiceObjectFactory" package="org.solent.com504.factoryandfacade.model.service" visibility="public" xPosition="648.0" yPosition="121.0">
+      <Methods>
+        <Method name="getFarmFacade" returnType="FarmFacade" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="AnimalDao" package="org.solent.com504.factoryandfacade.model.dao" visibility="public" xPosition="186.0" yPosition="528.0">
+      <Methods>
+        <Method name="retrieve" returnType="long" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="updateOrSave" returnType="Animal" visibility="public">
+          <Argument type="Animal" name="animal"/>
+        </Method>
+        <Method name="delete" returnType="long" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="retrieve" returnType="Animal" visibility="public">
+          <Argument type="Animal" name="animalTemplate"/>
+        </Method>
+        <Method name="create" returnType="AnimalType" visibility="public">
+          <Argument type="AnimalType" name="animalType"/>
+        </Method>
+        <Method name="retrieveAll" returnType="List&lt;Animal&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="AnimalTypeDao" package="org.solent.com504.factoryandfacade.model.dao" visibility="public" xPosition="648.0" yPosition="650.0">
+      <Methods>
+        <Method name="getSupportedAnimalTypes" returnType="List&lt;AnimalType&gt;" visibility="public"/>
+        <Method name="getAnimalType" returnType="String" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="JSPUsesServiceObjectFactory" source="org.solent.com504.factoryandfacade.model.jsp.JSPPages" target="org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="createsFarmFacade" source="org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory" target="org.solent.com504.factoryandfacade.model.service.FarmFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="animalDaoUses" source="org.solent.com504.factoryandfacade.model.dao.AnimalDao" target="org.solent.com504.factoryandfacade.model.dto.Animal" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="restusesServiceObjectFactory" source="org.solent.com504.factoryandfacade.model.rest.RestInterface" target="org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="animalType" source="org.solent.com504.factoryandfacade.model.dto.Animal" target="org.solent.com504.factoryandfacade.model.dto.AnimalType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="restUsesFacade" source="org.solent.com504.factoryandfacade.model.rest.RestInterface" target="org.solent.com504.factoryandfacade.model.service.FarmFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="FarmFacade" source="org.solent.com504.factoryandfacade.model.service.FarmFacade" target="org.solent.com504.factoryandfacade.model.dao.AnimalDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="JSPusesfacade" source="org.solent.com504.factoryandfacade.model.jsp.JSPPages" target="org.solent.com504.factoryandfacade.model.service.FarmFacade" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.dao.simple.AnimalDaoImpl" target="org.solent.com504.factoryandfacade.model.dao.AnimalDao"/>
+    <UseRelation name="animalTypeDaoUses" source="org.solent.com504.factoryandfacade.model.dao.AnimalTypeDao" target="org.solent.com504.factoryandfacade.model.dto.AnimalType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="farmFacadeuses" source="org.solent.com504.factoryandfacade.model.service.FarmFacade" target="org.solent.com504.factoryandfacade.model.dao.AnimalTypeDao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.service.FarmFacadeImpl" target="org.solent.com504.factoryandfacade.model.service.FarmFacade"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.dao.simple.AnimalTypeDaoImpl" target="org.solent.com504.factoryandfacade.model.dao.AnimalTypeDao"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="org.solent.com504.factoryandfacade.impl.service.ServiceObjectFactoryImpl" target="org.solent.com504.factoryandfacade.model.service.ServiceObjectFactory"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
